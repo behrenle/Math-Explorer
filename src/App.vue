@@ -13,10 +13,6 @@
     <div class="content nopm">
       <router-view />
     </div>
-    <!--div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div-->
   </div>
 </template>
 
@@ -25,12 +21,13 @@
     position: fixed;
     height: 80px;
     width: 100%;
-    background-color: #35485f;
+    background-color: rgb(32,32,32);
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
     color: white;
     font-size: 26pt;
     text-align: left;
     font-family: Verdana;
+    border-bottom: 2px solid white;
   }
 
   .menu-item {
@@ -47,7 +44,7 @@
   }
   
   .menu-button:hover {
-    background-color: rgba(255,255,255,0.1);
+    background-color: orange;
   }
 
   .menu-title {
@@ -78,7 +75,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: #2c3e50;
+    background-color: rgb(16,16,16);
   }
 
   #nav {
@@ -112,5 +109,16 @@
   .nopm {
     padding: 0;
     margin: 0;
+  }
+
+  .row.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+
+    & > [class^="col-"],
+    & > [class*=" col-"] {
+      padding-right: 0;
+      padding-left: 0;
+    }
   }
 </style>

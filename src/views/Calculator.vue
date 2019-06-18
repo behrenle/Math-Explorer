@@ -61,46 +61,27 @@
             calculate: function(e) {
                 var key = e.which || e.keyCode;
                 if (key === 13) { // 13 is enter
-                    var line;
-                    try {
-                        line = {
-                            input:  this.$refs.inputfield.value,
-                            output: math.evaluate(this.$refs.inputfield.value, this.scope).toString()
-                        };
-                    }
-                    catch {
-                        line = {
-                            input:  this.$refs.inputfield.value,
-                            output: "Input not correct!"
-                        };
-                    }
-                    this.$refs.history.scrollTop = this.$refs.history.scrollHeight;
-                    this.lines.push(line);
-                    this.addHistoryLine(line);
+                    this.evaluateInput(this.$refs.inputfield.value);
                 }
             },
             clearHistory: function() {
-                this.lines = [];
+                this.CLEAR_HISTORY();
             },
             clearInput: function() {
                 this.$refs.inputfield.value = "";
             },
             clearScope: function() {
-                this.scope = {};
+                this.CLEAR_SCOPE();
             },
             ...mapMutations([
-                "ADD_HISTORY_LINE",
+                "EVALUATE_INPUT",
+                "CLEAR_HISTORY",
+                "CLEAR_SCOPE",
             ]),
-            addHistoryLine: function (line) {
-                this.ADD_HISTORY_LINE(line);
+            evaluateInput(input) {
+                this.EVALUATE_INPUT(input)
             }
         },
-        data: function() {
-            return {
-                lines: [],
-                scope: {},
-            };
-        }
     }
 
 

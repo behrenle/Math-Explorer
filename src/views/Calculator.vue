@@ -3,7 +3,7 @@
         <div class="content">
             <div class="history" ref="history">
                 <HistoryObject
-                        v-for   = "line in lines"
+                        v-for   = "line in history"
                         :input  = "line.input"
                         :output = "line.output"
                 >
@@ -37,7 +37,8 @@
 
 <script>
     import HistoryObject from "@/components/HistoryObject.vue";
-    var math = require("mathjs");
+    import { mapState, mapMutations } from 'vuex';
+    const math = require("mathjs");
 
     export default {
         name: "Calculator",
@@ -46,6 +47,12 @@
         },
         created: function() {
             this.$eventBus.$on("copy-history-text", this.copyHistoryText)
+        },
+        computed: {
+            ...mapState({
+                history: "history",
+            }),
+            // other stuff
         },
         methods: {
             copyHistoryText: function(e) {
@@ -69,6 +76,7 @@
                     }
                     this.$refs.history.scrollTop = this.$refs.history.scrollHeight;
                     this.lines.push(line);
+                    this.addHistoryLine(line);
                 }
             },
             clearHistory: function() {
@@ -79,6 +87,12 @@
             },
             clearScope: function() {
                 this.scope = {};
+            },
+            ...mapMutations([
+                "ADD_HISTORY_LINE",
+            ]),
+            addHistoryLine: function (line) {
+                this.ADD_HISTORY_LINE(line);
             }
         },
         data: function() {

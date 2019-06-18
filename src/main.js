@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import math from 'mathjs';
 
 Vue.config.productionTip = false;
+Vue.prototype.$eventBus = new Vue();
 
 new Vue({
   router,

@@ -2,12 +2,13 @@
   <div id="app" class="nopm">
     <div class="col-12 menu-bar container ">
       <div class="row h-100">
-        <div class="col-6 menu-item menu-title">
+        <div class="col-4 menu-item menu-title">
           Math Toolbox v0.1
         </div>
         <router-link to="/"         class="col-2 menu-item menu-button">Calculator</router-link>
         <router-link to="/settings" class="col-2 menu-item menu-button">Settings</router-link>
         <router-link to="/manual"   class="col-2 menu-item menu-button">Manual</router-link>
+        <router-link to="/about"   class="col-2 menu-item menu-button">About</router-link>
       </div>
     </div>
     <div class="content nopm">
@@ -47,6 +48,10 @@
     background-color: orange;
   }
 
+  .menu-button:focus {
+    border: 2px solid orange;
+  }
+
   .menu-title {
     letter-spacing: 6px;
     padding-left: 20px;
@@ -64,6 +69,10 @@
 <style lang="scss">
   .debug {
     border: 1px solid blue;
+  }
+
+  .debug:focus {
+    background-color: blue;
   }
 
   #app {

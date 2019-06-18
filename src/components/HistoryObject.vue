@@ -1,9 +1,9 @@
 <template>
     <div class="outer">
-        <div class="input">
+        <div class="input copyable" v-on:click="copyInput">
             {{input}}
         </div>
-        <div class="output">
+        <div class="output copyable" v-on:click="copyOutput">
             &rarr; {{output}}
         </div>
     </div>
@@ -15,6 +15,14 @@
         props: {
             input: String,
             output: String,
+        },
+        methods: {
+            copyInput: function() {
+                this.$eventBus.$emit("copy-history-text", this.input);
+            },
+            copyOutput: function() {
+                this.$eventBus.$emit("copy-history-text", this.output);
+            }
         }
     }
 </script>
@@ -41,4 +49,11 @@
         padding-left: 10px;
     }
 
+    .copyable:hover {
+        background-color: orange;
+    }
+
+    .copyable:focus {
+        border: 2px solid orange;
+    }
 </style>

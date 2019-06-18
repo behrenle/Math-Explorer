@@ -1,6 +1,7 @@
 <template>
     <div>
-        <h1>About page</h1>
+        <h1>About</h1>
+        <p class="copyright">&copy; 2019 Lennard Sebastian Behrens. All rights reserved.</p>
     </div>
 </template>
 
@@ -11,5 +12,7 @@
 </script>
 
 <style scoped>
-
+    .copyright {
+        font-size: 24pt;
+    }
 </style>

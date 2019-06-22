@@ -1,15 +1,13 @@
 <template>
-  <div id="app" class="nopm">
-    <div class="col-12 menu-bar container ">
-      <div class="row h-100">
-        <div class="col-4 menu-item menu-title">
+  <div id="app" class="app">
+    <div class="menu-bar">
+        <div class="menu-item menu-title">
           Math Toolbox v0.1
         </div>
-        <router-link to="/"         class="col-2 menu-item menu-button">Calculator</router-link>
-        <router-link to="/settings" class="col-2 menu-item menu-button">Settings</router-link>
-        <router-link to="/manual"   class="col-2 menu-item menu-button">Manual</router-link>
-        <router-link to="/about"   class="col-2 menu-item menu-button">About</router-link>
-      </div>
+        <router-link to="/"         class="menu-item menu-button">Calculator</router-link>
+        <router-link to="/settings" class="menu-item menu-button">Settings</router-link>
+        <router-link to="/manual"   class="menu-item menu-button">Manual</router-link>
+        <router-link to="/about"   class="menu-item menu-button">About</router-link>
     </div>
     <div class="content nopm">
       <router-view />
@@ -29,11 +27,16 @@
     text-align: left;
     font-family: Verdana;
     border-bottom: 2px solid white;
+    display: grid;
+    grid-template-columns: 40% 15% 15% 15% 15%;
+    grid-template-rows: 100%;
   }
 
   .menu-item {
     padding: 10px;
     color: white;
+    text-decoration: none;
+    padding-top: 15px;
   }
 
   .menu-item:hover {
@@ -87,17 +90,6 @@
     background-color: rgb(16,16,16);
   }
 
-  #nav {
-    padding: 30px;
-    a {
-      font-weight: bold;
-      color: #2c3e50;
-      &.router-link-exact-active {
-        color: #42b983;
-      }
-    }
-  }
-
   body {
     padding: 0;
     margin: 0;
@@ -105,29 +97,9 @@
     height: 100%;
   }
 
-  .row {
-    padding: 0;
-    margin: 0;
-  }
-
-  .container {
-    padding: 0;
-    margin: 0;
-  }
-
   .nopm {
     padding: 0;
     margin: 0;
   }
 
-  .row.no-gutters {
-    margin-right: 0;
-    margin-left: 0;
-
-    & > [class^="col-"],
-    & > [class*=" col-"] {
-      padding-right: 0;
-      padding-left: 0;
-    }
-  }
 </style>

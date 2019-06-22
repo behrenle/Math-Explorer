@@ -1,34 +1,32 @@
 <template>
-    <div class="col-12 h-100">
-        <div class="content">
-            <div class="history" ref="history">
-                <HistoryObject
-                        v-for   = "line in history"
-                        :input  = "line.input"
-                        :output = "line.output"
-                >
-                </HistoryObject>
-            </div>
-            <input
-                    type="text"
-                    class="inputfield"
-                    placeholder="Input"
-                    v-on:keypress="calculate"
-                    ref="inputfield"
+    <div class="calculator">
+        <div class="history" ref="history">
+            <HistoryObject
+                    v-for   = "line in history"
+                    :input  = "line.input"
+                    :output = "line.output"
             >
+            </HistoryObject>
         </div>
+        <input
+                type="text"
+                class="inputfield"
+                placeholder="Input"
+                v-on:keypress="calculate"
+                ref="inputfield"
+        >
         <div class="sidemenu">
             <button
-                    class="sidemenu-button"
+                    class="sidemenu-button clear-history"
                     v-on:click="clearHistory"
             >Clear history</button>
 
             <button
-                    class="sidemenu-button"
+                    class="sidemenu-button clear-input"
                     v-on:click="clearInput"
             >Clear input</button>
             <button
-                    class="sidemenu-button"
+                    class="sidemenu-button clear-scope"
                     v-on:click="clearScope"
             >Clear scope</button>
         </div>
@@ -88,38 +86,41 @@
 </script>
 
 <style scoped>
-    .content {
-        width: 80%;
+    .calculator {
+        width: 100%;
         height: 100%;
-        float: left;
-    }
-
-    .sidemenu {
-        width: 20%;
-        height: 100%;
-        float: right;
-        padding-left: 20px;
+        display: grid;
+        grid-template-columns: auto 300px;
+        grid-template-rows: auto 100px;
+        grid-gap: 20px;
+        padding: 20px;
+        padding-top: 0;
+        box-sizing: border-box;
     }
 
     .history {
         background-color: rgb(8,8,8);
         width: 100%;
-        height: calc(100% - 120px);
+        height: 100%;
+        height: 100%;
         border: 2px solid white;
         overflow-y: scroll;
+        box-sizing: border-box;
     }
 
     .inputfield {
         background-color: rgb(32,32,32);
         width: 100%;
-        height: 80px;
+        height: 100px;
         border: 2px solid white;
         font-size: 32pt;
         color: white;
         padding: 10px;
         float: left;
         font-family: Monospace;
-        margin-top: 20px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
     }
 
     .sidemenu-button {
@@ -146,9 +147,10 @@
         border: 2px solid orange;
     }
 
-    .bottom-bar {
-        height: 100px;
-        padding-top: 20px;
+    .sidemenu {
+        grid-row-start: 1;
+        grid-row-end: 3;
+        grid-column-start: 2;
     }
 
 

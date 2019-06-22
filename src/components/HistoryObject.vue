@@ -30,7 +30,8 @@
 <style scoped>
     .outer {
         background-color: rgb(32,32,32);
-        border-bottom: 1px solid white;;
+        border-bottom: 1px solid white;
+        border-right: 2px solid white;
         font-size: 30pt;
         text-align: left;
         width: 100%;

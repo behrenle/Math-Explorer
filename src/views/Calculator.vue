@@ -29,6 +29,10 @@
                     class="sidemenu-button clear-scope"
                     v-on:click="clearScope"
             >Clear scope</button>
+            <button
+                    class="sidemenu-button clear-scope"
+                    v-on:click="clearAll"
+            >Clear all</button>
         </div>
     </div>
 </template>
@@ -78,6 +82,11 @@
             ]),
             evaluateInput(input) {
                 this.EVALUATE_INPUT(input)
+            },
+            clearAll: function() {
+                this.clearHistory();
+                this.clearScope();
+                this.clearInput();
             }
         },
     }
@@ -106,6 +115,7 @@
         border: 2px solid white;
         overflow-y: scroll;
         box-sizing: border-box;
+        scrollbar-color: white black;
     }
 
     .inputfield {

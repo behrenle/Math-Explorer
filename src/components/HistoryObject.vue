@@ -1,10 +1,16 @@
 <template>
     <div class="outer">
-        <div class="input copyable" v-on:click="copyInput">
-            {{input}}
+        <div class="input">
+            <span class="copyable" v-on:click="copyInput">
+                {{input}}
+            </span>
+
         </div>
-        <div class="output copyable" v-on:click="copyOutput">
-            &rarr; {{output}}
+        <div class="output">
+            &rarr;
+            <span class="copyable" v-on:click="copyOutput">
+                {{output}}
+            </span>
         </div>
     </div>
 </template>
@@ -37,12 +43,14 @@
         width: 100%;
         overflow: hidden;
         padding: 10px;
+        padding-bottom: 20px;
         box-sizing: border-box;
     }
 
     .input {
         width: 100%;
         float: left;
+        padding-left: 10px;
     }
 
     .output {
@@ -52,10 +60,7 @@
     }
 
     .copyable:hover {
-        background-color: orange;
+        text-decoration: underline;
     }
 
-    .copyable:focus {
-        border: 2px solid orange;
-    }
 </style>

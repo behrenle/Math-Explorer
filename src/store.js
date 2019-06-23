@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import {create, all} from "mathjs";
 
-const math = require("mathjs");
+const math = create(all);
 
 Vue.use(Vuex);
 

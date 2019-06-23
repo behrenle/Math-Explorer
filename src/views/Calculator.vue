@@ -58,7 +58,7 @@
         },
         methods: {
             copyHistoryText: function(e) {
-              this.$refs.inputfield.value = e;
+                this.$refs.inputfield.value = e;
             },
             calculate: function(e) {
                 var key = e.which || e.keyCode;

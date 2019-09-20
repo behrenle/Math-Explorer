@@ -49,13 +49,13 @@ export default {
   computed: {
     ...mapState({
       history: "history",
-      numberMode: "numberMode"
+      decimalMode: "decimalMode"
     })
     // other stuff
   },
   methods: {
     formatEnglish2German: function(str) {
-      if (this.numberMode == "german") {
+      if (this.decimalMode == "german") {
         return str
           .toString()
           .replace(/;/g, "|")
@@ -112,7 +112,6 @@ export default {
 .history {
   background-color: rgb(8, 8, 8);
   width: 100%;
-  height: 100%;
   height: 100%;
   border: 2px solid white;
   overflow-y: scroll;

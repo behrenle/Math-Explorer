@@ -23,13 +23,16 @@ export default new Vuex.Store({
   state: {
     history: [],
     scope: {},
-    numberMode: "german"
+    decimalMode: "german",
+    language: "english",
+    inputMode: "advanced",
+
   },
   mutations: {
     EVALUATE_INPUT: (state, inputLine) => {
       let outputLine;
       try {
-        if (state.numberMode == "german") {
+        if (state.decimalMode == "german") {
           outputLine = math.evaluate(
             formatGerman2English(inputLine),
             state.scope

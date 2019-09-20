@@ -12,11 +12,15 @@ math.import({
 
 Vue.use(Vuex);
 
-function formatGerman2English(str) {
-  return str
-    .replace(/,/g, ".")
-    .replace(/;/g, ",")
-    .replace(/\|/g, ";");
+function formatGerman2English(state, str) {
+  if (state.decimalMode === "german") {
+    return str
+      .replace(/,/g, ".")
+      .replace(/;/g, ",")
+      .replace(/\|/g, ";");
+  } else {
+    return str
+  }
 }
 
 export default new Vuex.Store({
@@ -32,19 +36,15 @@ export default new Vuex.Store({
     EVALUATE_INPUT: (state, inputLine) => {
       let outputLine;
       try {
-        if (state.decimalMode == "german") {
-          outputLine = math.evaluate(
-            formatGerman2English(inputLine),
-            state.scope
-          );
-        } else {
-          outputLine = math.evaluate(inputLine, state.scope);
-        } // numberMode is "english"
+        outputLine = math.evaluate(
+          formatGerman2English(state, inputLine),
+          state.scope
+        );
       } catch {
         outputLine = "Input not correct!";
       }
       let line = {
-        input: formatGerman2English(inputLine),
+        input: formatGerman2English(state, inputLine),
         output: outputLine
       };
       state.history.push(line);
@@ -54,6 +54,27 @@ export default new Vuex.Store({
     },
     CLEAR_SCOPE: state => {
       state.scope = {};
+    },
+    SWITCH_DECIMAL_MODE: state => {
+      if (state.decimalMode === "german") {
+        state.decimalMode = "english"
+      } else {
+        state.decimalMode = "german"
+      }
+    },
+    SWITCH_LANGUAGE: state => {
+      if (state.language === "german") {
+        state.language = "english"
+      } else {
+        state.language = "german"
+      }
+    },
+    SWITCH_INPUT_MODE: state => {
+      if (state.inputMode === "simple") {
+        state.inputMode = "advanced"
+      } else {
+        state.inputMode = "simple"
+      }
     }
   },
   actions: {}

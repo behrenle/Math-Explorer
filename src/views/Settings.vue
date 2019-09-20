@@ -1,13 +1,22 @@
 <template>
   <div class="settings">
     <div class="settings_element">
-      <span class="label">Decimal mode:</span> <button class="settings_button">{{ decimalMode }}</button>
+      <span class="label">Decimal mode:</span>
+      <button class="settings_button" v-on:click="SWITCH_DECIMAL_MODE">
+        {{ decimalMode }}
+      </button>
     </div>
     <div class="settings_element">
-      <span class="label">Language:</span> <button class="settings_button">{{ language }}</button>
+      <span class="label">Language:</span>
+      <button class="settings_button" v-on:click="SWITCH_LANGUAGE">
+        {{ language }}
+      </button>
     </div>
     <div class="settings_element">
-      <span class="label">Input mode:</span> <button class="settings_button">{{ inputMode }}</button>
+      <span class="label">Input mode:</span>
+      <button class="settings_button" v-on:click="SWITCH_INPUT_MODE">
+        {{ inputMode }}
+      </button>
     </div>
   </div>
 </template>
@@ -23,6 +32,9 @@ export default {
       inputMode: "inputMode",
       language: "language"
     })
+  },
+  methods: {
+    ...mapMutations(["SWITCH_DECIMAL_MODE", "SWITCH_INPUT_MODE", "SWITCH_LANGUAGE"]),
   }
 };
 </script>

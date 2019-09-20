@@ -55,7 +55,7 @@ export default {
   },
   methods: {
     formatEnglish2German: function(str) {
-      if (this.decimalMode == "german") {
+      if (this.decimalMode === "german") {
         return str
           .toString()
           .replace(/;/g, "|")

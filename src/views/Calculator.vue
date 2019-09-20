@@ -55,14 +55,14 @@ export default {
   },
   methods: {
     formatEnglish2German: function(str) {
-        if (this.numberMode == "german") {
+      if (this.numberMode == "german") {
         return str
           .toString()
           .replace(/;/g, "|")
           .replace(/,/g, ";")
           .replace(/\./g, ",");
-        }
-        return str
+      }
+      return str;
     },
     copyHistoryText: function(e) {
       this.$refs.inputfield.value = e;

@@ -1,6 +1,6 @@
 <template>
   <div class="calculator">
-    <div class="history" ref="history">
+    <div class="history" ref="history" v-if="inputMode === 'advanced'">
       <HistoryObject
         v-for="line in history"
         :input="formatEnglish2German(line.input)"
@@ -9,12 +9,28 @@
       </HistoryObject>
     </div>
     <input
+      v-if="inputMode === 'advanced'"
       type="text"
       class="inputfield"
       placeholder="Input"
       v-on:keypress="calculate"
       ref="inputfield"
     />
+    <div v-if="inputMode === 'simple'">
+      <input
+        type="text"
+        class="inputfield"
+        placeholder="Input"
+        v-on:keypress="calculate"
+        ref="inputfield"
+      />
+      <input
+        class="outputfield"
+        :value="formatEnglish2German(getLastOutput())"
+        readonly="readonly"
+        placeholder="Output"
+      />
+    </div>
     <div class="sidemenu">
       <button class="sidemenu-button clear-history" v-on:click="clearHistory">
         Clear history
@@ -49,11 +65,19 @@ export default {
   computed: {
     ...mapState({
       history: "history",
-      decimalMode: "decimalMode"
+      decimalMode: "decimalMode",
+      inputMode: "inputMode"
     })
     // other stuff
   },
   methods: {
+    getLastOutput: function() {
+      if (this.history.length > 0) {
+        return this.history[this.history.length - 1].output
+      } else {
+        return ""
+      }
+    },
     formatEnglish2German: function(str) {
       if (this.decimalMode === "german") {
         return str
@@ -165,6 +189,24 @@ export default {
 }
 
 .inputfield:focus {
+  border: 2px solid orange;
+}
+
+.outputfield {
+  border: 2px solid white;
+  padding: 25px 10px;
+  text-align: left;
+  font-size: 32pt;
+  margin-top: 20px;
+  position: relative;
+  height: 100px;
+  box-sizing: border-box;
+  color: white;
+  background-color: rgb(32,32,32);
+  width: 100%;
+}
+
+.outputfield:focus {
   border: 2px solid orange;
 }
 </style>

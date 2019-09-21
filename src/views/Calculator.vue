@@ -32,8 +32,19 @@
       />
     </div>
     <div class="sidemenu">
-      <button class="sidemenu-button clear-history" v-on:click="clearHistory">
+      <button
+        class="sidemenu-button clear-history"
+        v-if="inputMode === 'advanced'"
+        v-on:click="clearHistory"
+      >
         Clear history
+      </button>
+      <button
+        class="sidemenu-button clear-history"
+        v-if="inputMode === 'simple'"
+        v-on:click="clearHistory"
+      >
+        Clear output
       </button>
 
       <button class="sidemenu-button clear-input" v-on:click="clearInput">

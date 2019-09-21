@@ -12,7 +12,7 @@ math.import({
 
 Vue.use(Vuex);
 
-const COOKIE_EXPIRE_DAYS = 32;
+const COOKIE_EXPIRE_DAYS = 365 * 10;
 const COOKIE_SETTINGS_NAME = "settings";
 
 function formatGerman2English(state, str) {

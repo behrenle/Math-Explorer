@@ -9,6 +9,8 @@ math.import(
     s_round: function(x, n) {
       return s_round(x, n);
     },
+    deg: Math.PI / 180,
+    pi: Math.PI,
     sin: function(x) {
       if (x % (Math.PI * 2) === 0) {
         return 1;
@@ -51,8 +53,12 @@ function s_round(x, n) {
     return r;
   } else if (typeof x === "number") {
     var k = 0;
-    while (x <= Math.pow(10, -k)) {
-      k++;
+    if (x != 0) {
+      while (Math.abs(x) <= Math.pow(10, -k)) {
+        k++;
+      }
+    } else {
+      k = -n;
     }
     return Math.round(x * Math.pow(10,n + k)) / Math.pow(10,n + k);
   }

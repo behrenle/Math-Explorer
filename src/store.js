@@ -4,11 +4,39 @@ import { create, all } from "mathjs";
 
 const math = create(all);
 
-/*
-math.import({
-    // import stuff here
-})
- */
+math.import(
+  {
+    test: function(p) {
+      console.log(p)
+      return p;
+    },
+    sin: function(x) {
+      if (x % (Math.PI * 2) === 0) {
+        return 1;
+      } else if (x % Math.PI === 0) {
+        return -1;
+      } else if (x % (Math.PI / 2) === 0) {
+        return 0;
+      } else {
+        return Math.sin(x);
+      }
+    },
+    cos: function(x) {
+      if (x % Math.Pi === 0) {
+        return 1;
+      } else if (x % (2 * Math.PI) === Math.PI / 2) {
+        return 0;
+      } else if (x % (2 * Math.PI) === (Math.PI / 2) * 3) {
+        return 0;
+      } else {
+        return Math.cos(x);
+      }
+    }
+  },
+  {
+    wrap: true,
+    override: true
+  });
 
 Vue.use(Vuex);
 

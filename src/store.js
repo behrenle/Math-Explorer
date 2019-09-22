@@ -6,9 +6,8 @@ const math = create(all);
 
 math.import(
   {
-    test: function(p) {
-      console.log(p)
-      return p;
+    s_round: function(x, n) {
+      return s_round(x, n);
     },
     sin: function(x) {
       if (x % (Math.PI * 2) === 0) {
@@ -43,6 +42,22 @@ Vue.use(Vuex);
 const COOKIE_EXPIRE_DAYS = 365 * 10;
 const COOKIE_SETTINGS_NAME = "settings";
 
+function s_round(x, n) {
+  if (Array.isArray(x) === true) {
+    var r = [];
+    for (var i = 0; i < x.length; i++) {
+      r[i] = s_round(x[i], n);
+    }
+    return r;
+  } else if (typeof x === "number") {
+    var k = 0;
+    while (x <= Math.pow(10, -k)) {
+      k++;
+    }
+    return Math.round(x * Math.pow(10,n + k)) / Math.pow(10,n + k);
+  }
+}
+
 function formatGerman2English(state, str) {
   if (state.decimalMode === "german") {
     return str
@@ -58,7 +73,8 @@ function saveSettings2Cookie(state) {
   let settings = {
     decimalMode: state.decimalMode,
     inputMode: state.inputMode,
-    language: state.language
+    language: state.language,
+    sDecimalPlaces: state.sDecimalPlaces
   };
   let d = new Date();
   d.setTime(d.getTime() + COOKIE_EXPIRE_DAYS * 24 * 3600000);
@@ -107,16 +123,30 @@ export default new Vuex.Store({
     inputMode:
       loadSettingsValue("inputMode") != null
         ? loadSettingsValue("inputMode")
-        : "advanced"
+        : "advanced",
+    sDecimalPlaces:
+      loadSettingsValue("sDecimalPlaces") != null
+        ? loadSettingsValue("sDecimalPlaces")
+        : 6
   },
   mutations: {
     EVALUATE_INPUT: (state, inputLine) => {
       let outputLine;
       try {
-        outputLine = math.evaluate(
-          formatGerman2English(state, inputLine),
-          state.scope
-        );
+        if (state.sDecimalPlaces > 0) {
+          outputLine = math.evaluate(
+            formatGerman2English(
+              state,
+              "s_round(" + inputLine + "," + state.sDecimalPlaces + ")"
+            ),
+            state.scope
+          );
+        } else {
+          outputLine = math.evaluate(
+            formatGerman2English(state, inputLine),
+            state.scope
+          );
+        }
       } catch {
         outputLine = "Input not correct!";
       }
@@ -154,6 +184,10 @@ export default new Vuex.Store({
       } else {
         state.inputMode = "simple";
       }
+      saveSettings2Cookie(state);
+    },
+    CHANGE_S_DECIMAL_PLACES: (state, n) => {
+      state.sDecimalPlaces = n;
       saveSettings2Cookie(state);
     }
   },

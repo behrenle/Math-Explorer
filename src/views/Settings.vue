@@ -18,6 +18,17 @@
         {{ inputMode }}
       </button>
     </div>
+    <div class="settings_element">
+      <span class="label">Significant decimal places:</span>
+      <input
+        class="settings_button number_input"
+        type="number"
+        min="0"
+        :value="sDecimalPlaces"
+        v-on:input="input_sDecimalPlaces()"
+        ref="input_sn_decimal"
+      >
+    </div>
   </div>
 </template>
 
@@ -30,11 +41,24 @@ export default {
     ...mapState({
       decimalMode: "decimalMode",
       inputMode: "inputMode",
-      language: "language"
+      language: "language",
+      sDecimalPlaces: "sDecimalPlaces"
     })
   },
   methods: {
-    ...mapMutations(["SWITCH_DECIMAL_MODE", "SWITCH_INPUT_MODE", "SWITCH_LANGUAGE"]),
+    input_sDecimalPlaces: function() {
+      var n = this.$refs.input_sn_decimal.value;
+      if (parseInt(n) != NaN) {
+        console.log("call");
+        this.CHANGE_S_DECIMAL_PLACES(parseInt(n));
+      }
+    },
+    ...mapMutations([
+      "SWITCH_DECIMAL_MODE",
+      "SWITCH_INPUT_MODE",
+      "SWITCH_LANGUAGE",
+      "CHANGE_S_DECIMAL_PLACES"
+    ])
   }
 };
 </script>
@@ -83,5 +107,19 @@ export default {
 .label {
   float: left;
   padding: 5px 0px;
+}
+
+.number_input {
+  width: 150px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance:textfield; /* Firefox */
 }
 </style>

@@ -141,10 +141,11 @@ export default new Vuex.Store({
       try {
         if (state.sDecimalPlaces > 0) {
           outputLine = math.evaluate(
+            "s_round(" +
             formatGerman2English(
               state,
-              "s_round(" + inputLine + "," + state.sDecimalPlaces + ")"
-            ),
+              inputLine
+            ) + "," + state.sDecimalPlaces + ")",
             state.scope
           );
         } else {

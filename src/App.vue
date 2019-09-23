@@ -2,7 +2,8 @@
   <div id="app" class="app">
     <div class="menu-bar">
       <div class="menu-item menu-title">
-        Math Toolbox v0.1
+        <img src="./assets/logo.png" class="logo_img">
+        <span class="logo_name">Math Toolbox 1.0</span>
       </div>
       <router-link to="/" class="menu-item menu-button">Calculator</router-link>
       <router-link to="/settings" class="menu-item menu-button"
@@ -20,6 +21,24 @@
 </template>
 
 <style scoped>
+.logo_img {
+  height: 100%;
+  margin-right: 20px;
+  position: absolute;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+}
+
+.logo_name {
+  height: 100%;
+  line-height: 80px;
+  margin: 0px;
+  position: absolute;
+  left: 100px;
+  top: 0;
+}
+
 .menu-bar {
   position: fixed;
   height: 80px;

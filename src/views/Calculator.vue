@@ -26,7 +26,9 @@
       />
       <input
         class="outputfield"
-        :value="formatEnglish2German(getLastOutput())"
+        :value="typeof getLastOutput() == 'string'
+          ? getLastOutput()
+          : JSON.stringify(formatEnglish2German(getLastOutput()))"
         readonly="readonly"
         placeholder="Output"
       />
@@ -63,7 +65,6 @@
 <script>
 import HistoryObject from "@/components/HistoryObject.vue";
 import { mapState, mapMutations } from "vuex";
-const math = require("mathjs");
 
 export default {
   name: "Calculator",

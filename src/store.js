@@ -1,68 +1,13 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import { create, all } from "mathjs";
 
-const math = create(all);
+const NumberDrive = require('@behrenle/number-drive');
 
-math.import(
-  {
-    s_round: function(x, n) {
-      return s_round(x, n);
-    },
-    deg: Math.PI / 180,
-    pi: Math.PI,
-    sin: function(x) {
-      if (x % (Math.PI * 2) === 0) {
-        return 1;
-      } else if (x % Math.PI === 0) {
-        return -1;
-      } else if (x % (Math.PI / 2) === 0) {
-        return 0;
-      } else {
-        return Math.sin(x);
-      }
-    },
-    cos: function(x) {
-      if (x % Math.Pi === 0) {
-        return 1;
-      } else if (x % (2 * Math.PI) === Math.PI / 2) {
-        return 0;
-      } else if (x % (2 * Math.PI) === (Math.PI / 2) * 3) {
-        return 0;
-      } else {
-        return Math.cos(x);
-      }
-    }
-  },
-  {
-    wrap: true,
-    override: true
-  });
 
 Vue.use(Vuex);
 
 const COOKIE_EXPIRE_DAYS = 365 * 10;
 const COOKIE_SETTINGS_NAME = "settings";
-
-function s_round(x, n) {
-  if (Array.isArray(x) === true) {
-    var r = [];
-    for (var i = 0; i < x.length; i++) {
-      r[i] = s_round(x[i], n);
-    }
-    return r;
-  } else if (typeof x === "number") {
-    var k = 0;
-    if (x != 0) {
-      while (Math.abs(x) <= Math.pow(10, -k)) {
-        k++;
-      }
-    } else {
-      k = -n;
-    }
-    return Math.round(x * Math.pow(10,n + k)) / Math.pow(10,n + k);
-  }
-}
 
 function formatGerman2English(state, str) {
   if (state.decimalMode === "german") {
@@ -140,22 +85,28 @@ export default new Vuex.Store({
       let outputLine;
       try {
         if (state.sDecimalPlaces > 0) {
-          outputLine = math.evaluate(
+          outputLine = NumberDrive.eval(
             "s_round(" +
             formatGerman2English(
               state,
               inputLine
             ) + "," + state.sDecimalPlaces + ")",
             state.scope
-          );
+          ).result;
+          console.log("s_round(" +
+            formatGerman2English(
+              state,
+              inputLine
+            ) + "," + state.sDecimalPlaces + ")");
         } else {
-          outputLine = math.evaluate(
+          outputLine = NumberDrive.eval(
             formatGerman2English(state, inputLine),
             state.scope
           );
         }
-      } catch {
-        outputLine = "Input not correct!";
+      } catch (e) {
+        outputLine = e;
+        //outputLine = "Input not correct!";
       }
       let line = {
         input: formatGerman2English(state, inputLine),

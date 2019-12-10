@@ -3,7 +3,7 @@
     <div class="menu-bar">
       <div class="menu-item menu-title">
         <img src="./assets/logo.png" class="logo_img">
-        <span class="logo_name">Math Toolbox 1.0</span>
+        <span class="logo_name">Math Explorer 1.0.0</span>
       </div>
       <router-link to="/" class="menu-item menu-button">Calculator</router-link>
       <router-link to="/settings" class="menu-item menu-button"

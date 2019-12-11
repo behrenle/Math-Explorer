@@ -2,7 +2,7 @@
   <div id="app" class="app">
     <div class="menu-bar">
       <div class="menu-item menu-title">
-        <img src="./assets/logo.png" class="logo_img">
+        <img src="./assets/logo.png" class="logo_img" alt="logo" />
         <span class="logo_name">Math Explorer 1.0.0</span>
       </div>
       <router-link to="/" class="menu-item menu-button">Calculator</router-link>
@@ -33,7 +33,7 @@
 .logo_name {
   height: 100%;
   line-height: 80px;
-  margin: 0px;
+  margin: 0;
   position: absolute;
   left: 100px;
   top: 0;
@@ -48,7 +48,7 @@
   color: white;
   font-size: 26pt;
   text-align: left;
-  font-family: Verdana;
+  font-family: Verdana, Geneva, sans-serif;
   border-bottom: 2px solid white;
   display: grid;
   grid-template-columns: 40% 15% 15% 15% 15%;
@@ -56,10 +56,9 @@
 }
 
 .menu-item {
-  padding: 10px;
   color: white;
   text-decoration: none;
-  padding-top: 15px;
+  padding: 15px 10px 10px;
 }
 
 .menu-item:hover {

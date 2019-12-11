@@ -26,9 +26,11 @@
       />
       <input
         class="outputfield"
-        :value="typeof getLastOutput() == 'string'
-          ? getLastOutput()
-          : JSON.stringify(formatEnglish2German(getLastOutput()))"
+        :value="
+          typeof getLastOutput() == 'string'
+            ? getLastOutput()
+            : JSON.stringify(formatEnglish2German(getLastOutput()))
+        "
         readonly="readonly"
         placeholder="Output"
       />
@@ -85,9 +87,9 @@ export default {
   methods: {
     getLastOutput: function() {
       if (this.history.length > 0) {
-        return this.history[this.history.length - 1].output
+        return this.history[this.history.length - 1].output;
       } else {
-        return ""
+        return "";
       }
     },
     formatEnglish2German: function(str) {
@@ -214,7 +216,7 @@ export default {
   height: 100px;
   box-sizing: border-box;
   color: white;
-  background-color: rgb(32,32,32);
+  background-color: rgb(32, 32, 32);
   width: 100%;
 }
 

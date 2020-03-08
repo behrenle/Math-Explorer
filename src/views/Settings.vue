@@ -3,7 +3,7 @@
     <div class="settings_element">
       <span class="label">Decimal mode:</span>
       <button class="settings_button" v-on:click="SWITCH_DECIMAL_MODE">
-        {{ decimalMode }}
+        {{ history.lang }}
       </button>
     </div>
     <div class="settings_element">
@@ -41,14 +41,15 @@ export default {
     ...mapState({
       decimalMode: "decimalMode",
       inputMode: "inputMode",
+      sDecimalPlaces: "sDecimalPlaces",
       language: "language",
-      sDecimalPlaces: "sDecimalPlaces"
+      history: "history",
     })
   },
   methods: {
     input_sDecimalPlaces: function() {
       var n = this.$refs.input_sn_decimal.value;
-      if (parseInt(n) != NaN) {
+      if (!isNaN(parseInt(n))) {
         console.log("call");
         this.CHANGE_S_DECIMAL_PLACES(parseInt(n));
       }

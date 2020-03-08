@@ -2,9 +2,10 @@
   <div class="calculator">
     <div class="history" ref="history" v-if="inputMode === 'advanced'">
       <HistoryObject
-        v-for="line in history"
-        :input="formatEnglish2German(line.input)"
-        :output="formatEnglish2German(line.output)"
+        v-for="item in history.getItems()"
+        v-bind:key="item.index"
+        :input="item.input"
+        :output="item.output"
       >
       </HistoryObject>
     </div>
@@ -26,11 +27,7 @@
       />
       <input
         class="outputfield"
-        :value="
-          typeof getLastOutput() == 'string'
-            ? getLastOutput()
-            : JSON.stringify(formatEnglish2German(getLastOutput()))
-        "
+        :value="getLastOutput()"
         readonly="readonly"
         placeholder="Output"
       />
@@ -91,16 +88,6 @@ export default {
       } else {
         return "";
       }
-    },
-    formatEnglish2German: function(str) {
-      if (this.decimalMode === "german") {
-        return str
-          .toString()
-          .replace(/;/g, "|")
-          .replace(/,/g, ";")
-          .replace(/\./g, ",");
-      }
-      return str;
     },
     copyHistoryText: function(e) {
       this.$refs.inputfield.value = e;

@@ -1,15 +1,14 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
-const NumberDrive = require('@behrenle/number-drive');
-
+const NumberDrive = require("@behrenle/number-drive");
 
 Vue.use(Vuex);
 
 const COOKIE_EXPIRE_DAYS = 365 * 10;
 const COOKIE_SETTINGS_NAME = "settings";
 
-function formatGerman2English(state, str) {
+/*function formatGerman2English(state, str) {
   if (state.decimalMode === "german") {
     return str
       .replace(/,/g, ".")
@@ -18,7 +17,7 @@ function formatGerman2English(state, str) {
   } else {
     return str;
   }
-}
+}*/
 
 function saveSettings2Cookie(state) {
   let settings = {
@@ -61,7 +60,11 @@ function loadSettingsValue(vName) {
 
 export default new Vuex.Store({
   state: {
-    history: [],
+    history: new NumberDrive.Script(
+      loadSettingsValue("decimalMode") != null
+        ? loadSettingsValue("decimalMode")
+        : "german"
+    ),
     scope: {},
     decimalMode:
       loadSettingsValue("decimalMode") != null
@@ -82,52 +85,18 @@ export default new Vuex.Store({
   },
   mutations: {
     EVALUATE_INPUT: (state, inputLine) => {
-      let outputLine;
-      try {
-        if (state.sDecimalPlaces > 0) {
-          outputLine = NumberDrive.eval(
-            "s_round(" +
-            formatGerman2English(
-              state,
-              inputLine
-            ) + "," + state.sDecimalPlaces + ")",
-            state.scope
-          ).result;
-          console.log("s_round(" +
-            formatGerman2English(
-              state,
-              inputLine
-            ) + "," + state.sDecimalPlaces + ")");
-        } else {
-          outputLine = NumberDrive.eval(
-            formatGerman2English(state, inputLine),
-            state.scope
-          );
-        }
-      } catch (e) {
-        outputLine = e;
-        //outputLine = "Input not correct!";
-      }
-      let line = {
-        input: formatGerman2English(state, inputLine),
-        output: outputLine
-      };
-      state.history.push(line);
+      console.log("inputstr: ", inputLine);
+      state.history.pushString(inputLine);
     },
+
     CLEAR_HISTORY: state => {
-      state.history = [];
+      state.history.clearHistory();
     },
+
     CLEAR_SCOPE: state => {
-      state.scope = {};
+      state.history.clearUserScope();
     },
-    SWITCH_DECIMAL_MODE: state => {
-      if (state.decimalMode === "german") {
-        state.decimalMode = "english";
-      } else {
-        state.decimalMode = "german";
-      }
-      saveSettings2Cookie(state);
-    },
+
     SWITCH_LANGUAGE: state => {
       if (state.language === "german") {
         state.language = "english";
@@ -136,6 +105,16 @@ export default new Vuex.Store({
       }
       saveSettings2Cookie(state);
     },
+
+    SWITCH_DECIMAL_MODE: state => {
+      if (state.history.lang === "german") {
+        state.history.lang = "english";
+      } else {
+        state.history.lang = "german";
+      }
+      saveSettings2Cookie(state);
+    },
+
     SWITCH_INPUT_MODE: state => {
       if (state.inputMode === "simple") {
         state.inputMode = "advanced";
@@ -144,6 +123,7 @@ export default new Vuex.Store({
       }
       saveSettings2Cookie(state);
     },
+
     CHANGE_S_DECIMAL_PLACES: (state, n) => {
       state.sDecimalPlaces = n;
       saveSettings2Cookie(state);

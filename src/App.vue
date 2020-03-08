@@ -1,18 +1,38 @@
 <template>
-  <div id="app" class="app">
-    <div class="menu-bar">
-      <div class="menu-item menu-title">
+  <div id="app" class="app theme-app">
+    <div class="menu-bar theme-app-menu-bar">
+      <div class="menu-item menu-title theme-app-menu-item theme-app-menu-title">
         <img src="./assets/logo.png" class="logo_img" alt="logo" />
         <span class="logo_name">Math Explorer {{version}}</span>
       </div>
-      <router-link to="/" class="menu-item menu-button">Calculator</router-link>
-      <router-link to="/settings" class="menu-item menu-button"
-        >Settings</router-link
-      >
-      <router-link to="/manual" class="menu-item menu-button"
-        >Manual</router-link
-      >
-      <router-link to="/about" class="menu-item menu-button">About</router-link>
+      <router-link to="/" class="
+        menu-item
+        menu-button
+        theme-app-menu-item
+        theme-app-menu-button">
+        Calculator
+      </router-link>
+      <router-link to="/settings" class="
+        menu-item
+        menu-button
+        theme-app-menu-item
+        theme-app-menu-button">
+        Settings
+      </router-link>
+      <router-link to="/manual" class="
+        menu-item
+        menu-button
+        theme-app-menu-item
+        theme-app-menu-button">
+        Manual
+      </router-link>
+      <router-link to="/about" class="
+        menu-item
+        menu-button
+        theme-app-menu-item
+        theme-app-menu-button">
+        About
+      </router-link>
     </div>
     <div class="content nopm">
       <router-view />
@@ -32,12 +52,12 @@ export default {
 
 <style scoped>
 .logo_img {
-  height: 100%;
+  height: calc(100% - 20px);
   margin-right: 20px;
   position: absolute;
   box-sizing: border-box;
-  top: 0;
-  left: 0;
+  top: 10px;
+  left: 10px;
 }
 
 .logo_name {
@@ -53,38 +73,23 @@ export default {
   position: fixed;
   height: 80px;
   width: 100%;
-  background-color: rgb(32, 32, 32);
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
   color: white;
   font-size: 26pt;
   text-align: left;
   font-family: Verdana, Geneva, sans-serif;
-  border-bottom: 2px solid white;
   display: grid;
   grid-template-columns: 40% 15% 15% 15% 15%;
   grid-template-rows: 100%;
+  z-index: 2;
 }
 
 .menu-item {
-  color: white;
   text-decoration: none;
   padding: 15px 10px 10px;
 }
 
-.menu-item:hover {
-  text-decoration: none;
-}
-
 .menu-button {
   text-align: center;
-}
-
-.menu-button:hover {
-  background-color: orange;
-}
-
-.menu-button:focus {
-  border: 2px solid orange;
 }
 
 .menu-title {
@@ -94,9 +99,10 @@ export default {
 
 .content {
   position: fixed;
-  height: calc(100% - 100px);
+  height: calc(100% - 80px);
   width: 100%;
-  top: 100px;
+  top: 80px;
+  z-index: 1;
 }
 </style>
 
@@ -118,7 +124,6 @@ export default {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: rgb(16, 16, 16);
 }
 
 body {

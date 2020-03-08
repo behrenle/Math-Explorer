@@ -8,23 +8,16 @@ Vue.use(Vuex);
 const COOKIE_EXPIRE_DAYS = 365 * 10;
 const COOKIE_SETTINGS_NAME = "settings";
 
-/*function formatGerman2English(state, str) {
-  if (state.decimalMode === "german") {
-    return str
-      .replace(/,/g, ".")
-      .replace(/;/g, ",")
-      .replace(/\|/g, ";");
-  } else {
-    return str;
-  }
-}*/
-
 function saveSettings2Cookie(state) {
   let settings = {
     decimalMode: state.decimalMode,
     inputMode: state.inputMode,
     language: state.language,
-    sDecimalPlaces: state.sDecimalPlaces
+    sDecimalPlaces: state.sDecimalPlaces,
+    theme: state.currentTheme,
+    themePath: state.avialableThemes[
+      state.currentTheme ? state.currentTheme : "bright"
+    ],
   };
   let d = new Date();
   d.setTime(d.getTime() + COOKIE_EXPIRE_DAYS * 24 * 3600000);
@@ -58,6 +51,32 @@ function loadSettingsValue(vName) {
   }
 }
 
+function getThemeID(name) {
+  return "theme-style-" + name;
+}
+
+function loadTheme(name, path) {
+  let themeLink = document.createElement("link");
+  themeLink.setAttribute("rel", "stylesheet");
+  themeLink.setAttribute("href", path);
+  themeLink.setAttribute("id", getThemeID(name));
+
+  let docHead = document.querySelector("head");
+  docHead.append(themeLink);
+  console.log(themeLink);
+}
+
+/*function unloadTheme(name) {
+  let themeLink = document.querySelector("#" + getThemeID(name));
+  let parentNode = themeLink.parentNode;
+  parentNode.removeChild(themeLink);
+}*/
+
+loadTheme(
+  loadSettingsValue("theme") ? loadSettingsValue("theme") : "bright",
+  loadSettingsValue("themePath") ? loadSettingsValue("themePath") : "/themes/bright-theme.css"
+);
+
 export default new Vuex.Store({
   state: {
     history: new NumberDrive.Script(
@@ -65,7 +84,6 @@ export default new Vuex.Store({
         ? loadSettingsValue("decimalMode")
         : "german"
     ),
-    scope: {},
     decimalMode:
       loadSettingsValue("decimalMode") != null
         ? loadSettingsValue("decimalMode")
@@ -81,7 +99,13 @@ export default new Vuex.Store({
     sDecimalPlaces:
       loadSettingsValue("sDecimalPlaces") != null
         ? loadSettingsValue("sDecimalPlaces")
-        : 6
+        : 6,
+    avialableThemes: {
+      bright: "/themes/bright-theme.css"
+    },
+    currentTheme: loadSettingsValue("theme") != null
+        ? loadSettingsValue("theme")
+        : "bright",
   },
   mutations: {
     EVALUATE_INPUT: (state, inputLine) => {

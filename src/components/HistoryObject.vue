@@ -1,14 +1,18 @@
 <template>
-    <div class="outer">
-        <div class="input">
-            <span class="copyable" v-on:click="copyInput">
+    <div class="outer theme-history-object">
+        <div class="index theme-calc-index">
+            #{{index}}
+        </div>
+
+        <div class="input theme-calc-history-object-field">
+            <span class="theme-calc-copyable" v-on:click="copyInput">
                 {{input}}
             </span>
 
         </div>
-        <div class="output">
+        <div class="output theme-calc-history-object-field">
             &rarr;
-            <span class="copyable" v-on:click="copyOutput">
+            <span class="theme-calc-copyable" v-on:click="copyOutput">
                 {{output}}
             </span>
         </div>
@@ -21,6 +25,7 @@
         props: {
             input: String,
             output: String,
+            index: Number,
         },
         methods: {
             copyInput: function() {
@@ -35,32 +40,36 @@
 
 <style scoped>
     .outer {
-        background-color: rgb(32,32,32);
         border-bottom: 1px solid white;
-        border-right: 2px solid white;
         font-size: 30pt;
         text-align: left;
-        width: 100%;
+        width: calc(100% - 20px);
+        margin-left: 20px;
+        margin-bottom: 10px;
         overflow: hidden;
         padding: 10px;
-        padding-bottom: 20px;
         box-sizing: border-box;
     }
 
     .input {
-        width: 100%;
-        float: left;
-        padding-left: 10px;
+        width: calc(100% - 130px);
+        padding-left: 20px;
+        float: right;
     }
 
     .output {
-        width: 100%;
-        float: left;
-        padding-left: 10px;
+        width: calc(100% - 130px);
+        padding-left: 20px;
+        float: right;
+
     }
 
-    .copyable:hover {
-        text-decoration: underline;
+    .index {
+      width: 100px;
+      top: 0;
+      bottom: 0;
+      float: left;
     }
+
 
 </style>

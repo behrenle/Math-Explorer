@@ -1,18 +1,19 @@
 <template>
   <div class="calculator">
-    <div class="history" ref="history" v-if="inputMode === 'advanced'">
+    <div id = "history" class="history" ref="history" v-if="inputMode === 'advanced'">
       <HistoryObject
         v-for="item in history.getItems()"
         v-bind:key="item.index"
         :input="item.input"
         :output="item.output"
+        :index="item.index"
       >
       </HistoryObject>
     </div>
     <input
       v-if="inputMode === 'advanced'"
       type="text"
-      class="inputfield"
+      class="inputfield theme-calc-inputfield"
       placeholder="Input"
       v-on:keypress="calculate"
       ref="inputfield"
@@ -20,7 +21,7 @@
     <div v-if="inputMode === 'simple'">
       <input
         type="text"
-        class="inputfield"
+        class="inputfield theme-calc-inputfield"
         placeholder="Input"
         v-on:keypress="calculate"
         ref="inputfield"
@@ -32,29 +33,29 @@
         placeholder="Output"
       />
     </div>
-    <div class="sidemenu">
+    <div class="sidemenu theme-calc-sidemenu">
       <button
-        class="sidemenu-button clear-history"
+        class="sidemenu-button clear-history theme-calc-button"
         v-if="inputMode === 'advanced'"
         v-on:click="clearHistory"
       >
         Clear history
       </button>
       <button
-        class="sidemenu-button clear-history"
+        class="sidemenu-button clear-history theme-calc-button"
         v-if="inputMode === 'simple'"
         v-on:click="clearHistory"
       >
         Clear output
       </button>
 
-      <button class="sidemenu-button clear-input" v-on:click="clearInput">
+      <button class="sidemenu-button clear-input theme-calc-button" v-on:click="clearInput">
         Clear input
       </button>
-      <button class="sidemenu-button clear-scope" v-on:click="clearScope">
+      <button class="sidemenu-button clear-scope theme-calc-button" v-on:click="clearScope">
         Clear scope
       </button>
-      <button class="sidemenu-button clear-scope" v-on:click="clearAll">
+      <button class="sidemenu-button clear-scope theme-calc-button" v-on:click="clearAll">
         Clear all
       </button>
     </div>
@@ -98,6 +99,10 @@ export default {
         // 13 is enter
         this.evaluateInput(this.$refs.inputfield.value);
       }
+      var historyObj = document.getElementById("history");
+      if (historyObj) {
+        historyObj.scrollTop = historyObj.scrollHeight;
+      }
     },
     clearHistory: function() {
       this.CLEAR_HISTORY();
@@ -126,32 +131,35 @@ export default {
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: auto 300px;
-  grid-template-rows: auto 100px;
+  grid-template-columns: auto 22%;
+  grid-template-rows: auto 120px;
   grid-gap: 20px;
-  padding: 20px;
+  padding: 0px;
   padding-top: 0;
   box-sizing: border-box;
 }
 
 .history {
-  background-color: rgb(8, 8, 8);
   width: 100%;
-  height: 100%;
-  border: 2px solid white;
+  margin-top: 20px;
+  height: calc(100% - 20px);
   overflow-y: scroll;
   box-sizing: border-box;
-  scrollbar-color: white black;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.history::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
 }
 
 .inputfield {
-  background-color: rgb(32, 32, 32);
-  width: 100%;
+  width: calc(100% - 20px);
   height: 100px;
-  border: 2px solid white;
   font-size: 32pt;
-  color: white;
   padding: 10px;
+  margin-left: 20px;
+  margin-bottom: 20px;
   float: left;
   font-family: Monospace;
   -webkit-box-sizing: border-box;
@@ -162,35 +170,23 @@ export default {
 .sidemenu-button {
   width: 100%;
   margin: 0;
-  height: 80px;
+  height: 120px;
   float: right;
   font-size: 30pt;
-  background-color: rgb(32, 32, 32);
   padding-bottom: 10px;
-  margin-bottom: 20px;
-  color: white;
+  margin-top: 0px;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
-  border: 2px solid white;
-}
-
-.sidemenu-button:hover {
-  background-color: orange;
-}
-
-.sidemenu-button:focus {
-  border: 2px solid orange;
+  text-align: left;
+  padding-left: 15%;
+  outline: none;
 }
 
 .sidemenu {
   grid-row-start: 1;
   grid-row-end: 3;
   grid-column-start: 2;
-}
-
-.inputfield:focus {
-  border: 2px solid orange;
 }
 
 .outputfield {
@@ -205,9 +201,5 @@ export default {
   color: white;
   background-color: rgb(32, 32, 32);
   width: 100%;
-}
-
-.outputfield:focus {
-  border: 2px solid orange;
 }
 </style>

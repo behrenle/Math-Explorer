@@ -3,7 +3,7 @@
     <div class="menu-bar">
       <div class="menu-item menu-title">
         <img src="./assets/logo.png" class="logo_img" alt="logo" />
-        <span class="logo_name">Math Explorer 1.0.0</span>
+        <span class="logo_name">Math Explorer {{version}}</span>
       </div>
       <router-link to="/" class="menu-item menu-button">Calculator</router-link>
       <router-link to="/settings" class="menu-item menu-button"
@@ -19,6 +19,16 @@
     </div>
   </div>
 </template>
+
+<script>
+const pjson = require('../package.json');
+
+export default {
+  data: function() {
+    return {version: pjson.version};
+  },
+};
+</script>
 
 <style scoped>
 .logo_img {

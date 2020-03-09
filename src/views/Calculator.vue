@@ -18,7 +18,7 @@
       v-on:keypress="calculate"
       ref="inputfield"
     />
-    <div v-if="inputMode === 'simple'">
+    <div v-if="inputMode === 'simple'" class="simpleContainer">
       <input
         type="text"
         class="inputfield theme-calc-inputfield"
@@ -27,7 +27,7 @@
         ref="inputfield"
       />
       <input
-        class="outputfield"
+        class="outputfield theme-calc-inputfield"
         :value="getLastOutput()"
         readonly="readonly"
         placeholder="Output"
@@ -53,7 +53,7 @@
         Clear input
       </button>
       <button class="sidemenu-button clear-scope theme-calc-button" v-on:click="clearScope">
-        Clear scope
+        Clear memory
       </button>
       <button class="sidemenu-button clear-scope theme-calc-button" v-on:click="clearAll">
         Clear all
@@ -84,8 +84,8 @@ export default {
   },
   methods: {
     getLastOutput: function() {
-      if (this.history.length > 0) {
-        return this.history[this.history.length - 1].output;
+      if (this.history.getItems().length > 0) {
+        return this.history.getItems()[this.history.getItems().length - 1].output;
       } else {
         return "";
       }
@@ -153,6 +153,11 @@ export default {
     display: none;  /* Safari and Chrome */
 }
 
+.simpleContainer {
+  padding: 0;
+  margin: 20px 0 0 0;
+}
+
 .inputfield {
   width: calc(100% - 20px);
   height: 100px;
@@ -190,16 +195,15 @@ export default {
 }
 
 .outputfield {
-  border: 2px solid white;
-  padding: 25px 10px;
+  padding: 10px;
   text-align: left;
   font-size: 32pt;
   margin-top: 20px;
   position: relative;
   height: 100px;
   box-sizing: border-box;
-  color: white;
-  background-color: rgb(32, 32, 32);
-  width: 100%;
+  width: calc(100% - 20px);
+  left: 10px;
+  margin: 0;
 }
 </style>

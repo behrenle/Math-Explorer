@@ -1,3 +1,4 @@
+/* app stuff */
 .theme-app {
   background-color: rgb(255,235,215);
 }
@@ -24,6 +25,8 @@
   font-family: "Andale Mono", AndaleMono, monospace;
 }
 
+
+/* calc stuff */
 .theme-calc-inputfield {
   color: rgb(64, 64, 64);
   border: none;
@@ -71,4 +74,32 @@
 
 .theme-calc-history-object-field {
   border-left: 1px solid rgb(64, 64, 64);
+}
+
+/* settings stuff */
+.theme-settings {
+
+}
+
+.theme-settings-button {
+  color: rgb(64, 64, 64);
+  border: none;
+  background-color: rgba(210, 180, 140, 0.25);
+  transition: 0.5s;
+  box-shadow: -2.5px 3.5px 2.5px rgba(128, 128, 128, 0.5);
+}
+
+.theme-settings-button:hover {
+  background-color: rgba(210, 180, 140, 0.5);
+}
+
+.theme-settings-element {
+  color: rgb(64, 64, 64);
+  background-color: rgb(255, 255, 255);
+  box-shadow: -2.5px 3.5px 2.5px rgba(128, 128, 128, 0.5);
+}
+
+.theme-settings-input:focus {
+  border: 1px solid rgb(210, 180, 140);
+  background-color: rgba(210, 180, 140, 0.5);
 }

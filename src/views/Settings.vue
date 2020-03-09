@@ -1,27 +1,27 @@
 <template>
-  <div class="settings">
-    <div class="settings_element">
-      <span class="label">Decimal mode:</span>
-      <button class="settings_button" v-on:click="SWITCH_DECIMAL_MODE">
+  <div class="settings theme-settings">
+    <div class="settings_element theme-settings-element">
+      <span class="label">Decimal mode</span>
+      <button class="settings_button theme-settings-button" v-on:click="SWITCH_DECIMAL_MODE">
         {{ history.lang }}
       </button>
     </div>
-    <div class="settings_element">
-      <span class="label">Language:</span>
-      <button class="settings_button" v-on:click="SWITCH_LANGUAGE">
+    <div class="settings_element theme-settings-element">
+      <span class="label">Language</span>
+      <button class="settings_button theme-settings-button" v-on:click="SWITCH_LANGUAGE">
         {{ language }}
       </button>
     </div>
-    <div class="settings_element">
-      <span class="label">Input mode:</span>
-      <button class="settings_button" v-on:click="SWITCH_INPUT_MODE">
+    <div class="settings_element theme-settings-element">
+      <span class="label">Input mode</span>
+      <button class="settings_button theme-settings-button" v-on:click="SWITCH_INPUT_MODE">
         {{ inputMode }}
       </button>
     </div>
-    <div class="settings_element">
-      <span class="label">Significant decimal places:</span>
+    <div class="settings_element theme-settings-element">
+      <span class="label">Significant decimal places</span>
       <input
-        class="settings_button number_input"
+        class="settings_button number_input theme-settings-button theme-settings-input"
         type="number"
         min="0"
         :value="sDecimalPlaces"
@@ -69,40 +69,31 @@ export default {
   color: white;
   font-size: 30pt;
   text-align: left;
-  width: 100%;
-  height: 100%;
+  width: calc(100% - 40px);
+  height: calc(100% - 40px);
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-column-gap: 50px;
   grid-row-gap: 20px;
-  padding-top: 0;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 0;
   box-sizing: border-box;
-  background-color: black;
+  margin: 20px;
 }
 
 .settings_element {
-  border: 2px solid rgb(128,128,128);
   box-sizing: border-box;
   padding: 10px 30px;
-  background-color: rgb(16,16,16);
-
 }
 
 .settings_button {
   float: right;
-  border: 2px solid white;
-  padding: 5px 10px;
-  background-color: rgb(32,32,32);
+  padding: 10px 10px;
+  min-width: 250px;
   cursor: pointer;
-  color: white;
   font-size: 30pt;
-}
-
-.settings_button:hover {
-  background-color: orange;
+  box-sizing: border-box;
+  outline: none;
 }
 
 .label {

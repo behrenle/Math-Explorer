@@ -1,6 +1,6 @@
 <template>
     <div class="outer theme-history-object">
-        <div class="index theme-calc-index">
+        <div class="index theme-history-object-index">
             #{{index}}
         </div>
 

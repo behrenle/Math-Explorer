@@ -61,6 +61,10 @@
   color: rgb(64, 64, 64);
 }
 
+.theme-history-object-index {
+  color: rgba(64, 64, 64,0.5);
+}
+
 .theme-calc-copyable:hover {
   background-color: rgba(210, 180, 140, 0.5);
 }

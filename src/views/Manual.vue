@@ -1,24 +1,44 @@
 <template>
-  <div>
-    <h1>Manual</h1>
-    <h2>Typen:</h2>
-    <p>
-      Vektor: [x,y,z]
-    </p>
-    <p>
-      Matrix: [a_11, a_21, a_31; a_12, a_22, a_32; a_13, a_23, a_33]
-    </p>
-    <h2>Funktionen</h2>
-    <p>sin, cos, tan, asin, acos, atan, exp</p>
-    <h2>Anmerkung</h2>
-    Dokumentation noch lange nicht vollständig...
+  <div class="manual theme-manual">
+    <HelpObject v-for="help in helpList"
+      :name="help.name"
+      :synopsis="help.synopsis"
+      :descripton="help.description"
+    ></HelpObject>
   </div>
 </template>
 
 <script>
+import HelpObject from "@/components/HelpObject.vue";
+
+
 export default {
-  name: "Manual"
+  name: "Manual",
+  components: {
+    HelpObject
+  },
+  data: function() {
+    return {helpList: require("../help.json")};
+  },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+  .manual {
+    position: absolute;
+    margin: 0px;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    padding: 20px 20px 0px 20px;
+    box-sizing: border-box;
+    overflow-y: scroll;
+    box-sizing: border-box;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+.manual::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+}
+</style>

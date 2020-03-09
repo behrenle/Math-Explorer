@@ -103,3 +103,11 @@
   border: 1px solid rgb(210, 180, 140);
   background-color: rgba(210, 180, 140, 0.5);
 }
+
+
+/* manual stuff */
+.theme-help-object {
+  background-color: rgb(255, 255, 255);
+  box-shadow: -2.5px 2.5px 2.5px rgba(128, 128, 128, 0.5);
+  color: rgb(64, 64, 64);
+}

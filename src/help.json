@@ -1,0 +1,84 @@
+[
+  {
+    "name": "sin",
+    "synopsis": "sin(number)",
+    "description": "Calculates the sine of a given number."
+  },
+  {
+    "name": "cos",
+    "synopsis": "cos(number)",
+    "description": "Calculates the cosine of a given number."
+  },
+  {
+    "name": "tan",
+    "synopsis": "tan(number)",
+    "description": "Calculates the tagent of a given number."
+  },
+  {
+    "name": "sinh",
+    "synopsis": "sinh(number)",
+    "description": "Calculates the hyperbolic sine of a given number."
+  },
+  {
+    "name": "cosh",
+    "synopsis": "cosh(angle)",
+    "description": "Calculates the hyperbolic cosine of a given number."
+  },
+  {
+    "name": "tanh",
+    "synopsis": "tanh(angle)",
+    "description": "Calculates the hyperbolic tangent of a given number."
+  },
+
+  {
+    "name": "asin",
+    "synopsis": "asin(number)",
+    "description": "Calculates the inverse sine of a given number."
+  },
+  {
+    "name": "acos",
+    "synopsis": "acos(number)",
+    "description": "Calculates the inverse cosine of a given number."
+  },
+  {
+    "name": "atan",
+    "synopsis": "atan(number)",
+    "description": "Calculates the inverse tagent of a given number."
+  },
+  {
+    "name": "asinh",
+    "synopsis": "asinh(number)",
+    "description": "Calculates the inverse hyperbolic sine of a given number."
+  },
+  {
+    "name": "acosh",
+    "synopsis": "acosh(angle)",
+    "description": "Calculates the inverse hyperbolic cosine of a given number."
+  },
+  {
+    "name": "atanh",
+    "synopsis": "atanh(angle)",
+    "description": "Calculates the inverse hyperbolic tangent of a given number."
+  },
+
+  {
+    "name": "solve",
+    "synopsis": "solve(equation [, equation [, ...]])",
+    "description": "Solves a system of linear equations."
+  },
+  {
+    "name": "nsolve",
+    "synopsis": "solve(equation, lower_limit, upper_limit)",
+    "description": "If possible, solve the equation within the limits."
+  },
+  {
+    "name": "nintegral",
+    "synopsis": "nintegral(expression, lower_limit, upper_limit)",
+    "description": "Calculates the definite integral of the function for the given limits."
+  },
+  {
+    "name": "nderive",
+    "synopsis": "nintegral(expression, position [, grade])",
+    "description": "Calculates the value of the (grade)th derivative at the specified position. if grade is not specified: grade = 1"
+  }
+]

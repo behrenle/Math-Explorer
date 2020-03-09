@@ -72,10 +72,12 @@ function loadTheme(name, path) {
   parentNode.removeChild(themeLink);
 }*/
 
-loadTheme(
-  loadSettingsValue("theme") ? loadSettingsValue("theme") : "bright",
-  loadSettingsValue("themePath") ? loadSettingsValue("themePath") : "/themes/bright-theme.css"
-);
+function initTheme() {
+  var theme     = loadSettingsValue("theme") ? loadSettingsValue("theme") : "bright";
+  var themePath = loadSettingsValue("themePath") ? loadSettingsValue("themePath") : "./themes/bright-theme.css"
+  loadTheme(theme, themePath);
+  return theme;
+}
 
 export default new Vuex.Store({
   state: {
@@ -101,11 +103,9 @@ export default new Vuex.Store({
         ? loadSettingsValue("sDecimalPlaces")
         : 6,
     avialableThemes: {
-      bright: "/themes/bright-theme.css"
+      bright: "./themes/bright-theme.css"
     },
-    currentTheme: loadSettingsValue("theme") != null
-        ? loadSettingsValue("theme")
-        : "bright",
+    currentTheme: initTheme(),
   },
   mutations: {
     EVALUATE_INPUT: (state, inputLine) => {

@@ -1,13 +1,10 @@
 <template>
   <div class="outer theme-help-object">
-    <div class="name">
-      {{name}}
+    <div class="name" v-html="name">
     </div>
-    <div class="synopsis">
-      {{synopsis}}
+    <div class="synopsis" v-html="synopsis">
     </div>
-    <div class="descripton">
-      {{descripton}}
+    <div class="description" v-html="description">
     </div>
   </div>
 </template>
@@ -18,7 +15,7 @@
     props: {
       name: String,
       synopsis: String,
-      descripton: String,
+      description: String,
     },
   }
 </script>
@@ -53,7 +50,7 @@
     text-indent: -1em;
   }
 
-  .descripton {
+  .description {
     width: 60%;
     float: left;
     box-sizing: border-box;

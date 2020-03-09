@@ -3,7 +3,7 @@
     <HelpObject v-for="help in helpList"
       :name="help.name"
       :synopsis="help.synopsis"
-      :descripton="help.description"
+      :description="help.description"
     ></HelpObject>
   </div>
 </template>

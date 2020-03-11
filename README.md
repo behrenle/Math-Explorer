@@ -1,4 +1,4 @@
-# math-toolbox
+# MathExplorer
 
 ## Project setup
 ```

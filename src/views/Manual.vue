@@ -1,6 +1,13 @@
 <template>
   <div class="manual theme-manual">
-    <HelpObject v-for="help in helpList"
+    <input
+      type="text"
+      placeholder="Search"
+      class="search-field theme-help-search-field"
+      v-model="search"
+    />
+
+    <HelpObject v-for="help in filteredHelpList"
       :name="help.name"
       :synopsis="help.synopsis"
       :description="help.description"
@@ -18,7 +25,17 @@ export default {
     HelpObject
   },
   data: function() {
-    return {helpList: require("../help.json")};
+    return {
+      helpList: require("../help.json"),
+      search: "",
+    };
+  },
+  computed: {
+    filteredHelpList: function() {
+      return this.helpList.filter((help) => {
+        return help.name.match(this.search);
+      });
+    },
   },
 };
 </script>
@@ -36,6 +53,15 @@ export default {
     box-sizing: border-box;
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
     scrollbar-width: none;  /* Firefox */
+  }
+
+  .search-field {
+    font-size: 32pt;
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    margin-bottom: 50px;
+    box-sizing: border-box;
   }
 
 .manual::-webkit-scrollbar {

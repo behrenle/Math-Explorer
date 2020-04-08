@@ -21,16 +21,19 @@
     <div v-if="inputMode === 'simple'" class="simpleContainer">
       <input
         type="text"
+        id="inputfield"
         class="inputfield theme-calc-inputfield"
         placeholder="Input"
         v-on:keypress="calculate"
         ref="inputfield"
       />
       <input
+        id="simple-outputfield"
         class="outputfield theme-calc-inputfield"
         :value="getLastOutput()"
         readonly="readonly"
         placeholder="Output"
+        v-on:keypress="returnFocus"
       />
     </div>
     <div class="sidemenu theme-calc-sidemenu">
@@ -98,6 +101,16 @@ export default {
       if (key === 13) {
         // 13 is enter
         this.evaluateInput(this.$refs.inputfield.value);
+
+        if (this.inputMode === "simple") {
+          document.getElementById("simple-outputfield").focus();
+        }
+      }
+    },
+    returnFocus: function(e) {
+      var key = e.which || e.keyCode;
+      if (key === 13) {
+        document.getElementById("inputfield").focus();
       }
     },
     clearHistory: function() {

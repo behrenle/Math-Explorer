@@ -1,6 +1,6 @@
 <template>
   <div class="calculator">
-    <div id = "history" class="history" ref="history" v-if="inputMode === 'advanced'">
+    <div id="history" class="history" ref="history" v-if="inputMode === 'advanced'">
       <HistoryObject
         v-for="item in history.getItems()"
         v-bind:key="item.index"
@@ -99,10 +99,6 @@ export default {
         // 13 is enter
         this.evaluateInput(this.$refs.inputfield.value);
       }
-      var historyObj = document.getElementById("history");
-      if (historyObj) {
-        historyObj.scrollTop = historyObj.scrollHeight;
-      }
     },
     clearHistory: function() {
       this.CLEAR_HISTORY();
@@ -166,7 +162,7 @@ export default {
   margin-left: 20px;
   margin-bottom: 20px;
   float: left;
-  font-family: Monospace;
+  font-family: Verdana, Geneva, sans-serif;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -195,6 +191,7 @@ export default {
 }
 
 .outputfield {
+  font-family: Verdana, Geneva, sans-serif;
   padding: 10px;
   text-align: left;
   font-size: 32pt;

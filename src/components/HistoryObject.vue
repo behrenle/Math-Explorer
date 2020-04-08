@@ -27,12 +27,20 @@
             output: String,
             index: Number,
         },
+
         methods: {
             copyInput: function() {
                 this.$eventBus.$emit("copy-history-text", this.input);
             },
             copyOutput: function() {
                 this.$eventBus.$emit("copy-history-text", this.output);
+            }
+        },
+
+        mounted() {
+            var historyObj = document.getElementById("history");
+            if (historyObj) {
+                historyObj.scrollTop = historyObj.scrollHeight;
             }
         }
     }

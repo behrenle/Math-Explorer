@@ -68,7 +68,7 @@
   },
   {
     "name": "nsolve",
-    "synopsis": "solve(equation, lower_limit, upper_limit)",
+    "synopsis": "nsolve(equation, lower_limit, upper_limit)",
     "description": "If possible, solve the equation within the limits."
   },
   {
@@ -78,7 +78,7 @@
   },
   {
     "name": "nderive",
-    "synopsis": "nintegral(expression, position [, grade])",
+    "synopsis": "nderive(expression, position [, grade])",
     "description": "Calculates the value of the (grade)th derivative at the specified position. if grade is not specified: grade = 1"
   },
   {

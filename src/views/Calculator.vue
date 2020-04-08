@@ -98,6 +98,7 @@ export default {
     },
     calculate: function(e) {
       var key = e.which || e.keyCode;
+      console.log("store", this.$store);
       if (key === 13) {
         // 13 is enter
         this.evaluateInput(this.$refs.inputfield.value);

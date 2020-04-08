@@ -128,6 +128,32 @@ export default new Vuex.Store({
       saveSettings2Cookie(state);
     },
 
+    setLanguage(state, lang) {
+      state.language = lang == "german" ? "german" : "english";
+      saveSettings2Cookie(state);
+    },
+
+    setDecimalMode(state, mode) {
+      state.history.lang = mode == "german" ? "german" : "english";
+      state.decimalMode = state.history.lang;
+      saveSettings2Cookie(state);
+    },
+
+    setInputMode(state, mode) {
+      state.inputMode = mode == "simple" ? "simple" : "advanced";
+      saveSettings2Cookie(state);
+    },
+
+    setSDecimalPlaces(state, n) {
+      var p = parseInt(n) || 6;
+      if (p < 1 || p > 16) {
+        console.log("p out of bounds!!!!");
+        p = 6;
+      }
+      state.sDecimalPlaces = p;
+      saveSettings2Cookie(state);
+    },
+
     SWITCH_DECIMAL_MODE: state => {
       if (state.history.lang === "german") {
         state.history.lang = "english";

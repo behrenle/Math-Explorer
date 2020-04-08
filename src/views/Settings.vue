@@ -2,32 +2,34 @@
   <div class="settings theme-settings">
     <div class="settings_element theme-settings-element">
       <span class="label">Decimal mode</span>
-      <button class="settings_button theme-settings-button" v-on:click="SWITCH_DECIMAL_MODE">
-        {{ history.lang }}
-      </button>
+      <select v-model="decimalMode" class="settings_button theme-settings-button">
+        <option value="german">Deutsch</option>
+        <option value="english">Engish</option>
+      </select>
     </div>
+
     <div class="settings_element theme-settings-element">
       <span class="label">Language</span>
-      <button class="settings_button theme-settings-button" v-on:click="SWITCH_LANGUAGE">
-        {{ language }}
-      </button>
+      <select v-model="language" class="settings_button theme-settings-button">
+        <option value="german">Deutsch</option>
+        <option value="english">Engish</option>
+      </select>
     </div>
+
     <div class="settings_element theme-settings-element">
       <span class="label">Input mode</span>
-      <button class="settings_button theme-settings-button" v-on:click="SWITCH_INPUT_MODE">
-        {{ inputMode }}
-      </button>
+      <select v-model="inputMode" class="settings_button theme-settings-button">
+        <option value="simple">Simple</option>
+        <option value="advanced">Advanced</option>
+      </select>
     </div>
+
     <div class="settings_element theme-settings-element">
       <span class="label">Significant decimal places</span>
-      <input
-        class="settings_button number_input theme-settings-button theme-settings-input"
-        type="number"
-        min="0"
-        :value="sDecimalPlaces"
-        v-on:input="input_sDecimalPlaces()"
-        ref="input_sn_decimal"
-      >
+      <select v-model="sDecimalPlaces" class="settings_button theme-settings-button">
+        <option :value="i" v-for="i in 16">{{i}}</option>
+
+      </select>
     </div>
   </div>
 </template>
@@ -39,12 +41,46 @@ export default {
   name: "Settings",
   computed: {
     ...mapState({
-      decimalMode: "decimalMode",
-      inputMode: "inputMode",
-      sDecimalPlaces: "sDecimalPlaces",
-      language: "language",
-      history: "history",
-    })
+      //decimalMode: "decimalMode",
+      //inputMode: "inputMode",
+      //sDecimalPlaces: "sDecimalPlaces",
+      //language: "language",
+    }),
+    language: {
+      get() {
+        return this.$store.state.language;
+      },
+      set(value) {
+        this.$store.commit("setLanguage", value);
+      }
+    },
+
+    decimalMode: {
+      get() {
+        return this.$store.state.decimalMode;
+      },
+      set(value) {
+        this.$store.commit("setDecimalMode", value);
+      }
+    },
+
+    inputMode: {
+      get() {
+        return this.$store.state.inputMode;
+      },
+      set(value) {
+        this.$store.commit("setInputMode", value);
+      }
+    },
+
+    sDecimalPlaces: {
+      get() {
+        return this.$store.state.sDecimalPlaces;
+      },
+      set(value) {
+        this.$store.commit("setSDecimalPlaces", value);
+      }
+    },
   },
   methods: {
     input_sDecimalPlaces: function() {

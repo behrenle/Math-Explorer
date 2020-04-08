@@ -1,5 +1,20 @@
 [
   {
+    "name": "e",
+    "synopsis": "e",
+    "description": "Euler's number"
+  },
+  {
+    "name": "pi",
+    "synopsis": "pi",
+    "description": "π is commonly defined as the ratio of a circle's circumference C to its diameter d"
+  },
+  {
+    "name": "deg",
+    "synopsis": "some_degree_value * deg = rad_value",
+    "description": "deg is the conversion factor between degrees and radians."
+  },
+  {
     "name": "sin",
     "synopsis": "sin(number)",
     "description": "Calculates the sine of a given number."
@@ -105,5 +120,15 @@
     "name": "max",
     "synopsis": "max(value_1 [, value_2 [, ...]])",
     "description": "n. a."
+  },
+  {
+    "name": "sqrt",
+    "synopsis": "sqrt(v)",
+    "description": "Calculates the square root of v.<br>v>=0"
+  },
+  {
+    "name": "root",
+    "synopsis": "root(v, n)",
+    "description": "Computes the nth root of v.<br> n, v >= 0"
   }
 ]

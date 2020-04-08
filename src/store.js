@@ -63,7 +63,6 @@ function loadTheme(name, path) {
 
   let docHead = document.querySelector("head");
   docHead.append(themeLink);
-  console.log(themeLink);
 }
 
 /*function unloadTheme(name) {
@@ -93,11 +92,11 @@ export default new Vuex.Store({
     language:
       loadSettingsValue("language") != null
         ? loadSettingsValue("language")
-        : "english",
+        : "german",
     inputMode:
       loadSettingsValue("inputMode") != null
         ? loadSettingsValue("inputMode")
-        : "advanced",
+        : "simple",
     sDecimalPlaces:
       loadSettingsValue("sDecimalPlaces") != null
         ? loadSettingsValue("sDecimalPlaces")
@@ -109,7 +108,6 @@ export default new Vuex.Store({
   },
   mutations: {
     EVALUATE_INPUT: (state, inputLine) => {
-      console.log("inputstr: ", inputLine);
       state.history.pushString(inputLine);
     },
 

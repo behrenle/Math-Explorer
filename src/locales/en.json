@@ -25,6 +25,6 @@
     "input_mode_advanced": "Advanced",
     "language": "Language",
     "significant_decimal_places": "Significant decimal places",
-    "math_lang_tag": "Math language tag"
+    "math_lang_tag": "Math language html tag"
   }
 }

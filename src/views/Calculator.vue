@@ -13,6 +13,7 @@
     <input
       v-if="inputMode === 'advanced'"
       type="text"
+      :lang="this.$store.state.mathLangTag"
       class="inputfield theme-calc-inputfield theme-focus-border"
       :placeholder="$t('calculator.input_placeholder')"
       v-on:keypress="calculate"
@@ -22,6 +23,7 @@
       <input
         type="text"
         id="inputfield"
+        :lang="this.$store.state.mathLangTag"
         class="inputfield theme-calc-inputfield theme-focus-border"
         :placeholder="$t('calculator.input_placeholder')"
         v-on:keypress="calculate"
@@ -29,6 +31,7 @@
       />
       <input
         id="simple-outputfield"
+        :lang="this.$store.state.mathLangTag"
         class="outputfield theme-calc-inputfield theme-focus-border"
         :value="getLastOutput()"
         readonly="readonly"

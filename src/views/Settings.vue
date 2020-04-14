@@ -1,18 +1,26 @@
 <template>
   <div class="settings theme-settings">
     <div class="settings_element theme-settings-element">
-      <span class="label">{{ $t("settings.decimal_mode") }}</span>
-      <select v-model="decimalMode" class="settings_button theme-settings-button">
-        <option value="english">{{ $t("langs.english") }}</option>
-        <option value="german">{{ $t("langs.german") }}</option>
-      </select>
-    </div>
-
-    <div class="settings_element theme-settings-element">
       <span class="label">{{ $t("settings.language") }}</span>
       <select v-model="language" class="settings_button theme-settings-button">
         <option value="en">{{ $t("langs.english") }}</option>
         <option value="de">{{ $t("langs.german") }}</option>
+      </select>
+    </div>
+
+    <div class="settings_element theme-settings-element">
+      <span class="label">{{ $t("settings.significant_decimal_places") }}</span>
+      <select v-model="sDecimalPlaces" class="settings_button theme-settings-button">
+        <option :value="i" v-for="i in 16">{{i}}</option>
+
+      </select>
+    </div>
+
+    <div class="settings_element theme-settings-element">
+      <span class="label">{{ $t("settings.decimal_mode") }}</span>
+      <select v-model="decimalMode" class="settings_button theme-settings-button">
+        <option value="english">{{ $t("langs.english") }}</option>
+        <option value="german">{{ $t("langs.german") }}</option>
       </select>
     </div>
 
@@ -25,10 +33,10 @@
     </div>
 
     <div class="settings_element theme-settings-element">
-      <span class="label">{{ $t("settings.significant_decimal_places") }}</span>
-      <select v-model="sDecimalPlaces" class="settings_button theme-settings-button">
-        <option :value="i" v-for="i in 16">{{i}}</option>
-
+      <span class="label">{{ $t("settings.math_lang_tag") }}</span>
+      <select v-model="mathLangTag" class="settings_button theme-settings-button">
+        <option value="en">{{ $t("langs.english") }}</option>
+        <option value="de">{{ $t("langs.german") }}</option>
       </select>
     </div>
   </div>
@@ -77,11 +85,11 @@ export default {
 
     mathLangTag: {
       get() {
-        return "english";
+        return this.$store.state.mathLangTag;
       },
 
       set(value) {
-
+        this.$store.commit("setMathLangTag", value);
       }
     },
   },

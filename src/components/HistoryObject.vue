@@ -1,5 +1,8 @@
 <template>
-    <div class="outer theme-history-object">
+    <div
+      class="outer theme-history-object"
+      :lang="this.$store.state.mathLangTag"
+    >
         <div class="index theme-history-object-index">
             #{{index}}
         </div>

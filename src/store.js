@@ -19,6 +19,7 @@ function saveSettings2Cookie(state) {
     themePath: state.avialableThemes[
       state.currentTheme ? state.currentTheme : "bright"
     ],
+    mathLangTag: state.mathLangTag ? state.mathLangTag : "de"
   };
   let d = new Date();
   d.setTime(d.getTime() + COOKIE_EXPIRE_DAYS * 24 * 3600000);
@@ -103,6 +104,10 @@ export default new Vuex.Store({
       loadSettingsValue("language") != null
         ? loadSettingsValue("language")
         : "de",
+    mathLangTag:
+      loadSettingsValue("mathLangTag") != null
+        ? loadSettingsValue("mathLangTag")
+        : "de",
     inputMode:
       loadSettingsValue("inputMode") != null
         ? loadSettingsValue("inputMode")
@@ -150,10 +155,14 @@ export default new Vuex.Store({
     setSDecimalPlaces(state, n) {
       var p = parseInt(n) || 6;
       if (p < 1 || p > 16) {
-        console.log("p out of bounds!!!!");
         p = 6;
       }
       state.sDecimalPlaces = p;
+      saveSettings2Cookie(state);
+    },
+
+    setMathLangTag(state, lang) {
+      state.mathLangTag = lang == "de" ? "de" : "en";
       saveSettings2Cookie(state);
     },
   },

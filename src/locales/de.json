@@ -24,6 +24,7 @@
     "input_mode_simple": "Einfach",
     "input_mode_advanced": "Erweitert",
     "language": "Sprache",
-    "significant_decimal_places": "Signifikante Stellenanzahl"
+    "significant_decimal_places": "Signifikante Stellenanzahl",
+    "math_lang_tag": "Mathe-Sprach-Tag"
   }
 }

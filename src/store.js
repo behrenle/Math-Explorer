@@ -79,6 +79,12 @@ function initTheme() {
   return theme;
 }
 
+function setHtmlLang(lang) {
+  document.querySelector("html").lang = lang == "de" ? "de" : "en";
+}
+
+setHtmlLang(loadSettingsValue("language"));
+
 export default new Vuex.Store({
   state: {
     history: new NumberDrive.Script(
@@ -131,8 +137,8 @@ export default new Vuex.Store({
 
     setLanguage(state, lang) {
       state.language = lang == "de" ? "de" : "en";
-      console.log(i18n);
       i18n.locale = state.language;
+      setHtmlLang(state.language);
       saveSettings2Cookie(state);
     },
 

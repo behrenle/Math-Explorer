@@ -129,15 +129,6 @@ export default new Vuex.Store({
       state.history.clearUserScope();
     },
 
-    SWITCH_LANGUAGE: state => {
-      if (state.language === "german") {
-        state.language = "english";
-      } else {
-        state.language = "german";
-      }
-      saveSettings2Cookie(state);
-    },
-
     setLanguage(state, lang) {
       state.language = lang == "de" ? "de" : "en";
       i18n.locale = state.language;
@@ -165,29 +156,6 @@ export default new Vuex.Store({
       state.sDecimalPlaces = p;
       saveSettings2Cookie(state);
     },
-
-    SWITCH_DECIMAL_MODE: state => {
-      if (state.history.lang === "german") {
-        state.history.lang = "english";
-      } else {
-        state.history.lang = "german";
-      }
-      saveSettings2Cookie(state);
-    },
-
-    SWITCH_INPUT_MODE: state => {
-      if (state.inputMode === "simple") {
-        state.inputMode = "advanced";
-      } else {
-        state.inputMode = "simple";
-      }
-      saveSettings2Cookie(state);
-    },
-
-    CHANGE_S_DECIMAL_PLACES: (state, n) => {
-      state.sDecimalPlaces = n;
-      saveSettings2Cookie(state);
-    }
   },
   actions: {}
 });

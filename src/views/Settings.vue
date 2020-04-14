@@ -35,17 +35,10 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from "vuex";
 
 export default {
   name: "Settings",
   computed: {
-    ...mapState({
-      //decimalMode: "decimalMode",
-      //inputMode: "inputMode",
-      //sDecimalPlaces: "sDecimalPlaces",
-      //language: "language",
-    }),
     language: {
       get() {
         return this.$store.state.language;
@@ -81,6 +74,16 @@ export default {
         this.$store.commit("setSDecimalPlaces", value);
       }
     },
+
+    mathLangTag: {
+      get() {
+        return "english";
+      },
+
+      set(value) {
+
+      }
+    },
   },
   methods: {
     input_sDecimalPlaces: function() {
@@ -90,12 +93,6 @@ export default {
         this.CHANGE_S_DECIMAL_PLACES(parseInt(n));
       }
     },
-    ...mapMutations([
-      "SWITCH_DECIMAL_MODE",
-      "SWITCH_INPUT_MODE",
-      "SWITCH_LANGUAGE",
-      "CHANGE_S_DECIMAL_PLACES"
-    ])
   }
 };
 </script>

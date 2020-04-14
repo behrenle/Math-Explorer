@@ -3,6 +3,15 @@
   background-color: rgb(255,235,215);
 }
 
+.theme-focus-border {
+  outline: none;
+  transition: border none;
+}
+
+.theme-focus-border:focus {
+  border: 2px solid rgba(210, 180, 140);
+}
+
 .theme-app-menu-bar {
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 3.5px 3.5px rgba(128, 128, 128, 0.5);
@@ -34,19 +43,11 @@
   outline: none;
 }
 
-.theme-calc-inputfield:focus {
-  border: 1px solid rgb(210, 180, 140);
-}
-
 .theme-calc-button {
   background-color: rgb(255, 255, 255);
   border: none;
   color: rgb(64, 64, 64);
   transition: 0.5s;
-}
-
-.theme-calc-button:focus {
-  border: none;
 }
 
 .theme-calc-button:hover {

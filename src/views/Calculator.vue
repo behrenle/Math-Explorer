@@ -13,7 +13,7 @@
     <input
       v-if="inputMode === 'advanced'"
       type="text"
-      class="inputfield theme-calc-inputfield"
+      class="inputfield theme-calc-inputfield theme-focus-border"
       :placeholder="$t('calculator.input_placeholder')"
       v-on:keypress="calculate"
       ref="inputfield"
@@ -22,14 +22,14 @@
       <input
         type="text"
         id="inputfield"
-        class="inputfield theme-calc-inputfield"
+        class="inputfield theme-calc-inputfield theme-focus-border"
         :placeholder="$t('calculator.input_placeholder')"
         v-on:keypress="calculate"
         ref="inputfield"
       />
       <input
         id="simple-outputfield"
-        class="outputfield theme-calc-inputfield"
+        class="outputfield theme-calc-inputfield theme-focus-border"
         :value="getLastOutput()"
         readonly="readonly"
         :placeholder="$t('calculator.output_placeholder')"
@@ -38,7 +38,7 @@
     </div>
     <div class="sidemenu theme-calc-sidemenu">
       <button
-        class="sidemenu-button clear-history theme-calc-button"
+        class="sidemenu-button clear-history theme-calc-button theme-focus-border"
         v-if="inputMode === 'advanced'"
         v-on:click="clearHistory"
       >
@@ -46,22 +46,22 @@
       </button>
 
       <button
-        class="sidemenu-button clear-history theme-calc-button"
+        class="sidemenu-button clear-history theme-calc-button theme-focus-border"
         v-if="inputMode === 'simple'"
         v-on:click="clearHistory"
       >
         {{ $t("calculator.clear_output") }}
       </button>
 
-      <button class="sidemenu-button clear-input theme-calc-button" v-on:click="clearInput">
+      <button class="sidemenu-button clear-input theme-calc-button theme-focus-border" v-on:click="clearInput">
         {{ $t("calculator.clear_input") }}
       </button>
 
-      <button class="sidemenu-button clear-scope theme-calc-button" v-on:click="clearScope">
+      <button class="sidemenu-button clear-scope theme-calc-button theme-focus-border" v-on:click="clearScope">
         {{ $t("calculator.clear_memory") }}
       </button>
 
-      <button class="sidemenu-button clear-scope theme-calc-button" v-on:click="clearAll">
+      <button class="sidemenu-button clear-scope theme-calc-button theme-focus-border" v-on:click="clearAll">
         {{ $t("calculator.clear_all") }}
       </button>
     </div>

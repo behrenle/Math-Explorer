@@ -5,7 +5,6 @@
 
 .theme-focus-border {
   outline: none;
-  transition: border none;
 }
 
 .theme-focus-border:focus {

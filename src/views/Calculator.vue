@@ -80,6 +80,9 @@ export default {
   created: function() {
     this.$eventBus.$on("copy-history-text", this.copyHistoryText);
   },
+  mounted: function() {
+    this.focusInput();
+  },
   computed: {
     ...mapState({
       history: "history",
@@ -114,17 +117,23 @@ export default {
     returnFocus: function(e) {
       var key = e.which || e.keyCode;
       if (key === 13) {
-        document.getElementById("inputfield").focus();
+        this.focusInput();
       }
+    },
+    focusInput: function() {
+      document.getElementById("inputfield").focus();
     },
     clearHistory: function() {
       this.CLEAR_HISTORY();
+      this.focusInput();
     },
     clearInput: function() {
       this.$refs.inputfield.value = "";
+      this.focusInput();
     },
     clearScope: function() {
       this.CLEAR_SCOPE();
+      this.focusInput();
     },
     ...mapMutations(["EVALUATE_INPUT", "CLEAR_HISTORY", "CLEAR_SCOPE"]),
     evaluateInput(input) {
@@ -134,6 +143,7 @@ export default {
       this.clearHistory();
       this.clearScope();
       this.clearInput();
+      this.focusInput();
     }
   }
 };

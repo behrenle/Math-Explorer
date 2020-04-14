@@ -83,8 +83,11 @@ function setHtmlLang(lang) {
   document.querySelector("html").lang = lang == "de" ? "de" : "en";
 }
 
-setHtmlLang(loadSettingsValue("language"));
+// init lang
+setHtmlLang(loadSettingsValue("language"))
+i18n.locale = loadSettingsValue("language") == "de" ? "de" : "en";
 
+// store
 export default new Vuex.Store({
   state: {
     history: new NumberDrive.Script(

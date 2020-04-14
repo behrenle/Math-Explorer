@@ -10,28 +10,28 @@
         menu-button
         theme-app-menu-item
         theme-app-menu-button">
-        Calculator
+        {{ $t("menu_bar.calculator") }}
       </router-link>
       <router-link to="/settings" class="
         menu-item
         menu-button
         theme-app-menu-item
         theme-app-menu-button">
-        Settings
+        {{ $t("menu_bar.settings") }}
       </router-link>
       <router-link to="/manual" class="
         menu-item
         menu-button
         theme-app-menu-item
         theme-app-menu-button">
-        Manual
+        {{ $t("menu_bar.manual") }}
       </router-link>
       <router-link to="/about" class="
         menu-item
         menu-button
         theme-app-menu-item
         theme-app-menu-button">
-        About
+        {{ $t("menu_bar.about") }}
       </router-link>
     </div>
     <div class="content nopm">

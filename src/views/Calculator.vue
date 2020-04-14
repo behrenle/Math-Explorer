@@ -23,7 +23,7 @@
         type="text"
         id="inputfield"
         class="inputfield theme-calc-inputfield"
-        placeholder="Input"
+        :placeholder="$t('calculator.input_placeholder')"
         v-on:keypress="calculate"
         ref="inputfield"
       />
@@ -32,7 +32,7 @@
         class="outputfield theme-calc-inputfield"
         :value="getLastOutput()"
         readonly="readonly"
-        placeholder="Output"
+        :placeholder="$t('calculator.output_placeholder')"
         v-on:keypress="returnFocus"
       />
     </div>
@@ -42,24 +42,27 @@
         v-if="inputMode === 'advanced'"
         v-on:click="clearHistory"
       >
-        Clear history
+        {{ $t("calculator.clear_history") }}
       </button>
+
       <button
         class="sidemenu-button clear-history theme-calc-button"
         v-if="inputMode === 'simple'"
         v-on:click="clearHistory"
       >
-        Clear output
+        {{ $t("calculator.clear_output") }}
       </button>
 
       <button class="sidemenu-button clear-input theme-calc-button" v-on:click="clearInput">
-        Clear input
+        {{ $t("calculator.clear_input") }}
       </button>
+
       <button class="sidemenu-button clear-scope theme-calc-button" v-on:click="clearScope">
-        Clear memory
+        {{ $t("calculator.clear_memory") }}
       </button>
+
       <button class="sidemenu-button clear-scope theme-calc-button" v-on:click="clearAll">
-        Clear all
+        {{ $t("calculator.clear_all") }}
       </button>
     </div>
   </div>

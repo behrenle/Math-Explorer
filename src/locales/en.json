@@ -1,3 +1,17 @@
 {
-  "message": "hello i18n !!"
+  "menu_bar": {
+    "calculator": "Calculator",
+    "settings": "Settings",
+    "manual": "Manual",
+    "about": "About"
+  },
+  "calculator": {
+    "clear_input": "Clear input",
+    "clear_output": "Clear output",
+    "clear_history": "Clear history",
+    "clear_memory": "Clear memory",
+    "clear_all": "Clear all",
+    "input_placeholder": "Input",
+    "output_placeholder": "Output"
+  }
 }

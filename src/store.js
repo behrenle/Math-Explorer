@@ -92,7 +92,7 @@ export default new Vuex.Store({
     language:
       loadSettingsValue("language") != null
         ? loadSettingsValue("language")
-        : "german",
+        : "de",
     inputMode:
       loadSettingsValue("inputMode") != null
         ? loadSettingsValue("inputMode")
@@ -129,7 +129,7 @@ export default new Vuex.Store({
     },
 
     setLanguage(state, lang) {
-      state.language = lang == "german" ? "german" : "english";
+      state.language = lang == "de" ? "de" : "en";
       saveSettings2Cookie(state);
     },
 

@@ -11,8 +11,8 @@
     <div class="settings_element theme-settings-element">
       <span class="label">Language</span>
       <select v-model="language" class="settings_button theme-settings-button">
-        <option value="german">Deutsch</option>
-        <option value="english">Engish</option>
+        <option value="de">Deutsch</option>
+        <option value="en">Engish</option>
       </select>
     </div>
 

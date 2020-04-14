@@ -1,31 +1,31 @@
 <template>
   <div class="settings theme-settings">
     <div class="settings_element theme-settings-element">
-      <span class="label">Decimal mode</span>
+      <span class="label">{{ $t("settings.decimal_mode") }}</span>
       <select v-model="decimalMode" class="settings_button theme-settings-button">
-        <option value="german">Deutsch</option>
-        <option value="english">Engish</option>
+        <option value="german">{{ $t("langs.english") }}</option>
+        <option value="english">{{ $t("langs.german") }}</option>
       </select>
     </div>
 
     <div class="settings_element theme-settings-element">
-      <span class="label">Language</span>
+      <span class="label">{{ $t("settings.language") }}</span>
       <select v-model="language" class="settings_button theme-settings-button">
-        <option value="de">Deutsch</option>
-        <option value="en">Engish</option>
+        <option value="de">{{ $t("langs.english") }}</option>
+        <option value="en">{{ $t("langs.german") }}</option>
       </select>
     </div>
 
     <div class="settings_element theme-settings-element">
-      <span class="label">Input mode</span>
+      <span class="label">{{ $t("settings.input_mode") }}</span>
       <select v-model="inputMode" class="settings_button theme-settings-button">
-        <option value="simple">Simple</option>
-        <option value="advanced">Advanced</option>
+        <option value="simple">{{ $t("settings.input_mode_simple") }}</option>
+        <option value="advanced">{{ $t("settings.input_mode_advanced") }}</option>
       </select>
     </div>
 
     <div class="settings_element theme-settings-element">
-      <span class="label">Significant decimal places</span>
+      <span class="label">{{ $t("settings.significant_decimal_places") }}</span>
       <select v-model="sDecimalPlaces" class="settings_button theme-settings-button">
         <option :value="i" v-for="i in 16">{{i}}</option>
 

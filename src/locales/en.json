@@ -1,4 +1,8 @@
 {
+  "langs": {
+    "english": "English",
+    "german": "German"
+  },
   "menu_bar": {
     "calculator": "Calculator",
     "settings": "Settings",
@@ -13,5 +17,13 @@
     "clear_all": "Clear all",
     "input_placeholder": "Input",
     "output_placeholder": "Output"
+  },
+  "settings": {
+    "decimal_mode": "Decimal mode",
+    "input_mode": "Input mode",
+    "input_mode_simple": "Simple",
+    "input_mode_advanced": "Advanced",
+    "language": "Language",
+    "significant_decimal_places": "Significant decimal places"
   }
 }

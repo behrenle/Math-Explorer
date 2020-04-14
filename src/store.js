@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import i18n from "./i18n"
 
 const NumberDrive = require("@behrenle/number-drive");
 
@@ -130,6 +131,8 @@ export default new Vuex.Store({
 
     setLanguage(state, lang) {
       state.language = lang == "de" ? "de" : "en";
+      console.log(i18n);
+      i18n.locale = state.language;
       saveSettings2Cookie(state);
     },
 

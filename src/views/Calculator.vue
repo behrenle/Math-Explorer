@@ -14,7 +14,7 @@
       v-if="inputMode === 'advanced'"
       type="text"
       class="inputfield theme-calc-inputfield"
-      placeholder="Input"
+      :placeholder="$t('calculator.input_placeholder')"
       v-on:keypress="calculate"
       ref="inputfield"
     />

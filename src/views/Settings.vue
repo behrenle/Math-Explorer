@@ -3,16 +3,16 @@
     <div class="settings_element theme-settings-element">
       <span class="label">{{ $t("settings.decimal_mode") }}</span>
       <select v-model="decimalMode" class="settings_button theme-settings-button">
-        <option value="german">{{ $t("langs.english") }}</option>
-        <option value="english">{{ $t("langs.german") }}</option>
+        <option value="english">{{ $t("langs.english") }}</option>
+        <option value="german">{{ $t("langs.german") }}</option>
       </select>
     </div>
 
     <div class="settings_element theme-settings-element">
       <span class="label">{{ $t("settings.language") }}</span>
       <select v-model="language" class="settings_button theme-settings-button">
-        <option value="de">{{ $t("langs.english") }}</option>
-        <option value="en">{{ $t("langs.german") }}</option>
+        <option value="en">{{ $t("langs.english") }}</option>
+        <option value="de">{{ $t("langs.german") }}</option>
       </select>
     </div>
 

@@ -1,0 +1,29 @@
+{
+  "langs": {
+    "english": "Englisch",
+    "german": "Deutsch"
+  },
+  "menu_bar": {
+    "calculator": "Rechner",
+    "settings": "Einstellungen",
+    "manual": "Hilfe",
+    "about": "Über"
+  },
+  "calculator": {
+    "clear_input": "Eingabe löschen",
+    "clear_output": "Ausgabe löschen",
+    "clear_history": "Verlauf löschen",
+    "clear_memory": "Speicher löschen",
+    "clear_all": "Alles löschen",
+    "input_placeholder": "Eingabe",
+    "output_placeholder": "Ausgabe"
+  },
+  "settings": {
+    "decimal_mode": "Dezimalmodus",
+    "input_mode": "Eingabemodus",
+    "input_mode_simple": "Einfach",
+    "input_mode_advanced": "Erweitert",
+    "language": "Sprache",
+    "significant_decimal_places": "Signifikante Stellenanzahl"
+  }
+}

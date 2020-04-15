@@ -15,6 +15,11 @@
     "description": "deg is the conversion factor between degrees and radians."
   },
   {
+    "name": "memory",
+    "synopsis": "memory",
+    "description": "A vector of all user defined symbol names."
+  },
+  {
     "name": "sin",
     "synopsis": "sin(number)",
     "description": "Calculates the sine of a given number."
@@ -28,6 +33,21 @@
     "name": "tan",
     "synopsis": "tan(number)",
     "description": "Calculates the tagent of a given number."
+  },
+  {
+    "name": "sindeg",
+    "synopsis": "sindeg(number)",
+    "description": "Calculates the sine of a given number. <br>number in degrees"
+  },
+  {
+    "name": "cosdeg",
+    "synopsis": "cosdeg(number)",
+    "description": "Calculates the cosine of a given number. <br>number in degrees"
+  },
+  {
+    "name": "tandeg",
+    "synopsis": "tandeg(number)",
+    "description": "Calculates the tagent of a given number. <br>number in degrees"
   },
   {
     "name": "sinh",
@@ -59,6 +79,21 @@
     "name": "atan",
     "synopsis": "atan(number)",
     "description": "Calculates the inverse tagent of a given number."
+  },
+  {
+    "name": "asindeg",
+    "synopsis": "asindeg(number)",
+    "description": "Calculates the inverse sine of a given number. <br>result in degrees"
+  },
+  {
+    "name": "acosdeg",
+    "synopsis": "acosdeg(number)",
+    "description": "Calculates the inverse cosine of a given number. <br>result in degrees"
+  },
+  {
+    "name": "atandeg",
+    "synopsis": "atandeg(number)",
+    "description": "Calculates the inverse tagent of a given number. <br>result in degrees"
   },
   {
     "name": "asinh",
@@ -130,5 +165,10 @@
     "name": "root",
     "synopsis": "root(v, n)",
     "description": "Computes the nth root of v.<br> n, v >= 0"
+  },
+  {
+    "name": "delete",
+    "synopsis": "delete(symbol)",
+    "description": "Deletes a user defined symbol.<br>Returns 1 if the deletion was successful, otherwise 0."
   }
 ]

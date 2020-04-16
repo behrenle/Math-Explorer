@@ -28,6 +28,8 @@
         :placeholder="$t('calculator.input_placeholder')"
         v-on:keypress="calculate"
         ref="inputfield"
+        v-shortkey.once="['ctrl', 'o']"
+        @shortkey="test()"
       />
       <input
         id="simple-outputfield"
@@ -95,6 +97,9 @@ export default {
     // other stuff
   },
   methods: {
+    test: function() {
+      alert("test");
+    },
     getLastOutput: function() {
       if (this.history.getItems().length > 0) {
         return this.history.getItems()[this.history.getItems().length - 1].output;

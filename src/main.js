@@ -4,6 +4,8 @@ import router from "./router";
 import store from "./store";
 import i18n from './i18n'
 
+Vue.use(require('vue-shortkey'));
+
 Vue.config.productionTip = false;
 Vue.prototype.$eventBus = new Vue();
 

@@ -89,6 +89,10 @@
   box-shadow: -2.5px 3.5px 2.5px rgba(128, 128, 128, 0.5);
 }
 
+.theme-settings-button:focus {
+  border: 2px solid rgba(210, 180, 140);
+}
+
 .theme-settings-button:hover {
   background-color: rgba(210, 180, 140, 0.5);
 }

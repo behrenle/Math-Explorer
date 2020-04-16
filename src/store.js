@@ -1,125 +1,54 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import i18n from "./i18n"
+import storeUtils from "./storeUtils.js"
 
+const settings    = storeUtils.settings;
+const theme       = storeUtils.theme;
 const NumberDrive = require("@behrenle/number-drive");
 
 Vue.use(Vuex);
-
-const COOKIE_EXPIRE_DAYS = 365 * 10;
-const COOKIE_SETTINGS_NAME = "settings";
-
-function saveSettings2Cookie(state) {
-  let settings = {
-    decimalMode: state.decimalMode,
-    inputMode: state.inputMode,
-    language: state.language,
-    sDecimalPlaces: state.sDecimalPlaces,
-    theme: state.currentTheme,
-    themePath: state.avialableThemes[
-      state.currentTheme ? state.currentTheme : "bright"
-    ],
-    mathLangTag: state.mathLangTag ? state.mathLangTag : "de"
-  };
-  let d = new Date();
-  d.setTime(d.getTime() + COOKIE_EXPIRE_DAYS * 24 * 3600000);
-  let expires = "expires=" + d.toUTCString();
-  document.cookie =
-    COOKIE_SETTINGS_NAME +
-    "=" +
-    JSON.stringify(settings) +
-    ";" +
-    expires +
-    ";path=/";
-}
-
-function loadSettingsValue(vName) {
-  let decodedCookie = decodeURIComponent(document.cookie);
-  let cookieParts = decodedCookie.split(";");
-  for (var i = 0; i < cookieParts.length; i++) {
-    let cookiePart = cookieParts[i];
-    while (cookiePart.charAt(0) === " ") {
-      cookiePart = cookiePart.substring(1);
-    }
-    if (cookiePart.indexOf(COOKIE_SETTINGS_NAME + "=") === 0) {
-      let settings = JSON.parse(
-        cookiePart.substring(
-          (COOKIE_SETTINGS_NAME + "=").length,
-          cookiePart.length
-        )
-      );
-      return settings[vName];
-    }
-  }
-}
-
-function getThemeID(name) {
-  return "theme-style-" + name;
-}
-
-function loadTheme(name, path) {
-  let themeLink = document.createElement("link");
-  themeLink.setAttribute("rel", "stylesheet");
-  themeLink.setAttribute("href", path);
-  themeLink.setAttribute("id", getThemeID(name));
-
-  let docHead = document.querySelector("head");
-  docHead.append(themeLink);
-}
-
-/*function unloadTheme(name) {
-  let themeLink = document.querySelector("#" + getThemeID(name));
-  let parentNode = themeLink.parentNode;
-  parentNode.removeChild(themeLink);
-}*/
-
-function initTheme() {
-  var theme     = loadSettingsValue("theme") ? loadSettingsValue("theme") : "bright";
-  var themePath = loadSettingsValue("themePath") ? loadSettingsValue("themePath") : "./themes/bright-theme.css"
-  loadTheme(theme, themePath);
-  return theme;
-}
 
 function setHtmlLang(lang) {
   document.querySelector("html").lang = lang == "de" ? "de" : "en";
 }
 
 // init lang
-setHtmlLang(loadSettingsValue("language"))
-i18n.locale = loadSettingsValue("language") == "de" ? "de" : "en";
+setHtmlLang(settings.load("language"))
+i18n.locale = settings.load("language") == "de" ? "de" : "en";
 
 // store
 export default new Vuex.Store({
   state: {
     history: new NumberDrive.Script(
-      loadSettingsValue("decimalMode") != null
-        ? loadSettingsValue("decimalMode")
+      settings.load("decimalMode") != null
+        ? settings.load("decimalMode")
         : "german"
     ),
     decimalMode:
-      loadSettingsValue("decimalMode") != null
-        ? loadSettingsValue("decimalMode")
+      settings.load("decimalMode") != null
+        ? settings.load("decimalMode")
         : "german",
     language:
-      loadSettingsValue("language") != null
-        ? loadSettingsValue("language")
+      settings.load("language") != null
+        ? settings.load("language")
         : "de",
     mathLangTag:
-      loadSettingsValue("mathLangTag") != null
-        ? loadSettingsValue("mathLangTag")
+      settings.load("mathLangTag") != null
+        ? settings.load("mathLangTag")
         : "de",
     inputMode:
-      loadSettingsValue("inputMode") != null
-        ? loadSettingsValue("inputMode")
+      settings.load("inputMode") != null
+        ? settings.load("inputMode")
         : "simple",
     sDecimalPlaces:
-      loadSettingsValue("sDecimalPlaces") != null
-        ? loadSettingsValue("sDecimalPlaces")
+      settings.load("sDecimalPlaces") != null
+        ? settings.load("sDecimalPlaces")
         : 6,
     avialableThemes: {
       bright: "./themes/bright-theme.css"
     },
-    currentTheme: initTheme(),
+    currentTheme: theme.init(),
   },
   mutations: {
     EVALUATE_INPUT: (state, inputLine) => {
@@ -138,18 +67,18 @@ export default new Vuex.Store({
       state.language = lang == "de" ? "de" : "en";
       i18n.locale = state.language;
       setHtmlLang(state.language);
-      saveSettings2Cookie(state);
+      settings.save(state);
     },
 
     setDecimalMode(state, mode) {
       state.history.lang = mode == "german" ? "german" : "english";
       state.decimalMode = state.history.lang;
-      saveSettings2Cookie(state);
+      settings.save(state);
     },
 
     setInputMode(state, mode) {
       state.inputMode = mode == "simple" ? "simple" : "advanced";
-      saveSettings2Cookie(state);
+      settings.save(state);
     },
 
     setSDecimalPlaces(state, n) {
@@ -158,12 +87,12 @@ export default new Vuex.Store({
         p = 6;
       }
       state.sDecimalPlaces = p;
-      saveSettings2Cookie(state);
+      settings.save(state);
     },
 
     setMathLangTag(state, lang) {
       state.mathLangTag = lang == "de" ? "de" : "en";
-      saveSettings2Cookie(state);
+      settings.save(state);
     },
   },
   actions: {}

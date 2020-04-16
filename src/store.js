@@ -1,12 +1,10 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import i18n from "./i18n"
 import storeUtils from "./storeUtils.js"
 
 const settings    = storeUtils.settings;
 const theme       = storeUtils.theme;
 const misc        = storeUtils.misc;
-const NumberDrive = require("@behrenle/number-drive");
 
 Vue.use(Vuex);
 
@@ -28,7 +26,7 @@ export default new Vuex.Store({
 
     setLanguage(state, lang) {
       state.language = lang == "de" ? "de" : "en";
-      i18n.locale = state.language;
+      misc.setLanguage(state.language);
       misc.setHtmlLang(state.language);
       settings.save(state);
     },

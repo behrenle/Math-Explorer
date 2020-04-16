@@ -79,7 +79,11 @@ const theme = {
 const misc = {
   setHtmlLang: function(lang) {
     document.querySelector("html").lang = lang == "de" ? "de" : "en";
-  }
+  },
+
+  setLanguage(lang) {
+    i18n.lang = lang == "de" ? "de" : "en";
+  },
 }
 
 function initSetting(name, defaultValue) {
@@ -105,13 +109,13 @@ function initState() {
     avialableThemes: {
       bright: "./themes/bright-theme.css"
     },
-    currentTheme: theme.init(),
-  }
+    currentTheme: theme.init()
+  };
 }
 
 export default {
   settings: settings,
   theme: theme,
   misc: misc,
-  initState: initState,
-}
+  initState: initState
+};

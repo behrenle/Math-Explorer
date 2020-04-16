@@ -5,51 +5,14 @@ import storeUtils from "./storeUtils.js"
 
 const settings    = storeUtils.settings;
 const theme       = storeUtils.theme;
+const misc        = storeUtils.misc;
 const NumberDrive = require("@behrenle/number-drive");
 
 Vue.use(Vuex);
 
-function setHtmlLang(lang) {
-  document.querySelector("html").lang = lang == "de" ? "de" : "en";
-}
-
-// init lang
-setHtmlLang(settings.load("language"))
-i18n.locale = settings.load("language") == "de" ? "de" : "en";
-
 // store
 export default new Vuex.Store({
-  state: {
-    history: new NumberDrive.Script(
-      settings.load("decimalMode") != null
-        ? settings.load("decimalMode")
-        : "german"
-    ),
-    decimalMode:
-      settings.load("decimalMode") != null
-        ? settings.load("decimalMode")
-        : "german",
-    language:
-      settings.load("language") != null
-        ? settings.load("language")
-        : "de",
-    mathLangTag:
-      settings.load("mathLangTag") != null
-        ? settings.load("mathLangTag")
-        : "de",
-    inputMode:
-      settings.load("inputMode") != null
-        ? settings.load("inputMode")
-        : "simple",
-    sDecimalPlaces:
-      settings.load("sDecimalPlaces") != null
-        ? settings.load("sDecimalPlaces")
-        : 6,
-    avialableThemes: {
-      bright: "./themes/bright-theme.css"
-    },
-    currentTheme: theme.init(),
-  },
+  state: storeUtils.initState(),
   mutations: {
     EVALUATE_INPUT: (state, inputLine) => {
       state.history.pushString(inputLine);
@@ -66,7 +29,7 @@ export default new Vuex.Store({
     setLanguage(state, lang) {
       state.language = lang == "de" ? "de" : "en";
       i18n.locale = state.language;
-      setHtmlLang(state.language);
+      misc.setHtmlLang(state.language);
       settings.save(state);
     },
 

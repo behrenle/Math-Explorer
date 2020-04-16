@@ -1,3 +1,6 @@
+import i18n from "./i18n"
+
+const NumberDrive          = require("@behrenle/number-drive");
 const COOKIE_EXPIRE_DAYS   = 365 * 10;
 const COOKIE_SETTINGS_NAME = "settings";
 
@@ -73,7 +76,42 @@ const theme = {
   }
 }
 
+const misc = {
+  setHtmlLang: function(lang) {
+    document.querySelector("html").lang = lang == "de" ? "de" : "en";
+  }
+}
+
+function initSetting(name, defaultValue) {
+  return settings.load(name) != null
+        ? settings.load(name)
+        : defaultValue;
+}
+
+function initState() {
+  let decimalMode = initSetting("decimalMode", "german");
+  let language    = initSetting("language", "de");
+
+  i18n.locale = language;
+  misc.setHtmlLang(language);
+
+  return {
+    history: new NumberDrive.Script(decimalMode),
+    decimalMode: decimalMode,
+    language: language,
+    mathLangTag: initSetting("mathLangTag", "de"),
+    inputMode: initSetting("inputMode", "simple"),
+    sDecimalPlaces: initSetting("sDecimalPlaces", 6),
+    avialableThemes: {
+      bright: "./themes/bright-theme.css"
+    },
+    currentTheme: theme.init(),
+  }
+}
+
 export default {
   settings: settings,
   theme: theme,
+  misc: misc,
+  initState: initState,
 }

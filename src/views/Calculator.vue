@@ -132,7 +132,7 @@ export default {
       document.getElementById("inputfield").focus();
     },
     clearHistory: function() {
-      this.CLEAR_HISTORY();
+      this.$store.commit("clearHistory");
       this.focusInput();
     },
     clearInput: function() {
@@ -140,12 +140,11 @@ export default {
       this.focusInput();
     },
     clearScope: function() {
-      this.CLEAR_SCOPE();
+      this.$store.commit("clearScope");
       this.focusInput();
     },
-    ...mapMutations(["EVALUATE_INPUT", "CLEAR_HISTORY", "CLEAR_SCOPE"]),
     evaluateInput(input) {
-      this.EVALUATE_INPUT(input);
+      this.$store.commit("evaluateInput",input);
     },
     clearAll: function() {
       this.clearHistory();

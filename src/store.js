@@ -14,15 +14,15 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: storeUtils.initState(),
   mutations: {
-    EVALUATE_INPUT: (state, inputLine) => {
+    evaluateInput: function(state, inputLine) {
       state.history.pushString(inputLine);
     },
 
-    CLEAR_HISTORY: state => {
+    clearHistory: function(state) {
       state.history.clearHistory();
     },
 
-    CLEAR_SCOPE: state => {
+    clearScope: function(state) {
       state.history.clearUserScope();
     },
 

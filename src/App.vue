@@ -56,12 +56,9 @@ export default {
 
 <style scoped>
 .logo_img {
-  height: calc(100% - 20px);
-  margin-right: 20px;
-  position: absolute;
+  height: 100%;
+  padding: 0;
   box-sizing: border-box;
-  top: 10px;
-  left: 10px;
 }
 
 .logo_name {
@@ -74,7 +71,6 @@ export default {
 }
 
 .menu-bar {
-  position: fixed;
   height: 80px;
   width: 100%;
   color: white;
@@ -85,6 +81,7 @@ export default {
   grid-template-columns: 40% 15% 15% 15% 15%;
   grid-template-rows: 100%;
   z-index: 2;
+  border: 2px solid red;
 }
 
 .menu-item {
@@ -102,11 +99,10 @@ export default {
 }
 
 .content {
-  position: fixed;
-  height: calc(100% - 80px);
+  height: 100%;
   width: 100%;
-  top: 80px;
   z-index: 1;
+  border: 2px solid lime;
 }
 </style>
 
@@ -128,6 +124,11 @@ export default {
   position: absolute;
   width: 100%;
   height: 100%;
+  border: 2px solid blue;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 80px auto;
+  grid-gap: 0;
 }
 
 body {

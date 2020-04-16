@@ -191,7 +191,7 @@ export default {
 .inputfield {
   width: calc(100% - 20px);
   height: 100px;
-  font-size: 32pt;
+  font-size: var(--app-font-size);
   padding: 10px;
   margin-left: 20px;
   margin-bottom: 20px;
@@ -207,7 +207,7 @@ export default {
   margin: 0;
   height: 120px;
   float: right;
-  font-size: 30pt;
+  font-size: var(--app-font-size);
   padding-bottom: 10px;
   margin-top: 0px;
   -webkit-box-shadow: none;
@@ -228,7 +228,7 @@ export default {
   font-family: Verdana, Geneva, sans-serif;
   padding: 10px;
   text-align: left;
-  font-size: 32pt;
+  font-size: var(--app-font-size);
   margin-top: 20px;
   position: relative;
   height: 100px;

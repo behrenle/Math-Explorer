@@ -3,7 +3,9 @@
     <div class="menu-bar theme-app-menu-bar">
       <div class="menu-item menu-title theme-app-menu-item theme-app-menu-title">
         <img src="./assets/logo.png" class="logo_img" alt="logo" />
-        <span class="logo_name">Math Explorer {{version}}</span>
+        <div class="logo_name">
+          Math Explorer {{version}}
+        </div>
       </div>
       <router-link to="/" class="
         menu-item
@@ -56,37 +58,35 @@ export default {
 
 <style scoped>
 .logo_img {
-  height: 100%;
-  padding: 0;
-  box-sizing: border-box;
+  height: calc(100% - 20px);
+  padding-top: 10px;
+  padding-right: 10px;
+  float: left;
 }
 
 .logo_name {
   height: 100%;
-  line-height: 80px;
-  margin: 0;
-  position: absolute;
-  left: 100px;
-  top: 0;
+  padding: var(--app-menu-item-padding);
+  box-sizing: border-box;
+  float: left;
 }
 
 .menu-bar {
-  height: 80px;
+  height: var(--app-menu-bar-height);
   width: 100%;
   color: white;
-  font-size: 26pt;
+  font-size: var(--app-font-size);
   text-align: left;
   font-family: Verdana, Geneva, sans-serif;
   display: grid;
   grid-template-columns: 40% 15% 15% 15% 15%;
   grid-template-rows: 100%;
   z-index: 2;
-  border: 2px solid red;
 }
 
 .menu-item {
   text-decoration: none;
-  padding: 15px 10px 10px;
+  padding: var(--app-menu-item-padding);
 }
 
 .menu-button {
@@ -94,7 +94,8 @@ export default {
 }
 
 .menu-title {
-  letter-spacing: 6px;
+  letter-spacing: 3px;
+  padding: 0;
   padding-left: 20px;
 }
 
@@ -102,8 +103,56 @@ export default {
   height: 100%;
   width: 100%;
   z-index: 1;
-  border: 2px solid lime;
 }
+</style>
+
+<style>
+  :root {
+    --app-font-size: 10pt;
+    --app-menu-item-padding: calc(40px - 5pt) 10px;
+    --app-grid: 80px auto;
+
+  }
+
+  @media only screen and (min-width: 600px) {
+    :root {
+      --app-font-size: 14pt;
+      --app-menu-item-padding: calc(20px - 7pt) 10px;
+      --app-grid: 40px auto;
+    }
+  }
+
+  @media only screen and (min-width: 1100px) {
+    :root {
+      --app-font-size: 18pt;
+      --app-menu-item-padding: calc(25px - 9pt) 10px;
+      --app-grid: 50px auto;
+    }
+  }
+
+  @media only screen and (min-width: 1300px) {
+    :root {
+      --app-font-size: 22pt;
+      --app-menu-item-padding: calc(30px - 11pt) 10px;
+      --app-grid: 60px auto;
+    }
+  }
+
+  @media only screen and (min-width: 1500px) {
+    :root {
+      --app-font-size: 26pt;
+      --app-menu-item-padding: calc(35px - 13pt) 10px;
+      --app-grid: 70px auto;
+    }
+  }
+
+  @media only screen and (min-width: 1800px) {
+    :root {
+      --app-font-size: 32pt;
+      --app-menu-item-padding: calc(40px - 16pt) 10px;
+      --app-grid: 80px auto;
+    }
+  }
 </style>
 
 <style lang="scss">
@@ -124,10 +173,9 @@ export default {
   position: absolute;
   width: 100%;
   height: 100%;
-  border: 2px solid blue;
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: 80px auto;
+  grid-template-rows: var(--app-grid);
   grid-gap: 0;
 }
 

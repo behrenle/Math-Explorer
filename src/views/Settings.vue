@@ -108,7 +108,7 @@ export default {
 <style scoped>
 .settings {
   color: white;
-  font-size: 30pt;
+  font-size: var(--app-font-size);
   text-align: left;
   width: calc(100% - 40px);
   height: calc(100% - 40px);
@@ -132,7 +132,7 @@ export default {
   padding: 10px 10px;
   min-width: 250px;
   cursor: pointer;
-  font-size: 30pt;
+  font-size: var(--app-font-size);
   box-sizing: border-box;
   outline: none;
 }

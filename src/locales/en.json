@@ -19,6 +19,10 @@
     "output_placeholder": "Output"
   },
   "settings": {
+    "categories": {
+      "language": "Language settings",
+      "general": "General"
+    },
     "decimal_mode": "Decimal mode",
     "input_mode": "Input mode",
     "input_mode_simple": "Simple",

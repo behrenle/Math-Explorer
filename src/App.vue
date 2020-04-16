@@ -112,6 +112,8 @@ export default {
     --app-menu-item-padding: calc(40px - 5pt) 10px;
     --app-grid: 80px auto;
 
+    --settings-button-min-width: 250px;
+    --settings-grid-columns: 1fr;
   }
 
   @media only screen and (min-width: 600px) {
@@ -119,6 +121,9 @@ export default {
       --app-font-size: 14pt;
       --app-menu-item-padding: calc(20px - 7pt) 10px;
       --app-grid: 40px auto;
+
+      --settings-button-min-width: 150px;
+      --settings-grid-columns: 1fr;
     }
   }
 
@@ -127,6 +132,9 @@ export default {
       --app-font-size: 18pt;
       --app-menu-item-padding: calc(25px - 9pt) 10px;
       --app-grid: 50px auto;
+
+      --settings-button-min-width: 175px;
+      --settings-grid-columns: 1fr 1fr;
     }
   }
 
@@ -135,6 +143,10 @@ export default {
       --app-font-size: 22pt;
       --app-menu-item-padding: calc(30px - 11pt) 10px;
       --app-grid: 60px auto;
+
+      --settings-button-min-width: 200px;
+      --settings-grid-columns: 1fr 1fr;
+
     }
   }
 
@@ -143,6 +155,9 @@ export default {
       --app-font-size: 26pt;
       --app-menu-item-padding: calc(35px - 13pt) 10px;
       --app-grid: 70px auto;
+
+      --settings-button-min-width: 225px;
+      --settings-grid-columns: 1fr 1fr;
     }
   }
 
@@ -151,6 +166,9 @@ export default {
       --app-font-size: 32pt;
       --app-menu-item-padding: calc(40px - 16pt) 10px;
       --app-grid: 80px auto;
+
+      --settings-button-min-width: 250px;
+      --settings-grid-columns: 1fr 1fr;
     }
   }
 </style>

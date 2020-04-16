@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="app theme-app">
+  <div id="app" class="app">
     <div class="menu-bar theme-app-menu-bar">
       <div class="menu-item menu-title theme-app-menu-item theme-app-menu-title">
         <img src="./assets/logo.png" class="logo_img" alt="logo" />
@@ -40,7 +40,7 @@
         {{ $t("menu_bar.about") }}
       </router-link>
     </div>
-    <div class="content nopm">
+    <div class="content nopm theme-content">
       <router-view />
     </div>
   </div>

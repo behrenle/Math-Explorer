@@ -42,7 +42,6 @@ export default {
 
 <style scoped>
   .manual {
-    position: absolute;
     margin: 0px;
     top: 0px;
     height: 100%;

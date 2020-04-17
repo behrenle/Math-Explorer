@@ -29,29 +29,32 @@
     box-sizing: border-box;
     text-align: left;
     margin-bottom: 20px;
-    display: block;
-    overflow: auto;
+    display: flex;
+    overflow: hidden;
   }
 
   .name {
     margin: 0;
-    width: 15%;
+    flex-basis: 15%;
     float: left;
     padding-right: 20px;
     box-sizing: border-box;
   }
 
   .synopsis {
-    width: 25%;
+    flex-basis: 30%;
     float: left;
     padding-left: 1em;
     padding-right: 20px;
     box-sizing: border-box;
     text-indent: -1em;
+    word-wrap: break-word;
+    white-space: pre-wrap
   }
 
   .description {
-    width: 60%;
+    padding-left: 20px;
+    flex-basis: 50%;
     float: left;
     box-sizing: border-box;
   }

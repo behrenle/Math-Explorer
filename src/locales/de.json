@@ -30,5 +30,8 @@
     "language": "Sprache",
     "significant_decimal_places": "Signifikante Stellenanzahl",
     "math_lang_tag": "Mathe-Sprach-HTML-Tag"
+  },
+  "manual": {
+    "search": "Suche"
   }
 }

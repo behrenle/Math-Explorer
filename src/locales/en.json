@@ -30,5 +30,8 @@
     "language": "Language",
     "significant_decimal_places": "Significant decimal places",
     "math_lang_tag": "Math language html tag"
+  },
+  "manual": {
+    "search": "Search"
   }
 }

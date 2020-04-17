@@ -2,7 +2,7 @@
   <div class="manual theme-manual">
     <input
       type="text"
-      placeholder="Search"
+      :placeholder="$t('manual.search')"
       class="search-field theme-help-search-field"
       v-model="search"
     />
@@ -42,8 +42,6 @@ export default {
 
 <style scoped>
   .manual {
-    margin: 0px;
-    top: 0px;
     height: 100%;
     width: 100%;
     padding: 20px 20px 0px 20px;

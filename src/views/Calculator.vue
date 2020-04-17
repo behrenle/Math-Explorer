@@ -161,7 +161,7 @@ export default {
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: auto 22%;
+  grid-template-columns: auto 375px;
   grid-template-rows: auto 120px;
   grid-gap: 20px;
   padding: 0px;
@@ -191,7 +191,7 @@ export default {
 .inputfield {
   width: calc(100% - 20px);
   height: 100px;
-  font-size: var(--app-font-size);
+  font-size: 32pt;
   padding: 10px;
   margin-left: 20px;
   margin-bottom: 20px;
@@ -202,33 +202,35 @@ export default {
   box-sizing: border-box;
 }
 
+.sidemenu {
+  grid-row-start: 1;
+  grid-row-end: 3;
+  grid-column-start: 2;
+  display: flex;
+  flex-direction: column;
+}
+
 .sidemenu-button {
   width: 100%;
   margin: 0;
   height: 120px;
   float: right;
-  font-size: var(--app-font-size);
+  font-size: 32pt;
   padding-bottom: 10px;
   margin-top: 0px;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
   text-align: left;
-  padding-left: 15%;
+  padding-left: 25px;
   outline: none;
-}
-
-.sidemenu {
-  grid-row-start: 1;
-  grid-row-end: 3;
-  grid-column-start: 2;
 }
 
 .outputfield {
   font-family: Verdana, Geneva, sans-serif;
   padding: 10px;
   text-align: left;
-  font-size: var(--app-font-size);
+  font-size: 32pt;
   margin-top: 20px;
   position: relative;
   height: 100px;

@@ -73,7 +73,7 @@ export default {
 .menu-logo {
   height: 80px;
   width: 80px;
-  padding: var(--app-menu-item-padding);
+  padding: 10px;
   box-sizing: border-box;
 }
 

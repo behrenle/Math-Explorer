@@ -182,13 +182,20 @@ export default {
   overflow-y: hidden;
 }
 
+@media only screen and (max-width: 1300px) {
+  .calculator {
+    grid-template-columns: auto;
+    grid-template-rows: 120px auto;
+  }
+}
+
 .advanced-container {
   width: 100%;
   height: 100%;
   overflow: hidden;
   display: grid;
   grid-template-rows: auto 100px;
-  grid-gap: 20px;
+  grid-gap: 10px;
   padding: 20px;
   padding-left: 10px;
   box-sizing: border-box;
@@ -233,24 +240,33 @@ export default {
   height: 100%;
   grid-row-start: 1;
   grid-column-start: 2;
-  /*display: flex;
-  flex-direction: column;*/
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (max-width: 1300px) {
+  .sidemenu {
+    grid-row-start: 1;
+    grid-column-start: 1;
+    flex-direction: row;
+    z-index: 1;
+  }
 }
 
 .sidemenu-button {
   width: 100%;
-  margin: 0;
   height: 120px;
-  float: right;
   font-size: 32pt;
-  padding-bottom: 10px;
-  margin-top: 0px;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
   text-align: left;
   padding-left: 25px;
   outline: none;
+}
+
+@media only screen and (max-width: 1300px) {
+  .sidemenu-button {
+    text-align: center;
+    padding: 0px 20px;
+  }
 }
 
 .outputfield {

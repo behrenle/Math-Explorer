@@ -55,24 +55,6 @@ export default {
 </script>
 
 <style scoped>
-.menu-logo {
-  height: 80px;
-  width: 80px;
-  padding: var(--app-menu-item-padding);
-  box-sizing: border-box;
-}
-
-.menu-title {
-  /*letter-spacing: 3px;
-  padding: 0;
-  padding-left: 20px;
-  margin-right: auto;*/
-  /*color: black;*/
-  margin-right: auto;
-  display: flex;
-  align-items: center;
-}
-
 .menu-bar {
   height: 80px;
   width: 100%;
@@ -88,9 +70,35 @@ export default {
   z-index: 2;
 }
 
+.menu-logo {
+  height: 80px;
+  width: 80px;
+  padding: var(--app-menu-item-padding);
+  box-sizing: border-box;
+}
+
+.menu-title {
+  letter-spacing: 2px;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+}
+
+@media only screen and (max-width: 1400px) {
+  .menu-title {
+    display: none;
+  }
+
+  .menu-logo {
+    margin-right: auto;
+  }
+}
+
 .menu-item {
   text-decoration: none;
-  padding: var(--app-menu-item-padding);
+  display: flex;
+  align-items: center;
+  padding: 0px 20px;
 }
 
 .menu-button {

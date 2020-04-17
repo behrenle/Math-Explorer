@@ -1,16 +1,16 @@
 <template>
   <div class="settings theme-settings">
     <SettingsCategory :name="$t('settings.categories.general')">
-      <div class="settings_element theme-settings-element">
+      <div class="settings-element theme-settings-element">
         <span class="label">{{ $t("settings.significant_decimal_places") }}</span>
-        <select v-model="sDecimalPlaces" class="settings_button theme-settings-button">
+        <select v-model="sDecimalPlaces" class="settings-button theme-settings-button">
           <option :value="i" v-for="i in 16">{{i}}</option>
         </select>
       </div>
 
-      <div class="settings_element theme-settings-element">
+      <div class="settings-element theme-settings-element">
         <span class="label">{{ $t("settings.input_mode") }}</span>
-        <select v-model="inputMode" class="settings_button theme-settings-button">
+        <select v-model="inputMode" class="settings-button theme-settings-button">
           <option value="simple">{{ $t("settings.input_mode_simple") }}</option>
           <option value="advanced">{{ $t("settings.input_mode_advanced") }}</option>
         </select>
@@ -18,25 +18,25 @@
     </SettingsCategory>
 
     <SettingsCategory :name="$t('settings.categories.language')">
-      <div class="settings_element theme-settings-element">
+      <div class="settings-element theme-settings-element">
         <span class="label">{{ $t("settings.language") }}</span>
-        <select v-model="language" class="settings_button theme-settings-button">
+        <select v-model="language" class="settings-button theme-settings-button">
           <option value="en">{{ $t("langs.english") }}</option>
           <option value="de">{{ $t("langs.german") }}</option>
         </select>
       </div>
 
-      <div class="settings_element theme-settings-element">
+      <div class="settings-element theme-settings-element">
         <span class="label">{{ $t("settings.decimal_mode") }}</span>
-        <select v-model="decimalMode" class="settings_button theme-settings-button">
+        <select v-model="decimalMode" class="settings-button theme-settings-button">
           <option value="english">{{ $t("langs.english") }}</option>
           <option value="german">{{ $t("langs.german") }}</option>
         </select>
       </div>
 
-      <div class="settings_element theme-settings-element">
+      <div class="settings-element theme-settings-element">
         <span class="label">{{ $t("settings.math_lang_tag") }}</span>
-        <select v-model="mathLangTag" class="settings_button theme-settings-button">
+        <select v-model="mathLangTag" class="settings-button theme-settings-button">
           <option value="en">{{ $t("langs.english") }}</option>
           <option value="de">{{ $t("langs.german") }}</option>
         </select>
@@ -115,41 +115,45 @@ export default {
 <style scoped>
 .settings {
   color: white;
-  font-size: var(--app-font-size);
+  font-size: 32pt;
   text-align: left;
   width: calc(100% - 40px);
   height: auto;
   display: grid;
-  grid-template-columns: var(--settings-grid-columns);
-  grid-column-gap: 50px;
-  grid-row-gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
   padding: 0;
   box-sizing: border-box;
   margin: 20px;
 }
 
-.settings_element {
+@media only screen and (max-width: 1300px) {
+  .settings {
+    grid-template-columns: 1fr;
+  }
+}
+
+.settings-element {
   box-sizing: border-box;
   padding: 10px 15px;
   overflow: auto;
+  display: flex;
 }
 
-.settings_button {
+.settings-button {
+  height: calc(32pt + 20px);
   padding: 10px 10px;
-  min-width: var(--settings-button-min-width);
   cursor: pointer;
-  font-size: var(--app-font-size);
+  min-width: 200px;
+  font-size: 32pt;
   box-sizing: border-box;
   outline: none;
   float: right;
 }
 
-.wrapper {
-
-}
-
 .label {
   padding: 5px 0px;
+  margin-right: auto;
 }
 
 .number_input {

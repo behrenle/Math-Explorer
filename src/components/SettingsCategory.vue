@@ -21,7 +21,7 @@
 
   .outer h1{
     text-align: center;
-    font-size: var(--app-font-size);
+    font-size: 32pt;
   }
 
   .inner {

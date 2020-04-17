@@ -42,6 +42,16 @@
         </select>
       </div>
     </SettingsCategory>
+
+    <SettingsCategory :name="$t('settings.categories.advanced_input_mode')">
+      <div class="settings-element theme-settings-element">
+        <span class="label">{{ $t("settings.copy_on_click") }}</span>
+        <select v-model="copyOnClick" class="settings-button theme-settings-button">
+          <option :value="true">{{ $t("misc.on") }}</option>
+          <option :value="false">{{ $t("misc.off") }}</option>
+        </select>
+      </div>
+    </SettingsCategory>
   </div>
 </template>
 
@@ -99,6 +109,16 @@ export default {
         this.$store.commit("setMathLangTag", value);
       }
     },
+
+    copyOnClick: {
+      get() {
+        return this.$store.state.copyOnClick;
+      },
+
+      set(value) {
+        this.$store.commit("setCopyOnClick", value);
+      },
+    }
   },
   methods: {
     input_sDecimalPlaces: function() {

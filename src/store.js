@@ -55,6 +55,12 @@ export default new Vuex.Store({
       state.mathLangTag = lang == "de" ? "de" : "en";
       settings.save(state);
     },
+
+    setCopyOnClick(state, value) {
+      console.log("setCopyOnClick", typeof value, value);
+      state.copyOnClick = value ? true : false;
+      settings.save(state);
+    }
   },
   actions: {}
 });

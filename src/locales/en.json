@@ -1,4 +1,8 @@
 {
+  "misc": {
+    "on": "On",
+    "off": "Off"
+  },
   "langs": {
     "english": "English",
     "german": "German"
@@ -29,7 +33,8 @@
     "input_mode_advanced": "Advanced",
     "language": "Language",
     "significant_decimal_places": "Significant decimal places",
-    "math_lang_tag": "Math language html tag"
+    "math_lang_tag": "Math language html tag",
+    "copy_on_click": "Copy content by clicking"
   },
   "manual": {
     "search": "Search"

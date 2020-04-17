@@ -15,7 +15,8 @@ const settings = {
       themePath: state.avialableThemes[
         state.currentTheme ? state.currentTheme : "bright"
       ],
-      mathLangTag: state.mathLangTag ? state.mathLangTag : "de"
+      mathLangTag: state.mathLangTag ? state.mathLangTag : "de",
+      copyOnClick: state.copyOnClick ? state.copyOnClick : false,
     };
     let d = new Date();
     d.setTime(d.getTime() + COOKIE_EXPIRE_DAYS * 24 * 3600000);
@@ -109,7 +110,8 @@ function initState() {
     avialableThemes: {
       bright: "./themes/bright-theme.css"
     },
-    currentTheme: theme.init()
+    currentTheme: theme.init(),
+    copyOnClick: initSetting("copyOnClick", true),
   };
 }
 

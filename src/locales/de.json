@@ -1,4 +1,8 @@
 {
+  "misc": {
+    "on": "An",
+    "off": "Aus"
+  },
   "langs": {
     "english": "Englisch",
     "german": "Deutsch"
@@ -29,7 +33,8 @@
     "input_mode_advanced": "Erweitert",
     "language": "Sprache",
     "significant_decimal_places": "Signifikante Stellenanzahl",
-    "math_lang_tag": "Mathe-Sprach-HTML-Tag"
+    "math_lang_tag": "Mathe-Sprach-HTML-Tag",
+    "copy_on_click": "Inhalt durch klicken kopieren"
   },
   "manual": {
     "search": "Suche"

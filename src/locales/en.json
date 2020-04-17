@@ -33,5 +33,9 @@
   },
   "manual": {
     "search": "Search"
+  },
+  "about": {
+    "author": "Author",
+    "license": "License"
   }
 }

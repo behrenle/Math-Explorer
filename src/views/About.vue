@@ -1,8 +1,7 @@
 <template>
-  <div>
-    <p class="copyright">
-      &copy; 2020 Lennard Sebastian Behrens. All rights reserved.
-    </p>
+  <div class="outer theme-about">
+    <span class="label"> {{ $t('about.author' ) }}: </span> Lennard Behrens<br>
+    <span class="label"> {{ $t('about.license') }}: </span> MIT
   </div>
 </template>
 
@@ -13,8 +12,14 @@ export default {
 </script>
 
 <style scoped>
-.copyright {
-  font-size: 24pt;
-  color: black;
-}
+  .outer {
+    font-size: 32pt;
+    text-align: left;
+    padding: 20px;
+    margin: 20px;
+  }
+
+  .label {
+    font-weight: bold;
+  }
 </style>

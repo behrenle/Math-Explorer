@@ -129,3 +129,9 @@
   color: rgb(64, 64, 64);
   border: none;
 }
+
+/* about stuff */
+.theme-about {
+  background-color: rgb(255, 255, 255);
+  color: rgb(64, 64, 64);
+}

@@ -29,6 +29,7 @@
 }
 
 .theme-app-menu-title {
+  color: rgb(64, 64, 64);
   font-weight: 100;
   font-family: "Andale Mono", AndaleMono, monospace;
 }

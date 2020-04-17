@@ -1,11 +1,9 @@
 <template>
   <div id="app" class="app">
     <div class="menu-bar theme-app-menu-bar">
-      <div class="menu-item menu-title theme-app-menu-item theme-app-menu-title">
-        <img src="./assets/logo.png" class="logo_img" alt="logo" />
-        <div class="logo_name">
-          Math Explorer {{version}}
-        </div>
+      <img src="./assets/logo.png" class="menu-logo" alt="logo" />
+      <div class="menu-title theme-app-menu-title">
+        Math Explorer {{version}}
       </div>
       <router-link to="/" class="
         menu-item
@@ -57,28 +55,34 @@ export default {
 </script>
 
 <style scoped>
-.logo_img {
-  height: calc(100% - 20px);
-  padding-top: 10px;
-  padding-right: 10px;
-  float: left;
-}
-
-.logo_name {
-  height: 100%;
+.menu-logo {
+  height: 80px;
+  width: 80px;
   padding: var(--app-menu-item-padding);
   box-sizing: border-box;
-  float: left;
+}
+
+.menu-title {
+  /*letter-spacing: 3px;
+  padding: 0;
+  padding-left: 20px;
+  margin-right: auto;*/
+  /*color: black;*/
+  margin-right: auto;
+  display: flex;
+  align-items: center;
 }
 
 .menu-bar {
-  height: var(--app-menu-bar-height);
+  height: 80px;
   width: 100%;
   color: white;
-  font-size: var(--app-font-size);
+  font-size: 32pt;
   text-align: left;
   font-family: Verdana, Geneva, sans-serif;
-  display: grid;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
   grid-template-columns: 40% 15% 15% 15% 15%;
   grid-template-rows: 100%;
   z-index: 2;
@@ -91,12 +95,6 @@ export default {
 
 .menu-button {
   text-align: center;
-}
-
-.menu-title {
-  letter-spacing: 3px;
-  padding: 0;
-  padding-left: 20px;
 }
 
 .content {
@@ -193,7 +191,7 @@ export default {
   height: 100%;
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: var(--app-grid);
+  grid-template-rows: 80px auto;
   grid-gap: 0;
 }
 

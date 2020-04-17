@@ -54,9 +54,9 @@
         border-bottom: 1px solid white;
         font-size: 30pt;
         text-align: left;
-        width: calc(100% - 20px);
-        margin-left: 20px;
+        width: auto;
         margin-bottom: 10px;
+        margin-left: 10px;
         overflow: hidden;
         padding: 10px;
         box-sizing: border-box;

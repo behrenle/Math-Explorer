@@ -1,46 +1,60 @@
 <template>
   <div class="calculator">
-    <div id="history" class="history" ref="history" v-if="inputMode === 'advanced'">
-      <HistoryObject
-        v-for="item in history.getItems()"
-        v-bind:key="item.index"
-        :input="item.input"
-        :output="item.output"
-        :index="item.index"
-      >
-      </HistoryObject>
+    <div v-if="inputMode === 'advanced'" class="advanced-container">
+      <div class="history" id="history">
+        <HistoryObject
+          v-for="item in history.getItems()"
+          v-bind:key="item.index"
+          :input="item.input"
+          :output="item.output"
+          :index="item.index"
+        >
+        </HistoryObject>
+      </div>
+
+      <input
+        type="text"
+        :lang="this.$store.state.mathLangTag"
+        class="
+          inputfield
+          theme-calc-inputfield
+          theme-focus-border"
+        :placeholder="$t('calculator.input_placeholder')"
+        v-on:keypress="calculate"
+        ref="inputfield"
+      />
     </div>
-    <input
-      v-if="inputMode === 'advanced'"
-      type="text"
-      :lang="this.$store.state.mathLangTag"
-      class="inputfield theme-calc-inputfield theme-focus-border"
-      :placeholder="$t('calculator.input_placeholder')"
-      v-on:keypress="calculate"
-      ref="inputfield"
-    />
-    <div v-if="inputMode === 'simple'" class="simpleContainer">
+
+    <div v-if="inputMode === 'simple'" class="simple-container">
       <input
         type="text"
         id="inputfield"
         :lang="this.$store.state.mathLangTag"
-        class="inputfield theme-calc-inputfield theme-focus-border"
+        class="
+          inputfield
+          theme-calc-inputfield
+          theme-focus-border"
         :placeholder="$t('calculator.input_placeholder')"
         v-on:keypress="calculate"
         ref="inputfield"
         v-shortkey.once="['ctrl', 'o']"
         @shortkey="test()"
       />
+
       <input
         id="simple-outputfield"
         :lang="this.$store.state.mathLangTag"
-        class="outputfield theme-calc-inputfield theme-focus-border"
+        class="
+          outputfield
+          theme-calc-inputfield
+          theme-focus-border"
         :value="getLastOutput()"
         readonly="readonly"
         :placeholder="$t('calculator.output_placeholder')"
         v-on:keypress="returnFocus"
       />
     </div>
+
     <div class="sidemenu theme-calc-sidemenu">
       <button
         class="sidemenu-button clear-history theme-calc-button theme-focus-border"
@@ -162,17 +176,28 @@ export default {
   height: 100%;
   display: grid;
   grid-template-columns: auto 375px;
-  grid-template-rows: auto 120px;
-  grid-gap: 20px;
   padding: 0px;
   padding-top: 0;
   box-sizing: border-box;
+  overflow-y: hidden;
+}
+
+.advanced-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 100px;
+  grid-gap: 20px;
+  padding: 20px;
+  padding-left: 10px;
+  box-sizing: border-box;
+  border: 1px solid blue;
 }
 
 .history {
   width: 100%;
-  margin-top: 20px;
-  height: calc(100% - 20px);
+  height: 100%;
   overflow-y: scroll;
   box-sizing: border-box;
   -ms-overflow-style: none;  /* Internet Explorer 10+ */
@@ -180,21 +205,23 @@ export default {
 }
 
 .history::-webkit-scrollbar {
-    display: none;  /* Safari and Chrome */
+  display: none;  /* Safari and Chrome */
 }
 
-.simpleContainer {
-  padding: 0;
-  margin: 20px 0 0 0;
+.simple-container {
+  display: grid;
+  grid-template-rows: 100px 100px;
+  grid-gap: 20px;
+  padding: 20px;
+  padding-left: 10px;
 }
 
 .inputfield {
-  width: calc(100% - 20px);
+  width: auto;
   height: 100px;
   font-size: 32pt;
   padding: 10px;
-  margin-left: 20px;
-  margin-bottom: 20px;
+  margin-left: 10px;
   float: left;
   font-family: Verdana, Geneva, sans-serif;
   -webkit-box-sizing: border-box;
@@ -203,11 +230,11 @@ export default {
 }
 
 .sidemenu {
+  height: 100%;
   grid-row-start: 1;
-  grid-row-end: 3;
   grid-column-start: 2;
-  display: flex;
-  flex-direction: column;
+  /*display: flex;
+  flex-direction: column;*/
 }
 
 .sidemenu-button {
@@ -231,12 +258,9 @@ export default {
   padding: 10px;
   text-align: left;
   font-size: 32pt;
-  margin-top: 20px;
-  position: relative;
   height: 100px;
   box-sizing: border-box;
-  width: calc(100% - 20px);
-  left: 10px;
-  margin: 0;
+  width: auto;
+  margin-left: 10px;
 }
 </style>

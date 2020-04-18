@@ -74,6 +74,7 @@ export default {
       },
       set(value) {
         this.$store.commit("setLanguage", value);
+        this.$root.$i18n.locale = this.$store.state.language;
       }
     },
 

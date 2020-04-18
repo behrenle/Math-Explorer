@@ -17,6 +17,7 @@
 <style scoped>
   .outer {
     padding-bottom: 10px;
+    margin-bottom: 20px;
   }
 
   .outer h1{

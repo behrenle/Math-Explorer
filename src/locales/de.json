@@ -25,7 +25,8 @@
   "settings": {
     "categories": {
       "language": "Spracheinstellungen",
-      "general": "Allgemein"
+      "general": "Allgemein",
+      "advanced_input_mode": "Erweiterter Eingabemodus"
     },
     "decimal_mode": "Dezimalmodus",
     "input_mode": "Eingabemodus",
@@ -34,7 +35,8 @@
     "language": "Sprache",
     "significant_decimal_places": "Signifikante Stellenanzahl",
     "math_lang_tag": "Mathe-Sprach-HTML-Tag",
-    "copy_on_click": "Inhalt durch klicken kopieren"
+    "copy_on_click": "Inhalt durch klicken kopieren",
+    "show_cell_numbers": "Zeige Zellennummern"
   },
   "manual": {
     "search": "Suche"

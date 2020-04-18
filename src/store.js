@@ -57,8 +57,12 @@ export default new Vuex.Store({
     },
 
     setCopyOnClick(state, value) {
-      console.log("setCopyOnClick", typeof value, value);
       state.copyOnClick = value ? true : false;
+      settings.save(state);
+    },
+
+    setShowCellNumbers(state, value) {
+      state.showCellNumbers = value ? true : false;
       settings.save(state);
     }
   },

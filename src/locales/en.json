@@ -25,7 +25,8 @@
   "settings": {
     "categories": {
       "language": "Language settings",
-      "general": "General"
+      "general": "General",
+      "advanced_input_mode": "Advanced input mode"
     },
     "decimal_mode": "Decimal mode",
     "input_mode": "Input mode",
@@ -34,7 +35,8 @@
     "language": "Language",
     "significant_decimal_places": "Significant decimal places",
     "math_lang_tag": "Math language html tag",
-    "copy_on_click": "Copy content by clicking"
+    "copy_on_click": "Copy content by clicking",
+    "show_cell_numbers": "Show cell numbers"
   },
   "manual": {
     "search": "Search"

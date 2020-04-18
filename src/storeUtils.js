@@ -17,6 +17,7 @@ const settings = {
       ],
       mathLangTag: state.mathLangTag ? state.mathLangTag : "de",
       copyOnClick: state.copyOnClick ? state.copyOnClick : false,
+      showCellNumbers: state.showCellNumbers ? state.showCellNumbers : false,
     };
     let d = new Date();
     d.setTime(d.getTime() + COOKIE_EXPIRE_DAYS * 24 * 3600000);
@@ -112,6 +113,7 @@ function initState() {
     },
     currentTheme: theme.init(),
     copyOnClick: initSetting("copyOnClick", true),
+    showCellNumbers: initSetting("showCellNumbers", true),
   };
 }
 

@@ -1,67 +1,71 @@
 <template>
   <div class="settings theme-settings">
     <SettingsCategory :name="$t('settings.categories.general')">
-      <div class="settings-element theme-settings-element">
-        <span class="label">{{ $t("settings.significant_decimal_places") }}</span>
+      <SettingsItem :name="$t('settings.significant_decimal_places')">
         <select v-model="sDecimalPlaces" class="settings-button theme-settings-button">
           <option :value="i" v-for="i in 16">{{i}}</option>
         </select>
-      </div>
+      </SettingsItem>
 
-      <div class="settings-element theme-settings-element">
-        <span class="label">{{ $t("settings.input_mode") }}</span>
+      <SettingsItem :name="$t('settings.input_mode')">
         <select v-model="inputMode" class="settings-button theme-settings-button">
           <option value="simple">{{ $t("settings.input_mode_simple") }}</option>
           <option value="advanced">{{ $t("settings.input_mode_advanced") }}</option>
         </select>
-      </div>
+      </SettingsItem>
     </SettingsCategory>
 
     <SettingsCategory :name="$t('settings.categories.language')">
-      <div class="settings-element theme-settings-element">
-        <span class="label">{{ $t("settings.language") }}</span>
+      <SettingsItem :name="$t('settings.language')">
         <select v-model="language" class="settings-button theme-settings-button">
           <option value="en">{{ $t("langs.english") }}</option>
           <option value="de">{{ $t("langs.german") }}</option>
         </select>
-      </div>
+      </SettingsItem>
 
-      <div class="settings-element theme-settings-element">
-        <span class="label">{{ $t("settings.decimal_mode") }}</span>
+      <SettingsItem :name="$t('settings.decimal_mode')">
         <select v-model="decimalMode" class="settings-button theme-settings-button">
           <option value="english">{{ $t("langs.english") }}</option>
           <option value="german">{{ $t("langs.german") }}</option>
         </select>
-      </div>
+      </SettingsItem>
 
-      <div class="settings-element theme-settings-element">
-        <span class="label">{{ $t("settings.math_lang_tag") }}</span>
+      <SettingsItem :name="$t('settings.math_lang_tag')">
         <select v-model="mathLangTag" class="settings-button theme-settings-button">
           <option value="en">{{ $t("langs.english") }}</option>
           <option value="de">{{ $t("langs.german") }}</option>
         </select>
-      </div>
+      </SettingsItem>
     </SettingsCategory>
 
     <SettingsCategory :name="$t('settings.categories.advanced_input_mode')">
-      <div class="settings-element theme-settings-element">
-        <span class="label">{{ $t("settings.copy_on_click") }}</span>
+      <SettingsItem :name="$t('settings.copy_on_click')">
         <select v-model="copyOnClick" class="settings-button theme-settings-button">
           <option :value="true">{{ $t("misc.on") }}</option>
           <option :value="false">{{ $t("misc.off") }}</option>
         </select>
-      </div>
+      </SettingsItem>
+
+      <SettingsItem :name="$t('settings.show_cell_numbers')">
+        <select v-model="showCellNumbers" class="settings-button theme-settings-button">
+          <option :value="true">{{ $t("misc.on") }}</option>
+          <option :value="false">{{ $t("misc.off") }}</option>
+        </select>
+      </SettingsItem>
     </SettingsCategory>
+
   </div>
 </template>
 
 <script>
 import SettingsCategory from "@/components/SettingsCategory.vue";
+import SettingsItem from "@/components/SettingsItem.vue";
 
 export default {
   name: "Settings",
   components: {
-    SettingsCategory
+    SettingsCategory,
+    SettingsItem
   },
   computed: {
     language: {
@@ -117,7 +121,17 @@ export default {
 
       set(value) {
         this.$store.commit("setCopyOnClick", value);
+      }
+    },
+
+    showCellNumbers: {
+      get() {
+        return this.$store.state.showCellNumbers;
       },
+
+      set(value) {
+        this.$store.commit("setShowCellNumbers", value);
+      }
     }
   },
   methods: {
@@ -137,27 +151,26 @@ export default {
   color: white;
   font-size: 32pt;
   text-align: left;
-  width: calc(100% - 40px);
-  height: auto;
+  width: 100%;
+  height: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
-  padding: 0;
+  grid-column-gap: 20px;
+  padding: 20px;
   box-sizing: border-box;
-  margin: 20px;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+  overflow-y: scroll;
+}
+
+.settings::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
 }
 
 @media only screen and (max-width: 1300px) {
   .settings {
     grid-template-columns: 1fr;
   }
-}
-
-.settings-element {
-  box-sizing: border-box;
-  padding: 10px 15px;
-  overflow: auto;
-  display: flex;
 }
 
 .settings-button {
@@ -171,22 +184,4 @@ export default {
   float: right;
 }
 
-.label {
-  padding: 5px 0px;
-  margin-right: auto;
-}
-
-.number_input {
-  width: 150px;
-}
-
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-input[type=number] {
-  -moz-appearance:textfield; /* Firefox */
-}
 </style>

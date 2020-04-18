@@ -3,17 +3,32 @@
     class="outer theme-history-object"
     :lang="this.$store.state.mathLangTag"
   >
-    <div class="index theme-history-object-index">
+    <div
+      v-if="$store.state.showCellNumbers"
+      class="index theme-history-object-index"
+    >
       #{{index}}
     </div>
 
-    <div class="input theme-calc-history-object-field">
+    <div
+      v-bind:class="{
+        'field-width1': $store.state.showCellNumbers,
+        'field-width2': !$store.state.showCellNumbers,
+        'theme-calc-history-object-field': $store.state.showCellNumbers
+      }"
+    >
       <span class="theme-calc-copyable" v-on:click="copyInput">
         {{input}}
       </span>
     </div>
 
-    <div class="output theme-calc-history-object-field">
+    <div
+      v-bind:class="{
+        'field-width1': $store.state.showCellNumbers,
+        'field-width2': !$store.state.showCellNumbers,
+        'theme-calc-history-object-field': $store.state.showCellNumbers
+      }"
+    >
       &rarr;
       <span class="theme-calc-copyable" v-on:click="copyOutput">
         {{output}}
@@ -62,24 +77,22 @@
     overflow: hidden;
     padding: 10px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 
-  .input {
-    width: calc(100% - 130px);
+  .field-width1 { /* index is displayed */
+    flex-basis: calc(100% - 130px);
+    margin-left: auto;
     padding-left: 20px;
-    float: right;
   }
 
-  .output {
-    width: calc(100% - 130px);
-    padding-left: 20px;
-    float: right;
+  .field-width2 { /* index is not displayed */
+    flex-basis: 100%
   }
 
   .index {
-    width: 100px;
-    top: 0;
-    bottom: 0;
-    float: left;
+    align-self: stretch;
   }
 </style>

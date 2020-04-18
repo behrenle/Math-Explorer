@@ -52,6 +52,10 @@ export default {
     scrollbar-width: none;  /* Firefox */
   }
 
+  .manual::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+  }
+
   .search-field {
     font-size: 32pt;
     width: 100%;

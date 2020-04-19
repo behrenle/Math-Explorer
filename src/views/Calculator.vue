@@ -199,7 +199,6 @@ export default {
   padding: 20px;
   padding-left: 10px;
   box-sizing: border-box;
-  border: 1px solid blue;
 }
 
 .history {

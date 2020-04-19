@@ -26,6 +26,7 @@
       variants: Array,
       storeGet: String, // store key
       storeSet: String, // store mutation
+      onChange: Function,
     },
 
     computed: {
@@ -36,6 +37,9 @@
 
         set(value) {
           this.$store.commit(this.storeSet, value);
+          if (this.onChange) {
+            this.onChange();
+          }
         }
       }
     }

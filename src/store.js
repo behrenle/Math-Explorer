@@ -33,8 +33,8 @@ export default new Vuex.Store({
     },
 
     setDecimalMode(state, mode) {
-      state.history.lang = mode == "german" ? "german" : "english";
-      state.decimalMode = state.history.lang;
+      state.history.lang = mode == "de" ? "german" : "english";
+      state.decimalMode = mode == "de" ? "de" : "en";
       settings.save(state);
     },
 

@@ -24,18 +24,18 @@
       name: String,
       type: String,
       variants: Array,
-      setter: Function,
-      getter: Function,
+      storeGet: String, // store key
+      storeSet: String, // store mutation
     },
 
     computed: {
       internalModel: {
         get() {
-          return this.getter();
+          return this.$store.state[this.storeGet];
         },
 
         set(value) {
-          this.setter(value);
+          this.$store.commit(this.storeSet, value);
         }
       }
     }

@@ -39,6 +39,10 @@
     "show_cell_numbers": "Show cell numbers"
   },
   "manual": {
+    "categories": {
+      "constants": "Constants",
+      "functions": "Functions"
+    },
     "search": "Search"
   },
   "about": {

@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import Category from "./Category.vue";
+import Category from "../common/Category.vue";
 import Item from "./Item.vue";
 
 export default {

@@ -196,8 +196,6 @@ export default {
   box-sizing: border-box;
 }
 
-
-
 .outputfield {
   font-family: Verdana, Geneva, sans-serif;
   padding: 10px;

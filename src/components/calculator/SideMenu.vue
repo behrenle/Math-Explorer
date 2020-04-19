@@ -1,41 +1,37 @@
 <template>
   <div class="sidemenu theme-calc-sidemenu">
-    <button
-      class="sidemenu-button clear-history theme-calc-button theme-focus-border"
-      v-if="inputMode === 'advanced'"
-      v-on:click="clearHistory"
-    >
+    <SideMenuButton v-on:click="clearHistory">
       {{ $t("calculator.clear_history") }}
-    </button>
+    </SideMenuButton>
 
-    <button
-      class="sidemenu-button clear-history theme-calc-button theme-focus-border"
-      v-if="inputMode === 'simple'"
-      v-on:click="clearHistory"
-    >
+    <SideMenuButton v-on:click="clearHistory">
       {{ $t("calculator.clear_output") }}
-    </button>
+    </SideMenuButton>
 
-    <button class="sidemenu-button clear-input theme-calc-button theme-focus-border" v-on:click="clearInput">
+    <SideMenuButton v-on:click="clearInput">
       {{ $t("calculator.clear_input") }}
-    </button>
+    </SideMenuButton>
 
-    <button class="sidemenu-button clear-scope theme-calc-button theme-focus-border" v-on:click="clearScope">
+    <SideMenuButton v-on:click="clearScope">
       {{ $t("calculator.clear_memory") }}
-    </button>
+    </SideMenuButton>
 
-    <button class="sidemenu-button clear-scope theme-calc-button theme-focus-border" v-on:click="clearAll">
+    <SideMenuButton v-on:click="clearAll">
       {{ $t("calculator.clear_all") }}
-    </button>
+    </SideMenuButton>
   </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
+import SideMenuButton from "./SideMenuButton.vue";
 
 export default {
   name: "SideMenu",
-  
+  components: {
+    SideMenuButton,
+  },
+
   methods: {
     clearHistory: function() {
       this.$store.commit("clearHistory");
@@ -86,19 +82,5 @@ export default {
     }
   }
 
-  .sidemenu-button {
-    width: 100%;
-    height: 120px;
-    font-size: 32pt;
-    text-align: left;
-    padding-left: 25px;
-    outline: none;
-  }
 
-  @media only screen and (max-width: 1300px) {
-    .sidemenu-button {
-      text-align: center;
-      padding: 0px 20px;
-    }
-  }
 </style>

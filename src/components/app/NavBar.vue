@@ -45,7 +45,7 @@
   export default {
     name: "NavBar",
     data: function() {
-      return {version: pjson.version};
+      return {version: packageJSON.version};
     }
   }
 

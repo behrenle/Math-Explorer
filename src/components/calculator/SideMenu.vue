@@ -1,22 +1,28 @@
 <template>
   <div class="sidemenu theme-calc-sidemenu">
-    <SideMenuButton v-on:click="clearHistory">
+    <SideMenuButton
+      :callback="clearHistory"
+      v-if="inputMode === 'advanced'"
+    >
       {{ $t("calculator.clear_history") }}
     </SideMenuButton>
 
-    <SideMenuButton v-on:click="clearHistory">
+    <SideMenuButton
+      :callback="clearHistory"
+      v-if="inputMode === 'simple'"
+    >
       {{ $t("calculator.clear_output") }}
     </SideMenuButton>
 
-    <SideMenuButton v-on:click="clearInput">
+    <SideMenuButton :callback="clearInput">
       {{ $t("calculator.clear_input") }}
     </SideMenuButton>
 
-    <SideMenuButton v-on:click="clearScope">
+    <SideMenuButton :callback="clearScope">
       {{ $t("calculator.clear_memory") }}
     </SideMenuButton>
 
-    <SideMenuButton v-on:click="clearAll">
+    <SideMenuButton :callback="clearAll">
       {{ $t("calculator.clear_all") }}
     </SideMenuButton>
   </div>
@@ -28,7 +34,7 @@ import SideMenuButton from "./SideMenuButton.vue";
 
 export default {
   name: "SideMenu",
-  
+
   components: {
     SideMenuButton,
   },
@@ -40,7 +46,7 @@ export default {
     },
 
     clearInput: function() {
-      this.$refs.inputfield.value = "";
+      document.getElementById("inputfield").value = "";
       this.focusInput();
     },
 
@@ -54,6 +60,10 @@ export default {
       this.clearScope();
       this.clearInput();
       this.focusInput();
+    },
+
+    focusInput() {
+      document.getElementById("inputfield").focus();
     }
   },
 

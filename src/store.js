@@ -13,7 +13,8 @@ export default new Vuex.Store({
   state: storeUtils.initState(),
   mutations: {
     evaluateInput: function(state, inputLine) {
-      state.history.pushString(inputLine);
+      if (inputLine.length > 0)
+        state.history.pushString(inputLine);
     },
 
     clearHistory: function(state) {

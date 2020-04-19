@@ -39,7 +39,7 @@
 
 <script>
   export default {
-    name: "HistoryObject",
+    name: "HistoryItem",
     props: {
         input: String,
         output: String,

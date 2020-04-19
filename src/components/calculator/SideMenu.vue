@@ -28,6 +28,7 @@ import SideMenuButton from "./SideMenuButton.vue";
 
 export default {
   name: "SideMenu",
+  
   components: {
     SideMenuButton,
   },
@@ -65,22 +66,20 @@ export default {
 </script>
 
 <style scoped>
+.sidemenu {
+  height: 100%;
+  grid-row-start: 1;
+  grid-column-start: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (max-width: 1300px) {
   .sidemenu {
-    height: 100%;
     grid-row-start: 1;
-    grid-column-start: 2;
-    display: flex;
-    flex-direction: column;
+    grid-column-start: 1;
+    flex-direction: row;
+    z-index: 1;
   }
-
-  @media only screen and (max-width: 1300px) {
-    .sidemenu {
-      grid-row-start: 1;
-      grid-column-start: 1;
-      flex-direction: row;
-      z-index: 1;
-    }
-  }
-
-
+}
 </style>

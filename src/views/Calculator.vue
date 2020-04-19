@@ -1,29 +1,6 @@
 <template>
   <div class="calculator">
-    <div v-if="inputMode === 'advanced'" class="advanced-container">
-      <div class="history" id="history">
-        <HistoryObject
-          v-for="item in history.getItems()"
-          v-bind:key="item.index"
-          :input="item.input"
-          :output="item.output"
-          :index="item.index"
-        >
-        </HistoryObject>
-      </div>
-
-      <input
-        type="text"
-        :lang="this.$store.state.mathLangTag"
-        class="
-          inputfield
-          theme-calc-inputfield
-          theme-focus-border"
-        :placeholder="$t('calculator.input_placeholder')"
-        v-on:keypress="calculate"
-        ref="inputfield"
-      />
-    </div>
+    <AdvancedInput v-if="inputMode === 'advanced'" />
 
     <div v-if="inputMode === 'simple'" class="simple-container">
       <input
@@ -60,14 +37,15 @@
 </template>
 
 <script>
-import HistoryObject from "@/components/HistoryObject.vue";
+//import HistoryObject from "@/components/HistoryObject.vue";
+import AdvancedInput from "../components/calculator/AdvancedInput.vue";
 import SideMenu from "../components/calculator/SideMenu.vue";
 import { mapState, mapMutations } from "vuex";
 
 export default {
   name: "Calculator",
   components: {
-    HistoryObject,
+    AdvancedInput,
     SideMenu
   },
 
@@ -148,31 +126,6 @@ export default {
     grid-template-columns: auto;
     grid-template-rows: 120px auto;
   }
-}
-
-.advanced-container {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  display: grid;
-  grid-template-rows: auto 100px;
-  grid-gap: 10px;
-  padding: 20px;
-  padding-left: 10px;
-  box-sizing: border-box;
-}
-
-.history {
-  width: 100%;
-  height: 100%;
-  overflow-y: scroll;
-  box-sizing: border-box;
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
-  scrollbar-width: none; /* Firefox */
-}
-
-.history::-webkit-scrollbar {
-  display: none; /* Safari and Chrome */
 }
 
 .simple-container {

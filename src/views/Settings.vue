@@ -1,19 +1,6 @@
 <template>
   <div class="settings theme-settings">
-    <SettingsCategory :name="$t('settings.categories.general')">
-      <SettingsItem :name="$t('settings.significant_decimal_places')">
-        <select v-model="sDecimalPlaces" class="settings-button theme-settings-button">
-          <option :value="i" v-for="i in 16">{{i}}</option>
-        </select>
-      </SettingsItem>
-
-      <SettingsItem :name="$t('settings.input_mode')">
-        <select v-model="inputMode" class="settings-button theme-settings-button">
-          <option value="simple">{{ $t("settings.input_mode_simple") }}</option>
-          <option value="advanced">{{ $t("settings.input_mode_advanced") }}</option>
-        </select>
-      </SettingsItem>
-    </SettingsCategory>
+    <GeneralSettings />
 
     <SettingsCategory :name="$t('settings.categories.language')">
       <SettingsItem :name="$t('settings.language')">
@@ -60,12 +47,14 @@
 <script>
 import SettingsCategory from "@/components/SettingsCategory.vue";
 import SettingsItem from "@/components/SettingsItem.vue";
+import GeneralSettings from "../components/settings/GeneralSettings.vue";
 
 export default {
   name: "Settings",
   components: {
     SettingsCategory,
-    SettingsItem
+    SettingsItem,
+    GeneralSettings
   },
   computed: {
     language: {

@@ -55,117 +55,78 @@
       />
     </div>
 
-    <div class="sidemenu theme-calc-sidemenu">
-      <button
-        class="sidemenu-button clear-history theme-calc-button theme-focus-border"
-        v-if="inputMode === 'advanced'"
-        v-on:click="clearHistory"
-      >
-        {{ $t("calculator.clear_history") }}
-      </button>
-
-      <button
-        class="sidemenu-button clear-history theme-calc-button theme-focus-border"
-        v-if="inputMode === 'simple'"
-        v-on:click="clearHistory"
-      >
-        {{ $t("calculator.clear_output") }}
-      </button>
-
-      <button class="sidemenu-button clear-input theme-calc-button theme-focus-border" v-on:click="clearInput">
-        {{ $t("calculator.clear_input") }}
-      </button>
-
-      <button class="sidemenu-button clear-scope theme-calc-button theme-focus-border" v-on:click="clearScope">
-        {{ $t("calculator.clear_memory") }}
-      </button>
-
-      <button class="sidemenu-button clear-scope theme-calc-button theme-focus-border" v-on:click="clearAll">
-        {{ $t("calculator.clear_all") }}
-      </button>
-    </div>
+    <SideMenu></SideMenu>
   </div>
 </template>
 
 <script>
 import HistoryObject from "@/components/HistoryObject.vue";
+import SideMenu from "../components/calculator/SideMenu.vue";
 import { mapState, mapMutations } from "vuex";
 
 export default {
   name: "Calculator",
   components: {
-    HistoryObject
+    HistoryObject,
+    SideMenu
   },
+
   created: function() {
     this.$eventBus.$on("copy-history-text", this.copyHistoryText);
   },
+
   mounted: function() {
     this.focusInput();
   },
+
   computed: {
     ...mapState({
       history: "history",
-      decimalMode: "decimalMode",
       inputMode: "inputMode"
     })
-    // other stuff
   },
+
   methods: {
-    test: function() {
+    test() {
       alert("test");
     },
-    getLastOutput: function() {
+
+    getLastOutput() {
       if (this.history.getItems().length > 0) {
         return this.history.getItems()[this.history.getItems().length - 1].output;
       } else {
         return "";
       }
     },
-    copyHistoryText: function(e) {
+
+    copyHistoryText(e) {
       this.$refs.inputfield.value = e;
     },
-    calculate: function(e) {
-      var key = e.which || e.keyCode;
-      console.log("store", this.$store);
-      if (key === 13) {
-        // 13 is enter
-        this.evaluateInput(this.$refs.inputfield.value);
 
+    calculate(e) {
+      var key = e.which || e.keyCode;
+      if (key === 13) {
+        this.evaluateInput(this.$refs.inputfield.value);
         if (this.inputMode === "simple") {
           document.getElementById("simple-outputfield").focus();
         }
       }
     },
-    returnFocus: function(e) {
+
+    returnFocus(e) {
       var key = e.which || e.keyCode;
       if (key === 13) {
         this.focusInput();
       }
     },
-    focusInput: function() {
+
+    focusInput() {
       document.getElementById("inputfield").focus();
     },
-    clearHistory: function() {
-      this.$store.commit("clearHistory");
-      this.focusInput();
-    },
-    clearInput: function() {
-      this.$refs.inputfield.value = "";
-      this.focusInput();
-    },
-    clearScope: function() {
-      this.$store.commit("clearScope");
-      this.focusInput();
-    },
+
     evaluateInput(input) {
       this.$store.commit("evaluateInput",input);
     },
-    clearAll: function() {
-      this.clearHistory();
-      this.clearScope();
-      this.clearInput();
-      this.focusInput();
-    }
   }
 };
 </script>
@@ -206,12 +167,12 @@ export default {
   height: 100%;
   overflow-y: scroll;
   box-sizing: border-box;
-  -ms-overflow-style: none;  /* Internet Explorer 10+ */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
 }
 
 .history::-webkit-scrollbar {
-  display: none;  /* Safari and Chrome */
+  display: none; /* Safari and Chrome */
 }
 
 .simple-container {
@@ -235,38 +196,7 @@ export default {
   box-sizing: border-box;
 }
 
-.sidemenu {
-  height: 100%;
-  grid-row-start: 1;
-  grid-column-start: 2;
-  display: flex;
-  flex-direction: column;
-}
 
-@media only screen and (max-width: 1300px) {
-  .sidemenu {
-    grid-row-start: 1;
-    grid-column-start: 1;
-    flex-direction: row;
-    z-index: 1;
-  }
-}
-
-.sidemenu-button {
-  width: 100%;
-  height: 120px;
-  font-size: 32pt;
-  text-align: left;
-  padding-left: 25px;
-  outline: none;
-}
-
-@media only screen and (max-width: 1300px) {
-  .sidemenu-button {
-    text-align: center;
-    padding: 0px 20px;
-  }
-}
 
 .outputfield {
   font-family: Verdana, Geneva, sans-serif;

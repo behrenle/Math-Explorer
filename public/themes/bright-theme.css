@@ -1,3 +1,15 @@
+/* theme css variables */
+:root {
+  --bg-primary: rgb(255, 255, 255);
+  --bg-secondary: rgb(255, 235, 215);
+  --bg-hover: rgba(210, 180, 140, 0.5);
+  --color-primary: rgb(64, 64, 64);
+  --color-secondary: rgba(210, 180, 140, 0.5);
+  --shadow-down: 0px 3.5px 3.5px rgba(128, 128, 128, 0.5);
+  --shadow-left: -3.5px 0px 3.5px rgba(128, 128, 128, 0.5);
+  --shadow-left-down: -3.5px 3.5px 3.5px rgba(128, 128, 128, 0.5);
+}
+
 /* app stuff */
 .theme-content {
   background-color: rgb(255,235,215);

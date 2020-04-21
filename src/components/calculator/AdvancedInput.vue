@@ -12,6 +12,7 @@
       :placeholder="$t('calculator.input_placeholder')"
       v-on:keypress="calculate"
       ref="inputfield"
+      v-model="inputStr"
     />
   </div>
 </template>
@@ -34,6 +35,7 @@ export default {
 
   mounted() {
     this.setFocus("inputfield");
+    document.getElementById("inputfield").value = this.$store.state.currentInput
   },
 
   methods: {
@@ -47,7 +49,19 @@ export default {
     setFocus(elementId) {
       document.getElementById(elementId).focus();
     }
-  }
+  },
+
+  computed: {
+    inputStr: {
+      get() {
+        return this.$store.state.currentInput;
+      },
+
+      set(value) {
+        this.$store.commit("setCurrentInput", value);
+      }
+    },
+  },
 }
 </script>
 

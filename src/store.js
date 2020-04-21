@@ -10,18 +10,21 @@ Vue.use(Vuex);
 
 // store
 export default new Vuex.Store({
-  state: storeUtils.initState(),
+  state: {
+    ...storeUtils.initState(),
+    currentInput: "",
+  },
   mutations: {
-    evaluateInput: function(state, inputLine) {
+    evaluateInput(state, inputLine) {
       if (inputLine.length > 0)
         state.history.pushString(inputLine);
     },
 
-    clearHistory: function(state) {
+    clearHistory(state) {
       state.history.clearHistory();
     },
 
-    clearScope: function(state) {
+    clearScope(state) {
       state.history.clearUserScope();
     },
 
@@ -65,7 +68,11 @@ export default new Vuex.Store({
     setShowCellNumbers(state, value) {
       state.showCellNumbers = value ? true : false;
       settings.save(state);
-    }
+    },
+
+    setCurrentInput(state, input) {
+      state.currentInput = input;
+    },
   },
   actions: {}
 });

@@ -1,19 +1,6 @@
 <template>
   <div class="container">
-    <input
-      type="text"
-      id="inputfield"
-      :lang="this.$store.state.mathLangTag"
-      class="
-        inputfield
-        theme-calc-inputfield
-        theme-focus-border"
-      :placeholder="$t('calculator.input_placeholder')"
-      v-on:keypress="calculate"
-      ref="inputfield"
-      v-shortkey.once="['ctrl', 'o']"
-      @shortkey="test()"
-    />
+    <Inputfield />
 
     <input
       id="outputfield"
@@ -25,28 +12,26 @@
       :value="getLastOutput()"
       readonly="readonly"
       :placeholder="$t('calculator.output_placeholder')"
-      v-on:keypress="this.setFocus('inputfield')"
+      v-on:keypress="setFocus('inputfield')"
     />
   </div>
 </template>
 
 <script>
+import Inputfield from "./Inputfield.vue";
+
 export default {
   name: "SimpleInput",
+
+  components: {
+    Inputfield
+  },
 
   mounted() {
     this.setFocus("inputfield");
   },
 
   methods: {
-    calculate(e) {
-      var key = e.which || e.keyCode;
-      if (key === 13) {
-        this.$store.commit("evaluateInput", this.$refs.inputfield.value);
-        this.setFocus("outputfield")
-      }
-    },
-
     setFocus(elementId) {
       document.getElementById(elementId).focus();
     },
@@ -70,19 +55,6 @@ export default {
   grid-gap: 20px;
   padding: 20px;
   padding-left: 10px;
-}
-
-.inputfield {
-  width: auto;
-  height: 100px;
-  font-size: 32pt;
-  padding: 10px;
-  margin-left: 10px;
-  float: left;
-  font-family: Verdana, Geneva, sans-serif;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
 }
 
 .outputfield {

@@ -33,6 +33,7 @@ export default new Vuex.Store({
       misc.setLanguage(state.language);
       misc.setHtmlLang(state.language);
       settings.save(state);
+      location.reload();
     },
 
     setDecimalMode(state, mode) {

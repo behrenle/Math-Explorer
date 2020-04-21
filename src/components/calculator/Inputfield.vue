@@ -11,6 +11,8 @@
     v-on:keypress="calculate"
     ref="inputfield"
     v-model="inputStr"
+    v-shortkey="this.$store.state.shortkeys.inputfield"
+    @shortkey="setFocus('inputfield')"
   />
 </template>
 

@@ -13,6 +13,8 @@
       readonly="readonly"
       :placeholder="$t('calculator.output_placeholder')"
       v-on:keypress="setFocus('inputfield')"
+      v-shortkey="this.$store.state.shortkeys.outputfield"
+      @shortkey="setFocus('outputfield')"
     />
   </div>
 </template>

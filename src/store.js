@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import { settings, theme, misc, initState } from "./storeUtils";
+import { settings, theme, misc, initState, shortkeys } from "./storeUtils";
 
 Vue.use(Vuex);
 
@@ -9,6 +9,7 @@ export default new Vuex.Store({
   state: {
     ...initState(),
     currentInput: "",
+    shortkeys,
   },
   mutations: {
     evaluateInput(state) {

@@ -1,17 +1,13 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import storeUtils from "./storeUtils.js"
-
-const settings    = storeUtils.settings;
-const theme       = storeUtils.theme;
-const misc        = storeUtils.misc;
+import { settings, theme, misc, initState } from "./storeUtils";
 
 Vue.use(Vuex);
 
 // store
 export default new Vuex.Store({
   state: {
-    ...storeUtils.initState(),
+    ...initState(),
     currentInput: "",
   },
   mutations: {

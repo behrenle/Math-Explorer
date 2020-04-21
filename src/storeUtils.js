@@ -4,7 +4,7 @@ const NumberDrive          = require("@behrenle/number-drive");
 const COOKIE_EXPIRE_DAYS   = 365 * 10;
 const COOKIE_SETTINGS_NAME = "settings";
 
-const settings = {
+export const settings = {
   save: function(state) {
     let settings = {
       decimalMode: state.decimalMode,
@@ -49,7 +49,7 @@ const settings = {
 }
 
 
-const theme = {
+export const theme = {
   getID: function(name) {
     return "theme-style-" + name;
   },
@@ -78,7 +78,7 @@ const theme = {
   }
 }
 
-const misc = {
+export const misc = {
   setHtmlLang: function(lang) {
     document.querySelector("html").lang = lang == "de" ? "de" : "en";
   },
@@ -94,7 +94,7 @@ function initSetting(name, defaultValue) {
         : defaultValue;
 }
 
-function initState() {
+export function initState() {
   let decimalMode = initSetting("decimalMode", "german");
   let language    = initSetting("language", "de");
 
@@ -116,10 +116,3 @@ function initState() {
     showCellNumbers: initSetting("showCellNumbers", true),
   };
 }
-
-export default {
-  settings: settings,
-  theme: theme,
-  misc: misc,
-  initState: initState
-};

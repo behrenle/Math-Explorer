@@ -22,7 +22,7 @@ export default {
     calculate(e) {
       var key = e.which || e.keyCode;
       if (key === 13) {
-        this.$store.commit("evaluateInput", this.$refs.inputfield.value);
+        this.$store.commit("evaluateInput");
         if (this.$store.state.inputMode == "simple" && this.$refs.inputfield.value.length > 0) {
           this.setFocus("outputfield");
         }

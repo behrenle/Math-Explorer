@@ -15,9 +15,9 @@ export default new Vuex.Store({
     currentInput: "",
   },
   mutations: {
-    evaluateInput(state, inputLine) {
-      if (inputLine.length > 0)
-        state.history.pushString(inputLine);
+    evaluateInput(state) {
+      if (state.currentInput.length > 0)
+        state.history.pushString(state.currentInput);
     },
 
     clearHistory(state) {

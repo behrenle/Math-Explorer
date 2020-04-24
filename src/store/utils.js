@@ -1,7 +1,7 @@
 const settingsKey = "settings";
 
 export const save = function(state) {
-  localStorage.setItem(settingsKey, JSON.stringify(state.settings));
+  localStorage.setItem(settingsKey, JSON.stringify(state));
 };
 
 export const load = function() {

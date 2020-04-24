@@ -84,9 +84,11 @@ export default {
   },
 
   computed: {
-    ...mapState({
-      inputMode: "inputMode"
-    })
+    inputMode: {
+      get() {
+        return this.$store.state.settings.inputMode;
+      }
+    }
   },
 }
 </script>

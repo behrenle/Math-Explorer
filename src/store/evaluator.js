@@ -2,13 +2,22 @@ const NumberDrive = require("@behrenle/number-drive");
 import { load } from "./utils";
 import { defaults } from "./settings.js";
 
+function init() {
+  let settings = load();
+  let script = new NumberDrive.Script(
+    settings.decimalMode || defaults.decimalMode
+  );
+  script.setSetting("sigDigits",
+    settings.decimalPlaces || defaults.decimalPlaces
+  );
+  return { script };
+}
+
 // Settings module for veux store
 export default {
   namespaced: false,
 
-  state: {
-    script: new NumberDrive.Script(load().decimalMode || defaults.decimalMode)
-  },
+  state: init(),
 
   mutations: {
     setDecimalMode(state, language) {
@@ -22,6 +31,14 @@ export default {
     evaluate(state, inputStr) {
       if (inputStr.length > 0)
         state.script.pushString(inputStr);
+    },
+
+    clearHistory(state) {
+      state.script.clearHistory();
+    },
+
+    clearScope(state) {
+      state.script.clearUserScope();
     },
   },
 

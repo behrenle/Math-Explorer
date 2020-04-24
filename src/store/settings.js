@@ -41,34 +41,42 @@ export default {
   mutations: {
     setDecimalMode(state, mode) {
       state.decimalMode = mode;
+      save(state);
     },
 
     setLanguage(state, language) {
       state.language = language;
+      save(state);
     },
 
     setMathLangTag(state, mlt) {
       state.mathLangTag = mlt;
+      save(state);
     },
 
     setInputMode(state, mode) {
       state.inputMode = mode;
+      save(state);
     },
 
     setDecimalPlaces(state, n) {
       state.decimalPlaces = n;
+      save(state);
     },
 
     setTheme(state, theme) {
       state.theme = theme;
+      save(state);
     },
 
     setCopyOnClick(state, mode) {
       state.copyOnClick = mode;
+      save(state);
     },
 
     setShowCellNumbers(state, mode) {
       state.showCellNumbers = mode;
+      save(state);
     }
   },
 };

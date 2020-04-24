@@ -1,5 +1,5 @@
 import { save, load } from "./utils";
-import i18n from "./i18n";
+import i18n from "../i18n";
 
 // default settings
 export const defaults = {

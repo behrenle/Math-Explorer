@@ -1,9 +1,9 @@
 const settingsKey = "settings";
 
-export save(state) {
+export const save = function(state) {
   localStorage.setItem(settingsKey, JSON.stringify(state.settings));
-}
+};
 
-export load() {
+export const load = function() {
   return JSON.parse(localStorage.getItem(settingsKey)) || {};
-}
+};

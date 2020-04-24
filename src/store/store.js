@@ -3,6 +3,7 @@ import Vuex from "vuex";
 import settings from "./settings";
 import shortkeys from "./shortkeys";
 import evaluator from "./evaluator";
+import manual from "./manual";
 
 Vue.use(Vuex);
 
@@ -10,7 +11,8 @@ export default new Vuex.Store({
   modules: {
     settings,
     shortkeys,
-    evaluator
+    evaluator,
+    manual
   },
 
   state: {

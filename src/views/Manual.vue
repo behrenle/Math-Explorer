@@ -23,16 +23,8 @@ export default {
   },
   data: function() {
     return {
-      helpList: require("../help.json"),
       search: "",
     };
-  },
-  computed: {
-    filteredHelpList: function() {
-      return this.helpList.filter((help) => {
-        return help.name.match(this.search);
-      });
-    },
   },
 };
 </script>

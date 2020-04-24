@@ -25,7 +25,7 @@ export default {
       var key = e.which || e.keyCode;
       if (key === 13) {
         this.$store.dispatch("evaluate");
-        if (this.$store.state.inputMode == "simple" && this.$refs.inputfield.value.length > 0) {
+        if (this.$store.state.settings.inputMode == "simple" && this.$refs.inputfield.value.length > 0) {
           this.setFocus("outputfield");
         }
       }

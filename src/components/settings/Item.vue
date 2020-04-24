@@ -32,7 +32,7 @@
     computed: {
       internalModel: {
         get() {
-          return this.$store.state[this.storeGet];
+          return this.$store.state.settings[this.storeGet];
         },
 
         set(value) {

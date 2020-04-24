@@ -22,7 +22,7 @@ export default {
 
   methods: {
     getHistory() {
-      return this.$store.state.history.getItems();
+      return this.$store.state.evaluator.script.getItems();
     }
   }
 }

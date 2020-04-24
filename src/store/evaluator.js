@@ -17,6 +17,17 @@ export default {
 
     setDecimalPlaces(state, n) {
       state.script.setSetting("sigDigits", n);
+    },
+
+    evaluate(state, inputStr) {
+      if (inputStr.length > 0)
+        state.script.pushString(inputStr);
+    },
+  },
+
+  actions: {
+    evaluate({ commit, rootState }) {
+      commit("evaluate", rootState.currentInput);
     }
   }
 }

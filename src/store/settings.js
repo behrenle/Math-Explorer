@@ -1,4 +1,4 @@
-import { save, load } from "./utils";
+import { save, load, loadTheme } from "./utils";
 import i18n from "../i18n";
 
 // default settings
@@ -9,26 +9,36 @@ export const defaults = {
   inputMode: "simple",
   decimalPlaces: 6,
   theme: "bright",
+  themePath: "./themes/bright-theme.css",
   copyOnClick: true,
   showCellNumbers: true,
 };
 
 // state initializer
 function init() {
+  // init settings state obj
   let settings = load();
   let state    = {};
   for (let key of Object.keys(defaults)) {
     state[key] = settings[key] || defaults[key];
   }
+
+  // init language
   i18n.locale = state.language;
+
+  // init theme
+  let theme = state.theme,
+      themePath = state.themePath;
+
+  loadTheme(theme, themePath);
+
   return state;
 }
 
 // Settings module for veux store
 export default {
-  namespaced: false,
   state: init(),
-  munations: {
+  mutations: {
     setDecimalMode(state, mode) {
       state.decimalMode = mode;
     },

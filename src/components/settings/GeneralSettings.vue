@@ -3,9 +3,9 @@
     <Item
       :name="$t('settings.significant_decimal_places')"
       type="select"
-      :variants="variants.sDecimalPlaces"
-      storeGet="sDecimalPlaces"
-      storeSet="setSDecimalPlaces"
+      :variants="variants.decimalPlaces"
+      storeGet="decimalPlaces"
+      storeSet="setDecimalPlaces"
     />
 
     <Item
@@ -33,7 +33,7 @@ export default {
   data() {
     return {
       variants: {
-        sDecimalPlaces: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+        decimalPlaces: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
           .map(i => {return { label: i, value: i }}),
 
         inputMode: [

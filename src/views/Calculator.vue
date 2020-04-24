@@ -1,7 +1,7 @@
 <template>
   <div class="calculator">
-    <AdvancedInput v-if="this.$store.state.inputMode === 'advanced'" />
-    <SimpleInput v-if="this.$store.state.inputMode === 'simple'" />
+    <AdvancedInput v-if="this.$store.state.settings.inputMode === 'advanced'" />
+    <SimpleInput v-if="this.$store.state.settings.inputMode === 'simple'" />
     <SideMenu></SideMenu>
   </div>
 </template>

@@ -4,7 +4,7 @@
 
     <input
       id="outputfield"
-      :lang="this.$store.state.mathLangTag"
+      :lang="this.$store.state.settings.mathLangTag"
       class="
         outputfield
         theme-calc-inputfield
@@ -39,7 +39,7 @@ export default {
     },
 
     getLastOutput() {
-      let items = this.$store.state.history.getItems();
+      let items = this.$store.state.evaluator.script.getItems();
       if (items.length > 0) {
         return items[items.length - 1].output;
       } else {

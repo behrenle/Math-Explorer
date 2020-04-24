@@ -1,7 +1,8 @@
 import { save, load } from "./utils";
+import i18n from "./i18n";
 
 // default settings
-const defaults = {
+export const defaults = {
   decimalMode: "de",
   language: "de",
   mathLangTag: "de",
@@ -19,12 +20,13 @@ function init() {
   for (let key of Object.keys(defaults)) {
     state[key] = settings[key] || defaults[key];
   }
+  i18n.locale = state.language;
   return state;
 }
 
 // Settings module for veux store
 export default {
-  namespaced: true,
+  namespaced: false,
   state: init(),
   munations: {
     setDecimalMode(state, mode) {
@@ -41,6 +43,10 @@ export default {
 
     setInputMode(state, mode) {
       state.inputMode = mode;
+    },
+
+    setDecimalPlaces(state, n) {
+      state.decimalPlaces = n;
     },
 
     setTheme(state, theme) {

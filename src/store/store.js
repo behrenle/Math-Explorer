@@ -13,7 +13,7 @@ export default new Vuex.Store({
 
   state: {
     currentInput: "",
-    numberDrive: new NumberDrive.Script(),
+    script: new NumberDrive.Script(),
   },
 
   mutations: {

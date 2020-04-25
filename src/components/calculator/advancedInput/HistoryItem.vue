@@ -1,10 +1,10 @@
 <template>
   <div
     class="outer theme-history-object"
-    :lang="this.$store.state.mathLangTag"
+    :lang="this.$store.state.settings.mathLangTag"
   >
     <div
-      v-if="$store.state.showCellNumbers"
+      v-if="$store.state.settings.showCellNumbers"
       class="index theme-history-object-index"
     >
       #{{index}}
@@ -12,9 +12,9 @@
 
     <div
       v-bind:class="{
-        'field-width1': $store.state.showCellNumbers,
-        'field-width2': !$store.state.showCellNumbers,
-        'theme-calc-history-object-field': $store.state.showCellNumbers
+        'field-width1': $store.state.settings.showCellNumbers,
+        'field-width2': !$store.state.settings.showCellNumbers,
+        'theme-calc-history-object-field': $store.state.settings.showCellNumbers
       }"
     >
       <span class="theme-calc-copyable" v-on:click="copyInput">
@@ -24,9 +24,9 @@
 
     <div
       v-bind:class="{
-        'field-width1': $store.state.showCellNumbers,
-        'field-width2': !$store.state.showCellNumbers,
-        'theme-calc-history-object-field': $store.state.showCellNumbers
+        'field-width1': $store.state.settings.showCellNumbers,
+        'field-width2': !$store.state.settings.showCellNumbers,
+        'theme-calc-history-object-field': $store.state.settings.showCellNumbers
       }"
     >
       &rarr;

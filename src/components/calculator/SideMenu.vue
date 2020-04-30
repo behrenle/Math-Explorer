@@ -45,7 +45,6 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
 import SideMenuButton from "./SideMenuButton.vue";
 
 export default {

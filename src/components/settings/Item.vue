@@ -7,7 +7,8 @@
       class="settings-button theme-settings-button"
     >
       <option
-        v-for="variant in variants"
+        v-for="(variant, index) in variants"
+        :key="index"
         :value="variant.value"
       >
         {{ variant.label }}

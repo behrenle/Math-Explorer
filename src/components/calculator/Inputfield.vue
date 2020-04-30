@@ -1,6 +1,7 @@
 <template>
   <input
     id="inputfield"
+    autocomplete="off"
     type="text"
     :lang="this.$store.state.mathLangTag"
     class="

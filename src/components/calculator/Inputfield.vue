@@ -22,12 +22,12 @@ export default {
   name: "Inputfield",
 
   created: function() {
-    this.$eventBus.$on("copy-history-text", this.copyInputStr);
+    this.$eventBus.$on("copy-history-text", this.setInputStr);
   },
 
   methods: {
-    setInputStr(e) {
-      this.inputStr = e.text;
+    setInputStr(text) {
+      this.inputStr = text;
     },
 
     calculate(e) {

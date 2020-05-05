@@ -21,7 +21,15 @@
 export default {
   name: "Inputfield",
 
+  created: function() {
+    this.$eventBus.$on("copy-history-text", this.copyInputStr);
+  },
+
   methods: {
+    setInputStr(e) {
+      this.inputStr = e.text;
+    },
+
     calculate(e) {
       var key = e.which || e.keyCode;
       if (key === 13) {

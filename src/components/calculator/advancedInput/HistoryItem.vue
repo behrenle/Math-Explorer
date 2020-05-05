@@ -48,12 +48,12 @@
 
     methods: {
       copyInput: function() {
-        if (this.$store.state.copyOnClick)
-          this.$eventBus.$emit("copy-history-text", this.input);
+        if (this.$store.state.settings.copyOnClick)
+          this.$eventBus.$emit("copy-history-text", {text: this.input});
       },
       copyOutput: function() {
-        if (this.$store.state.copyOnClick)
-          this.$eventBus.$emit("copy-history-text", this.output);
+        if (this.$store.state.settings.copyOnClick)
+          this.$eventBus.$emit("copy-history-text", {text: this.output});
       }
     },
 

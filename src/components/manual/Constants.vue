@@ -1,5 +1,8 @@
 <template>
-  <Category :name="$t('manual.categories.constants')">
+  <Category
+    :name="$t('manual.categories.constants')"
+    v-if="this.$store.getters.getFilteredConstants(filter).length > 0"
+  >
     <Item
       v-for="constant in this.$store.getters.getFilteredConstants(filter)"
       :key="constant.name"

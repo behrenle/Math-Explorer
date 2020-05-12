@@ -1,5 +1,8 @@
 <template>
-  <Category :name="$t('manual.categories.functions')">
+  <Category
+    :name="$t('manual.categories.functions')"
+    v-if="this.$store.getters.getFilteredFunctions(filter).length > 0"
+  >
     <Item
       v-for="func in this.$store.getters.getFilteredFunctions(filter)"
       :key="func.name"

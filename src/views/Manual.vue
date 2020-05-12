@@ -33,7 +33,7 @@ export default {
 .manual {
   height: 100%;
   width: 100%;
-  padding: 20px 20px 0px 20px;
+  padding: 20px 40px 0px 40px;
   box-sizing: border-box;
   overflow-y: scroll;
   box-sizing: border-box;
@@ -50,7 +50,7 @@ export default {
   width: 100%;
   height: 100px;
   padding: 10px;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   box-sizing: border-box;
 }
 

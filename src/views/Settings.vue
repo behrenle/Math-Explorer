@@ -27,7 +27,8 @@ export default {
   font-size: 32pt;
   text-align: left;
   width: 100%;
-  height: 100%;
+  height: auto;
+  max-height: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 20px;

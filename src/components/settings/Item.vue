@@ -64,7 +64,7 @@
   height: calc(32pt + 20px);
   padding: 10px 10px;
   cursor: pointer;
-  min-width: 200px;
+  min-width: 250px;
   font-size: 32pt;
   box-sizing: border-box;
   outline: none;

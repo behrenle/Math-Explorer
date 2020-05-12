@@ -79,6 +79,7 @@
     margin-right: auto;
     display: flex;
     align-items: center;
+    user-select: none;
   }
 
   @media only screen and (max-width: 1400px) {

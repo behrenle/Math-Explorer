@@ -1,6 +1,7 @@
 <template>
   <input
     id="inputfield"
+    spellcheck="false"
     autocomplete="off"
     type="text"
     :lang="this.$store.state.mathLangTag"

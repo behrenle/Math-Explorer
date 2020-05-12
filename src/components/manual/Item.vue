@@ -24,7 +24,7 @@
   .outer {
     width: 100%;
     min-height: 80px;
-    font-size: 30pt;
+    font-size: 24pt;
     padding: 20px;
     box-sizing: border-box;
     text-align: left;

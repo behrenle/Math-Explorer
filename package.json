@@ -9,7 +9,7 @@
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'"
   },
   "dependencies": {
-    "@behrenle/number-drive": "^2.22.0",
+    "@behrenle/number-drive": "^2.22.1",
     "core-js": "^2.6.5",
     "jquery": "^3.5.0",
     "popper.js": "^1.15.0",

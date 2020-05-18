@@ -1,4 +1,4 @@
-const NumberDrive = require("@behrenle/number-drive");
+import NumberDrive from "@behrenle/number-drive";
 import { load } from "./utils";
 import { defaults } from "./settings.js";
 

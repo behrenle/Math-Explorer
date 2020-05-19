@@ -42,6 +42,7 @@ export default {
   methods: {
     changeRootLanguage() {
       this.$root.$i18n.locale = this.$store.state.language;
+      location.reload();
     }
   },
 

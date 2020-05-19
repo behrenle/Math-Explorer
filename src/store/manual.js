@@ -1,4 +1,4 @@
-const NumberDrive = require("@behrenle/number-drive");
+import NumberDrive from "@behrenle/number-drive";
 
 export default {
   namespaced: false,
@@ -6,16 +6,16 @@ export default {
   state: NumberDrive.Manual,
 
   getters: {
-    getFilteredConstants: (state) => (filter) => {
-      return state.constants.filter((constant) => {
+    getFilteredConstants: state => filter => {
+      return state.constants.filter(constant => {
         return constant.name.match(filter);
       });
     },
 
-    getFilteredFunctions: (state) => (filter) => {
-      return state.functions.filter((func) => {
+    getFilteredFunctions: state => filter => {
+      return state.functions.filter(func => {
         return func.name.match(filter);
       });
     }
   }
-}
+};

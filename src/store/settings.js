@@ -11,14 +11,14 @@ export const defaults = {
   theme: "bright",
   themePath: "./themes/bright-theme.css",
   copyOnClick: true,
-  showCellNumbers: true,
+  showCellNumbers: true
 };
 
 // state initializer
 function init() {
   // init settings state obj
   let settings = load();
-  let state    = {};
+  let state = {};
   for (let key of Object.keys(defaults)) {
     state[key] = settings[key] || defaults[key];
   }
@@ -78,5 +78,5 @@ export default {
       state.showCellNumbers = mode;
       save(state);
     }
-  },
+  }
 };

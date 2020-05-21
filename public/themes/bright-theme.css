@@ -43,6 +43,10 @@
   background-color: #111d3a;
 }
 
+.theme-app-menu-button:focus {
+  border: 2px solid white;
+}
+
 .theme-app-menu-title {
   /*color: rgb(64, 64, 64);*/
   white;

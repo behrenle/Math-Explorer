@@ -37,12 +37,6 @@ export default {
   box-sizing: border-box;
   overflow-y: scroll;
   box-sizing: border-box;
-  -ms-overflow-style: none;  /* Internet Explorer 10+ */
-  scrollbar-width: none;  /* Firefox */
-}
-
-.manual::-webkit-scrollbar {
-  display: none;  /* Safari and Chrome */
 }
 
 .search-field {
@@ -52,10 +46,6 @@ export default {
   padding: 10px;
   margin-bottom: 20px;
   box-sizing: border-box;
-}
-
-.manual::-webkit-scrollbar {
-    display: none;  /* Safari and Chrome */
 }
 
 .category {

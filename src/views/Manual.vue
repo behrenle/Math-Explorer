@@ -1,10 +1,12 @@
 <template>
-  <div class="manual theme-manual">
+  <div class="manual theme-manual" tabindex="1000">
     <input
       type="text"
       :placeholder="$t('manual.search')"
       class="search-field theme-help-search-field"
       v-model="search"
+      tabindex="999"
+      ref="search"
     />
     <Constants :filter="search" class="category"/>
     <Functions :filter="search" class="category"/>
@@ -20,6 +22,9 @@ export default {
   components: {
     Constants,
     Functions
+  },
+  mounted: function() {
+    this.$refs.search.focus();
   },
   data: function() {
     return {

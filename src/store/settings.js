@@ -28,7 +28,7 @@ function init() {
 
   // init theme
   let theme = state.theme,
-      themePath = state.themePath;
+    themePath = state.themePath;
 
   loadTheme(theme, themePath);
 

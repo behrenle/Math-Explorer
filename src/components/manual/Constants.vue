@@ -1,13 +1,13 @@
 <template>
   <Category
-    :name="$t('manual.categories.constants')"
-    v-if="this.$store.getters.getFilteredConstants(filter).length > 0"
+      :name="$t('manual.categories.constants')"
+      v-if="this.$store.getters.getFilteredConstants(filter).length > 0"
   >
     <Item
-      v-for="constant in this.$store.getters.getFilteredConstants(filter)"
-      :key="constant.name"
-      :synopsis="constant.synopsis[getLanguage()]"
-      :description="constant.description[getLanguage()]"
+        v-for="constant in this.$store.getters.getFilteredConstants(filter)"
+        :key="constant.name"
+        :synopsis="constant.synopsis[getLanguage()]"
+        :description="constant.description[getLanguage()]"
     ></Item>
   </Category>
 </template>
@@ -25,7 +25,7 @@ export default {
   },
 
   methods: {
-    getLanguage: function() {
+    getLanguage: function () {
       return this.$store.state.settings.language;
     }
   },

@@ -3,7 +3,7 @@
     sidemenu-button
     theme-calc-button
     theme-focus-border"
-    v-on:click="callback()"
+          v-on:click="callback()"
   >
     <slot>
 
@@ -15,7 +15,7 @@
 export default {
   name: "SideMenuButton",
   props: {
-    callback: { type: Function },
+    callback: {type: Function},
   }
 }
 </script>

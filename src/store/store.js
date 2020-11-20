@@ -8,20 +8,20 @@ import manual from "./manual";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  modules: {
-    settings,
-    shortkeys,
-    evaluator,
-    manual
-  },
-
-  state: {
-    currentInput: "",
-  },
-
-  mutations: {
-    setCurrentInput(state, input) {
-      state.currentInput = input;
+    modules: {
+        settings,
+        shortkeys,
+        evaluator,
+        manual
     },
-  }
+
+    state: {
+        currentInput: "",
+    },
+
+    mutations: {
+        setCurrentInput(state, input) {
+            state.currentInput = input;
+        },
+    }
 });

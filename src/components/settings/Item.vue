@@ -2,14 +2,14 @@
   <div class="settings-element theme-settings-element">
     <label class="label">{{ name }}</label>
     <select
-      v-if="type === 'select'"
-      v-model="internalModel"
-      class="settings-button theme-settings-button"
+        v-if="type === 'select'"
+        v-model="internalModel"
+        class="settings-button theme-settings-button"
     >
       <option
-        v-for="(variant, index) in variants"
-        :key="index"
-        :value="variant.value"
+          v-for="(variant, index) in variants"
+          :key="index"
+          :value="variant.value"
       >
         {{ variant.label }}
       </option>
@@ -19,32 +19,32 @@
 </template>
 
 <script>
-  export default {
-    name: "Item",
-    props: {
-      name: String,
-      type: String,
-      variants: Array,
-      storeGet: String, // store key
-      storeSet: String, // store mutation
-      onChange: Function,
-    },
+export default {
+  name: "Item",
+  props: {
+    name: String,
+    type: String,
+    variants: Array,
+    storeGet: String, // store key
+    storeSet: String, // store mutation
+    onChange: Function,
+  },
 
-    computed: {
-      internalModel: {
-        get() {
-          return this.$store.state.settings[this.storeGet];
-        },
+  computed: {
+    internalModel: {
+      get() {
+        return this.$store.state.settings[this.storeGet];
+      },
 
-        set(value) {
-          this.$store.commit(this.storeSet, value);
-          if (this.onChange) {
-            this.onChange();
-          }
+      set(value) {
+        this.$store.commit(this.storeSet, value);
+        if (this.onChange) {
+          this.onChange();
         }
       }
     }
   }
+}
 </script>
 
 <style scoped>

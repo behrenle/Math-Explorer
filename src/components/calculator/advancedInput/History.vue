@@ -1,11 +1,11 @@
 <template>
   <div class="history" id="history">
     <HistoryItem
-      v-for="item in getHistory()"
-      v-bind:key="item.index"
-      :input="item.input"
-      :output="item.output"
-      :index="item.index"
+        v-for="item in getHistory()"
+        v-bind:key="item.index"
+        :input="item.input"
+        :output="item.output"
+        :index="item.index"
     />
   </div>
 </template>

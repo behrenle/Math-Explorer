@@ -1,20 +1,20 @@
 <template>
   <input
-    id="inputfield"
-    spellcheck="false"
-    autocomplete="off"
-    type="text"
-    :lang="this.$store.state.mathLangTag"
-    class="
+      id="inputfield"
+      spellcheck="false"
+      autocomplete="off"
+      type="text"
+      :lang="this.$store.state.mathLangTag"
+      class="
       inputfield
       theme-calc-inputfield
       theme-focus-border"
-    :placeholder="$t('calculator.input_placeholder')"
-    v-on:keypress="calculate"
-    ref="inputfield"
-    v-model="inputStr"
-    v-shortkey="this.$store.state.shortkeys.inputfield"
-    @shortkey="setFocus('inputfield')"
+      :placeholder="$t('calculator.input_placeholder')"
+      v-on:keypress="calculate"
+      ref="inputfield"
+      v-model="inputStr"
+      v-shortkey="this.$store.state.shortkeys.inputfield"
+      @shortkey="setFocus('inputfield')"
   />
 </template>
 
@@ -22,7 +22,7 @@
 export default {
   name: "Inputfield",
 
-  created: function() {
+  created: function () {
     this.$eventBus.$on("copy-history-text", this.setInputStr);
   },
 

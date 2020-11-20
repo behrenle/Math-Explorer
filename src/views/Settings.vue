@@ -1,8 +1,8 @@
 <template>
   <div class="settings theme-settings">
-    <GeneralSettings />
-    <LanguageSettings />
-    <AdvancedInputSettings />
+    <GeneralSettings/>
+    <LanguageSettings/>
+    <AdvancedInputSettings/>
   </div>
 </template>
 
@@ -34,13 +34,13 @@ export default {
   grid-column-gap: 20px;
   padding: 20px;
   box-sizing: border-box;
-  -ms-overflow-style: none;  /* Internet Explorer 10+ */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
   overflow-y: scroll;
 }
 
 .settings::-webkit-scrollbar {
-  display: none;  /* Safari and Chrome */
+  display: none; /* Safari and Chrome */
 }
 
 @media only screen and (max-width: 1300px) {

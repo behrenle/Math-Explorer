@@ -2,7 +2,7 @@
   <div id="app" class="app">
     <NavBar></NavBar>
     <div class="content theme-content">
-      <router-view />
+      <router-view/>
     </div>
   </div>
 </template>
@@ -15,46 +15,46 @@ export default {
   components: {
     NavBar
   },
-  data: function() {
+  data: function () {
     return {version: pjson.version};
   },
 };
 </script>
 
 <style scoped>
-  .content {
-    height: 100%;
-    width: 100%;
-    z-index: 1;
-    overflow: hidden;
-  }
+.content {
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
 </style>
 
 <style lang="scss">
-  #app {
-    font-family: "Avenir", Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: white;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: 80px auto;
-    grid-gap: 0;
-  }
+#app {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: white;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 80px auto;
+  grid-gap: 0;
+}
 
-  body {
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    height: 100%;
-  }
+body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
 
-  .nopm {
-    padding: 0;
-    margin: 0;
-  }
+.nopm {
+  padding: 0;
+  margin: 0;
+}
 </style>

@@ -1,20 +1,20 @@
 <template>
   <div class="container">
-    <Inputfield />
+    <Inputfield/>
 
     <input
-      id="outputfield"
-      :lang="this.$store.state.settings.mathLangTag"
-      class="
+        id="outputfield"
+        :lang="this.$store.state.settings.mathLangTag"
+        class="
         outputfield
         theme-calc-inputfield
         theme-focus-border"
-      :value="getLastOutput()"
-      readonly="readonly"
-      :placeholder="$t('calculator.output_placeholder')"
-      v-on:keypress="setFocus('inputfield')"
-      v-shortkey="this.$store.state.shortkeys.outputfield"
-      @shortkey="setFocus('outputfield')"
+        :value="getLastOutput()"
+        readonly="readonly"
+        :placeholder="$t('calculator.output_placeholder')"
+        v-on:keypress="setFocus('inputfield')"
+        v-shortkey="this.$store.state.shortkeys.outputfield"
+        @shortkey="setFocus('outputfield')"
     />
   </div>
 </template>

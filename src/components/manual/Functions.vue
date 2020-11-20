@@ -1,14 +1,14 @@
 <template>
   <Category
-    :name="$t('manual.categories.functions')"
-    v-if="this.$store.getters.getFilteredFunctions(filter).length > 0"
+      :name="$t('manual.categories.functions')"
+      v-if="this.$store.getters.getFilteredFunctions(filter).length > 0"
   >
     <Item
-      v-for="func in this.$store.getters.getFilteredFunctions(filter)"
-      :key="func.name"
-      :name="func.name"
-      :synopsis="func.synopsis[getLanguage()]"
-      :description="func.description[getLanguage()]"
+        v-for="func in this.$store.getters.getFilteredFunctions(filter)"
+        :key="func.name"
+        :name="func.name"
+        :synopsis="func.synopsis[getLanguage()]"
+        :description="func.description[getLanguage()]"
     ></Item>
   </Category>
 </template>
@@ -27,7 +27,7 @@ export default {
 
 
   methods: {
-    getLanguage: function() {
+    getLanguage: function () {
       return this.$store.state.settings.language;
     }
   },

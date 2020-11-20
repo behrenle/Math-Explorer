@@ -10,8 +10,8 @@ Vue.config.productionTip = false;
 Vue.prototype.$eventBus = new Vue();
 
 new Vue({
-  router,
-  store,
-  i18n,
-  render: h => h(App)
+    router,
+    store,
+    i18n,
+    render: h => h(App)
 }).$mount("#app");

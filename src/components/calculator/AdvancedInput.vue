@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <History />
-    <Inputfield />
+    <History/>
+    <Inputfield/>
   </div>
 </template>
 

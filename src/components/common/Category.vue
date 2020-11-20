@@ -6,28 +6,28 @@
 </template>
 
 <script>
-  export default {
-    name: "Category",
-    props: {
-      name: String,
-    },
-  }
+export default {
+  name: "Category",
+  props: {
+    name: String,
+  },
+}
 </script>
 
 <style scoped>
-  .outer {
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-  }
+.outer {
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
 
-  .outer h1{
-    text-align: center;
-    font-size: 32pt;
-  }
+.outer h1 {
+  text-align: center;
+  font-size: 32pt;
+}
 
-  .inner {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-row-gap: 10px;
-  }
+.inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 10px;
+}
 </style>

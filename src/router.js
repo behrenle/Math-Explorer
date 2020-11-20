@@ -9,27 +9,27 @@ import About from "./views/About.vue";
 Vue.use(Router);
 
 export default new Router({
-  base: process.env.BASE_URL,
-  routes: [
-    {
-      path: "/",
-      name: "Calculator",
-      component: Calculator
-    },
-    {
-      path: "/settings",
-      name: "Settings",
-      component: Settings
-    },
-    {
-      path: "/manual",
-      name: "Manual",
-      component: Manual
-    },
-    {
-      path: "/about",
-      name: "About",
-      component: About
-    },
-  ]
+    base: process.env.BASE_URL,
+    routes: [
+        {
+            path: "/",
+            name: "Calculator",
+            component: Calculator
+        },
+        {
+            path: "/settings",
+            name: "Settings",
+            component: Settings
+        },
+        {
+            path: "/manual",
+            name: "Manual",
+            component: Manual
+        },
+        {
+            path: "/about",
+            name: "About",
+            component: About
+        },
+    ]
 });

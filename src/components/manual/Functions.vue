@@ -7,8 +7,8 @@
       v-for="func in this.$store.getters.getFilteredFunctions(filter)"
       :key="func.name"
       :name="func.name"
-      :synopsis="func.synopsis || 'n. a.'"
-      :description="func.description"
+      :synopsis="func.synopsis[getLanguage()]"
+      :description="func.description[getLanguage()]"
     ></Item>
   </Category>
 </template>
@@ -23,6 +23,13 @@ export default {
   components: {
     Category,
     Item
+  },
+
+
+  methods: {
+    getLanguage: function() {
+      return this.$store.state.settings.language;
+    }
   },
 
   props: {

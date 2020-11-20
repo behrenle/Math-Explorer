@@ -1,7 +1,5 @@
 <template>
   <div class="outer">
-    <div class="name" v-html="name">
-    </div>
     <div class="synopsis" v-html="synopsis">
     </div>
     <div class="description" v-html="description">
@@ -13,7 +11,6 @@
   export default {
     name: "Item",
     props: {
-      name: String,
       synopsis: String,
       description: String,
     },
@@ -33,17 +30,8 @@
     overflow: hidden;
   }
 
-  .name {
-    margin: 0;
-    flex-basis: 15%;
-    float: left;
-    padding-right: 20px;
-    box-sizing: border-box;
-  }
-
   .synopsis {
     flex-basis: 30%;
-    float: left;
     padding-left: 1em;
     padding-right: 20px;
     box-sizing: border-box;
@@ -54,8 +42,7 @@
 
   .description {
     padding-left: 20px;
-    flex-basis: 50%;
-    float: left;
+    flex-basis: 70%;
     box-sizing: border-box;
   }
 </style>

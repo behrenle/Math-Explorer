@@ -6,9 +6,8 @@
     <Item
       v-for="constant in this.$store.getters.getFilteredConstants(filter)"
       :key="constant.name"
-      :name="constant.name"
-      :synopsis="constant.synopsis || 'n. a.'"
-      :description="constant.description"
+      :synopsis="constant.synopsis[getLanguage()]"
+      :description="constant.description[getLanguage()]"
     ></Item>
   </Category>
 </template>
@@ -23,6 +22,12 @@ export default {
   components: {
     Category,
     Item
+  },
+
+  methods: {
+    getLanguage: function() {
+      return this.$store.state.settings.language;
+    }
   },
 
   props: {

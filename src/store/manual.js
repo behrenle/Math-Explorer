@@ -6,15 +6,23 @@ export default {
   state: NumberDrive.Manual,
 
   getters: {
-    getFilteredConstants: state => filter => {
+    getFilteredConstants: (state, getters, rootState) => filter => {
+      const language = rootState.settings.language;
       return state.constants.filter(constant => {
-        return constant.name.match(filter);
+        return (
+          constant.synopsis[language].match(filter) ||
+          constant.description[language].match(filter)
+        );
       });
     },
 
-    getFilteredFunctions: state => filter => {
+    getFilteredFunctions: (state, getters, rootState) => filter => {
+      const language = rootState.settings.language;
       return state.functions.filter(func => {
-        return func.name.match(filter);
+        return (
+          func.synopsis[language].match(filter) ||
+          func.description[language].match(filter)
+        );
       });
     }
   }

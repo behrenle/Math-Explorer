@@ -1,17 +1,23 @@
 import React from 'react';
-import {HashRouter, Switch} from "react-router-dom";
-import Navbar from "./navbar/Navbar";
+import {HashRouter, Switch, Route} from "react-router-dom";
 import styled from "styled-components";
 import {version} from "../../../package.json";
+import Navbar from "./navbar/Navbar";
+import Calculator from "../views/calculator/Calculator";
+import Settings from "../views/settings/Settings";
+import Manual from "../views/manual/Manual";
+import About from "../views/about/About";
 
-const NavbarProps = {
+const views = [
+    {name: "Calculator", path: "/", component: Calculator},
+    {name: "Settings", path: "/settings", component: Settings},
+    {name: "Manual", path: "/manual", component: Manual},
+    {name: "About", path: "/about", component: About}
+]
+
+const navbarProps = {
     title: `Math Explorer ${version}`,
-    items: [
-        {name: "Calculator", path: "/"},
-        {name: "Settings", path: "/settings"},
-        {name: "Manual", path: "/manual"},
-        {name: "About", path: "/about"}
-    ]
+    items: views.map(view => {return {name: view.name, path: view.path}})
 };
 
 const Container = styled.div`
@@ -20,13 +26,24 @@ const Container = styled.div`
     height: 100%;
     background-size: cover;
     background-image: url(${process.env.PUBLIC_URL + "/background.png"});
+    display: grid;
+    grid-template-rows: 80px auto;
+`;
+
+const Content = styled.div`
+    z-index: 0;
 `;
 
 const App: React.FC = () => {
     return (
         <HashRouter>
             <Container>
-                <Navbar {...NavbarProps}/>
+                <Navbar {...navbarProps}/>
+                <Content>
+                    <Switch>
+                        {views.map((view, i) => <Route exact path={view.path} component={view.component}/>)}
+                    </Switch>
+                </Content>
             </Container>
         </HashRouter>
     );

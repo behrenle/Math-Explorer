@@ -10,6 +10,7 @@ const Container = styled.div`
     height: 80px;
     align-items: center;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.25);
+    z-index: 1;
 `;
 
 const Logo = styled.img`

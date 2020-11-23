@@ -22,7 +22,8 @@ const Button = styled.button`
     }
     
     &:focus {
-        outline: 2px solid black;
+        border: 2px solid black;
+        padding: 18px;
     }
 `
 

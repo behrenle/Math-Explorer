@@ -12,7 +12,7 @@ const StyledLink = styled(Link)`
     align-items: center;
     ${
         (props: {active: boolean}) => props.active 
-            ? `border-bottom: 4px solid white;` : null
+            ? `border-bottom: 4px solid white; padding-top: 4px;` : null
     }
     &:hover {
         background-color: rgba(255, 255, 255, 0.2);

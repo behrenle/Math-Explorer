@@ -1,5 +1,7 @@
 import React from 'react';
 import {HashRouter, Switch, Route} from "react-router-dom";
+import {Provider} from "react-redux";
+import createStore from "../../store/createStore";
 import styled from "styled-components";
 import {version} from "../../../package.json";
 import Navbar from "./navbar/Navbar";
@@ -7,6 +9,8 @@ import Calculator from "../views/calculator/Calculator";
 import Settings from "../views/settings/Settings";
 import Manual from "../views/manual/Manual";
 import About from "../views/about/About";
+
+const store = createStore();
 
 const views = [
     {name: "Calculator", path: "/", component: Calculator},
@@ -36,16 +40,18 @@ const Content = styled.div`
 
 const App: React.FC = () => {
     return (
-        <HashRouter>
-            <Container>
-                <Navbar {...navbarProps}/>
-                <Content>
-                    <Switch>
-                        {views.map((view, i) => <Route exact path={view.path} component={view.component}/>)}
-                    </Switch>
-                </Content>
-            </Container>
-        </HashRouter>
+        <Provider store={store}>
+            <HashRouter>
+                <Container>
+                    <Navbar {...navbarProps}/>
+                    <Content>
+                        <Switch>
+                            {views.map((view, i) => <Route exact path={view.path} component={view.component}/>)}
+                        </Switch>
+                    </Content>
+                </Container>
+            </HashRouter>
+        </Provider>
     );
 };
 

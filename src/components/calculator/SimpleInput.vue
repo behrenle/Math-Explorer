@@ -36,6 +36,8 @@ export default {
   methods: {
     setFocus(elementId) {
       document.getElementById(elementId).focus();
+      if (elementId === "inputfield")
+        navigator.clipboard.writeText(this.getLastOutput());
     },
 
     getLastOutput() {

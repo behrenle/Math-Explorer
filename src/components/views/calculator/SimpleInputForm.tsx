@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {RootState} from "../../../store";
 import {useDispatch, useSelector} from "react-redux";
 import {evaluate} from "../../../store/session/actions";
+import InputText from "../../common/InputText";
 
 const Container = styled.div`
     padding: 20px;
@@ -10,17 +11,8 @@ const Container = styled.div`
     flex-direction: column;
 `;
 
-const StyledInputField = styled.input`
-    font-size: 36pt;
-    padding: 10px;
+const StyledInputText = styled(InputText)`
     margin-bottom: 20px;
-    outline: none;
-    border: none;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
-    
-    &:focus {
-        outline: 3px solid black;
-    }
 `;
 
 const SimpleInputform: React.FC = () => {
@@ -53,14 +45,17 @@ const SimpleInputform: React.FC = () => {
 
     return (
         <Container>
-            <StyledInputField
-                type="[object]"
-                placeholder={"input"}
+            <StyledInputText
+                placeholder="input"
                 value={input}
                 onChange={changeInput}
                 onKeyPress={keypressInput}
             />
-            <StyledInputField readOnly={true} type="text" placeholder={"output"} value={lastOutput}/>
+            <StyledInputText
+                readOnly={true}
+                placeholder={"output"}
+                value={lastOutput}
+            />
         </Container>
     )
 }

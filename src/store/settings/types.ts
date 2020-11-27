@@ -1,20 +1,19 @@
 /* state types */
 export type Language = "en" | "de";
+export type LanguageOrInherit = Language | "inherit";
 export type SignificantDigits = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16;
 
 export interface MathSettings {
     significantDigits: SignificantDigits,
-    numberFormat: Language
+    numberFormat: LanguageOrInherit
 }
 
 export interface InterfaceSettings {
     language: Language,
-    htmlLanguageAttribute: Language,
-    inputMode: "advanced" | "simple",
-    advanced: {
-        showLineNumbers: boolean,
-        copyOnClick: boolean,
-    }
+    cellLanguageTag: LanguageOrInherit,
+    advancedInputMode: boolean,
+    showLineNumbers: boolean,
+    copyOnClick: boolean
 }
 
 export interface Settings {

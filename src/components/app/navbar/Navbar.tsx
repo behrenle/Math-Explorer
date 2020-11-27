@@ -39,7 +39,7 @@ const Navbar: React.FC<Props> = ({title, items}) => {
         <Container>
             <Logo src={process.env.PUBLIC_URL + "/logo.png"} alt="logo"/>
             <Title>{title}</Title>
-            {items.map(item => <NavbarItem name={item.name} path={item.path}/>)}
+            {items.map((item, index) => <NavbarItem key={index} name={item.name} path={item.path}/>)}
         </Container>
     );
 }

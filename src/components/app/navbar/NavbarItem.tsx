@@ -11,7 +11,7 @@ const StyledLink = styled(Link)`
     display: flex;
     align-items: center;
     ${
-        (props: {active: boolean}) => props.active 
+        (props: {enabled: string}) => props.enabled === "true"
             ? `border-bottom: 4px solid white; padding-top: 4px;` : null
     }
     &:hover {
@@ -33,10 +33,10 @@ const NavbarItem: React.FC<Props> = ({name, path}) => {
     const [active, setActive] = useState(false);
     useEffect(() => {
         setActive(location.pathname === path)
-    }, [location]);
+    }, [location, path]);
 
     return (
-        <StyledLink to={path} active={active}>{name}</StyledLink>
+        <StyledLink to={path} enabled={active.toString()}>{name}</StyledLink>
     )
 }
 

@@ -8,9 +8,9 @@ const CalculatorSidebar: React.FC = () => {
             <button>Clear Input</button>
             <button>Clear Memory</button>
             <button>Clear All</button>
-            <button disabled={true} style={{marginTop:"auto"}}>New Document</button>
+            {/*<button disabled={true} style={{marginTop:"auto"}}>New Document</button>
             <button disabled={true}>Save Document</button>
-            <button disabled={true}>Load Document</button>
+            <button disabled={true}>Load Document</button>*/}
         </Sidebar>
     );
 }

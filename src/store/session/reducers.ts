@@ -18,7 +18,11 @@ const sessionReducer = (state = initialState, action: SessionAction): Session =>
             return {mathHistory: []};
 
         case "EVALUATE_INPUT":
-            script.evaluate(action.payload.input, action.payload.language, action.payload.significantDigits);
+            script.evaluate(
+                action.payload.input,
+                action.payload.language,
+                parseInt(action.payload.significantDigits + "") // fix typescript bug
+            );
             return {mathHistory: script.getItems()};
 
         case "CLEAR_MATH_USER_SCOPE":

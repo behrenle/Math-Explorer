@@ -2,25 +2,21 @@ import {Settings} from "./types";
 
 const defaultSettings: Settings = {
     mathSettings: {
-        numberFormat: "en",
+        numberFormat: "inherit",
         significantDigits: 6
     },
     interfaceSettings: {
-        htmlLanguageAttribute: "en",
+        cellLanguageTag: "inherit",
         language: "en",
-        inputMode: "simple",
-        advanced: {
-            copyOnClick: true,
-            showLineNumbers: true
-        },
+        advancedInputMode: true,
+        copyOnClick: true,
+        showLineNumbers: true
     }
 };
 
 const localStorageSettingsKey = "settings";
 export const loadSettings = (): Settings => {
     const settingsData = localStorage.getItem(localStorageSettingsKey);
-    console.log(settingsData);
-    console.log(typeof settingsData);
     const settings = settingsData !== undefined && settingsData !== null
         ? JSON.parse(settingsData)
         : {};

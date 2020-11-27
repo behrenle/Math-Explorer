@@ -25,6 +25,7 @@ const StyledInputField = styled.input`
 
 const SimpleInputform: React.FC = () => {
     const [input, setInput] = useState("");
+    const interfaceLanguage = useSelector((state: RootState) => state.settings.interfaceSettings.language);
     const mathLanguage = useSelector((state: RootState) => state.settings.mathSettings.numberFormat);
     const significantDigits = useSelector((state: RootState) => state.settings.mathSettings.significantDigits);
     const lastOutput: string = useSelector((state: RootState) => {
@@ -35,7 +36,11 @@ const SimpleInputform: React.FC = () => {
     });
     const dispatch = useDispatch();
 
-    const evaluateInput = () => dispatch(evaluate(input, mathLanguage, significantDigits));
+    const evaluateInput = () => dispatch(evaluate(
+        input,
+        mathLanguage === "inherit" ? interfaceLanguage : mathLanguage,
+        significantDigits
+    ));
 
     const changeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         setInput(event.target.value);

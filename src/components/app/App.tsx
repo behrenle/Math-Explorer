@@ -36,6 +36,9 @@ const Container = styled.div`
 
 const Content = styled.div`
     z-index: 0;
+    overflow-y: auto;
+    width: 100%;
+    height: 100%;
 `;
 
 const App: React.FC = () => {
@@ -46,7 +49,7 @@ const App: React.FC = () => {
                     <Navbar {...navbarProps}/>
                     <Content>
                         <Switch>
-                            {views.map((view, i) => <Route exact path={view.path} component={view.component}/>)}
+                            {views.map((view, i) => <Route key={i} exact path={view.path} component={view.component}/>)}
                         </Switch>
                     </Content>
                 </Container>

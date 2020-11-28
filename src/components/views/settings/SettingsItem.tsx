@@ -39,7 +39,7 @@ const SettingsItem: React.FC<Props> = ({label, options, value, setter}) => {
             <Label>{label}</Label>
             <Select value={value} onChange={changeHandler}>
                 {options.map((option, index) => (
-                    <option value={option.value || option.label} key={index}>{option.label}</option>
+                    <option value={option.value} key={index}>{option.label}</option>
                 ))}
             </Select>
         </Container>

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import CalculatorSidebar from "./CalculatorSidebar";
-import SimpleInputform from "./SimpleInputForm";
+import SimpleInputForm from "./SimpleInputForm";
 
 const Container = styled.div`
     display: grid;
@@ -13,7 +13,7 @@ const Calculator: React.FC = () => {
     return (
         <Container>
             <CalculatorSidebar />
-            <SimpleInputform />
+            <SimpleInputForm />
         </Container>
     )
 }

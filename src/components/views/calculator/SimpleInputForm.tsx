@@ -4,6 +4,7 @@ import {RootState} from "../../../store";
 import {useDispatch, useSelector} from "react-redux";
 import {evaluate} from "../../../store/session/actions";
 import InputText from "../../common/InputText";
+import InputField from "./InputField";
 
 const Container = styled.div`
     padding: 20px;
@@ -11,8 +12,8 @@ const Container = styled.div`
     flex-direction: column;
 `;
 
-const StyledInputText = styled(InputText)`
-    margin-bottom: 20px;
+const StyledOutputField = styled(InputText)`
+    margin-top: 20px;
 `;
 
 const SimpleInputform: React.FC = () => {
@@ -45,13 +46,8 @@ const SimpleInputform: React.FC = () => {
 
     return (
         <Container>
-            <StyledInputText
-                placeholder="input"
-                value={input}
-                onChange={changeInput}
-                onKeyPress={keypressInput}
-            />
-            <StyledInputText
+            <InputField/>
+            <StyledOutputField
                 readOnly={true}
                 placeholder={"output"}
                 value={lastOutput}

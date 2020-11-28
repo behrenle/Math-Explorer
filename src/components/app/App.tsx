@@ -3,7 +3,6 @@ import {HashRouter, Switch, Route} from "react-router-dom";
 import {Provider} from "react-redux";
 import createStore from "../../store/createStore";
 import styled from "styled-components";
-import {version} from "../../../package.json";
 import Navbar from "./navbar/Navbar";
 import Calculator from "../views/calculator/Calculator";
 import Settings from "../views/settings/Settings";
@@ -20,7 +19,7 @@ const views = [
 ]
 
 const navbarProps = {
-    title: `Math Explorer ${version}`,
+    title: `Math Explorer`,
     items: views.map(view => {return {name: view.name, path: view.path}})
 };
 

@@ -14,15 +14,7 @@ const Container = styled.div`
 
 const Calculator: React.FC = () => {
     const advancedInputMode = useSelector((state: RootState) => state.settings.interfaceSettings.advancedInputMode);
-    const selectedInputForm = advancedInputMode == false ? <SimpleInputForm/> : <AdvancedInputForm/>
-    /*console.log("advancedInputMode", advancedInputMode)
-    if (advancedInputMode === true) {
-        console.log("advanced")
-        selectedInputForm = <AdvancedInputForm/>
-    } else {
-        console.log("simple")
-        selectedInphide version number in navbarutForm = <SimpleInputForm/>
-    }*/
+    const selectedInputForm = advancedInputMode ? <AdvancedInputForm/> : <SimpleInputForm/>;
 
     return (
         <Container>

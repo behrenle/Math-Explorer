@@ -42,25 +42,25 @@ const Settings: React.FC = () => {
                     label="Language"
                     options={languageOptions}
                     value={settings.interfaceSettings.language}
-                    setter={value => updateSettings({interfaceSettings: {language: value}})}
+                    setter={value => updateSettings({interfaceSettings: {language:  value}})}
                 />
                 <SettingsItem
                     label="Advanced input mode"
                     options={enableOptions}
                     value={settings.interfaceSettings.advancedInputMode}
-                    setter={value => updateSettings({interfaceSettings: {advancedInputMode: value}})}
+                    setter={value => updateSettings({interfaceSettings: {advancedInputMode: value === "true"}})}
                 />
                 <SettingsItem
                     label="Show cell numbers"
                     options={enableOptions}
                     value={settings.interfaceSettings.showLineNumbers}
-                    setter={value => updateSettings({interfaceSettings: {showLineNumbers: value}})}
+                    setter={value => updateSettings({interfaceSettings: {showLineNumbers: value === "true"}})}
                 />
                 <SettingsItem
                     label="Copy cell content by clicking"
                     options={enableOptions}
                     value={settings.interfaceSettings.copyOnClick}
-                    setter={value => updateSettings({interfaceSettings: {copyOnClick: value}})}
+                    setter={value => updateSettings({interfaceSettings: {copyOnClick: value === "true"}})}
                 />
                 <SettingsItem
                     label="Cell language tag"

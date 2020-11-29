@@ -1,7 +1,7 @@
 import React from 'react';
 import {HashRouter, Switch, Route} from "react-router-dom";
 import {Provider} from "react-redux";
-import createStore from "../../store/createStore";
+import initStore from "../../store/createStore";
 import styled from "styled-components";
 import Navbar from "./navbar/Navbar";
 import Calculator from "../views/calculator/Calculator";
@@ -9,7 +9,7 @@ import Settings from "../views/settings/Settings";
 import Manual from "../views/manual/Manual";
 import About from "../views/about/About";
 
-const store = createStore();
+const store = initStore();
 
 const views = [
     {name: "Calculator", path: "/", component: Calculator},

@@ -3,26 +3,21 @@ import {loadSettings, saveSettings} from "./settingsUtils";
 
 const initialState = loadSettings();
 
+/* todo use redux-create-reducer package */
 const settingsReducer = (state = initialState, action: SettingsAction): Settings => {
-    if (state === null || state === undefined || action === null || action === undefined)
-        return initialState;
-
-    let newSettings: Settings = initialState;
     switch (action.type) {
         case "SET_SETTINGS":
-            newSettings = action.payload;
-            break;
+            return saveSettings(action.payload);
 
         case "SET_INTERFACE_SETTINGS":
-            newSettings = {...state, interfaceSettings: action.payload};
-            break;
+            return saveSettings({...state, interfaceSettings: action.payload});
 
         case "SET_MATH_SETTINGS":
-            newSettings = {...state, mathSettings: action.payload};
-            break;
+            return saveSettings({...state, mathSettings: action.payload});
+
+        default:
+            return state;
     }
-    saveSettings(newSettings);
-    return newSettings;
 };
 
 export default settingsReducer;

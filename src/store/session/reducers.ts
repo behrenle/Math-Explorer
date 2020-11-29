@@ -9,10 +9,8 @@ const initialState: Session = {
     mathHistory: []
 };
 
+/* todo use redux-create-reducer package */
 const sessionReducer = (state = initialState, action: SessionAction): Session => {
-    if (state === null || state === undefined || action === null || action === undefined)
-        return initialState;
-
     switch (action.type) {
         case "CLEAR_MATH_HISTORY":
             return {mathHistory: []};
@@ -28,9 +26,10 @@ const sessionReducer = (state = initialState, action: SessionAction): Session =>
         case "CLEAR_MATH_USER_SCOPE":
             /* todo clear user scope */
             return state;
-    }
 
-    return initialState;
+        default:
+            return state;
+    }
 }
 
 export default sessionReducer;

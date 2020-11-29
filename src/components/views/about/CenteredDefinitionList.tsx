@@ -50,8 +50,8 @@ const CenteredDefinitionList: React.FC<Props> = ({items}) => {
         <Container>
             {
                 items.map((v, i) => i % 2 !== 0
-                    ? <RightItem><CenteredDefinitionListItem item={v}/></RightItem>
-                    : <LeftItem><CenteredDefinitionListItem item={v}/></LeftItem>
+                    ? <RightItem key={i}><CenteredDefinitionListItem item={v}/></RightItem>
+                    : <LeftItem key={i}><CenteredDefinitionListItem item={v}/></LeftItem>
                 )
             }
         </Container>

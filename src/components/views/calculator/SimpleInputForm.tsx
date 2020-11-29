@@ -16,12 +16,9 @@ const StyledOutputField = styled(InputText)`
 `;
 
 const SimpleInputForm: React.FC = () => {
-    const lastOutput: string = useSelector((state: RootState) => {
-        if (state.session.mathHistory.length < 1) {
-            return "";
-        }
-        return state.session.mathHistory[state.session.mathHistory.length - 1].output;
-    });
+    const lastOutput: string = useSelector((state: RootState) => state.session.mathHistory.length < 1
+        ? "" : state.session.mathHistory[state.session.mathHistory.length - 1].output
+    );
 
     return (
         <Container>

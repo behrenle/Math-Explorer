@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useRef} from "react";
 import styled from "styled-components";
 import {useSelector} from "react-redux";
 import {RootState} from "../../../store";
@@ -71,8 +71,16 @@ const MathHistoryItem: React.FC<MathHistoryItemProps> = ({index,input, output}) 
 }
 
 const MathHistory: React.FC<{ items: MathHistoryItemProps[] }> = ({items}) => {
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        console.log("scroll")
+        if (containerRef.current)
+            containerRef.current.scrollTop = containerRef.current.scrollHeight;
+    }, [items])
+
     return (
-        <MathHistoryContainerWrapper>
+        <MathHistoryContainerWrapper ref={containerRef}>
             <MathHistoryContainer>
                 {
                     items.map(item => <MathHistoryItem

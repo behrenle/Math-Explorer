@@ -22,8 +22,10 @@ const SimpleInputForm: React.FC = () => {
     const outputRef = useRef<HTMLInputElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
     useEffect(() => {
-        if (outputRef.current && lastOutput !== null && lastOutput !== "")
+        if (outputRef.current && lastOutput !== null && lastOutput !== "") {
             outputRef.current.focus();
+            outputRef.current.select();
+        }
     }, [lastOutput]);
 
     const outputOnKeyPress = (event: React.KeyboardEvent) => {

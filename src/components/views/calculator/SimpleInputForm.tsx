@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useRef} from "react";
 import styled from "styled-components";
 import {RootState} from "../../../store";
 import {useSelector} from "react-redux";
@@ -19,14 +19,27 @@ const SimpleInputForm: React.FC = () => {
     const lastOutput: string = useSelector((state: RootState) => state.session.mathHistory.length < 1
         ? "" : state.session.mathHistory[state.session.mathHistory.length - 1].output
     );
+    const outputRef = useRef<HTMLInputElement>(null);
+    const inputRef = useRef<HTMLInputElement>(null);
+    useEffect(() => {
+        if (outputRef.current && lastOutput !== null && lastOutput !== "")
+            outputRef.current.focus();
+    }, [lastOutput]);
+
+    const outputOnKeyPress = (event: React.KeyboardEvent) => {
+        if (event.key === "Enter" && inputRef.current)
+            inputRef.current.focus();
+    }
 
     return (
         <Container>
-            <InputField/>
+            <InputField ref={inputRef}/>
             <StyledOutputField
                 readOnly={true}
                 placeholder={"output"}
                 value={lastOutput}
+                ref={outputRef}
+                onKeyPress={outputOnKeyPress}
             />
         </Container>
     )

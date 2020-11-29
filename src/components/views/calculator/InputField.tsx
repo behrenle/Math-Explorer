@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {evaluate} from "../../../store/session/actions";
 import {RootState} from "../../../store";
 
-const InputField: React.FC = () => {
+const InputField = React.forwardRef((props, forwardedRef) => {
     const [value, setValue] = useState("");
     const dispatch = useDispatch();
     const interfaceLanguage = useSelector((state: RootState) => state.settings.interfaceSettings.language);
@@ -26,13 +26,8 @@ const InputField: React.FC = () => {
             evaluateInput();
     }
 
-    return (
-        <InputText
-            placeholder="input"
-            onChange={changeInput}
-            onKeyPress={keypressInput}
-        />
-    )
-}
+    // @ts-ignore
+    return (<InputText placeholder="input" onChange={changeInput} onKeyPress={keypressInput} ref={forwardedRef}/>);
+});
 
 export default InputField;

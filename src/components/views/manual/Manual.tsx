@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import styled from "styled-components";
 import ManualCategory from "./ManualCategory";
 import {useSelector} from "react-redux";
@@ -16,7 +16,12 @@ const Container = styled.div`
 const Manual: React.FC = () => {
     const [filter, setFilter] = useState("");
     const language = useSelector((state: RootState) => state.settings.interfaceSettings.language);
+    const searchRef = useRef<HTMLInputElement>(null);
     const [t] = useTranslation();
+    useEffect(() => {
+        if (searchRef.current)
+            searchRef.current.focus();
+    }, []);
 
     return (
         <Container>
@@ -24,6 +29,7 @@ const Manual: React.FC = () => {
                 style={{marginBottom: "20px"}}
                 placeholder={t("manual.search")}
                 value={filter}
+                ref={searchRef}
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => setFilter(event.target.value)}
             />
             <ManualCategory

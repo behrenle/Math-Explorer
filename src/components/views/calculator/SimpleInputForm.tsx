@@ -28,6 +28,10 @@ const SimpleInputForm: React.FC = () => {
             outputRef.current.select();
         }
     }, [lastOutput]);
+    useEffect(() => {
+        if (inputRef.current)
+            inputRef.current.focus();
+    }, []);
     const [t] = useTranslation();
 
     const outputOnKeyPress = (event: React.KeyboardEvent) => {

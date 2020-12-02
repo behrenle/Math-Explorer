@@ -16,6 +16,9 @@ const sessionReducer = (state = initialState, action: SessionAction): Session =>
         case "CHANGE_CURRENT_INPUT":
             return {...state, currentInput: action.payload};
 
+        case "CLEAR_CURRENT_INPUT":
+            return {...state, currentInput: ""};
+
         case "CLEAR_MATH_HISTORY":
             return {...state, mathHistory: []};
 
@@ -25,7 +28,8 @@ const sessionReducer = (state = initialState, action: SessionAction): Session =>
                 action.payload.language,
                 parseInt(action.payload.significantDigits + "") // fix typescript bug
             );
-            return {...state, mathHistory: script.getItems()};
+            const scriptItems = script.getItems();
+            return {...state, mathHistory: state.mathHistory.concat(scriptItems.slice(-1))};
 
         case "CLEAR_MATH_USER_SCOPE":
             /* todo clear user scope */

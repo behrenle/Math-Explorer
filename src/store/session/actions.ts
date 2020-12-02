@@ -8,6 +8,12 @@ export const changeCurrentInput = (input: string): SessionAction => {
     };
 };
 
+export const clearCurrentInput = (): SessionAction => {
+    return {
+        type: "CLEAR_CURRENT_INPUT"
+    };
+};
+
 export const evaluate = (language: Language, significantDigits: SignificantDigits): SessionAction => {
     return {
         type: "EVALUATE_INPUT",

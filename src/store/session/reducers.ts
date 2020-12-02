@@ -6,25 +6,30 @@ import numberdrive from "@behrenle/number-drive";
 const script = new numberdrive.Script("en", );
 
 const initialState: Session = {
+    currentInput: "",
     mathHistory: []
 };
 
 /* todo use redux-create-reducer package */
 const sessionReducer = (state = initialState, action: SessionAction): Session => {
     switch (action.type) {
+        case "CHANGE_CURRENT_INPUT":
+            return {...state, currentInput: action.payload};
+
         case "CLEAR_MATH_HISTORY":
-            return {mathHistory: []};
+            return {...state, mathHistory: []};
 
         case "EVALUATE_INPUT":
             script.evaluate(
-                action.payload.input,
+                state.currentInput,
                 action.payload.language,
                 parseInt(action.payload.significantDigits + "") // fix typescript bug
             );
-            return {mathHistory: script.getItems()};
+            return {...state, mathHistory: script.getItems()};
 
         case "CLEAR_MATH_USER_SCOPE":
             /* todo clear user scope */
+            script.clearUserScope();
             return state;
 
         default:

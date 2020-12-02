@@ -1,35 +1,37 @@
-import React, {useState} from "react";
+import React from "react";
 import InputText from "../../common/InputText";
 import {useDispatch, useSelector} from "react-redux";
-import {evaluate} from "../../../store/session/actions";
+import {changeCurrentInput, evaluate} from "../../../store/session/actions";
 import {RootState} from "../../../store";
 import {useTranslation} from "react-i18next";
 
 const InputField = React.forwardRef((props, forwardedRef) => {
-    const [value, setValue] = useState("");
     const dispatch = useDispatch();
+    const value = useSelector((state: RootState) => state.session.currentInput);
     const interfaceLanguage = useSelector((state: RootState) => state.settings.interfaceSettings.language);
     const mathLanguage = useSelector((state: RootState) => state.settings.mathSettings.numberFormat);
     const significantDigits = useSelector((state: RootState) => state.settings.mathSettings.significantDigits);
     const [t] = useTranslation();
 
-    const evaluateInput = () => dispatch(evaluate(
-        value,
-        mathLanguage === "inherit" ? interfaceLanguage : mathLanguage,
-        significantDigits
-    ));
-
     const changeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setValue(event.target.value);
+        dispatch(changeCurrentInput(event.target.value));
     };
 
     const keypressInput = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === "Enter")
-            evaluateInput();
+            dispatch(evaluate(
+                mathLanguage === "inherit" ? interfaceLanguage : mathLanguage,
+                significantDigits
+            ));
     }
 
     // @ts-ignore
-    return (<InputText placeholder={t("common.input")} onChange={changeInput} onKeyPress={keypressInput} ref={forwardedRef}/>);
+    return (<InputText ref={forwardedRef}
+        placeholder={t("common.input")}
+        onChange={changeInput}
+        onKeyPress={keypressInput}
+        value={value}
+    />);
 });
 
 export default InputField;

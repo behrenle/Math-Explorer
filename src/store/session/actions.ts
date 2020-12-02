@@ -1,11 +1,17 @@
 import {SessionAction} from "./types";
 import {Language, SignificantDigits} from "../settings/types";
 
-export const evaluate = (input: string, language: Language, significantDigits: SignificantDigits): SessionAction => {
+export const changeCurrentInput = (input: string): SessionAction => {
+    return {
+        type: "CHANGE_CURRENT_INPUT",
+        payload: input
+    };
+};
+
+export const evaluate = (language: Language, significantDigits: SignificantDigits): SessionAction => {
     return {
         type: "EVALUATE_INPUT",
         payload: {
-            input,
             language,
             significantDigits
         }

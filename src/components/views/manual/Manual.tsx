@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useRef, useState} from "react";
 import styled from "styled-components";
 import ManualCategory from "./ManualCategory";
 import {useSelector} from "react-redux";
@@ -8,6 +8,7 @@ import InputText from "../../common/InputText";
 // @ts-ignore
 import nd from "@behrenle/number-drive"
 import {useTranslation} from "react-i18next";
+import useRefEffect from "../../../hooks/useRefEffect";
 
 const Container = styled.div`
     padding: 20px 15%;
@@ -18,10 +19,7 @@ const Manual: React.FC = () => {
     const language = useSelector((state: RootState) => state.settings.interfaceSettings.language);
     const searchRef = useRef<HTMLInputElement>(null);
     const [t] = useTranslation();
-    useEffect(() => {
-        if (searchRef.current)
-            searchRef.current.focus();
-    }, []);
+    useRefEffect(searchRef, r => r.current.focus());
 
     return (
         <Container>

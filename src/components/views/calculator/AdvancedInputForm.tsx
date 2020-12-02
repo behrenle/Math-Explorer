@@ -32,9 +32,9 @@ const MathHistoryContainerWrapper = styled(Card)`
     }
 `;
 
-const MathHistoryItemContainer = styled.div`
+const MathHistoryItemContainer = styled.div<{showCellNumbers: boolean}>`
     display: grid;
-    grid-template-columns: 80px auto 1fr;
+    grid-template-columns: ${ props => props.showCellNumbers ? "80px auto 1fr" : "auto 1fr" };
     grid-template-rows: auto auto;
     padding: 10px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.25);
@@ -71,7 +71,12 @@ interface MathHistoryItemProps {
 const MathHistoryItem: React.FC<MathHistoryItemProps> = ({index,input, output}) => {
     const [t] = useTranslation();
     const copyOnClick = useSelector((state: RootState) => state.settings.interfaceSettings.copyOnClick);
+    const showCellNumbers = useSelector((state: RootState) => state.settings.interfaceSettings.showLineNumbers);
+    const language = useSelector((state: RootState) => state.settings.interfaceSettings.language);
+    const cellLanguageTag = useSelector((state: RootState) => state.settings.interfaceSettings.cellLanguageTag);
     const dispatch = useDispatch();
+
+    const languageTag = cellLanguageTag === "inherit" ? language : cellLanguageTag;
 
     const onClick = (type: "input" | "output") => {
         if (copyOnClick)
@@ -82,14 +87,20 @@ const MathHistoryItem: React.FC<MathHistoryItemProps> = ({index,input, output}) 
     };
 
     return (
-        <MathHistoryItemContainer>
-            <MathHistoryItemLineCounter>
-                #{index + 1}
-            </MathHistoryItemLineCounter>
+        <MathHistoryItemContainer showCellNumbers={showCellNumbers}>
+            { showCellNumbers ? <MathHistoryItemLineCounter>#{index + 1}</MathHistoryItemLineCounter> : null }
             <MathHistoryItemLabel>{t("common.input")}</MathHistoryItemLabel>
-            <MathHistoryItemValue copyable={copyOnClick} onClick={() => onClick("input")}> {input}</MathHistoryItemValue>
+            <MathHistoryItemValue
+                lang={languageTag}
+                copyable={copyOnClick}
+                onClick={() => onClick("input")}
+            > {input}</MathHistoryItemValue>
             <MathHistoryItemLabel>{t("common.output")}</MathHistoryItemLabel>
-            <MathHistoryItemValue copyable={copyOnClick} onClick={() => onClick("output")}> {output}</MathHistoryItemValue>
+            <MathHistoryItemValue
+                lang={languageTag}
+                copyable={copyOnClick} o
+                nClick={() => onClick("output")}
+            > {output}</MathHistoryItemValue>
         </MathHistoryItemContainer>
     );
 }

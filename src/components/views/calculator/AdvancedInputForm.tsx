@@ -74,7 +74,6 @@ const MathHistory: React.FC<{ items: MathHistoryItemProps[] }> = ({items}) => {
     const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        console.log("scroll")
         if (containerRef.current)
             containerRef.current.scrollTop = containerRef.current.scrollHeight;
     }, [items])

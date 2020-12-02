@@ -11,6 +11,7 @@
     "navbar.about": "Über",
 
     "calculator.clear_history": "Verlauf löschen",
+    "calculator.clear_output": "Ausgabe löschen",
     "calculator.clear_input": "Eingabe löschen",
     "calculator.clear_memory": "Speicher löschen",
     "calculator.clear_all": "Alles löschen",

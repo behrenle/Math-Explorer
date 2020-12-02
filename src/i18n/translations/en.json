@@ -11,6 +11,7 @@
     "navbar.about": "About",
 
     "calculator.clear_history": "Clear History",
+    "calculator.clear_output": "Clear Output",
     "calculator.clear_input": "Clear Input",
     "calculator.clear_memory": "Clear Memory",
     "calculator.clear_all": "Clear All",

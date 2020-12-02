@@ -1,12 +1,14 @@
 import React from "react";
 import Sidebar from "../../common/Sidebar";
 import {useTranslation} from "react-i18next";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {clearCurrentInput, clearMathHistory, clearMathUserScope} from "../../../store/session/actions";
+import {RootState} from "../../../store";
 
 const CalculatorSidebar: React.FC = () => {
     const dispatch = useDispatch();
     const [t] = useTranslation();
+    const advancedInputMode = useSelector((state: RootState) => state.settings.interfaceSettings.advancedInputMode);
 
     const clearAll = () => {
         dispatch(clearMathHistory());
@@ -17,7 +19,7 @@ const CalculatorSidebar: React.FC = () => {
     return (
         <Sidebar>
             <button onClick={() => dispatch(clearMathHistory())}>
-                {t("calculator.clear_history")}
+                {t(advancedInputMode ? "calculator.clear_history" : "calculator.clear_output")}
             </button>
             <button onClick={() => dispatch(clearCurrentInput())}>
                 {t("calculator.clear_input")}

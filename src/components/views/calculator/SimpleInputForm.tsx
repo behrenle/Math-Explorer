@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from "react";
+import React, {useRef} from "react";
 import styled from "styled-components";
 import {RootState} from "../../../store";
 import {useSelector} from "react-redux";
@@ -7,6 +7,7 @@ import InputField from "./InputField";
 import {useTranslation} from "react-i18next";
 import {focusInput, focusOutput} from "../../../hotkeys.json";
 import useHotkeyRef from "../../../hooks/useHotkeyRef";
+import useRefEffect from "../../../hooks/useRefEffect";
 
 const Container = styled.div`
     padding: 20px;
@@ -24,18 +25,9 @@ const SimpleInputForm: React.FC = () => {
     );
     const outputRef = useRef<HTMLInputElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
-    useEffect(() => {
-        if (outputRef.current && lastOutput !== null && lastOutput !== "") {
-            outputRef.current.focus();
-            outputRef.current.select();
-        }
-    }, [lastOutput]);
-    useEffect(() => {
-        if (inputRef.current)
-            inputRef.current.focus();
-    }, []);
     const [t] = useTranslation();
-
+    useRefEffect(outputRef, r => {r.current.focus(); r.current.select()}, [lastOutput]);
+    useRefEffect(inputRef, r => r.current.focus());
     useHotkeyRef(focusInput, inputRef, (r) => r.current.focus());
     useHotkeyRef(focusOutput, outputRef, (r) => r.current.focus());
 

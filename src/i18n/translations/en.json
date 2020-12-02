@@ -1,0 +1,38 @@
+{
+    "common.input": "Input",
+    "common.output": "Output",
+    "common.enable": "On",
+    "common.disable": "Off",
+    "common.inherit": "Inherit",
+
+    "navbar.calculator": "Calculator",
+    "navbar.settings": "Settings",
+    "navbar.manual": "Manual",
+    "navbar.about": "About",
+
+    "calculator.clear_history": "Clear History",
+    "calculator.clear_input": "Clear Input",
+    "calculator.clear_memory": "Clear Memory",
+    "calculator.clear_all": "Clear All",
+
+    "settings.interface": "Interface",
+    "settings.calculator": "Calculator",
+    "settings.language": "Language",
+    "settings.advanced_input_mode": "Advanced input mode",
+    "settings.show_cell_numbers": "Show cell numbers",
+    "settings.copy_cell_content_by_clicking": "Copy cell content by clicking",
+    "settings.cell_language_tag": "Cell language tag",
+    "settings.significant_decimal_places": "Significant decimal places",
+    "settings.number_format": "Number format",
+
+    "manual.search": "Search",
+    "manual.constants": "Constants",
+    "manual.functions": "Functions",
+
+    "about.general": "General",
+    "about.version": "Version",
+    "about.dependencies": "Dependencies",
+    "about.author": "Author",
+    "about.license": "License",
+    "about.more_info": "Visit <a href=\"{{url}}\">{{label}}</a> for more information."
+}

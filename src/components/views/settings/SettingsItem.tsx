@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import {useTranslation} from "react-i18next";
 
 const Container = styled.div`
     padding: 10px 20px;
@@ -30,13 +31,15 @@ interface Props {
 }
 
 const SettingsItem: React.FC<Props> = ({label, options, value, setter}) => {
+    const [t] = useTranslation();
+
     const changeHandler = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setter(event.target.value);
     }
 
     return (
         <Container>
-            <Label>{label}</Label>
+            <Label>{t(label)}</Label>
             <Select value={value} onChange={changeHandler}>
                 {options.map((option, index) => (
                     <option value={option.value} key={index}>{option.label}</option>

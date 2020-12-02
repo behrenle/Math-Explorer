@@ -2,6 +2,7 @@ import React from 'react';
 import {HashRouter, Switch, Route} from "react-router-dom";
 import {Provider} from "react-redux";
 import initStore from "../../store/createStore";
+import "../../i18n/index";
 import styled from "styled-components";
 import Navbar from "./navbar/Navbar";
 import Calculator from "../views/calculator/Calculator";
@@ -12,10 +13,10 @@ import About from "../views/about/About";
 const store = initStore();
 
 const views = [
-    {name: "Calculator", path: "/", component: Calculator},
-    {name: "Settings", path: "/settings", component: Settings},
-    {name: "Manual", path: "/manual", component: Manual},
-    {name: "About", path: "/about", component: About}
+    {name: "navbar.calculator", path: "/", component: Calculator},
+    {name: "navbar.settings", path: "/settings", component: Settings},
+    {name: "navbar.manual", path: "/manual", component: Manual},
+    {name: "navbar.about", path: "/about", component: About}
 ]
 
 const navbarProps = {

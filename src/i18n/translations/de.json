@@ -1,0 +1,38 @@
+{
+    "common.input": "Eingabe",
+    "common.output": "Ausgabe",
+    "common.enable": "An",
+    "common.disable": "Aus",
+    "common.inherit": "Erben",
+
+    "navbar.calculator": "Rechner",
+    "navbar.settings": "Einstellungen",
+    "navbar.manual": "Hilfe",
+    "navbar.about": "Über",
+
+    "calculator.clear_history": "Verlauf löschen",
+    "calculator.clear_input": "Eingabe löschen",
+    "calculator.clear_memory": "Speicher löschen",
+    "calculator.clear_all": "Alles löschen",
+
+    "settings.interface": "Oberfläche",
+    "settings.calculator": "Rechner",
+    "settings.language": "Sprache",
+    "settings.advanced_input_mode": "Erweiterter Eingabemodus",
+    "settings.show_cell_numbers": "Zeige Zellennummern",
+    "settings.copy_cell_content_by_clicking": "Zellinhalt durch klicken kopieren",
+    "settings.cell_language_tag": "Zellensprachattribut",
+    "settings.significant_decimal_places": "Signifikante Stellenanzahl",
+    "settings.number_format": "Zahlenformat",
+
+    "manual.search": "Suche",
+    "manual.constants": "Konstanten",
+    "manual.functions": "Funktionen",
+
+    "about.general": "Allgemein",
+    "about.version": "Version",
+    "about.dependencies": "Abhängigkeiten",
+    "about.author": "Author",
+    "about.license": "Lizenz",
+    "about.more_info": "Siehe <a href=\"{{url}}\">{{label}}</a> für mehr Informationen."
+}

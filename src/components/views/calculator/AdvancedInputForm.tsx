@@ -4,6 +4,7 @@ import {useSelector} from "react-redux";
 import {RootState} from "../../../store";
 import InputField from "./InputField";
 import Card from "../../common/Card";
+import {useTranslation} from "react-i18next";
 
 const Container = styled.div`
     padding: 20px;
@@ -57,14 +58,16 @@ interface MathHistoryItemProps {
 }
 
 const MathHistoryItem: React.FC<MathHistoryItemProps> = ({index,input, output}) => {
+    const [t] = useTranslation();
+
     return (
         <MathHistoryItemContainer>
             <MathHistoryItemLineCounter>
                 #{index + 1}
             </MathHistoryItemLineCounter>
-            <MathHistoryItemLabel>input</MathHistoryItemLabel>
+            <MathHistoryItemLabel>{t("common.input")}</MathHistoryItemLabel>
             <span> {input}</span>
-            <MathHistoryItemLabel>output</MathHistoryItemLabel>
+            <MathHistoryItemLabel>{t("common.output")}</MathHistoryItemLabel>
             <span> {output}</span>
         </MathHistoryItemContainer>
     );

@@ -4,6 +4,7 @@ import {RootState} from "../../../store";
 import {useSelector} from "react-redux";
 import InputText from "../../common/InputText";
 import InputField from "./InputField";
+import {useTranslation} from "react-i18next";
 
 const Container = styled.div`
     padding: 20px;
@@ -27,6 +28,7 @@ const SimpleInputForm: React.FC = () => {
             outputRef.current.select();
         }
     }, [lastOutput]);
+    const [t] = useTranslation();
 
     const outputOnKeyPress = (event: React.KeyboardEvent) => {
         if (event.key === "Enter" && inputRef.current)
@@ -38,7 +40,7 @@ const SimpleInputForm: React.FC = () => {
             <InputField ref={inputRef}/>
             <StyledOutputField
                 readOnly={true}
-                placeholder={"output"}
+                placeholder={t("common.output")}
                 value={lastOutput}
                 ref={outputRef}
                 onKeyPress={outputOnKeyPress}

@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
-import {useLocation} from "react-router-dom"
+import {useLocation} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 
 const StyledLink = styled(Link)`
     padding: 0 20px;
@@ -34,9 +35,10 @@ const NavbarItem: React.FC<Props> = ({name, path}) => {
     useEffect(() => {
         setActive(location.pathname === path)
     }, [location, path]);
+    const [t] = useTranslation();
 
     return (
-        <StyledLink to={path} enabled={active.toString()}>{name}</StyledLink>
+        <StyledLink to={path} enabled={active.toString()}>{t(name)}</StyledLink>
     )
 }
 

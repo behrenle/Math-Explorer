@@ -7,7 +7,7 @@ const defaultSettings: Settings = {
     },
     interfaceSettings: {
         cellLanguageTag: "inherit",
-        language: "en",
+        language: "de",
         advancedInputMode: false,
         copyOnClick: true,
         showLineNumbers: true

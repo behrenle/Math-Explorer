@@ -5,6 +5,8 @@ import {RootState} from "../../../store";
 import InputField from "./InputField";
 import Card from "../../common/Card";
 import {useTranslation} from "react-i18next";
+import {useHotkeys} from "react-hotkeys-hook";
+import {focusInput} from "../../../hotkeys.json";
 
 const Container = styled.div`
     padding: 20px;
@@ -99,11 +101,16 @@ const MathHistory: React.FC<{ items: MathHistoryItemProps[] }> = ({items}) => {
 
 const AdvancedInputForm: React.FC = () => {
     const mathHistory = useSelector((state: RootState) => state.session.mathHistory);
+    const inputRef = useRef<HTMLInputElement>(null);
+    useHotkeys(focusInput, () => {
+        if (inputRef.current)
+            inputRef.current.focus();
+    }, {filter: () => true}, []);
 
     return (
         <Container>
             <MathHistory items={mathHistory.map((item, i) => {return {...item, index: i}})}/>
-            <InputField/>
+            <InputField ref={inputRef}/>
         </Container>
     )
 }

@@ -5,6 +5,8 @@ import {useSelector} from "react-redux";
 import InputText from "../../common/InputText";
 import InputField from "./InputField";
 import {useTranslation} from "react-i18next";
+import {focusInput, focusOutput} from "../../../hotkeys.json";
+import useHotkeyRef from "../../../hooks/useHotkeyRef";
 
 const Container = styled.div`
     padding: 20px;
@@ -33,6 +35,9 @@ const SimpleInputForm: React.FC = () => {
             inputRef.current.focus();
     }, []);
     const [t] = useTranslation();
+
+    useHotkeyRef(focusInput, inputRef, (r) => r.current.focus());
+    useHotkeyRef(focusOutput, outputRef, (r) => r.current.focus());
 
     const outputOnKeyPress = (event: React.KeyboardEvent) => {
         if (event.key === "Enter" && inputRef.current)

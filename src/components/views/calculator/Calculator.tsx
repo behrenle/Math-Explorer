@@ -5,6 +5,9 @@ import SimpleInputForm from "./SimpleInputForm";
 import AdvancedInputForm from "./AdvancedInputForm";
 import {useSelector} from "react-redux";
 import {RootState} from "../../../store";
+import {clearAll, clearInput, clearMemory, clearOutput} from "../../../hotkeys.json";
+import {clearCurrentInput, clearMathHistory, clearMathUserScope} from "../../../store/session/actions";
+import useHotkeyDispatch from "../../../hooks/useHotkeyDispatch";
 
 const Container = styled.div`
     display: grid;
@@ -14,6 +17,11 @@ const Container = styled.div`
 
 const Calculator: React.FC = () => {
     const advancedInputMode = useSelector((state: RootState) => state.settings.interfaceSettings.advancedInputMode);
+    useHotkeyDispatch(clearInput, clearCurrentInput());
+    useHotkeyDispatch(clearOutput, clearMathHistory());
+    useHotkeyDispatch(clearMemory, clearMathUserScope());
+    useHotkeyDispatch(clearAll, [clearCurrentInput(), clearMathHistory(), clearMathUserScope()]);
+
     const selectedInputForm = advancedInputMode ? <AdvancedInputForm/> : <SimpleInputForm/>;
 
     return (

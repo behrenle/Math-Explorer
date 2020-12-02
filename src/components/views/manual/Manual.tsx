@@ -4,11 +4,13 @@ import ManualCategory from "./ManualCategory";
 import {useSelector} from "react-redux";
 import {RootState} from "../../../store";
 import InputText from "../../common/InputText";
+import hotkeys from "../../../hotkeys.json";
 
 // @ts-ignore
 import nd from "@behrenle/number-drive"
 import {useTranslation} from "react-i18next";
 import useRefEffect from "../../../hooks/useRefEffect";
+import {camelToSnakeCase} from "../../../utils";
 
 const Container = styled.div`
     padding: 20px 15%;
@@ -29,6 +31,21 @@ const Manual: React.FC = () => {
                 value={filter}
                 ref={searchRef}
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => setFilter(event.target.value)}
+            />
+            <ManualCategory
+                title="manual.hotkeys"
+                language={language}
+                items={
+                    Object.entries(hotkeys).map(hotkey => {
+                        const synopsis = hotkey[1].replaceAll("+", " + ").toUpperCase();
+                        const description = t("manual.hotkey_" + camelToSnakeCase(hotkey[0]));
+                        return {
+                            synopsis: {de: synopsis, en: synopsis},
+                            description: {de: description, en: description}
+                        };
+                    })
+                }
+                filter={filter}
             />
             <ManualCategory
                 title="manual.constants"

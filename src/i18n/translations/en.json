@@ -29,6 +29,14 @@
     "manual.search": "Search",
     "manual.constants": "Constants",
     "manual.functions": "Functions",
+    "manual.hotkeys": "Hotkeys",
+    "manual.hotkey_focus_input": "Focus input field",
+    "manual.hotkey_focus_output": "Focus output field",
+    "manual.hotkey_clear_input": "Clear input field",
+    "manual.hotkey_clear_output": "Clear output field",
+    "manual.hotkey_clear_memory": "Clear user defined variables and functions",
+    "manual.hotkey_clear_all": "Clear all",
+
 
     "about.general": "General",
     "about.version": "Version",

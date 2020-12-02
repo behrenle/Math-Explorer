@@ -29,6 +29,13 @@
     "manual.search": "Suche",
     "manual.constants": "Konstanten",
     "manual.functions": "Funktionen",
+    "manual.hotkeys": "Tastenbefehle",
+    "manual.hotkey_focus_input": "Eingabefeld fokussieren",
+    "manual.hotkey_focus_output": "Ausgabefeld fokussieren",
+    "manual.hotkey_clear_input": "Eingabe löschen",
+    "manual.hotkey_clear_output": "Ausgabe löschen",
+    "manual.hotkey_clear_memory": "Benutzerdefinierte Variablen und Funktionen löschen",
+    "manual.hotkey_clear_all": "Alles löschen",
 
     "about.general": "Allgemein",
     "about.version": "Version",

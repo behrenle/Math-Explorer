@@ -8,7 +8,7 @@ const defaultSettings: Settings = {
     interfaceSettings: {
         cellLanguageTag: "inherit",
         language: "en",
-        advancedInputMode: true,
+        advancedInputMode: false,
         copyOnClick: true,
         showLineNumbers: true
     }

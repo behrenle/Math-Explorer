@@ -8,6 +8,7 @@ import {useTranslation} from "react-i18next";
 import {useHotkeys} from "react-hotkeys-hook";
 import {focusInput} from "../../../hotkeys.json";
 import {changeCurrentInput} from "../../../store/session/actions";
+import useRefEffect from "../../../hooks/useRefEffect";
 
 const Container = styled.div`
     padding: 20px;
@@ -136,6 +137,7 @@ const AdvancedInputForm: React.FC = () => {
         if (inputRef.current)
             inputRef.current.focus();
     }, {filter: () => true}, []);
+    useRefEffect(inputRef, (r) => r.current.focus(), []);
 
     return (
         <Container>

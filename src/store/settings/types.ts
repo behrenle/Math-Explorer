@@ -13,7 +13,8 @@ export interface InterfaceSettings {
     cellLanguageTag: LanguageOrInherit,
     advancedInputMode: boolean,
     showLineNumbers: boolean,
-    copyOnClick: boolean
+    copyCellContentOnClick: boolean,
+    copyManualContentOnClick: boolean,
 }
 
 export interface Settings {

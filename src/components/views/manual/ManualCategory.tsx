@@ -15,10 +15,11 @@ interface Props {
     title: string,
     language: Language,
     items: any,
-    filter: string
+    filter: string,
+    copyOnClick: boolean,
 }
 
-const ManualCategory: React.FC<Props> = ({title, language, items, filter}) => {
+const ManualCategory: React.FC<Props> = ({title, language, items, filter, copyOnClick}) => {
     const [t] = useTranslation();
 
     const filterFunction = (item: any) => item.synopsis[language].match(escapeRegExp(filter))
@@ -33,7 +34,7 @@ const ManualCategory: React.FC<Props> = ({title, language, items, filter}) => {
             {
                 items
                     .filter(filterFunction)
-                    .map((item: any, key: number) => <ManualItem key={key} synopsis={item.synopsis[language]} description={item.description[language]}/>)
+                    .map((item: any, key: number) => <ManualItem key={key} copyOnClick={copyOnClick} synopsis={item.synopsis[language]} description={item.description[language]}/>)
             }
         </Container>
     );

@@ -46,18 +46,21 @@ const Manual: React.FC = () => {
                     })
                 }
                 filter={filter}
+                copyOnClick={false}
             />
             <ManualCategory
                 title="manual.constants"
                 language={language}
                 items={nd.Manual.constants}
                 filter={filter}
+                copyOnClick={true}
             />
             <ManualCategory
                 title="manual.functions"
                 language={language}
                 items={nd.Manual.functions}
                 filter={filter}
+                copyOnClick={true}
             />
         </Container>
     )

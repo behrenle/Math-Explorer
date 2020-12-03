@@ -9,7 +9,8 @@ const defaultSettings: Settings = {
         cellLanguageTag: "inherit",
         language: "de",
         advancedInputMode: false,
-        copyOnClick: true,
+        copyManualContentOnClick: true,
+        copyCellContentOnClick: true,
         showLineNumbers: true
     }
 };

@@ -60,10 +60,16 @@ const Settings: React.FC = () => {
                     setter={value => updateSettings({interfaceSettings: {showLineNumbers: value === "true"}})}
                 />
                 <SettingsItem
-                    label="settings.copy_cell_content_by_clicking"
+                    label="settings.copy_cell_content_on_click"
                     options={enableOptions}
-                    value={settings.interfaceSettings.copyOnClick}
-                    setter={value => updateSettings({interfaceSettings: {copyOnClick: value === "true"}})}
+                    value={settings.interfaceSettings.copyCellContentOnClick}
+                    setter={value => updateSettings({interfaceSettings: {copyCellContentOnClick: value === "true"}})}
+                />
+                <SettingsItem
+                    label="settings.copy_manual_content_on_click"
+                    options={enableOptions}
+                    value={settings.interfaceSettings.copyManualContentOnClick}
+                    setter={value => updateSettings({interfaceSettings: {copyManualContentOnClick: value === "true"}})}
                 />
                 <SettingsItem
                     label="settings.cell_language_tag"

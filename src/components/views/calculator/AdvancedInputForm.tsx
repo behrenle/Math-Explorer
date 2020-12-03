@@ -70,7 +70,7 @@ interface MathHistoryItemProps {
 
 const MathHistoryItem: React.FC<MathHistoryItemProps> = ({index,input, output}) => {
     const [t] = useTranslation();
-    const copyOnClick = useSelector((state: RootState) => state.settings.interfaceSettings.copyOnClick);
+    const copyOnClick = useSelector((state: RootState) => state.settings.interfaceSettings.copyCellContentOnClick);
     const showCellNumbers = useSelector((state: RootState) => state.settings.interfaceSettings.showLineNumbers);
     const language = useSelector((state: RootState) => state.settings.interfaceSettings.language);
     const cellLanguageTag = useSelector((state: RootState) => state.settings.interfaceSettings.cellLanguageTag);

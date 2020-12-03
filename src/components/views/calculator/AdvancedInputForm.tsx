@@ -98,8 +98,8 @@ const MathHistoryItem: React.FC<MathHistoryItemProps> = ({index,input, output}) 
             <MathHistoryItemLabel>{t("common.output")}</MathHistoryItemLabel>
             <MathHistoryItemValue
                 lang={languageTag}
-                copyable={copyOnClick} o
-                nClick={() => onClick("output")}
+                copyable={copyOnClick}
+                onClick={() => onClick("output")}
             > {output}</MathHistoryItemValue>
         </MathHistoryItemContainer>
     );

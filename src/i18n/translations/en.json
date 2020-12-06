@@ -37,6 +37,7 @@
     "manual.hotkey_clear_output": "Clear output field",
     "manual.hotkey_clear_memory": "Clear user defined variables and functions",
     "manual.hotkey_clear_all": "Clear all",
+    "manual.hotkey_copy_input_and_output": "Copy input and output",
 
 
     "about.general": "General",

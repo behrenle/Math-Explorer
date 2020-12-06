@@ -58,7 +58,7 @@ export function register() {
 
 function registerValidSW(swUrl: string) {
     navigator.serviceWorker
-        .register(swUrl)
+        .register(swUrl, {scope: "."})
         .then(registration => {
             registration.onupdatefound = () => {
                 const installingWorker = registration.installing;

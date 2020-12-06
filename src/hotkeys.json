@@ -1,0 +1,9 @@
+{
+  "focusInput": "alt+i",
+  "focusOutput": "alt+o",
+  "clearInput": "ctrl+alt+i",
+  "clearOutput": "ctrl+alt+o",
+  "clearMemory": "ctrl+alt+m",
+  "clearAll": "ctrl+alt+a",
+  "copyInputAndOutput": "alt+p"
+}

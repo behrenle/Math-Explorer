@@ -1,0 +1,48 @@
+{
+    "common.input": "Eingabe",
+    "common.output": "Ausgabe",
+    "common.enable": "An",
+    "common.disable": "Aus",
+    "common.inherit": "Erben",
+
+    "navbar.calculator": "Rechner",
+    "navbar.settings": "Einstellungen",
+    "navbar.manual": "Hilfe",
+    "navbar.about": "Über",
+
+    "calculator.clear_history": "Verlauf löschen",
+    "calculator.clear_output": "Ausgabe löschen",
+    "calculator.clear_input": "Eingabe löschen",
+    "calculator.clear_memory": "Speicher löschen",
+    "calculator.clear_all": "Alles löschen",
+
+    "settings.interface": "Oberfläche",
+    "settings.calculator": "Rechner",
+    "settings.language": "Sprache",
+    "settings.advanced_input_mode": "Erweiterter Eingabemodus",
+    "settings.show_cell_numbers": "Zeige Zellennummern",
+    "settings.copy_cell_content_on_click": "Zellinhalt durch klicken kopieren",
+    "settings.copy_manual_content_on_click": "Hilfetext durch klicken kopieren",
+    "settings.cell_language_tag": "Zellensprachattribut",
+    "settings.significant_decimal_places": "Signifikante Stellenanzahl",
+    "settings.number_format": "Zahlenformat",
+
+    "manual.search": "Suche",
+    "manual.constants": "Konstanten",
+    "manual.functions": "Funktionen",
+    "manual.hotkeys": "Tastenbefehle",
+    "manual.hotkey_focus_input": "Eingabefeld fokussieren",
+    "manual.hotkey_focus_output": "Ausgabefeld fokussieren",
+    "manual.hotkey_clear_input": "Eingabe löschen",
+    "manual.hotkey_clear_output": "Ausgabe löschen",
+    "manual.hotkey_clear_memory": "Benutzerdefinierte Variablen und Funktionen löschen",
+    "manual.hotkey_clear_all": "Alles löschen",
+    "manual.hotkey_copy_input_and_output": "Ein- und Ausgabe kopieren",
+
+    "about.general": "Allgemein",
+    "about.version": "Version",
+    "about.dependencies": "Abhängigkeiten",
+    "about.author": "Author",
+    "about.license": "Lizenz",
+    "about.more_info": "Siehe <a href=\"{{url}}\">{{label}}</a> für mehr Informationen."
+}

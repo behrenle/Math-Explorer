@@ -37,6 +37,7 @@
     "manual.hotkey_clear_output": "Ausgabe löschen",
     "manual.hotkey_clear_memory": "Benutzerdefinierte Variablen und Funktionen löschen",
     "manual.hotkey_clear_all": "Alles löschen",
+    "manual.hotkey_copy_input_and_output": "Ein- und Ausgabe kopieren",
 
     "about.general": "Allgemein",
     "about.version": "Version",

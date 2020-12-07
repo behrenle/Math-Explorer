@@ -27,7 +27,7 @@ const Calculator: React.FC = () => {
     useHotkeyDispatch(clearAll, [clearCurrentInput(), clearMathHistory(), clearMathUserScope()]);
     useHotkeys(copyInputAndOutput, () => {
         navigator.clipboard.writeText(`${t("common.input")}: ${currentInput}\n${t("common.output")}: ${currentOutput}`).catch(console.error);
-    }, hotkeyOptions);
+    }, hotkeyOptions, [currentInput, currentOutput]);
 
     const selectedInputForm = advancedInputMode ? <AdvancedInputForm/> : <SimpleInputForm/>;
 

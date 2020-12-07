@@ -1,7 +1,7 @@
 {
-  "name": "app name",
-  "short_name": "short name",
-  "theme_color": "#fff",
+  "name": "Math Explorer",
+  "short_name": "Math Explorer",
+  "theme_color": "#1d3971",
   "background_color": "#fff",
   "display": "standalone",
   "orientation": "portrait",

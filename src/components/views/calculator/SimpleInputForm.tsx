@@ -8,6 +8,7 @@ import {useTranslation} from "react-i18next";
 import {focusInput, focusOutput} from "../../../hotkeys.json";
 import useHotkeyRef from "../../../hooks/useHotkeyRef";
 import useRefEffect from "../../../hooks/useRefEffect";
+import useTheme from "../../../hooks/useTheme";
 
 const Container = styled.div`
     padding: 20px;
@@ -30,16 +31,20 @@ const SimpleInputForm: React.FC = () => {
     useRefEffect(inputRef, r => r.current.focus());
     useHotkeyRef(focusInput, inputRef, (r) => r.current.focus());
     useHotkeyRef(focusOutput, outputRef, (r) => r.current.focus());
+    const theme = useTheme();
 
     const outputOnKeyPress = (event: React.KeyboardEvent) => {
         if (event.key === "Enter" && inputRef.current)
             inputRef.current.focus();
     }
 
+
     return (
         <Container>
             <InputField ref={inputRef} />
             <StyledOutputField
+                type="text"
+                {...theme}
                 readOnly={true}
                 placeholder={t("common.output")}
                 value={lastOutput}

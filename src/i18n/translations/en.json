@@ -26,6 +26,7 @@
     "settings.cell_language_tag": "Cell language tag",
     "settings.significant_decimal_places": "Significant decimal places",
     "settings.number_format": "Number format",
+    "settings.theme": "Theme",
 
     "manual.search": "Search",
     "manual.constants": "Constants",

@@ -1,3 +1,5 @@
+import {ThemeName} from "../../hooks/useTheme";
+
 /* state types */
 export type Language = "en" | "de";
 export type LanguageOrInherit = Language | "inherit";
@@ -15,6 +17,7 @@ export interface InterfaceSettings {
     showLineNumbers: boolean,
     copyCellContentOnClick: boolean,
     copyManualContentOnClick: boolean,
+    theme: ThemeName
 }
 
 export interface Settings {

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const Container = styled.div`
+const Container = styled.aside`
     background-color: white;
     box-shadow: 5px 0 5px rgba(0, 0, 0, 0.15);
     display: flex;

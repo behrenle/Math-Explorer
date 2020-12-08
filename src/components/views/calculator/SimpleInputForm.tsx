@@ -38,7 +38,7 @@ const SimpleInputForm: React.FC = () => {
 
     return (
         <Container>
-            <InputField ref={inputRef}/>
+            <InputField ref={inputRef} />
             <StyledOutputField
                 readOnly={true}
                 placeholder={t("common.output")}

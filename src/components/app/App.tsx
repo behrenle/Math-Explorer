@@ -34,7 +34,7 @@ const Container = styled.div`
     grid-template-rows: 80px auto;
 `;
 
-const Content = styled.div`
+const Content = styled.main`
     z-index: 0;
     overflow-y: auto;
     width: 100%;

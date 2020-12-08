@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import NavbarItem from "./NavbarItem";
 
-const Container = styled.div`
+const Container = styled.header`
     display: flex;
     font-size: 36pt;
     background-color: #1D3971;
@@ -11,6 +11,11 @@ const Container = styled.div`
     align-items: center;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.20);
     z-index: 1;
+`;
+
+const NavContainer = styled.nav`
+    display: flex;
+    height: 80px;
 `;
 
 const Logo = styled.img`
@@ -39,7 +44,9 @@ const Navbar: React.FC<Props> = ({title, items}) => {
         <Container>
             <Logo src={process.env.PUBLIC_URL + "/logo.png"} alt="logo"/>
             <Title>{title}</Title>
-            {items.map((item, index) => <NavbarItem key={index} name={item.name} path={item.path}/>)}
+            <NavContainer>
+                {items.map((item, index) => <NavbarItem key={index} name={item.name} path={item.path}/>)}
+            </NavContainer>
         </Container>
     );
 }

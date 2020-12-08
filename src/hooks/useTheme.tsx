@@ -1,5 +1,5 @@
-import lightTheme from "../themes/light.json";
-import darkTheme from "../themes/dark.json";
+import lightTheme from "../themes/light";
+import darkTheme from "../themes/dark";
 import {useSelector} from "react-redux";
 import {RootState} from "../store";
 
@@ -47,6 +47,9 @@ const useTheme = (): Theme => {
 
         case "dark":
             return darkTheme;
+
+        default:
+            return lightTheme;
     }
 }
 

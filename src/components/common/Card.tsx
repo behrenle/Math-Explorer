@@ -1,7 +1,9 @@
 import styled from "styled-components";
+import {Theme} from "../../hooks/useTheme";
 
-const Card = styled.div`
-    background-color: white;
+const Card = styled.div<Theme>`
+    color: ${props => props.card.color};    
+    background-color: ${props => props.card.backgroundColor};
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
     
     & h1 {

@@ -5,6 +5,7 @@ import Card from "../../common/Card";
 import ManualItem from "./ManualItem";
 import {useTranslation} from "react-i18next";
 import {escapeRegExp} from "../../../utils";
+import useTheme from "../../../hooks/useTheme";
 
 const Container = styled(Card)`
     margin-bottom: 20px;
@@ -21,6 +22,7 @@ interface Props {
 
 const ManualCategory: React.FC<Props> = ({title, language, items, filter, copyOnClick}) => {
     const [t] = useTranslation();
+    const theme = useTheme();
 
     const filterFunction = (item: any) => item.synopsis[language].match(escapeRegExp(filter))
         || item.description[language].match(escapeRegExp(filter));
@@ -29,7 +31,7 @@ const ManualCategory: React.FC<Props> = ({title, language, items, filter, copyOn
         return null;
 
     return (
-        <Container>
+        <Container {...theme}>
             <h1>{t(title)}</h1>
             {
                 items

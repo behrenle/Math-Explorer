@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import NavbarItem from "./NavbarItem";
+import useTheme, {Theme} from "../../../hooks/useTheme";
 
-const Container = styled.header`
+const Container = styled.header<Theme>`
     display: flex;
     font-size: 36pt;
-    background-color: #1D3971;
+    background-color: ${props => props.navbar.backgroundColor};
     color: white;
     height: 80px;
     align-items: center;
@@ -40,8 +41,10 @@ interface Props {
 }
 
 const Navbar: React.FC<Props> = ({title, items}) => {
+    const theme = useTheme();
+
     return (
-        <Container>
+        <Container {...theme}>
             <Logo src={process.env.PUBLIC_URL + "/logo.png"} alt="logo"/>
             <Title>{title}</Title>
             <NavContainer>

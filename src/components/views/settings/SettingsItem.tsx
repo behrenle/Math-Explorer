@@ -14,8 +14,15 @@ const Label = styled.label`
 
 const Select = styled.select`
     font-size: inherit;
+    color: inherit;
+    background-color: inherit;
     margin-left: auto;
     min-width: 250px;
+  
+    & > option {
+      color: initial;
+      background-color: initial;
+    }
 `;
 
 interface OptionProps {

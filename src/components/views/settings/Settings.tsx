@@ -5,6 +5,8 @@ import SettingsItem from "./SettingsItem";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../../store";
 import {useTranslation} from "react-i18next";
+import {themes} from "../../../hooks/useTheme";
+import useTheme from "../../../hooks/useTheme";
 
 const Container = styled.div`
     display: flex;
@@ -22,6 +24,7 @@ const Settings: React.FC = () => {
     const settings = useSelector((state: RootState) => state.settings);
     const dispatch = useDispatch();
     const [t] = useTranslation();
+    const theme = useTheme();
 
     const languageOptions = [{label: "EN", value: "en"}, {label: "DE", value: "de"}];
     const languageWithInheritOptions = [...languageOptions, {label: t("common.inherit"), value: "inherit"}];
@@ -39,7 +42,7 @@ const Settings: React.FC = () => {
 
     return (
         <Container>
-            <SettingsCard>
+            <SettingsCard {...theme}>
                 <h1>{t("settings.interface")}</h1>
                 <SettingsItem
                     label="settings.language"
@@ -77,8 +80,14 @@ const Settings: React.FC = () => {
                     value={settings.interfaceSettings.cellLanguageTag}
                     setter={value => updateSettings({interfaceSettings: {cellLanguageTag: value}})}
                 />
+                <SettingsItem
+                    label="settings.theme"
+                    options={themes.map(theme => {return {label: theme.toUpperCase(), value: theme}})}
+                    value={settings.interfaceSettings.theme}
+                    setter={value => updateSettings({interfaceSettings: {theme: value}})}
+                />
             </SettingsCard>
-            <SettingsCard>
+            <SettingsCard {...theme}>
                 <h1>{t("settings.calculator")}</h1>
                 <SettingsItem
                     label="settings.significant_decimal_places"

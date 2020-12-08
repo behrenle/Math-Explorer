@@ -11,7 +11,8 @@ const defaultSettings: Settings = {
         advancedInputMode: false,
         copyManualContentOnClick: true,
         copyCellContentOnClick: true,
-        showLineNumbers: true
+        showLineNumbers: true,
+        theme: "light"
     }
 };
 

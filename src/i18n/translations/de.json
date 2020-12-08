@@ -26,6 +26,7 @@
     "settings.cell_language_tag": "Zellensprachattribut",
     "settings.significant_decimal_places": "Signifikante Stellenanzahl",
     "settings.number_format": "Zahlenformat",
+    "settings.theme": "Thema",
 
     "manual.search": "Suche",
     "manual.constants": "Konstanten",

@@ -27,7 +27,7 @@ const Container = styled.div<Theme>`
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: ${props => props.app.backgroundColor};
+  background-color: ${props => props?.app?.backgroundColor};
   background-size: cover;
   background-repeat: repeat;
   ${

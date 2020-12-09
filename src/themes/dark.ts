@@ -3,7 +3,7 @@ import {Theme} from "../hooks/useTheme";
 const darkTheme: Theme = {
   app: {
     backgroundColor: "#171717",
-    backgroundImage: ""
+    backgroundImage: "/background/dark.png"
   },
   navbar: {
     backgroundColor: "#060606",

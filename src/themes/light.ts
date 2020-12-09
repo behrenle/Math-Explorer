@@ -3,7 +3,7 @@ import {Theme} from "../hooks/useTheme";
 const lightTheme: Theme = {
   app: {
     backgroundColor: "white",
-    backgroundImage: "/background.png"
+    backgroundImage: "/background/light.png"
   },
   navbar: {
     backgroundColor: "#1D3971",

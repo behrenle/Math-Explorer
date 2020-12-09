@@ -11,7 +11,6 @@ import nd from "@behrenle/number-drive"
 import {useTranslation} from "react-i18next";
 import useRefEffect from "../../../hooks/useRefEffect";
 import {camelToSnakeCase} from "../../../utils";
-import useTheme from "../../../hooks/useTheme";
 
 const Container = styled.div`
     padding: 20px 15%;
@@ -22,14 +21,12 @@ const Manual: React.FC = () => {
     const language = useSelector((state: RootState) => state.settings.interfaceSettings.language);
     const searchRef = useRef<HTMLInputElement>(null);
     const [t] = useTranslation();
-    const theme = useTheme();
     useRefEffect(searchRef, r => r.current.focus());
 
     return (
         <Container>
             <InputText
                 type="text"
-                {...theme}
                 style={{marginBottom: "20px"}}
                 placeholder={t("manual.search")}
                 value={filter}

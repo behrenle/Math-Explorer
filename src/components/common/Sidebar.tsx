@@ -1,10 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import useTheme, {Theme} from "../../hooks/useTheme";
 
-const Container = styled.aside<Theme>`
-    background-color: ${props => props.sidebar.backgroundColor};
-    color: ${props => props.sidebar.color};
+const Container = styled.aside`
+    background-color: ${props => props.theme.sidebar.backgroundColor};
+    color: ${props => props.theme.sidebar.color};
     box-shadow: 5px 0 5px rgba(0, 0, 0, 0.15);
     display: flex;
     flex-direction: column;
@@ -20,7 +19,7 @@ const Container = styled.aside<Theme>`
     }
     
     & button:hover {
-        background-color: ${props => props.sidebarItem.hoverBackgroundColor};
+        background-color: ${props => props.theme.sidebarItem.hoverBackgroundColor};
         font-weight: 400;
     }
     
@@ -36,10 +35,8 @@ const Container = styled.aside<Theme>`
 `;
 
 const Sidebar: React.FC<{}> = ({children}) => {
-    const theme = useTheme();
-
     return (
-        <Container {...theme}>
+        <Container>
             {children}
         </Container>
     )

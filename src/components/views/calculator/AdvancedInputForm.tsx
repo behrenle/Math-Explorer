@@ -9,7 +9,6 @@ import {useHotkeys} from "react-hotkeys-hook";
 import {focusInput} from "../../../hotkeys.json";
 import {changeCurrentInput} from "../../../store/session/actions";
 import useRefEffect from "../../../hooks/useRefEffect";
-import useTheme from "../../../hooks/useTheme";
 
 const Container = styled.div`
     padding: 20px;
@@ -109,7 +108,6 @@ const MathHistoryItem: React.FC<MathHistoryItemProps> = ({index,input, output}) 
 
 const MathHistory: React.FC<{ items: MathHistoryItemProps[] }> = ({items}) => {
     const containerRef = useRef<HTMLDivElement>(null);
-    const theme = useTheme();
 
     useEffect(() => {
         if (containerRef.current)
@@ -117,7 +115,7 @@ const MathHistory: React.FC<{ items: MathHistoryItemProps[] }> = ({items}) => {
     }, [items])
 
     return (
-        <MathHistoryContainerWrapper ref={containerRef} {...theme}>
+        <MathHistoryContainerWrapper ref={containerRef}>
             <MathHistoryContainer>
                 {
                     items.map(item => <MathHistoryItem

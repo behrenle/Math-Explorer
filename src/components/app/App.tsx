@@ -1,13 +1,13 @@
 import React from 'react';
 import {Route, Switch} from "react-router-dom";
 import "../../i18n/index";
-import styled from "styled-components";
+import styled, {ThemeProvider} from "styled-components";
 import Navbar from "./navbar/Navbar";
 import Calculator from "../views/calculator/Calculator";
 import Settings from "../views/settings/Settings";
 import Manual from "../views/manual/Manual";
 import About from "../views/about/About";
-import useTheme, {Theme} from "../../hooks/useTheme";
+import useTheme from "../../hooks/useTheme";
 
 const views = [
     {name: "navbar.calculator", path: "/", component: Calculator},
@@ -23,16 +23,16 @@ const navbarProps = {
     })
 };
 
-const Container = styled.div<Theme>`
+const Container = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: ${props => props?.app?.backgroundColor};
+  background-color: ${props => props.theme.app.backgroundColor};
   background-size: cover;
   background-repeat: repeat;
   ${
-          props => props.app.backgroundImage.length > 0
-                  ? `background-image: url(${process.env.PUBLIC_URL + props.app.backgroundImage});` : null
+          props => props.theme.app.backgroundImage.length > 0
+                  ? `background-image: url(${process.env.PUBLIC_URL + props.theme.app.backgroundImage});` : null
   }
   display: grid;
   grid-template-rows: 80px auto;
@@ -49,14 +49,16 @@ const App: React.FC = () => {
     const theme = useTheme();
 
     return (
-        <Container {...theme}>
-            <Navbar {...navbarProps}/>
-            <Content>
-                <Switch>
-                    {views.map((view, i) => <Route key={i} exact path={view.path} component={view.component}/>)}
-                </Switch>
-            </Content>
-        </Container>
+        <ThemeProvider theme={theme}>
+            <Container>
+                <Navbar {...navbarProps}/>
+                <Content>
+                    <Switch>
+                        {views.map((view, i) => <Route key={i} exact path={view.path} component={view.component}/>)}
+                    </Switch>
+                </Content>
+            </Container>
+        </ThemeProvider>
     );
 };
 

@@ -4,7 +4,6 @@ import Card from "../../common/Card";
 import CenteredDefinitionList from "./CenteredDefinitionList";
 import {author, dependencies, license, version} from "../../../../package.json";
 import {useTranslation} from "react-i18next";
-import useTheme from "../../../hooks/useTheme";
 
 const Container = styled.div`
     padding: 20px 15%;
@@ -17,11 +16,10 @@ const Content = styled.div`
 
 const About: React.FC = () => {
     const [t] = useTranslation();
-    const theme = useTheme();
 
     return (
         <Container>
-            <Card {...theme}>
+            <Card>
                 <h1>{t("about.general")}</h1>
                 <CenteredDefinitionList
                     items={[
@@ -31,7 +29,7 @@ const About: React.FC = () => {
                     ]}
                 />
             </Card>
-            <Card style={{marginTop: "20px"}} {...theme}>
+            <Card style={{marginTop: "20px"}}>
                 <h1>{t("about.dependencies")}</h1>
                 <CenteredDefinitionList
                     items={

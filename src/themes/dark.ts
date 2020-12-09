@@ -1,6 +1,6 @@
-import {Theme} from "../hooks/useTheme";
+import {DefaultTheme} from "styled-components";
 
-const darkTheme: Theme = {
+const darkTheme: DefaultTheme = {
   app: {
     backgroundColor: "#171717",
     backgroundImage: "/background/dark.png"

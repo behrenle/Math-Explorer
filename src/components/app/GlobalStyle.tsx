@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
   
   #root {
     display: grid;
-    grid-template-rows: 80px 1fr;
+    grid-template-rows: ${props => props.theme.navbarHeight} 1fr;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -31,7 +31,7 @@ const GlobalStyle = createGlobalStyle`
 
   * {
     box-sizing: border-box;
-    font-size: 28pt;
+    font-size: ${props => props.theme.fontSize.m};
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
     outline: none;

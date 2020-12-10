@@ -12,7 +12,8 @@ const defaultSettings: Settings = {
         copyManualContentOnClick: true,
         copyCellContentOnClick: true,
         showLineNumbers: true,
-        theme: "light"
+        theme: "light",
+        fontSize: "normal"
     }
 };
 

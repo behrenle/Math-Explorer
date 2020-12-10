@@ -27,6 +27,11 @@ const Settings: React.FC = () => {
     const languageOptions = [{label: "EN", value: "en"}, {label: "DE", value: "de"}];
     const languageWithInheritOptions = [...languageOptions, {label: t("common.inherit"), value: "inherit"}];
     const enableOptions = [{label: t("common.enable"), value: true}, {label: t("common.disable"), value: false}];
+    const fontSizeOptions = [
+        {label: t("common.large"), value: "large"},
+        {label: t("common.medium"), value: "medium"},
+        {label: t("common.small"), value: "small"},
+    ];
 
     const updateSettings = (updatedSettings: {interfaceSettings?: {}, mathSettings?: {}}) => {
         dispatch({
@@ -38,6 +43,10 @@ const Settings: React.FC = () => {
         });
     };
 
+    const updateInterfaceSettings = (updatedValues: {}) => {
+        updateSettings({interfaceSettings: updatedValues});
+    };
+
     return (
         <Container>
             <SettingsCard>
@@ -46,43 +55,49 @@ const Settings: React.FC = () => {
                     label="settings.language"
                     options={languageOptions}
                     value={settings.interfaceSettings.language}
-                    setter={value => updateSettings({interfaceSettings: {language:  value}})}
+                    setter={value => updateInterfaceSettings({language:  value})}
                 />
                 <SettingsItem
                     label="settings.advanced_input_mode"
                     options={enableOptions}
                     value={settings.interfaceSettings.advancedInputMode}
-                    setter={value => updateSettings({interfaceSettings: {advancedInputMode: value === "true"}})}
+                    setter={value => updateInterfaceSettings({advancedInputMode: value === "true"})}
                 />
                 <SettingsItem
                     label="settings.show_cell_numbers"
                     options={enableOptions}
                     value={settings.interfaceSettings.showLineNumbers}
-                    setter={value => updateSettings({interfaceSettings: {showLineNumbers: value === "true"}})}
+                    setter={value => updateInterfaceSettings({showLineNumbers: value === "true"})}
                 />
                 <SettingsItem
                     label="settings.copy_cell_content_on_click"
                     options={enableOptions}
                     value={settings.interfaceSettings.copyCellContentOnClick}
-                    setter={value => updateSettings({interfaceSettings: {copyCellContentOnClick: value === "true"}})}
+                    setter={value => updateInterfaceSettings({copyCellContentOnClick: value === "true"})}
                 />
                 <SettingsItem
                     label="settings.copy_manual_content_on_click"
                     options={enableOptions}
                     value={settings.interfaceSettings.copyManualContentOnClick}
-                    setter={value => updateSettings({interfaceSettings: {copyManualContentOnClick: value === "true"}})}
+                    setter={value => updateInterfaceSettings({copyManualContentOnClick: value === "true"})}
                 />
                 <SettingsItem
                     label="settings.cell_language_tag"
                     options={languageWithInheritOptions}
                     value={settings.interfaceSettings.cellLanguageTag}
-                    setter={value => updateSettings({interfaceSettings: {cellLanguageTag: value}})}
+                    setter={value => updateInterfaceSettings({cellLanguageTag: value})}
                 />
                 <SettingsItem
                     label="settings.theme"
                     options={themes.map(theme => {return {label: theme.toUpperCase(), value: theme}})}
                     value={settings.interfaceSettings.theme}
-                    setter={value => updateSettings({interfaceSettings: {theme: value}})}
+                    setter={value => updateInterfaceSettings({theme: value})}
+                />
+                <SettingsItem
+                    label="settings.font_size"
+                    options={fontSizeOptions}
+                    value={settings.interfaceSettings.fontSize}
+                    setter={value => updateInterfaceSettings({fontSize: value})}
                 />
             </SettingsCard>
             <SettingsCard>

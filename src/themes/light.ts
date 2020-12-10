@@ -1,6 +1,4 @@
-import {DefaultTheme} from "styled-components";
-
-const lightTheme: DefaultTheme = {
+const lightTheme = {
   app: {
     backgroundColor: "white",
     backgroundImage: "/background/light.png"

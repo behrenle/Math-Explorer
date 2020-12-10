@@ -31,6 +31,12 @@ declare module "styled-components" {
             backgroundColor: string,
             outline: string,
             color: string
-        }
+        },
+        fontSize: {
+            l: string,
+            m: string,
+            s: string
+        },
+        navbarHeight: string
     }
 }

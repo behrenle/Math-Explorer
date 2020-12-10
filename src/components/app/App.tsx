@@ -14,6 +14,7 @@ const Content = styled.main`
 
 const App: React.FC = () => {
     const theme = useTheme();
+    console.log(theme.fontSize);
 
     return (
         <ThemeProvider theme={theme}>

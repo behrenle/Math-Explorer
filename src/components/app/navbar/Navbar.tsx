@@ -7,7 +7,7 @@ const Container = styled.header`
     font-size: 36pt;
     background-color: ${props => props.theme.navbar.backgroundColor};
     color: white;
-    height: 80px;
+    height: 100%;
     align-items: center;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.20);
     z-index: 1;
@@ -15,12 +15,12 @@ const Container = styled.header`
 
 const NavContainer = styled.nav`
     display: flex;
-    height: 80px;
+    height: 100%;
 `;
 
 const Logo = styled.img`
-    width: 80px;
-    height: 80px;
+    width: ${props => props.theme.navbarHeight};
+    height: ${props => props.theme.navbarHeight};
     padding: 10px;
 `;
 

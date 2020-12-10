@@ -13,7 +13,7 @@ import {useTranslation} from "react-i18next";
 
 const Container = styled.div`
     display: grid;
-    grid-template-columns: 350px auto;
+    grid-template-columns: auto 1fr;
     height: 100%;
 `;
 

@@ -12,8 +12,8 @@ const Container = styled.aside`
         background: none;
         border: none;
         outline: none;
-        font-size: 28pt;
-        padding: 20px;
+        font-size: ${props => props.theme.fontSize.m};
+        padding: 0.5em 2em 0.5em 1em;
         text-align: left;
         color: inherit;
     }

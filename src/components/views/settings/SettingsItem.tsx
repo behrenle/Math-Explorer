@@ -13,7 +13,7 @@ const Label = styled.label`
 `;
 
 const Select = styled.select`
-    font-size: inherit;
+    font-size: ${props => props.theme.fontSize.m};
     color: inherit;
     background-color: inherit;
     margin-left: auto;

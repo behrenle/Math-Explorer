@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-import {RootState} from "../../../store/index";
+import {RootState} from "../../../store";
 import {changeCurrentInput} from "../../../store/session/actions";
 
 const Container = styled.div`
@@ -22,7 +22,11 @@ const Synopsis = styled.div<{copyable: boolean}>`
     }` : null}
 `;
 
-const Description = styled.div``;
+const Description = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+`;
 
 interface Props {
     synopsis: string,
@@ -50,7 +54,7 @@ const ManualItem: React.FC<Props> = ({synopsis, description, copyOnClick}) => {
                 {synopsis}
             </Synopsis>
             <Description>
-                {description}
+                {description.split("<br>").map(line => <span>{line}</span>)}
             </Description>
         </Container>
     )

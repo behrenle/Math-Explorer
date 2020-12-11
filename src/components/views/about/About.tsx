@@ -23,9 +23,9 @@ const About: React.FC = () => {
                 <h1>{t("about.general")}</h1>
                 <CenteredDefinitionList
                     items={[
-                        t("about.version"), version,
-                        t("about.author"), [author.name, author.email],
-                        t("about.license"), license
+                        [t("about.version"), version],
+                        [t("about.author"), [author.name, author.email]],
+                        [t("about.license"), license]
                     ]}
                 />
             </Card>
@@ -33,10 +33,11 @@ const About: React.FC = () => {
                 <h1>{t("about.dependencies")}</h1>
                 <CenteredDefinitionList
                     items={
-                        Object.entries(dependencies).flatMap(v => [
-                            v[0], v[1].charAt(0) === "^"
-                                ? v[1].substring(1)
-                                : v[1]
+                        Object.entries(dependencies).map(dep => [
+                            dep[0],
+                            dep[1].charAt(0) === "^"
+                                ? dep[1].substring(1)
+                                : dep[1]
                         ])
                     }
                 />

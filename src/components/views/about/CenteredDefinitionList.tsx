@@ -1,61 +1,65 @@
 import React from "react";
 import styled from "styled-components";
 
-const Container = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
+const List = styled.ul`
     padding: 20px;
+    list-style-type: none;
+    margin: 0;
 `;
 
-const Item = styled.div`
-    display: flex;
-    flex-direction: column;
-`;
+type ItemValue = string | string[];
 
-const LeftItem = styled(Item)`
-    align-items: flex-end;
-    font-weight: 400;
-`;
+type ItemProps = [ItemValue, ItemValue];
 
-const RightItem = styled(Item)`
-    align-items: flex-start;
-`;
-
-const StyledSpan = styled.span`
-    font-weight: inherit;
-`;
-
-type PropsItem = string | string[];
-
-interface Props {
-    items: PropsItem[]
+interface ListProps {
+    items: ItemProps[]
 }
 
-const CenteredDefinitionListItem: React.FC<{item: PropsItem}> = ({item}) => {
-    if (typeof item === "string") {
-        return (<StyledSpan>{item}</StyledSpan>);
-    }
+const CenteredDefinitionList: React.FC<ListProps> = ({items}) => {
     return (
-        <>
+        <List>
             {
-                item.map((v, i) => <StyledSpan key={i}>{v}</StyledSpan>)
+                items.map(item => (
+                    <ListItem item={item}/>
+                ))
             }
-        </>
+        </List>
+    );
+};
+
+const Item = styled.li`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1em;
+    padding: 0.1em;
+`;
+
+const ListItem: React.FC<{item: ItemProps}> = ({item}) => {
+    const leftValue = item[0];
+    const rightValue = item[1];
+    return (
+        <Item>
+            <ListItemContent value={leftValue} align="right"/>
+            <ListItemContent value={rightValue} align="left"/>
+        </Item>
     )
 }
 
-const CenteredDefinitionList: React.FC<Props> = ({items}) => {
+const Content = styled.div<{align: "left" | "right"}>`
+    display: flex;
+    flex-direction: column;
+    align-items: ${props => props.align === "left" ? "flex-start" : "flex-end"};
+`;
+
+const ListItemContent: React.FC<{value: ItemValue, align: "left" | "right"}> = ({value, align}) => {
+    const lines = typeof value === "string" ? [value] : value;
     return (
-        <Container>
-            {
-                items.map((v, i) => i % 2 !== 0
-                    ? <RightItem key={i}><CenteredDefinitionListItem item={v}/></RightItem>
-                    : <LeftItem key={i}><CenteredDefinitionListItem item={v}/></LeftItem>
-                )
-            }
-        </Container>
-    );
-};
+        <Content align={align}>
+            {lines.map((line, index) => (
+                <span key={index}>{line}</span>
+            ))}
+        </Content>
+    )
+}
 
 export default CenteredDefinitionList;

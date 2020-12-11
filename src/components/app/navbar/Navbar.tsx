@@ -13,7 +13,7 @@ const Container = styled.header`
     z-index: 1;
 `;
 
-const NavContainer = styled.nav`
+const Nav = styled.nav`
     display: flex;
     height: 100%;
 `;
@@ -27,6 +27,14 @@ const Logo = styled.img`
 const Title = styled.span`
     margin-right: auto;
     padding: 10px;
+`;
+
+const UL = styled.ul`
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    height: 100%;
+    margin: 0;
 `;
 
 interface PropsItem {
@@ -44,10 +52,18 @@ const Navbar: React.FC<Props> = ({title, items}) => {
     return (
         <Container>
             <Logo src={process.env.PUBLIC_URL + "/logo.png"} alt="logo"/>
-            <Title>{title}</Title>
-            <NavContainer>
-                {items.map((item, index) => <NavbarItem key={index} name={item.name} path={item.path}/>)}
-            </NavContainer>
+            <Title aria-label="Title">{title}</Title>
+            <Nav aria-label="Main Menu">
+                <UL>
+                    {
+                        items.map((item, index) => (
+                            <li>
+                                <NavbarItem key={index} name={item.name} path={item.path}/>
+                            </li>
+                        ))
+                    }
+                </UL>
+            </Nav>
         </Container>
     );
 }

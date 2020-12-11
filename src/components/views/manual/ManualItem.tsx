@@ -5,7 +5,7 @@ import styled from "styled-components";
 import {RootState} from "../../../store";
 import {changeCurrentInput} from "../../../store/session/actions";
 
-const Container = styled.div`
+const Container = styled.li`
     display: grid;
     grid-template-columns: 3fr 7fr;
     padding: 10px 20px;
@@ -41,16 +41,17 @@ const ManualItem: React.FC<Props> = ({synopsis, description, copyOnClick}) => {
     const copyable = copyOnClick && copyManualContentOnClick;
 
     const synopsisOnClick = () => {
-        console.log("clicked")
         if (copyable) {
             dispatch(changeCurrentInput(synopsis));
             history.push("/");
         }
     }
 
+    const ariaProps = copyable ? {role: "button"} : {};
+
     return (
         <Container>
-            <Synopsis onClick={synopsisOnClick} copyable={copyable}>
+            <Synopsis onClick={synopsisOnClick} copyable={copyable} {...ariaProps}>
                 {synopsis}
             </Synopsis>
             <Description>

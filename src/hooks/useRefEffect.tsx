@@ -4,6 +4,7 @@ const useRefEffect = (ref: React.RefObject<any>, effect: (ref: React.RefObject<a
     useEffect(() => {
         if (ref.current)
             effect(ref);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, deps);
 }
 

@@ -133,6 +133,7 @@ const MathHistory: React.FC<{ items: MathHistoryItemProps[] }> = ({items}) => {
 const AdvancedInputForm: React.FC = () => {
     const mathHistory = useSelector((state: RootState) => state.session.mathHistory);
     const inputRef = useRef<HTMLInputElement>(null);
+    const [t] = useTranslation();
     useHotkeys(focusInput, () => {
         if (inputRef.current)
             inputRef.current.focus();
@@ -142,7 +143,7 @@ const AdvancedInputForm: React.FC = () => {
     return (
         <Container>
             <MathHistory items={mathHistory.map((item, i) => {return {...item, index: i}})}/>
-            <InputField ref={inputRef}/>
+            <InputField ref={inputRef} aria-label={t("common.input")}/>
         </Container>
     )
 }

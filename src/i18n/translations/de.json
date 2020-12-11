@@ -30,6 +30,7 @@
     "settings.significant_decimal_places": "Signifikante Stellenanzahl",
     "settings.number_format": "Zahlenformat",
     "settings.theme": "Thema",
+    "settings.font_size": "Schriftgröße",
 
     "manual.search": "Suche",
     "manual.constants": "Konstanten",

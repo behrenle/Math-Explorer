@@ -8,6 +8,12 @@ import {escapeRegExp} from "../../../utils";
 
 const Container = styled(Card)`
     margin-bottom: 20px;
+  
+    & ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
 `;
 
 interface Props {
@@ -30,11 +36,18 @@ const ManualCategory: React.FC<Props> = ({title, language, items, filter, copyOn
     return (
         <Container>
             <h1>{t(title)}</h1>
-            {
-                items
-                    .filter(filterFunction)
-                    .map((item: any, key: number) => <ManualItem key={key} copyOnClick={copyOnClick} synopsis={item.synopsis[language]} description={item.description[language]}/>)
-            }
+            <ul>
+                {
+                    items.filter(filterFunction).map((item: any, key: number) => (
+                        <ManualItem
+                            key={key}
+                            copyOnClick={copyOnClick}
+                            synopsis={item.synopsis[language]}
+                            description={item.description[language]}
+                        />
+                    ))
+                }
+            </ul>
         </Container>
     );
 };

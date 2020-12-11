@@ -30,6 +30,7 @@
     "settings.significant_decimal_places": "Significant decimal places",
     "settings.number_format": "Number format",
     "settings.theme": "Theme",
+    "settings.font_size": "Font size",
 
     "manual.search": "Search",
     "manual.constants": "Constants",

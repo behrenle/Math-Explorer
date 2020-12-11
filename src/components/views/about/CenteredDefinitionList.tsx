@@ -30,7 +30,7 @@ const CenteredDefinitionList: React.FC<ListProps> = ({items}) => {
 const Item = styled.li`
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 1em;
+    grid-gap: 20px;
     padding: 0.1em;
 `;
 

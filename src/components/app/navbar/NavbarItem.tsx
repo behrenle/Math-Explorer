@@ -38,7 +38,10 @@ const NavbarItem: React.FC<Props> = ({name, path}) => {
     const [t] = useTranslation();
 
     return (
-        <StyledLink to={path} enabled={active.toString()}>{t(name)}</StyledLink>
+        <StyledLink
+            to={path}
+            enabled={active.toString()}
+        >{t(name)}</StyledLink>
     )
 }
 

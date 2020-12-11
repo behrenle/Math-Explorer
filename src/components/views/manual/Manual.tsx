@@ -27,6 +27,7 @@ const Manual: React.FC = () => {
         <Container>
             <InputText
                 type="text"
+                role="search"
                 style={{marginBottom: "20px"}}
                 placeholder={t("manual.search")}
                 value={filter}

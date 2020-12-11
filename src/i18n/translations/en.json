@@ -49,6 +49,7 @@
     "about.version": "Version",
     "about.dependencies": "Dependencies",
     "about.author": "Author",
+    "about.contributors": "Contributors",
     "about.license": "License",
     "about.more_info": "Visit <a href=\"{{url}}\">{{label}}</a> for more information."
 }

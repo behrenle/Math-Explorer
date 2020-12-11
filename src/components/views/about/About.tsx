@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Card from "../../common/Card";
 import CenteredDefinitionList from "./CenteredDefinitionList";
-import {author, dependencies, license, version} from "../../../../package.json";
+import {author, dependencies, license, version, contributors} from "../../../../package.json";
 import {useTranslation} from "react-i18next";
 
 const Container = styled.div`
@@ -25,7 +25,8 @@ const About: React.FC = () => {
                     items={[
                         [t("about.version"), version],
                         [t("about.author"), [author.name, author.email]],
-                        [t("about.license"), license]
+                        [t("about.contributors"), contributors.map(c => c.name)],
+                        [t("about.license"), license],
                     ]}
                 />
             </Card>

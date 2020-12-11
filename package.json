@@ -7,7 +7,11 @@
     "email": "behrenle@posteo.de",
     "url": "https://behrenle.com"
   },
-  "contributors": [],
+  "contributors": [
+    {
+      "name": "Knut Büttner"
+    }
+  ],
   "private": true,
   "homepage": "./",
   "dependencies": {

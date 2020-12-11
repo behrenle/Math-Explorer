@@ -48,6 +48,7 @@
     "about.version": "Version",
     "about.dependencies": "Abhängigkeiten",
     "about.author": "Author",
+    "about.contributors": "Mitwirkende",
     "about.license": "Lizenz",
     "about.more_info": "Siehe <a href=\"{{url}}\">{{label}}</a> für mehr Informationen."
 }

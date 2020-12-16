@@ -5,36 +5,30 @@ import styled from "styled-components";
 import {RootState} from "../../../store";
 import {changeCurrentInput} from "../../../store/session/actions";
 
-const Container = styled.li`
-    display: grid;
-    grid-template-columns: 3fr 7fr;
-    padding: 10px 20px;
-    grid-gap: 20px;
-    
-    &:hover {
-        outline: 2px solid black;
-    }
-`;
-
-const Synopsis = styled.div<{copyable: boolean}>`
+const Synopsis = styled.dt<{copyable: boolean}>`
+    padding: 10px;
+    margin: 0;
     ${props => props.copyable ? `&:hover {
         background-color: rgba(0, 0, 0, 0.1);
     }` : null}
 `;
 
-const Description = styled.div`
+const Description = styled.dd`
     display: flex;
     flex-direction: column;
     align-items: start;
+    padding: 10px;
+    margin: 0;
 `;
 
 interface Props {
     synopsis: string,
+    synopsisIsMath?: boolean,
     description: string,
     copyOnClick: boolean
 }
 
-const ManualItem: React.FC<Props> = ({synopsis, description, copyOnClick}) => {
+const ManualItem: React.FC<Props> = ({synopsis, description, copyOnClick, synopsisIsMath}) => {
     const copyManualContentOnClick = useSelector((state: RootState) => state.settings.interfaceSettings.copyManualContentOnClick);
     const dispatch = useDispatch();
     const history = useHistory();
@@ -47,17 +41,24 @@ const ManualItem: React.FC<Props> = ({synopsis, description, copyOnClick}) => {
         }
     }
 
-    const ariaProps = copyable ? {role: "button"} : {};
+    const roles = [];
+    if (copyOnClick) roles.push("button");
+    if (synopsisIsMath) roles.push("math");
+    const role = roles.join(" ");
 
     return (
-        <Container>
-            <Synopsis onClick={synopsisOnClick} copyable={copyable} {...ariaProps}>
+        <>
+            <Synopsis
+                onClick={synopsisOnClick}
+                copyable={copyable}
+                {...(role.length > 0 ? {role: role} : {})}
+            >
                 {synopsis}
             </Synopsis>
             <Description>
                 {description.split("<br>").map(line => <span>{line}</span>)}
             </Description>
-        </Container>
+        </>
     )
 }
 

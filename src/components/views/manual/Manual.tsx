@@ -49,7 +49,6 @@ const Manual: React.FC = () => {
                     })
                 }
                 filter={filter}
-                copyOnClick={false}
             />
             <ManualCategory
                 title="manual.constants"
@@ -57,6 +56,7 @@ const Manual: React.FC = () => {
                 items={nd.Manual.constants}
                 filter={filter}
                 copyOnClick={true}
+                synopsisIsMath={true}
             />
             <ManualCategory
                 title="manual.functions"
@@ -64,6 +64,7 @@ const Manual: React.FC = () => {
                 items={nd.Manual.functions}
                 filter={filter}
                 copyOnClick={true}
+                synopsisIsMath={true}
             />
         </Container>
     )

@@ -7,13 +7,17 @@ import {useTranslation} from "react-i18next";
 import {escapeRegExp} from "../../../utils";
 
 const Container = styled(Card)`
-    margin-bottom: 20px;
-  
-    & ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-    }
+  margin-bottom: 20px;
+
+  & dl {
+    list-style-type: none;
+    margin: 0;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 3fr 7fr;
+    grid-column-gap: 10px;
+  }
+
 `;
 
 interface Props {
@@ -21,10 +25,18 @@ interface Props {
     language: Language,
     items: any,
     filter: string,
-    copyOnClick: boolean,
+    copyOnClick?: boolean,
+    synopsisIsMath?: boolean
 }
 
-const ManualCategory: React.FC<Props> = ({title, language, items, filter, copyOnClick}) => {
+const ManualCategory: React.FC<Props> = ({
+                                             title,
+                                             language,
+                                             items,
+                                             filter,
+                                             copyOnClick,
+                                             synopsisIsMath
+                                         }) => {
     const [t] = useTranslation();
 
     const filterFunction = (item: any) => item.synopsis[language].match(escapeRegExp(filter))
@@ -36,18 +48,19 @@ const ManualCategory: React.FC<Props> = ({title, language, items, filter, copyOn
     return (
         <Container>
             <h1>{t(title)}</h1>
-            <ul>
+            <dl>
                 {
                     items.filter(filterFunction).map((item: any, key: number) => (
                         <ManualItem
                             key={key}
-                            copyOnClick={copyOnClick}
+                            copyOnClick={!!copyOnClick}
+                            synopsisIsMath={!!synopsisIsMath}
                             synopsis={item.synopsis[language]}
                             description={item.description[language]}
                         />
                     ))
                 }
-            </ul>
+            </dl>
         </Container>
     );
 };

@@ -36,7 +36,7 @@ const Container = styled.aside`
 
 const Sidebar: React.FC<{}> = ({children}) => {
     return (
-        <Container>
+        <Container role="toolbar">
             {children}
         </Container>
     )

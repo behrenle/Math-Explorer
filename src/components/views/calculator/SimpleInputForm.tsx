@@ -42,6 +42,7 @@ const SimpleInputForm: React.FC = () => {
             <InputField ref={inputRef} aria-label={t("common.input")} />
             <StyledOutputField
                 aria-label={t("common.output")}
+                role="input math"
                 type="text"
                 readOnly={true}
                 placeholder={t("common.output")}

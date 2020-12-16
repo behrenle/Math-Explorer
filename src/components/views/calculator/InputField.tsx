@@ -29,6 +29,7 @@ const InputField = React.forwardRef((props, forwardedRef) => {
     return (<InputText ref={forwardedRef}
         type="text"
         placeholder={t("common.input")}
+        aria-label={t("common.input")}
         onChange={changeInput}
         onKeyPress={keypressInput}
         value={value}

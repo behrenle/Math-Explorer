@@ -46,8 +46,8 @@ const SettingsItem: React.FC<Props> = ({label, options, value, setter}) => {
 
     return (
         <Container>
-            <Label>{t(label)}</Label>
-            <Select value={value} onChange={changeHandler}>
+            <Label id={label}>{t(label)}</Label>
+            <Select value={value} onChange={changeHandler} aria-labelledby={label}>
                 {options.map((option, index) => (
                     <option value={option.value} key={index}>{option.label}</option>
                 ))}

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Card = styled.div`
+const Card = styled.section`
     color: ${props => props.theme.card.color};    
     background-color: ${props => props.theme.card.backgroundColor};
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
@@ -12,6 +12,11 @@ const Card = styled.div`
         margin: 0;
         padding: 10px 20px;
     }
+  
+  & a {
+    color: inherit;
+    font-weight: bolder;
+  }
 `;
 
 export default Card;

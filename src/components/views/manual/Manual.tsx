@@ -28,6 +28,7 @@ const Manual: React.FC = () => {
             <InputText
                 type="text"
                 role="search"
+                aria-label={t("search.search_label")}
                 style={{marginBottom: "20px"}}
                 placeholder={t("manual.search")}
                 value={filter}

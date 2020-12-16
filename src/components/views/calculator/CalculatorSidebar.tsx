@@ -18,16 +18,28 @@ const CalculatorSidebar: React.FC = () => {
 
     return (
         <Sidebar>
-            <button onClick={() => dispatch(clearMathHistory())}>
+            <button
+                onClick={() => dispatch(clearMathHistory())}
+                aria-label={t(advancedInputMode ? "calculator.clear_history" : "calculator.clear_output")}
+            >
                 {t(advancedInputMode ? "calculator.clear_history" : "calculator.clear_output")}
             </button>
-            <button onClick={() => dispatch(clearCurrentInput())}>
+            <button
+                onClick={() => dispatch(clearCurrentInput())}
+                aria-label={t("calculator.clear_input")}
+            >
                 {t("calculator.clear_input")}
             </button>
-            <button onClick={() => dispatch(clearMathUserScope())}>
+            <button
+                onClick={() => dispatch(clearMathUserScope())}
+                aria-label={t("calculator.clear_memory")}
+            >
                 {t("calculator.clear_memory")}
             </button>
-            <button onClick={clearAll}>
+            <button
+                onClick={clearAll}
+                aria-label={t("calculator.clear_all")}
+            >
                 {t("calculator.clear_all")}
             </button>
             {/*<button disabled={true} style={{marginTop:"auto"}}>New Document</button>

@@ -8,6 +8,8 @@ const initialState = loadSettings();
 const settingsReducer = (state = initialState, action: SettingsAction): Settings => {
     switch (action.type) {
         case "SET_SETTINGS":
+            // @ts-ignore
+            document.getElementsByTagName("html").item(0).lang = action.payload.interfaceSettings.language;
             i18n.changeLanguage(action.payload.interfaceSettings.language).catch(console.error);
             return saveSettings(action.payload);
 

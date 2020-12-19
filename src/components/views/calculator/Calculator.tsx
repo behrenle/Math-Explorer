@@ -10,6 +10,7 @@ import {clearCurrentInput, clearMathHistory, clearMathUserScope} from "../../../
 import useHotkeyDispatch, {hotkeyOptions} from "../../../hooks/useHotkeyDispatch";
 import {useHotkeys} from "react-hotkeys-hook";
 import {useTranslation} from "react-i18next";
+import {InputForm} from "../../../store/settings/types";
 
 const Container = styled.div`
     display: grid;
@@ -25,8 +26,15 @@ const getOutput = (state: RootState) => {
     return "";
 }
 
+const selectInputForm = (inputForm: InputForm) => {
+    switch (inputForm) {
+        case "advanced": return <AdvancedInputForm/>;
+        case "simple": return <SimpleInputForm/>;
+    }
+}
+
 const Calculator: React.FC = () => {
-    const advancedInputMode = useSelector((state: RootState) => state.settings.interfaceSettings.advancedInputMode);
+    const inputForm = useSelector((state: RootState) => state.settings.interfaceSettings.inputForm);
     const [t] = useTranslation();
     const [currentInput, currentOutput] = useSelector((state: RootState) => [state.session.currentInput, getOutput(state)]);
     useHotkeyDispatch(clearInput, clearCurrentInput());
@@ -37,12 +45,10 @@ const Calculator: React.FC = () => {
         navigator.clipboard.writeText(`${t("common.input")}: ${currentInput}\n${t("common.output")}: ${currentOutput}`).catch(console.error);
     }, hotkeyOptions, [currentInput, currentOutput]);
 
-    const selectedInputForm = advancedInputMode ? <AdvancedInputForm/> : <SimpleInputForm/>;
-
     return (
         <Container>
             <CalculatorSidebar/>
-            {selectedInputForm}
+            {selectInputForm(inputForm)}
         </Container>
     )
 }

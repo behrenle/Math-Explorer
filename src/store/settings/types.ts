@@ -2,6 +2,7 @@ import {ThemeName} from "../../hooks/useTheme";
 
 /* state types */
 export type Language = "en" | "de";
+export type InputForm = "simple" | "advanced" | "document";
 export type FontSize = "small" | "normal" | "large";
 export type LanguageOrInherit = Language | "inherit";
 export type SignificantDigits = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16;
@@ -14,7 +15,7 @@ export interface MathSettings {
 export interface InterfaceSettings {
     language: Language,
     cellLanguageTag: LanguageOrInherit,
-    advancedInputMode: boolean,
+    inputForm: InputForm,
     showLineNumbers: boolean,
     copyCellContentOnClick: boolean,
     copyManualContentOnClick: boolean,

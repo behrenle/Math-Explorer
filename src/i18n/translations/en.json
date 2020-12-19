@@ -22,7 +22,6 @@
     "settings.interface": "Interface",
     "settings.calculator": "Calculator",
     "settings.language": "Language",
-    "settings.advanced_input_mode": "Advanced input mode",
     "settings.show_cell_numbers": "Show cell numbers",
     "settings.copy_cell_content_on_click": "Copy cell content by clicking",
     "settings.copy_manual_content_on_click": "Copy manual content by clicking",
@@ -31,6 +30,10 @@
     "settings.number_format": "Number format",
     "settings.theme": "Theme",
     "settings.font_size": "Font size",
+    "settings.input_form": "Input form type",
+    "settings.input_form.simple": "Simple",
+    "settings.input_form.advanced": "Advanced",
+    "settings.input_form.document": "Document",
 
     "manual.search": "Search",
     "manual.constants": "Constants",

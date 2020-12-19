@@ -8,7 +8,7 @@ import {RootState} from "../../../../store";
 const CalculatorSidebar: React.FC = () => {
     const dispatch = useDispatch();
     const [t] = useTranslation();
-    const advancedInputMode = useSelector((state: RootState) => state.settings.interfaceSettings.advancedInputMode);
+    const inputForm = useSelector((state: RootState) => state.settings.interfaceSettings.inputForm);
 
     const clearAll = () => {
         dispatch(clearMathHistory());
@@ -20,9 +20,9 @@ const CalculatorSidebar: React.FC = () => {
         <Sidebar>
             <button
                 onClick={() => dispatch(clearMathHistory())}
-                aria-label={t(advancedInputMode ? "calculator.clear_history" : "calculator.clear_output")}
+                aria-label={t(inputForm !== "simple" ? "calculator.clear_history" : "calculator.clear_output")}
             >
-                {t(advancedInputMode ? "calculator.clear_history" : "calculator.clear_output")}
+                {t(inputForm !== "simple" ? "calculator.clear_history" : "calculator.clear_output")}
             </button>
             <button
                 onClick={() => dispatch(clearCurrentInput())}

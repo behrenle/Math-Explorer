@@ -8,7 +8,7 @@ const defaultSettings: Settings = {
     interfaceSettings: {
         cellLanguageTag: "inherit",
         language: "de",
-        advancedInputMode: false,
+        inputForm: "simple",
         copyManualContentOnClick: true,
         copyCellContentOnClick: true,
         showLineNumbers: true,

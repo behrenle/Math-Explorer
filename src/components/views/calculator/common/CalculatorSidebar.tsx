@@ -1,9 +1,9 @@
 import React from "react";
-import Sidebar from "../../common/Sidebar";
+import Sidebar from "../../../common/Sidebar";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
-import {clearCurrentInput, clearMathHistory, clearMathUserScope} from "../../../store/session/actions";
-import {RootState} from "../../../store";
+import {clearCurrentInput, clearMathHistory, clearMathUserScope} from "../../../../store/session/actions";
+import {RootState} from "../../../../store";
 
 const CalculatorSidebar: React.FC = () => {
     const dispatch = useDispatch();

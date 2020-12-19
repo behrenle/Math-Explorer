@@ -1,14 +1,14 @@
 import React, {useEffect, useRef} from "react";
 import styled from "styled-components";
 import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "../../../store";
-import InputField from "./InputField";
-import Card from "../../common/Card";
+import {RootState} from "../../../../store";
+import InputField from "../common/InputField";
+import Card from "../../../common/Card";
 import {useTranslation} from "react-i18next";
 import {useHotkeys} from "react-hotkeys-hook";
-import {focusInput} from "../../../hotkeys.json";
-import {changeCurrentInput} from "../../../store/session/actions";
-import useRefEffect from "../../../hooks/useRefEffect";
+import {focusInput} from "../../../../hotkeys.json";
+import {changeCurrentInput} from "../../../../store/session/actions";
+import useRefEffect from "../../../../hooks/useRefEffect";
 
 const Container = styled.div`
     padding: 20px;

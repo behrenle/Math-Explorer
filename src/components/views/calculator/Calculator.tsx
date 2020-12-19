@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import CalculatorSidebar from "./CalculatorSidebar";
-import SimpleInputForm from "./SimpleInputForm";
-import AdvancedInputForm from "./AdvancedInputForm";
+import CalculatorSidebar from "./common/CalculatorSidebar";
+import SimpleInputForm from "./inputforms/SimpleInputForm";
+import AdvancedInputForm from "./inputforms/AdvancedInputForm";
 import {useSelector} from "react-redux";
 import {RootState} from "../../../store";
 import {clearAll, clearInput, clearMemory, clearOutput, copyInputAndOutput} from "../../../hotkeys.json";

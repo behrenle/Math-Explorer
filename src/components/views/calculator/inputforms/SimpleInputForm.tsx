@@ -1,13 +1,13 @@
 import React, {useRef} from "react";
 import styled from "styled-components";
-import {RootState} from "../../../store";
+import {RootState} from "../../../../store";
 import {useSelector} from "react-redux";
-import InputText from "../../common/InputText";
-import InputField from "./InputField";
+import InputText from "../../../common/InputText";
+import InputField from "../common/InputField";
 import {useTranslation} from "react-i18next";
-import {focusInput, focusOutput} from "../../../hotkeys.json";
-import useHotkeyRef from "../../../hooks/useHotkeyRef";
-import useRefEffect from "../../../hooks/useRefEffect";
+import {focusInput, focusOutput} from "../../../../hotkeys.json";
+import useHotkeyRef from "../../../../hooks/useHotkeyRef";
+import useRefEffect from "../../../../hooks/useRefEffect";
 
 const Container = styled.div`
     padding: 20px;

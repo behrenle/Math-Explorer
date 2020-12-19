@@ -1,7 +1,7 @@
 import React from "react";
 import InputText from "../../../common/InputText";
 import {useDispatch, useSelector} from "react-redux";
-import {changeCurrentInput, evaluate} from "../../../../store/session/actions";
+import {changeCurrentInput, pushMathCell} from "../../../../store/session/actions";
 import {RootState} from "../../../../store";
 import {useTranslation} from "react-i18next";
 
@@ -19,7 +19,8 @@ const InputField = React.forwardRef((props, forwardedRef) => {
 
     const keypressInput = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === "Enter")
-            dispatch(evaluate(
+            dispatch(pushMathCell(
+                value,
                 mathLanguage === "inherit" ? interfaceLanguage : mathLanguage,
                 significantDigits
             ));

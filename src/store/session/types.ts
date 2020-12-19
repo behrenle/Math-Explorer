@@ -1,16 +1,27 @@
 import {SignificantDigits, Language} from "../settings/types";
 
 /* state types */
-export interface MathHistoryItem {
+export interface MathCell {
+    type: "MATH",
     input: string,
     output: string
 }
 
-type MathHistory = MathHistoryItem[];
+export interface TextCell {
+    type: "TEXT",
+    content: string
+}
+
+export type Cell = MathCell | TextCell;
+
+export interface Document {
+    title: string,
+    cells: Cell[]
+}
 
 export interface Session {
     currentInput: string,
-    mathHistory: MathHistory
+    document: Document
 }
 
 /* action types */
@@ -23,14 +34,6 @@ interface ClearCurrentInput {
     type: "CLEAR_CURRENT_INPUT"
 }
 
-interface EvaluateInput {
-    type: "EVALUATE_INPUT",
-    payload: {
-        language: Language,
-        significantDigits: SignificantDigits
-    },
-}
-
 interface ClearMathHistory {
     type: "CLEAR_MATH_HISTORY",
 }
@@ -39,8 +42,23 @@ interface ClearMathUserScope {
     type: "CLEAR_MATH_USER_SCOPE",
 }
 
+interface PushTextCell {
+    type: "PUSH_TEXT_CELL",
+    payload: string
+}
+
+interface PushMathCell {
+    type: "PUSH_MATH_CELL",
+    payload: {
+        content: string,
+        language: Language,
+        significantDigits: SignificantDigits
+    }
+}
+
 export type SessionAction = ChangeCurrentInput
     | ClearCurrentInput
-    | EvaluateInput
     | ClearMathHistory
-    | ClearMathUserScope;
+    | ClearMathUserScope
+    | PushTextCell
+    | PushMathCell;

@@ -8,6 +8,7 @@ import {useTranslation} from "react-i18next";
 import {focusInput, focusOutput} from "../../../../hotkeys.json";
 import useHotkeyRef from "../../../../hooks/useHotkeyRef";
 import useRefEffect from "../../../../hooks/useRefEffect";
+import {getLastOutput} from "../common/utils";
 
 const Container = styled.div`
     padding: 20px;
@@ -20,9 +21,7 @@ const StyledOutputField = styled(InputText)`
 `;
 
 const SimpleInputForm: React.FC = () => {
-    const lastOutput: string = useSelector((state: RootState) => state.session.mathHistory.length < 1
-        ? "" : state.session.mathHistory[state.session.mathHistory.length - 1].output
-    );
+    const lastOutput = getLastOutput(useSelector((state: RootState) => state.session.document.cells));
     const outputRef = useRef<HTMLInputElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
     const [t] = useTranslation();

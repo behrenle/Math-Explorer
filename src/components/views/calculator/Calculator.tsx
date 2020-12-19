@@ -17,10 +17,18 @@ const Container = styled.div`
     height: 100%;
 `;
 
+const getOutput = (state: RootState) => {
+    const lastCell = state.session.document.cells.slice(-1)[0];
+    if (lastCell) {
+        return lastCell.type === "MATH" ? lastCell.output : lastCell.content;
+    }
+    return "";
+}
+
 const Calculator: React.FC = () => {
     const advancedInputMode = useSelector((state: RootState) => state.settings.interfaceSettings.advancedInputMode);
     const [t] = useTranslation();
-    const [currentInput, currentOutput] = useSelector((state: RootState) => [state.session.currentInput, state.session.mathHistory[state.session.mathHistory.length - 1]?.output || ""]);
+    const [currentInput, currentOutput] = useSelector((state: RootState) => [state.session.currentInput, getOutput(state)]);
     useHotkeyDispatch(clearInput, clearCurrentInput());
     useHotkeyDispatch(clearOutput, clearMathHistory());
     useHotkeyDispatch(clearMemory, clearMathUserScope());

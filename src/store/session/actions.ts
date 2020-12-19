@@ -14,10 +14,11 @@ export const clearCurrentInput = (): SessionAction => {
     };
 };
 
-export const evaluate = (language: Language, significantDigits: SignificantDigits): SessionAction => {
+export const pushMathCell = (content: string, language: Language, significantDigits: SignificantDigits): SessionAction => {
     return {
-        type: "EVALUATE_INPUT",
+        type: "PUSH_MATH_CELL",
         payload: {
+            content,
             language,
             significantDigits
         }

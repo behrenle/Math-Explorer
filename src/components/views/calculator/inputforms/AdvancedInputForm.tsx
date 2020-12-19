@@ -9,6 +9,7 @@ import {useHotkeys} from "react-hotkeys-hook";
 import {focusInput} from "../../../../hotkeys.json";
 import {changeCurrentInput} from "../../../../store/session/actions";
 import useRefEffect from "../../../../hooks/useRefEffect";
+import {getMathCells} from "../common/utils";
 
 const Container = styled.div`
     padding: 20px;
@@ -131,7 +132,7 @@ const MathHistory: React.FC<{ items: MathHistoryItemProps[] }> = ({items}) => {
 }
 
 const AdvancedInputForm: React.FC = () => {
-    const mathHistory = useSelector((state: RootState) => state.session.mathHistory);
+    const mathHistory = getMathCells(useSelector((state: RootState) => state.session.document.cells));
     const inputRef = useRef<HTMLInputElement>(null);
     const [t] = useTranslation();
     useHotkeys(focusInput, () => {

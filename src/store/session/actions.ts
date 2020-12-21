@@ -1,20 +1,30 @@
-import {SessionAction} from "./types";
+import {
+    ChangeCurrentInput,
+    ClearCurrentInput,
+    ClearDocumentCells,
+    ClearMathUserScope,
+    PushMathCell,
+    PushTextCell,
+    SelectCell,
+    SetEditCell,
+    UpdateMathCell
+} from "./types";
 import {Language, SignificantDigits} from "../settings/types";
 
-export const changeCurrentInput = (input: string): SessionAction => {
+export const changeCurrentInput = (input: string): ChangeCurrentInput => {
     return {
         type: "CHANGE_CURRENT_INPUT",
         payload: input
     };
 };
 
-export const clearCurrentInput = (): SessionAction => {
+export const clearCurrentInput = (): ClearCurrentInput => {
     return {
         type: "CLEAR_CURRENT_INPUT"
     };
 };
 
-export const pushMathCell = (content: string, language: Language, significantDigits: SignificantDigits): SessionAction => {
+export const pushMathCell = (content: string, language: Language, significantDigits: SignificantDigits): PushMathCell => {
     return {
         type: "PUSH_MATH_CELL",
         payload: {
@@ -25,14 +35,47 @@ export const pushMathCell = (content: string, language: Language, significantDig
     };
 };
 
-export const clearMathHistory = (): SessionAction => {
+export const clearMathHistory = (): ClearDocumentCells => {
     return {
-        type: "CLEAR_MATH_HISTORY"
+        type: "CLEAR_DOCUMENT_CELLS"
     };
 };
 
-export const clearMathUserScope = (): SessionAction => {
+export const clearMathUserScope = (): ClearMathUserScope => {
     return {
         type: "CLEAR_MATH_USER_SCOPE"
+    };
+};
+
+export const pushTextCell = (content: string): PushTextCell => {
+    return {
+        type: "PUSH_TEXT_CELL",
+        payload: content
+    };
+};
+
+export const updateMathCell = (input: string, index: number, language: Language, significantDigits: SignificantDigits): UpdateMathCell => {
+    return {
+        type: "UPDATE_MATH_CELL",
+        payload: {
+            language,
+            significantDigits,
+            input,
+            index
+        }
+    };
+};
+
+export const selectCell = (index: number): SelectCell => {
+    return {
+        type: "SELECT_CELL",
+        payload: index
+    };
+};
+
+export const setEditCell = (value: boolean): SetEditCell => {
+    return {
+        type: "SET_EDIT_CELL",
+        payload: value
     };
 };

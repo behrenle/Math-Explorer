@@ -36,8 +36,8 @@ export interface ClearCurrentInput {
     type: "CLEAR_CURRENT_INPUT"
 }
 
-export interface ClearMathHistory {
-    type: "CLEAR_MATH_HISTORY",
+export interface ClearDocumentCells {
+    type: "CLEAR_DOCUMENT_CELLS",
 }
 
 export interface ClearMathUserScope {
@@ -80,10 +80,10 @@ export interface SetEditCell {
 
 export type SessionAction = ChangeCurrentInput
     | ClearCurrentInput
-    | ClearMathHistory
+    | ClearDocumentCells
     | ClearMathUserScope
     | PushTextCell
     | PushMathCell
     | UpdateMathCell
     | SelectCell
-    | SetEditCell;
+   | SetEditCell;

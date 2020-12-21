@@ -28,7 +28,7 @@ const evaluateInput = (input: string, lang: Language, sigDigits: SignificantDigi
 const sessionReducer = createReducer<Session, SessionAction>(defaultState, {
     CHANGE_CURRENT_INPUT: (state, action) => ({...state, currentInput: action.payload}),
     CLEAR_CURRENT_INPUT: (state) => ({...state, currentInput: ""}),
-    CLEAR_MATH_HISTORY: (state) => ({...state, document: defaultState.document}),
+    CLEAR_DOCUMENT_CELLS: (state) => ({...state, document: defaultState.document}),
     CLEAR_MATH_USER_SCOPE: (state) => {
         script.clearUserScope();
         return state;

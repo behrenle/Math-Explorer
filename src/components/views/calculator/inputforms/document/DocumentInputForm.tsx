@@ -3,11 +3,12 @@ import styled from "styled-components";
 import MathCell from "./cells/MathCell";
 import {useDispatch} from "react-redux";
 import {useTranslation} from "react-i18next";
-import {PushMathCell, SelectCell, SetEditCell} from "../../../../../store/session/types";
 import useHotkeyDispatch from "../../../../../hooks/useHotkeyDispatch";
 import {toggleEditCell} from "../../../../../hotkeys.json";
 import useSession from "../../../../../hooks/useSession";
 import useSettings from "../../../../../hooks/useSettings";
+import {pushMathCell, selectCell, setEditCell} from "../../../../../store/session/actions";
+import useNumberFormat from "../../../../../hooks/useNumberFormat";
 
 const Container = styled.div`
   padding: 20px;
@@ -57,28 +58,13 @@ const DocumentInputForm: React.FC = () => {
     const cells = session.document.cells;
     const [t] = useTranslation();
     const dispatch = useDispatch();
-    useHotkeyDispatch(toggleEditCell, {
-        type: "SET_EDIT_CELL",
-        payload: !session.editCell
-    } as SetEditCell);
+    useHotkeyDispatch(toggleEditCell, setEditCell(!session.editCell));
+    const numberFormat =  useNumberFormat()
 
     const addMathCell = () => {
-        dispatch({
-            type: "PUSH_MATH_CELL",
-            payload: {
-                content: "",
-                language: settings.mathSettings.numberFormat === "inherit" ? settings.interfaceSettings.language : settings.mathSettings.numberFormat,
-                significantDigits: settings.mathSettings.significantDigits
-            }
-        } as PushMathCell);
-        dispatch({
-            type: "SELECT_CELL",
-            payload: session.document.cells.length
-        } as SelectCell);
-        dispatch({
-            type: "SET_EDIT_CELL",
-            payload: true
-        } as SetEditCell);
+        dispatch(pushMathCell("", numberFormat, settings.mathSettings.significantDigits));
+        dispatch(selectCell(session.document.cells.length));
+        dispatch(setEditCell(true));
     };
 
     return (

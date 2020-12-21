@@ -7,8 +7,9 @@ import useHotkeyDispatch from "../../../../../hooks/useHotkeyDispatch";
 import {toggleEditCell} from "../../../../../hotkeys.json";
 import useSession from "../../../../../hooks/useSession";
 import useSettings from "../../../../../hooks/useSettings";
-import {pushMathCell, selectCell, setEditCell} from "../../../../../store/session/actions";
+import {pushMathCell, pushTextCell, selectCell, setEditCell} from "../../../../../store/session/actions";
 import useNumberFormat from "../../../../../hooks/useNumberFormat";
+import TextCell from "./cells/TextCell";
 
 const Container = styled.div`
   padding: 20px;
@@ -59,13 +60,17 @@ const DocumentInputForm: React.FC = () => {
     const [t] = useTranslation();
     const dispatch = useDispatch();
     useHotkeyDispatch(toggleEditCell, setEditCell(!session.editCell));
-    const numberFormat =  useNumberFormat()
+    const numberFormat = useNumberFormat()
 
     const addMathCell = () => {
         dispatch(pushMathCell("", numberFormat, settings.mathSettings.significantDigits));
         dispatch(selectCell(session.document.cells.length));
         dispatch(setEditCell(true));
     };
+
+    const addTextCell = () => {
+        dispatch(pushTextCell("# hello world\nfoo bar"))
+    }
 
     return (
         <Container>
@@ -75,17 +80,22 @@ const DocumentInputForm: React.FC = () => {
                 }
                 <ul>
                     {
-                        cells.map((cell, i) => cell.type === "MATH" ? (
-                            <MathCell
+                        cells.map((cell, i) => cell.type === "MATH"
+                            ? (<MathCell
                                 key={i}
                                 input={cell.input}
                                 output={cell.output}
                                 index={i}
-                            />) : null)
+                            />)
+                            : (<TextCell
+                                key={i}
+                                index={i}
+                                content={cell.content}
+                            />))
                     }
                 </ul>
                 <Toolbar>
-                    <button>+ text cell</button>
+                    <button onClick={addTextCell}>+ text cell</button>
                     <button onClick={addMathCell}>+ math cell</button>
                 </Toolbar>
             </Document>

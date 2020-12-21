@@ -21,33 +21,35 @@ export interface Document {
 
 export interface Session {
     currentInput: string,
+    selectedCell: number,
+    editCell: boolean,
     document: Document
 }
 
 /* action types */
-interface ChangeCurrentInput {
+export interface ChangeCurrentInput {
     type: "CHANGE_CURRENT_INPUT",
     payload: string
 }
 
-interface ClearCurrentInput {
+export interface ClearCurrentInput {
     type: "CLEAR_CURRENT_INPUT"
 }
 
-interface ClearMathHistory {
+export interface ClearMathHistory {
     type: "CLEAR_MATH_HISTORY",
 }
 
-interface ClearMathUserScope {
+export interface ClearMathUserScope {
     type: "CLEAR_MATH_USER_SCOPE",
 }
 
-interface PushTextCell {
+export interface PushTextCell {
     type: "PUSH_TEXT_CELL",
     payload: string
 }
 
-interface PushMathCell {
+export interface PushMathCell {
     type: "PUSH_MATH_CELL",
     payload: {
         content: string,
@@ -56,9 +58,32 @@ interface PushMathCell {
     }
 }
 
+export interface UpdateMathCell {
+    type: "UPDATE_MATH_CELL",
+    payload: {
+        index: number,
+        input: string,
+        language: Language,
+        significantDigits: SignificantDigits
+    }
+}
+
+export interface SelectCell {
+    type: "SELECT_CELL",
+    payload: number
+}
+
+export interface SetEditCell {
+    type: "SET_EDIT_CELL",
+    payload: boolean
+}
+
 export type SessionAction = ChangeCurrentInput
     | ClearCurrentInput
     | ClearMathHistory
     | ClearMathUserScope
     | PushTextCell
-    | PushMathCell;
+    | PushMathCell
+    | UpdateMathCell
+    | SelectCell
+    | SetEditCell;

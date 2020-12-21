@@ -22,7 +22,13 @@ const App: React.FC = () => {
                 <Navbar {...navbarProps}/>
                 <Content>
                     <Switch>
-                        {routes.map((route, i) => <Route key={i} exact path={route.path} component={route.component}/>)}
+                        {routes.map((route, i) => (
+                            <Route
+                                key={i}
+                                exact path={route.path}
+                                render={route.render}
+                            />
+                        ))}
                     </Switch>
                 </Content>
             </>

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import CalculatorSidebar from "./common/CalculatorSidebar";
 import SimpleInputForm from "./inputforms/SimpleInputForm";
 import AdvancedInputForm from "./inputforms/AdvancedInputForm";
+import DocumentInputForm from "./inputforms/document/DocumentInputForm";
 import {useSelector} from "react-redux";
 import {RootState} from "../../../store";
 import {clearAll, clearInput, clearMemory, clearOutput, copyInputAndOutput} from "../../../hotkeys.json";
@@ -30,6 +31,7 @@ const selectInputForm = (inputForm: InputForm) => {
     switch (inputForm) {
         case "advanced": return <AdvancedInputForm/>;
         case "simple": return <SimpleInputForm/>;
+        case "document": return <DocumentInputForm/>;
     }
 }
 

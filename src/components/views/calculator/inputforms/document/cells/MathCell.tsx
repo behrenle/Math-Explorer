@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import styled from "styled-components";
 import Cell from "./Cell";
 import InputText from "../../../../../common/InputText";
@@ -35,29 +35,53 @@ const MathCell: React.FC<MathCellProps> = ({input, output, index}) => {
     const dispatch = useDispatch();
     const numberFormat = useNumberFormat();
     const [inputValue, setInputValue] = useState(input);
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        if (inputRef.current)
+            inputRef.current.focus();
+    }, []);
 
     const submitChange = (event: React.KeyboardEvent<HTMLInputElement>) => {
-        console.log(event.key);
         if (event.key === "Enter") {
             dispatch(updateMathCell(inputValue, index, numberFormat, settings.mathSettings.significantDigits));
             dispatch(setEditCell(false));
         }
     }
 
+    const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === "Escape") {
+            dispatch(setEditCell(false));
+        }
+    }
+
     const setSelection = () => {
-        if (session.selectedCell !== index)
+        if (session.selectedCell !== index) {
+            dispatch(setEditCell(false));
             dispatch(selectCell(index));
+        }
     };
 
+    const enterEditMode = () => {
+        dispatch(selectCell(index));
+        dispatch(setEditCell(true));
+    }
+
     return (
-        <Container onClick={setSelection} selected={index === session.selectedCell}>
+        <Container
+            onClick={setSelection}
+            selected={index === session.selectedCell}
+            onDoubleClick={enterEditMode}
+        >
             {
                 session.editCell && index == session.selectedCell ? (
                     <div>
                         <Input
+                            ref={inputRef}
                             value={inputValue}
                             onChange={event => setInputValue(event.target.value)}
                             onKeyPress={submitChange}
+                            onKeyDown={onKeyDown}
                         />
                     </div>
                 ) : (

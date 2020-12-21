@@ -21,12 +21,6 @@ const Document = styled.main`
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
   padding: 10px;
 
-  & ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-
   & h1 {
     padding: 10px;
     font-weight: bolder;
@@ -42,6 +36,12 @@ const Document = styled.main`
   & button:hover {
     background-color: rgba(255, 255, 255, 0.2);
   }
+`;
+
+const CellList = styled.ul`
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 `;
 
 const Toolbar = styled.div`
@@ -63,13 +63,15 @@ const DocumentInputForm: React.FC = () => {
     const numberFormat = useNumberFormat()
 
     const addMathCell = () => {
-        dispatch(pushMathCell("", numberFormat, settings.mathSettings.significantDigits));
         dispatch(selectCell(session.document.cells.length));
+        dispatch(pushMathCell("", numberFormat, settings.mathSettings.significantDigits));
         dispatch(setEditCell(true));
     };
 
     const addTextCell = () => {
-        dispatch(pushTextCell("# hello world\nfoo bar"))
+        dispatch(selectCell(session.document.cells.length));
+        dispatch(pushTextCell(""));
+        dispatch(setEditCell(true));
     }
 
     return (
@@ -78,7 +80,7 @@ const DocumentInputForm: React.FC = () => {
                 {
                     title !== "" ? (<h1>{title}</h1>) : t("common.untitled")
                 }
-                <ul>
+                <CellList>
                     {
                         cells.map((cell, i) => cell.type === "MATH"
                             ? (<MathCell
@@ -93,7 +95,7 @@ const DocumentInputForm: React.FC = () => {
                                 content={cell.content}
                             />))
                     }
-                </ul>
+                </CellList>
                 <Toolbar>
                     <button onClick={addTextCell}>+ text cell</button>
                     <button onClick={addMathCell}>+ math cell</button>

@@ -78,6 +78,14 @@ export interface SetEditCell {
     payload: boolean
 }
 
+export interface UpdateTextCell {
+    type: "UPDATE_TEXT_CELL",
+    payload: {
+        content: string,
+        index: number
+    }
+}
+
 export type SessionAction = ChangeCurrentInput
     | ClearCurrentInput
     | ClearDocumentCells
@@ -86,4 +94,5 @@ export type SessionAction = ChangeCurrentInput
     | PushMathCell
     | UpdateMathCell
     | SelectCell
-   | SetEditCell;
+    | SetEditCell
+    | UpdateTextCell;

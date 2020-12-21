@@ -35,13 +35,13 @@ const sessionReducer = createReducer<Session, SessionAction>(defaultState, {
     },
     PUSH_MATH_CELL: (state, action: PushMathCell) => {
         if (action.payload.content.length > 0) {
-            const stateCopy = {...state};
-            stateCopy.document.cells = stateCopy.document.cells.concat([{
+            const nextState = {...state};
+            nextState.document.cells = nextState.document.cells.concat([{
                 type: "MATH",
                 input: action.payload.content,
                 output: evaluateInput(action.payload.content, action.payload.language, action.payload.significantDigits)
             }]);
-            return stateCopy;
+            return nextState;
         }
         return {
             ...state, document: {
@@ -54,12 +54,12 @@ const sessionReducer = createReducer<Session, SessionAction>(defaultState, {
         }
     },
     PUSH_TEXT_CELL: (state, action) => {
-        const stateCopy = {...state};
-        stateCopy.document.cells = stateCopy.document.cells.concat([{
+        const nextState = {...state};
+        nextState.document.cells = nextState.document.cells.concat([{
             type: "TEXT",
             content: action.payload
         }]);
-        return stateCopy;
+        return nextState;
     },
     UPDATE_MATH_CELL: (state, action) => {
         const selectedCell = state.document.cells[action.payload.index];
@@ -73,19 +73,35 @@ const sessionReducer = createReducer<Session, SessionAction>(defaultState, {
                     action.payload.significantDigits
                 )
             };
-            const stateCopy = {...state};
-            state.document.cells[action.payload.index] = updatedCell;
-            return stateCopy;
+            const nextState = {...state};
+            if (action.payload.input.length > 0) {
+                nextState.document.cells[action.payload.index] = updatedCell;
+            } else {
+                nextState.document.cells = nextState.document.cells
+                    .filter((_, i) => i !== action.payload.index);
+            }
+            return nextState;
         }
         return state;
     },
     SELECT_CELL: (state, action) => ({...state, selectedCell: action.payload}),
     SET_EDIT_CELL: (state,action) => {
-        console.log("reducer called", action);
-        const newState = {...state};
-        newState.editCell = action.payload;
-        console.log("next state", newState);
-        return newState;
+        const nextState = {...state};
+        nextState.editCell = action.payload;
+        return nextState;
+    },
+    UPDATE_TEXT_CELL: (state, action) => {
+        const nextState = {...state};
+        if (action.payload.content.length > 0) {
+            nextState.document.cells[action.payload.index] = {
+                type: "TEXT",
+                content: action.payload.content
+            };
+        } else {
+            nextState.document.cells = nextState.document.cells
+                .filter((_, i) => i !== action.payload.index);
+        }
+        return nextState;
     }
 });
 

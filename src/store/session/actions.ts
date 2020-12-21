@@ -7,7 +7,7 @@ import {
     PushTextCell,
     SelectCell,
     SetEditCell,
-    UpdateMathCell
+    UpdateMathCell, UpdateTextCell
 } from "./types";
 import {Language, SignificantDigits} from "../settings/types";
 
@@ -77,5 +77,12 @@ export const setEditCell = (value: boolean): SetEditCell => {
     return {
         type: "SET_EDIT_CELL",
         payload: value
+    };
+};
+
+export const updateTextCell = (index: number, content: string): UpdateTextCell => {
+    return {
+        type: "UPDATE_TEXT_CELL",
+        payload: {index, content}
     };
 };

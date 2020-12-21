@@ -3,10 +3,10 @@ import styled from "styled-components";
 import Cell from "./Cell";
 import InputText from "../../../../../common/InputText";
 import {useDispatch} from "react-redux";
-import {SelectCell, UpdateMathCell} from "../../../../../../store/session/types";
 import useNumberFormat from "../../../../../../hooks/useNumberFormat";
 import useSettings from "../../../../../../hooks/useSettings";
 import useSession from "../../../../../../hooks/useSession";
+import {selectCell, setEditCell, updateMathCell} from "../../../../../../store/session/actions";
 
 const Container = styled(Cell)`
   display: grid;
@@ -38,24 +38,15 @@ const MathCell: React.FC<MathCellProps> = ({input, output, index}) => {
 
     const submitChange = (event: React.KeyboardEvent<HTMLInputElement>) => {
         console.log(event.key);
-        if (event.key === "Enter")
-            dispatch({
-                type: "UPDATE_MATH_CELL",
-                payload: {
-                    index,
-                    input: inputValue,
-                    significantDigits: settings.mathSettings.significantDigits,
-                    language: numberFormat
-                }
-            } as UpdateMathCell);
+        if (event.key === "Enter") {
+            dispatch(updateMathCell(inputValue, index, numberFormat, settings.mathSettings.significantDigits));
+            dispatch(setEditCell(false));
+        }
     }
 
     const setSelection = () => {
         if (session.selectedCell !== index)
-            dispatch({
-                type: "SELECT_CELL",
-                payload: index
-            } as SelectCell);
+            dispatch(selectCell(index));
     };
 
     return (
@@ -68,7 +59,6 @@ const MathCell: React.FC<MathCellProps> = ({input, output, index}) => {
                             onChange={event => setInputValue(event.target.value)}
                             onKeyPress={submitChange}
                         />
-                        <Input value={output} readOnly={true}/>
                     </div>
                 ) : (
                     <dl>

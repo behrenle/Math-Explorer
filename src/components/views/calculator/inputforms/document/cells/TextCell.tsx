@@ -65,7 +65,7 @@ const Container = styled(Cell)`
 const TextArea = styled.textarea`
   width: 100%;
   margin: 0;
-  height: 40vh;
+  height: 25vh;
 `;
 
 interface TextCellProps {

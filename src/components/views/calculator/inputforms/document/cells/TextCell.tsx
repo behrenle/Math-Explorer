@@ -48,17 +48,23 @@ const Container = styled(Cell)`
   }
   
   & > p {
-    margin: 0.1em 0;
+    margin: 5px 0;
   }
   
   & > pre {
-    margin: 0.1em 0;
-    padding: 0.5em;
-    border-radius: 0.75em;
+    margin: 10px 0;
+    padding: 5px 10px;
+    border-radius: 8px;
     background-color: rgba(0, 0, 0, 0.2);
   }
   & > pre code {
-    background-color: rgba(0, 0, 0, 0);
+    background-color: transparent;
+  }
+
+  & p > code {
+    padding: 5px;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.2);
   }
   
   & strong {

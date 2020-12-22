@@ -60,6 +60,10 @@ const Container = styled(Cell)`
   & > pre code {
     background-color: rgba(0, 0, 0, 0);
   }
+  
+  & strong {
+    font-weight: bold;
+  }
 `;
 
 const TextArea = styled.textarea`

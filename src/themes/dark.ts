@@ -8,7 +8,7 @@ const darkTheme = {
     color: "white"
   },
   navbarItem: {
-    hoverBackgroundColor: "rgba(255, 255, 255, 0.2)"
+    hoverBackgroundColor: "rgba(255, 255, 255, 0.1)"
   },
   card: {
     backgroundColor: "#2b2b2b",
@@ -22,7 +22,7 @@ const darkTheme = {
     color: "white"
   },
   sidebarItem: {
-    hoverBackgroundColor: "rgba(255, 255, 255, 0.2)"
+    hoverBackgroundColor: "rgba(255, 255, 255, 0.1)"
   },
   inputText: {
     backgroundColor: "#2b2b2b",
@@ -31,6 +31,7 @@ const darkTheme = {
   },
   icon: {
     filter: "invert(100%)",
+    borderColor: "white"
   }
 };
 

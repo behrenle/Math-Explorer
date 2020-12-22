@@ -31,6 +31,7 @@ const lightTheme = {
   },
   icon: {
     filter: "invert(0%)",
+    borderColor: "white"
   }
 };
 

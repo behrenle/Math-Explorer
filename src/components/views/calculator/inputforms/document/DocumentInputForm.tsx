@@ -1,16 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import MathCell from "./cells/MathCell";
-import {useDispatch} from "react-redux";
-import {useTranslation} from "react-i18next";
 import useHotkeyDispatch from "../../../../../hooks/useHotkeyDispatch";
 import {toggleEditCell} from "../../../../../hotkeys.json";
 import useSession from "../../../../../hooks/useSession";
-import useSettings from "../../../../../hooks/useSettings";
-import {pushMathCell, pushTextCell, selectCell, setEditCell} from "../../../../../store/session/actions";
-import useNumberFormat from "../../../../../hooks/useNumberFormat";
+import {setEditCell} from "../../../../../store/session/actions";
 import TextCell from "./cells/TextCell";
-import DocumentInputFormToolbar from "./DocumentInputFormToolbar";
+import DocumentInputFormToolbar from "./toolbar/DocumentInputFormToolbar";
 
 const Container = styled.div`
   display: grid;
@@ -28,6 +24,7 @@ const Document = styled.main`
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
   padding: 10px;
   overflow: auto;
+  border-radius: 8px;
 
   & h1 {
     padding: 10px;
@@ -52,43 +49,15 @@ const CellList = styled.ul`
   padding: 0;
 `;
 
-const Toolbar = styled.div`
-  display: flex;
-
-  & button {
-    margin: 10px 10px 10px 0;
-  }
-`;
-
 const DocumentInputForm: React.FC = () => {
-    const settings = useSettings();
     const session = useSession();
-    const title = session.document.title;
     const cells = session.document.cells;
-    const [t] = useTranslation();
-    const dispatch = useDispatch();
     useHotkeyDispatch(toggleEditCell, setEditCell(!session.editCell));
-    const numberFormat = useNumberFormat()
-
-    const addMathCell = () => {
-        dispatch(selectCell(session.document.cells.length));
-        dispatch(pushMathCell("", numberFormat, settings.mathSettings.significantDigits));
-        dispatch(setEditCell(true));
-    };
-
-    const addTextCell = () => {
-        dispatch(selectCell(session.document.cells.length));
-        dispatch(pushTextCell(""));
-        dispatch(setEditCell(true));
-    }
 
     return (
         <Container>
             <DocumentInputFormToolbar/>
             <Document>
-                {
-                    title !== "" ? (<h1>{title}</h1>) : t("common.untitled")
-                }
                 <CellList>
                     {
                         cells.map((cell, i) => cell.type === "MATH"
@@ -105,10 +74,6 @@ const DocumentInputForm: React.FC = () => {
                             />))
                     }
                 </CellList>
-                <Toolbar>
-                    <button onClick={addTextCell}>+ text cell</button>
-                    <button onClick={addMathCell}>+ math cell</button>
-                </Toolbar>
             </Document>
         </Container>
     );

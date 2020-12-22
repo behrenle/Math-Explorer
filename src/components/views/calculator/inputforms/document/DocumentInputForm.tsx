@@ -10,8 +10,13 @@ import useSettings from "../../../../../hooks/useSettings";
 import {pushMathCell, pushTextCell, selectCell, setEditCell} from "../../../../../store/session/actions";
 import useNumberFormat from "../../../../../hooks/useNumberFormat";
 import TextCell from "./cells/TextCell";
+import DocumentInputFormToolbar from "./DocumentInputFormToolbar";
 
 const Container = styled.div`
+  display: grid;
+  grid-template-columns: auto 1fr;
+  overflow: hidden;
+  grid-gap: 20px;
   width: 100%;
   height: 100%;
   padding: 20px;
@@ -22,6 +27,7 @@ const Document = styled.main`
   background-color: ${props => props.theme.card.backgroundColor};
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
   padding: 10px;
+  overflow: auto;
 
   & h1 {
     padding: 10px;
@@ -78,6 +84,7 @@ const DocumentInputForm: React.FC = () => {
 
     return (
         <Container>
+            <DocumentInputFormToolbar/>
             <Document>
                 {
                     title !== "" ? (<h1>{title}</h1>) : t("common.untitled")

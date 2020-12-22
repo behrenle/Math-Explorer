@@ -37,6 +37,9 @@ declare module "styled-components" {
             m: string,
             s: string
         },
+        icon: {
+            filter: string,
+        },
         navbarHeight: string
     }
 }

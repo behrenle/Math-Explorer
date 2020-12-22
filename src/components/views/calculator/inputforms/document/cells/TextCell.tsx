@@ -50,12 +50,22 @@ const Container = styled(Cell)`
   & > p {
     margin: 0.1em 0;
   }
+  
+  & > pre {
+    margin: 0.1em 0;
+    padding: 0.5em;
+    border-radius: 0.75em;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  & > pre code {
+    background-color: rgba(0, 0, 0, 0);
+  }
 `;
 
 const TextArea = styled.textarea`
   width: 100%;
-  height: auto;
   margin: 0;
+  height: 40vh;
 `;
 
 interface TextCellProps {
@@ -68,6 +78,10 @@ const TextCell: React.FC<TextCellProps> = ({index, content}) => {
     const session = useSession();
     const [value, setValue] = useState(content);
     const textAreaRef = useRef<HTMLTextAreaElement>(null);
+    useEffect(() => {
+        if (textAreaRef.current && session.selectedCell === index && session.editCell)
+            textAreaRef.current.focus();
+    }, [session.editCell, session.selectedCell, index]);
     useEffect(() => {
         if (textAreaRef.current) {
             // @ts-ignore

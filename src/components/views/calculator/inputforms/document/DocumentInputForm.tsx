@@ -12,6 +12,8 @@ import useNumberFormat from "../../../../../hooks/useNumberFormat";
 import TextCell from "./cells/TextCell";
 
 const Container = styled.div`
+  width: 100%;
+  height: 100%;
   padding: 20px;
   color: ${props => props.theme.card.color};
 `;

@@ -1,6 +1,4 @@
 import React from "react";
-import styled from "styled-components";
-import CalculatorSidebar from "./common/CalculatorSidebar";
 import SimpleInputForm from "./inputforms/SimpleInputForm";
 import AdvancedInputForm from "./inputforms/AdvancedInputForm";
 import DocumentInputForm from "./inputforms/document/DocumentInputForm";
@@ -13,12 +11,6 @@ import {useHotkeys} from "react-hotkeys-hook";
 import {useTranslation} from "react-i18next";
 import {InputForm} from "../../../store/settings/types";
 
-const Container = styled.div`
-    display: grid;
-    grid-template-columns: auto 1fr;
-    height: 100%;
-`;
-
 const getOutput = (state: RootState) => {
     const lastCell = state.session.document.cells.slice(-1)[0];
     if (lastCell) {
@@ -29,9 +21,12 @@ const getOutput = (state: RootState) => {
 
 const selectInputForm = (inputForm: InputForm) => {
     switch (inputForm) {
-        case "advanced": return <AdvancedInputForm/>;
-        case "simple": return <SimpleInputForm/>;
-        case "document": return <DocumentInputForm/>;
+        case "advanced":
+            return <AdvancedInputForm/>;
+        case "simple":
+            return <SimpleInputForm/>;
+        case "document":
+            return <DocumentInputForm/>;
     }
 }
 
@@ -48,11 +43,10 @@ const Calculator: React.FC = () => {
     }, hotkeyOptions, [currentInput, currentOutput]);
 
     return (
-        <Container>
-            <CalculatorSidebar/>
+        <>
             {selectInputForm(inputForm)}
-        </Container>
-    )
-}
+        </>
+    );
+};
 
-export default Calculator
+export default Calculator;

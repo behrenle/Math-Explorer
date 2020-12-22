@@ -10,58 +10,59 @@ import {focusInput} from "../../../../hotkeys.json";
 import {changeCurrentInput} from "../../../../store/session/actions";
 import useRefEffect from "../../../../hooks/useRefEffect";
 import {getMathCells} from "../common/utils";
+import InputFormWithSidebar from "./InputFormWithSidebar";
 
 const Container = styled.div`
-    padding: 20px;
-    display: grid;
-    overflow: hidden;
-    grid-template-rows: 1fr auto;
-    grid-gap: 20px;
+  padding: 20px;
+  display: grid;
+  overflow: hidden;
+  grid-template-rows: 1fr auto;
+  grid-gap: 20px;
 `;
 
 const MathHistoryContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 `;
 
 const MathHistoryContainerWrapper = styled(Card)`
-    overflow-y: auto;
-    -ms-overflow-style: none;
-    
-    &::-webkit-scrollbar {
-        display: none;
-    }
+  overflow-y: auto;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
-const MathHistoryItemContainer = styled.div<{showCellNumbers: boolean}>`
-    display: grid;
-    grid-template-columns: ${ props => props.showCellNumbers ? "80px auto 1fr" : "auto 1fr" };
-    grid-template-rows: auto auto;
-    padding: 10px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+const MathHistoryItemContainer = styled.div<{ showCellNumbers: boolean }>`
+  display: grid;
+  grid-template-columns: ${props => props.showCellNumbers ? "80px auto 1fr" : "auto 1fr"};
+  grid-template-rows: auto auto;
+  padding: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
 `;
 
 const MathHistoryItemLineCounter = styled.div`
-    grid-row: span 2;
-    opacity: 0.4;
-    user-select: none;
-    padding: 10px
+  grid-row: span 2;
+  opacity: 0.4;
+  user-select: none;
+  padding: 10px
 `;
 
 const MathHistoryItemLabel = styled.div`
-    text-align: right;
-    font-weight: 300;
-    font-size: 20pt;
-    align-self: center;
-    padding: 0 10px;
+  text-align: right;
+  font-weight: 300;
+  font-size: 20pt;
+  align-self: center;
+  padding: 0 10px;
 `;
 
-const MathHistoryItemValue = styled.span<{copyable: boolean}>`
-    padding: 10px;
-    ${
-        props => props.copyable ? "&:hover { background-color: rgba(0, 0, 0, 0.1); }" : null
-    }
+const MathHistoryItemValue = styled.span<{ copyable: boolean }>`
+  padding: 10px;
+  ${
+          props => props.copyable ? "&:hover { background-color: rgba(0, 0, 0, 0.1); }" : null
+  }
 `;
 
 interface MathHistoryItemProps {
@@ -70,7 +71,7 @@ interface MathHistoryItemProps {
     output: string
 }
 
-const MathHistoryItem: React.FC<MathHistoryItemProps> = ({index,input, output}) => {
+const MathHistoryItem: React.FC<MathHistoryItemProps> = ({index, input, output}) => {
     const [t] = useTranslation();
     const copyOnClick = useSelector((state: RootState) => state.settings.interfaceSettings.copyCellContentOnClick);
     const showCellNumbers = useSelector((state: RootState) => state.settings.interfaceSettings.showLineNumbers);
@@ -90,7 +91,7 @@ const MathHistoryItem: React.FC<MathHistoryItemProps> = ({index,input, output}) 
 
     return (
         <MathHistoryItemContainer showCellNumbers={showCellNumbers}>
-            { showCellNumbers ? <MathHistoryItemLineCounter>#{index + 1}</MathHistoryItemLineCounter> : null }
+            {showCellNumbers ? <MathHistoryItemLineCounter>#{index + 1}</MathHistoryItemLineCounter> : null}
             <MathHistoryItemLabel>{t("common.input")}</MathHistoryItemLabel>
             <MathHistoryItemValue
                 lang={languageTag}
@@ -142,11 +143,13 @@ const AdvancedInputForm: React.FC = () => {
     useRefEffect(inputRef, (r) => r.current.focus(), []);
 
     return (
-        <Container>
-            <MathHistory items={mathHistory.map((item, i) => {return {...item, index: i}})}/>
-            <InputField ref={inputRef} aria-label={t("common.input")}/>
-        </Container>
-    )
-}
+        <InputFormWithSidebar>
+            <Container>
+                <MathHistory items={mathHistory.map((item, i) => ({...item, index: i}))}/>
+                <InputField ref={inputRef} aria-label={t("common.input")}/>
+            </Container>
+        </InputFormWithSidebar>
+    );
+};
 
 export default AdvancedInputForm;

@@ -52,6 +52,7 @@ const Container = styled(Cell)`
   }
   
   & > pre {
+    display: inline-block;
     margin: 10px 0;
     padding: 5px 10px;
     border-radius: 8px;

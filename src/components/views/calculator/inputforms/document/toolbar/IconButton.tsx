@@ -8,6 +8,9 @@ const Button = styled.button`
   background-color: inherit;
   border: none;
   outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   
   &:disabled {
     opacity: 0.1;

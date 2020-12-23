@@ -35,12 +35,13 @@ const Img = styled.img`
 
 interface IconProps {
     src: string,
-    onClick?: () => void
+    onClick?: () => void,
+    disabled?: boolean
 }
 
-const IconButton: React.FC<IconProps> = ({src, onClick}) => {
+const IconButton: React.FC<IconProps> = ({src, onClick, disabled}) => {
     return (
-        <Button disabled={!onClick}>
+        <Button disabled={!onClick || disabled}>
             <Img src={src} onClick={onClick}/>
         </Button>
     );

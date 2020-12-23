@@ -18,6 +18,7 @@ import useSession from "../../../../../../hooks/useSession";
 import useNumberFormat from "../../../../../../hooks/useNumberFormat";
 import useSettings from "../../../../../../hooks/useSettings";
 import IconButton from "./IconButton";
+import {getMathCells} from "../../../common/utils";
 
 const Wrapper = styled.div`
   display: flex;
@@ -63,14 +64,30 @@ const DocumentInputFormToolbar: React.FC = () => {
         dispatch(deleteCellAction(session.selectedCell));
     };
 
+    const documentHasMathCells = () => {
+        return getMathCells(session.document.cells).length > 0;
+    }
+
+    const isCellSelected = () => {
+        return !!session.document.cells[session.selectedCell];
+    };
+
     return (
         <Wrapper>
             <Container>
                 <IconButton src={PenIcon} onClick={toggleEditCell}/>
                 <IconButton src={TextIcon} onClick={addTextCell}/>
                 <IconButton src={MathIcon} onClick={addMathCell}/>
-                <IconButton src={ReloadIcon} onClick={refresh}/>
-                <IconButton src={TrashIcon} onClick={deleteCell}/>
+                <IconButton
+                    src={ReloadIcon}
+                    onClick={refresh}
+                    disabled={!documentHasMathCells()}
+                />
+                <IconButton
+                    src={TrashIcon}
+                    onClick={deleteCell}
+                    disabled={!isCellSelected()}
+                />
             </Container>
         </Wrapper>
     )

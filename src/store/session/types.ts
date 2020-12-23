@@ -99,6 +99,11 @@ export interface DeleteCell {
     payload: number
 }
 
+export interface LoadDocument {
+    type: "LOAD_DOCUMENT",
+    payload: Document
+}
+
 export type SessionAction = ChangeCurrentInput
     | ClearCurrentInput
     | ClearDocumentCells
@@ -110,4 +115,5 @@ export type SessionAction = ChangeCurrentInput
     | SetEditCell
     | UpdateTextCell
     | RefreshMathCells
-    | DeleteCell;
+    | DeleteCell
+    | LoadDocument;

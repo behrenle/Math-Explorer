@@ -134,6 +134,10 @@ const sessionReducer = createReducer<Session, SessionAction>(defaultState, {
         const nextState = {...state};
         nextState.document.cells = state.document.cells.filter((_, i) => i !== action.payload);
         return nextState;
+    },
+
+    LOAD_DOCUMENT: (state, action) => {
+        return {...state, document: action.payload};
     }
 });
 

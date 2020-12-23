@@ -21,6 +21,7 @@ import useNumberFormat from "../../../../../../hooks/useNumberFormat";
 import useSettings from "../../../../../../hooks/useSettings";
 import IconButton from "./IconButton";
 import {getMathCells} from "../../../common/utils";
+import useLoadDocument from "../../../../../../hooks/useLoadDocument";
 
 const Wrapper = styled.div`
   display: flex;
@@ -41,6 +42,7 @@ const DocumentInputFormToolbar: React.FC = () => {
     const session = useSession();
     const settings = useSettings();
     const numberFormat = useNumberFormat();
+    const loadDocument = useLoadDocument();
 
     const addMathCell = () => {
         dispatch(selectCell(session.document.cells.length));
@@ -94,6 +96,33 @@ const DocumentInputFormToolbar: React.FC = () => {
         saveData().catch(console.error);
     };
 
+    const importDocument = () => {
+        const loadData = async () => {
+            // @ts-ignore
+            const [fileHandle] = await window.showOpenFilePicker();
+            const file = await fileHandle.getFile();
+            const content = await file.text();
+            const data = JSON.parse(content);
+            if (typeof data === "object") {
+                if (typeof data.title === "string") {
+                    if (data.cells instanceof Array) {
+                        data.cells.forEach((cell: any) => {
+                            if (cell.type === "MATH" && typeof cell.input === "string" && typeof cell.output === "string")
+                                return;
+                            if (cell.type === "TEXT" && typeof cell.content === "string")
+                                return;
+                            throw "file data validation failed";
+                        });
+                        loadDocument(data);
+                        return;
+                    }
+                }
+            }
+            throw "file data validation failed";
+        }
+        loadData().catch(console.error);
+    };
+
     return (
         <Wrapper>
             <Container>
@@ -110,7 +139,7 @@ const DocumentInputFormToolbar: React.FC = () => {
                     onClick={deleteCell}
                     disabled={!isCellSelected()}
                 />
-                <IconButton src={ImportIcon}/>
+                <IconButton src={ImportIcon} onClick={importDocument}/>
                 <IconButton src={ExportIcon} onClick={exportDocument}/>
             </Container>
         </Wrapper>

@@ -2,12 +2,14 @@ import {
     ChangeCurrentInput,
     ClearCurrentInput,
     ClearDocumentCells,
-    ClearMathUserScope, DeleteCell,
+    ClearMathUserScope, DeleteCell, LoadDocument,
     PushMathCell,
     PushTextCell, RefreshMathCells,
     SelectCell,
     SetEditCell,
-    UpdateMathCell, UpdateTextCell
+    UpdateMathCell,
+    UpdateTextCell,
+    Document as DocumentType,
 } from "./types";
 import {Language, SignificantDigits} from "../settings/types";
 
@@ -100,5 +102,12 @@ export const deleteCell = (index: number): DeleteCell => {
     return {
         type: "DELETE_CELL",
         payload: index
+    };
+};
+
+export const loadDocument = (document: DocumentType): LoadDocument => {
+    return {
+        type: "LOAD_DOCUMENT",
+        payload: document
     };
 };

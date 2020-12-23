@@ -49,6 +49,7 @@ const CellList = styled.ul`
   padding: 0;
 `;
 
+// todo: render and edit document title
 const DocumentInputForm: React.FC = () => {
     const session = useSession();
     const cells = session.document.cells;

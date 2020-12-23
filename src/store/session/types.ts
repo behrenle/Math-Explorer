@@ -86,6 +86,14 @@ export interface UpdateTextCell {
     }
 }
 
+export interface RefreshMathCells {
+    type: "REFRESH_MATH_CELLS",
+    payload: {
+        language: Language,
+        significantDigits: SignificantDigits
+    }
+}
+
 export type SessionAction = ChangeCurrentInput
     | ClearCurrentInput
     | ClearDocumentCells
@@ -95,4 +103,5 @@ export type SessionAction = ChangeCurrentInput
     | UpdateMathCell
     | SelectCell
     | SetEditCell
-    | UpdateTextCell;
+    | UpdateTextCell
+    | RefreshMathCells;

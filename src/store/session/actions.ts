@@ -4,7 +4,7 @@ import {
     ClearDocumentCells,
     ClearMathUserScope,
     PushMathCell,
-    PushTextCell,
+    PushTextCell, RefreshMathCells,
     SelectCell,
     SetEditCell,
     UpdateMathCell, UpdateTextCell
@@ -84,5 +84,14 @@ export const updateTextCell = (index: number, content: string): UpdateTextCell =
     return {
         type: "UPDATE_TEXT_CELL",
         payload: {index, content}
+    };
+};
+
+export const refreshMathCells = (language: Language, significantDigits: SignificantDigits): RefreshMathCells => {
+    return {
+        type: "REFRESH_MATH_CELLS",
+        payload: {
+            language, significantDigits
+        }
     };
 };

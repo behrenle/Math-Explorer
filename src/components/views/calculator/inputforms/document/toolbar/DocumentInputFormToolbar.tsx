@@ -6,7 +6,13 @@ import PenIcon from "../../../../../icons/Pen.svg";
 import ReloadIcon from "../../../../../icons/Reload.svg";
 import TrashIcon from "../../../../../icons/Trash.svg";
 import {useDispatch} from "react-redux";
-import {pushMathCell, pushTextCell, selectCell, setEditCell} from "../../../../../../store/session/actions";
+import {
+    pushMathCell,
+    pushTextCell,
+    refreshMathCells,
+    selectCell,
+    setEditCell
+} from "../../../../../../store/session/actions";
 import useSession from "../../../../../../hooks/useSession";
 import useNumberFormat from "../../../../../../hooks/useNumberFormat";
 import useSettings from "../../../../../../hooks/useSettings";
@@ -42,11 +48,15 @@ const DocumentInputFormToolbar: React.FC = () => {
         dispatch(selectCell(session.document.cells.length));
         dispatch(pushTextCell(""));
         dispatch(setEditCell(true));
-    }
+    };
 
     const toggleEditCell = () => {
         dispatch(setEditCell(!session.editCell));
-    }
+    };
+
+    const refresh = () => {
+        dispatch(refreshMathCells(numberFormat, settings.mathSettings.significantDigits));
+    };
 
     return (
         <Wrapper>
@@ -54,7 +64,7 @@ const DocumentInputFormToolbar: React.FC = () => {
                 <IconButton src={PenIcon} onClick={toggleEditCell}/>
                 <IconButton src={TextIcon} onClick={addTextCell}/>
                 <IconButton src={MathIcon} onClick={addMathCell}/>
-                <IconButton src={ReloadIcon}/>
+                <IconButton src={ReloadIcon} onClick={refresh}/>
                 <IconButton src={TrashIcon}/>
             </Container>
         </Wrapper>

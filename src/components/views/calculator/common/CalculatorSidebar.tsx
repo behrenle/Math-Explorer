@@ -1,14 +1,14 @@
 import React from "react";
-import Sidebar from "../../common/Sidebar";
+import Sidebar from "../../../common/Sidebar";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
-import {clearCurrentInput, clearMathHistory, clearMathUserScope} from "../../../store/session/actions";
-import {RootState} from "../../../store";
+import {clearCurrentInput, clearMathHistory, clearMathUserScope} from "../../../../store/session/actions";
+import {RootState} from "../../../../store";
 
 const CalculatorSidebar: React.FC = () => {
     const dispatch = useDispatch();
     const [t] = useTranslation();
-    const advancedInputMode = useSelector((state: RootState) => state.settings.interfaceSettings.advancedInputMode);
+    const inputForm = useSelector((state: RootState) => state.settings.interfaceSettings.inputForm);
 
     const clearAll = () => {
         dispatch(clearMathHistory());
@@ -20,9 +20,9 @@ const CalculatorSidebar: React.FC = () => {
         <Sidebar>
             <button
                 onClick={() => dispatch(clearMathHistory())}
-                aria-label={t(advancedInputMode ? "calculator.clear_history" : "calculator.clear_output")}
+                aria-label={t(inputForm !== "simple" ? "calculator.clear_history" : "calculator.clear_output")}
             >
-                {t(advancedInputMode ? "calculator.clear_history" : "calculator.clear_output")}
+                {t(inputForm !== "simple" ? "calculator.clear_history" : "calculator.clear_output")}
             </button>
             <button
                 onClick={() => dispatch(clearCurrentInput())}

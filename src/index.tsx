@@ -6,8 +6,6 @@ import "./googlefonts.css";
 
 registerServiceWorker();
 ReactDOM.render(
-    <React.StrictMode>
-        <AppWrapper/>
-    </React.StrictMode>,
+    <AppWrapper/>,
     document.getElementById('root')
 );

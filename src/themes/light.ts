@@ -28,6 +28,10 @@ const lightTheme = {
     backgroundColor: "white",
     outline: "2px solid black",
     color: "black"
+  },
+  icon: {
+    filter: "invert(0%)",
+    borderColor: "white"
   }
 };
 

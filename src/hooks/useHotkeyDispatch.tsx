@@ -12,15 +12,18 @@ interface Action {
 const useHotkeyDispatch = (hotkey: string, action: Action | Action[]) => {
     const dispatch = useDispatch()
     const [dispatchAction, setDispatchAction] = useState(false);
-    useHotkeys(hotkey, () => setDispatchAction(true), hotkeyOptions, []);
+    useHotkeys(hotkey, (e) => {
+        e.preventDefault();
+        setDispatchAction(true)
+    }, hotkeyOptions, []);
 
     if (dispatchAction) {
+        setDispatchAction(false);
         if (action instanceof Array) {
             action.forEach(a => dispatch(a));
         } else {
             dispatch(action);
         }
-        setDispatchAction(false);
     }
 }
 

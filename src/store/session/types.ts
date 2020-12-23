@@ -1,46 +1,119 @@
 import {SignificantDigits, Language} from "../settings/types";
 
 /* state types */
-export interface MathHistoryItem {
+export interface MathCell {
+    type: "MATH",
     input: string,
     output: string
 }
 
-type MathHistory = MathHistoryItem[];
+export interface TextCell {
+    type: "TEXT",
+    content: string
+}
+
+export type Cell = MathCell | TextCell;
+
+export interface Document {
+    title: string,
+    cells: Cell[]
+}
 
 export interface Session {
     currentInput: string,
-    mathHistory: MathHistory
+    selectedCell: number,
+    editCell: boolean,
+    document: Document
 }
 
 /* action types */
-interface ChangeCurrentInput {
+export interface ChangeCurrentInput {
     type: "CHANGE_CURRENT_INPUT",
     payload: string
 }
 
-interface ClearCurrentInput {
+export interface ClearCurrentInput {
     type: "CLEAR_CURRENT_INPUT"
 }
 
-interface EvaluateInput {
-    type: "EVALUATE_INPUT",
+export interface ClearDocumentCells {
+    type: "CLEAR_DOCUMENT_CELLS",
+}
+
+export interface ClearMathUserScope {
+    type: "CLEAR_MATH_USER_SCOPE",
+}
+
+export interface PushTextCell {
+    type: "PUSH_TEXT_CELL",
+    payload: string
+}
+
+export interface PushMathCell {
+    type: "PUSH_MATH_CELL",
+    payload: {
+        content: string,
+        language: Language,
+        significantDigits: SignificantDigits
+    }
+}
+
+export interface UpdateMathCell {
+    type: "UPDATE_MATH_CELL",
+    payload: {
+        index: number,
+        input: string,
+        language: Language,
+        significantDigits: SignificantDigits
+    }
+}
+
+export interface SelectCell {
+    type: "SELECT_CELL",
+    payload: number
+}
+
+export interface SetEditCell {
+    type: "SET_EDIT_CELL",
+    payload: boolean
+}
+
+export interface UpdateTextCell {
+    type: "UPDATE_TEXT_CELL",
+    payload: {
+        content: string,
+        index: number
+    }
+}
+
+export interface RefreshMathCells {
+    type: "REFRESH_MATH_CELLS",
     payload: {
         language: Language,
         significantDigits: SignificantDigits
-    },
+    }
 }
 
-interface ClearMathHistory {
-    type: "CLEAR_MATH_HISTORY",
+export interface DeleteCell {
+    type: "DELETE_CELL",
+    payload: number
 }
 
-interface ClearMathUserScope {
-    type: "CLEAR_MATH_USER_SCOPE",
+export interface LoadDocument {
+    type: "LOAD_DOCUMENT",
+    payload: Document
 }
 
 export type SessionAction = ChangeCurrentInput
     | ClearCurrentInput
-    | EvaluateInput
-    | ClearMathHistory
-    | ClearMathUserScope;
+    | ClearDocumentCells
+    | ClearMathUserScope
+    | PushTextCell
+    | PushMathCell
+    | UpdateMathCell
+    | SelectCell
+    | SetEditCell
+    | UpdateTextCell
+    | RefreshMathCells
+    | DeleteCell
+    | LoadDocument;

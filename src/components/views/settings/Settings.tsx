@@ -38,6 +38,11 @@ const Settings: React.FC = () => {
         {label: t("common.medium"), value: "medium"},
         {label: t("common.small"), value: "small"},
     ];
+    const inputFormOptions = [
+        {label: t("settings.input_form.simple"), value: "simple"},
+        {label: t("settings.input_form.advanced"), value: "advanced"},
+        {label: t("settings.input_form.document"), value: "document"},
+    ]
 
     const updateSettings = (updatedSettings: {interfaceSettings?: {}, mathSettings?: {}}) => {
         dispatch({
@@ -65,10 +70,10 @@ const Settings: React.FC = () => {
                         setter={value => updateInterfaceSettings({language:  value})}
                     />
                     <SettingsItem
-                        label="settings.advanced_input_mode"
-                        options={enableOptions}
-                        value={settings.interfaceSettings.advancedInputMode}
-                        setter={value => updateInterfaceSettings({advancedInputMode: value === "true"})}
+                        label="settings.input_form"
+                        options={inputFormOptions}
+                        value={settings.interfaceSettings.inputForm}
+                        setter={value => updateInterfaceSettings({inputForm: value })}
                     />
                     <SettingsItem
                         label="settings.show_cell_numbers"

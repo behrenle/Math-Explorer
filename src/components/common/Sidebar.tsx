@@ -30,7 +30,6 @@ const Container = styled.aside`
     
     & button:focus {
         border: 2px solid black;
-        padding: 18px;
     }
 `;
 

@@ -5,6 +5,8 @@ import MathIcon from "../../../../../icons/Math.svg";
 import PenIcon from "../../../../../icons/Pen.svg";
 import ReloadIcon from "../../../../../icons/Reload.svg";
 import TrashIcon from "../../../../../icons/Trash.svg";
+import ImportIcon from "../../../../../icons/Import.svg";
+import ExportIcon from "../../../../../icons/Export.svg";
 import {useDispatch} from "react-redux";
 import {
     deleteCell as deleteCellAction,
@@ -72,6 +74,26 @@ const DocumentInputFormToolbar: React.FC = () => {
         return !!session.document.cells[session.selectedCell];
     };
 
+    const exportDocument = () => {
+        const documentData = JSON.stringify(session.document, null, 4);
+        const saveData = async () => {
+            const options = {
+                types: [{
+                    description: 'JSON Files',
+                    accept: {
+                        'application/json': ['.json'],
+                    }
+                }]
+            };
+            // @ts-ignore
+            const fileHandle = await window.showSaveFilePicker(options);
+            const writable = await fileHandle.createWritable();
+            writable.write(documentData);
+            writable.close();
+        }
+        saveData().catch(console.error);
+    };
+
     return (
         <Wrapper>
             <Container>
@@ -88,6 +110,8 @@ const DocumentInputFormToolbar: React.FC = () => {
                     onClick={deleteCell}
                     disabled={!isCellSelected()}
                 />
+                <IconButton src={ImportIcon}/>
+                <IconButton src={ExportIcon} onClick={exportDocument}/>
             </Container>
         </Wrapper>
     )

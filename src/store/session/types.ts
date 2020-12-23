@@ -94,6 +94,11 @@ export interface RefreshMathCells {
     }
 }
 
+export interface DeleteCell {
+    type: "DELETE_CELL",
+    payload: number
+}
+
 export type SessionAction = ChangeCurrentInput
     | ClearCurrentInput
     | ClearDocumentCells
@@ -104,4 +109,5 @@ export type SessionAction = ChangeCurrentInput
     | SelectCell
     | SetEditCell
     | UpdateTextCell
-    | RefreshMathCells;
+    | RefreshMathCells
+    | DeleteCell;

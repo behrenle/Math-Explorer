@@ -128,6 +128,12 @@ const sessionReducer = createReducer<Session, SessionAction>(defaultState, {
         const nextState = {...state};
         nextState.document.cells = updatedCells;
         return nextState;
+    },
+
+    DELETE_CELL: (state, action) => {
+        const nextState = {...state};
+        nextState.document.cells = state.document.cells.filter((_, i) => i !== action.payload);
+        return nextState;
     }
 });
 

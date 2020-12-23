@@ -2,7 +2,7 @@ import {
     ChangeCurrentInput,
     ClearCurrentInput,
     ClearDocumentCells,
-    ClearMathUserScope,
+    ClearMathUserScope, DeleteCell,
     PushMathCell,
     PushTextCell, RefreshMathCells,
     SelectCell,
@@ -93,5 +93,12 @@ export const refreshMathCells = (language: Language, significantDigits: Signific
         payload: {
             language, significantDigits
         }
+    };
+};
+
+export const deleteCell = (index: number): DeleteCell => {
+    return {
+        type: "DELETE_CELL",
+        payload: index
     };
 };

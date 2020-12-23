@@ -7,6 +7,7 @@ import ReloadIcon from "../../../../../icons/Reload.svg";
 import TrashIcon from "../../../../../icons/Trash.svg";
 import {useDispatch} from "react-redux";
 import {
+    deleteCell as deleteCellAction,
     pushMathCell,
     pushTextCell,
     refreshMathCells,
@@ -58,6 +59,10 @@ const DocumentInputFormToolbar: React.FC = () => {
         dispatch(refreshMathCells(numberFormat, settings.mathSettings.significantDigits));
     };
 
+    const deleteCell = () => {
+        dispatch(deleteCellAction(session.selectedCell));
+    };
+
     return (
         <Wrapper>
             <Container>
@@ -65,7 +70,7 @@ const DocumentInputFormToolbar: React.FC = () => {
                 <IconButton src={TextIcon} onClick={addTextCell}/>
                 <IconButton src={MathIcon} onClick={addMathCell}/>
                 <IconButton src={ReloadIcon} onClick={refresh}/>
-                <IconButton src={TrashIcon}/>
+                <IconButton src={TrashIcon} onClick={deleteCell}/>
             </Container>
         </Wrapper>
     )

@@ -7,9 +7,12 @@ import useNumberFormat from "../../../../../../hooks/useNumberFormat";
 import useSettings from "../../../../../../hooks/useSettings";
 import useSession from "../../../../../../hooks/useSession";
 import {selectCell, setEditCell, updateMathCell} from "../../../../../../store/session/actions";
+import {useTranslation} from "react-i18next";
 
-const Container = styled(Cell)`
+const Container = styled(Cell)<{ edit: boolean }>`
   display: grid;
+  grid-column-gap: 20px;
+  grid-template-columns: ${props => !props.edit ? "auto 1fr" : "1fr"};
 `;
 
 const Input = styled(InputText)`
@@ -22,6 +25,15 @@ const Input = styled(InputText)`
     outline: none;
   }
 `;
+
+const Label = styled.label`
+  font-size: ${props => props.theme.fontSize.s};
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+`;
+
+const Value = styled.span``;
 
 interface MathCellProps {
     input: string,
@@ -36,6 +48,7 @@ const MathCell: React.FC<MathCellProps> = ({input, output, index}) => {
     const numberFormat = useNumberFormat();
     const [inputValue, setInputValue] = useState(input);
     const inputRef = useRef<HTMLInputElement>(null);
+    const [t] = useTranslation();
 
     useEffect(() => {
         if (inputRef.current)
@@ -72,6 +85,7 @@ const MathCell: React.FC<MathCellProps> = ({input, output, index}) => {
             onClick={setSelection}
             selected={index === session.selectedCell}
             onDoubleClick={enterEditMode}
+            edit={session.editCell && index == session.selectedCell}
         >
             {
                 session.editCell && index == session.selectedCell ? (
@@ -85,10 +99,16 @@ const MathCell: React.FC<MathCellProps> = ({input, output, index}) => {
                         />
                     </div>
                 ) : (
-                    <dl>
-                        <dt>{input}</dt>
-                        <dd>{output}</dd>
-                    </dl>
+                    <>
+                        <Label>
+                            {t("common.input")}
+                        </Label>
+                        <Value>{input}</Value>
+                        <Label>
+                            {t("common.output")}
+                        </Label>
+                        <Value>{output}</Value>
+                    </>
                 )
             }
         </Container>

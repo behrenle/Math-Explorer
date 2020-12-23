@@ -3,11 +3,11 @@ import styled from "styled-components";
 const Cell = styled.li<{ selected: boolean }>`
   margin: 10px 0;
   ${props => props.selected === true
-          ? ` border-color: white;
+          ? ` border-color: ${props.theme.documentCell.borderSelectedColor};
               border-style: solid;
               border-width: 1px 1px 1px 4px;
               padding: 10px 10px 10px 7px;`
-          : ` border: 1px solid rgba(255, 255, 255, 0.2);
+          : ` border: 1px solid ${props.theme.documentCell.borderColor};
               padding: 10px;`
   }
   

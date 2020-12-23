@@ -41,6 +41,10 @@ declare module "styled-components" {
             filter: string,
             borderColor: string
         },
+        documentCell: {
+            borderSelectedColor: string,
+            borderColor: string,
+        },
         navbarHeight: string
     }
 }

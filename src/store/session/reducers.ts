@@ -1,5 +1,6 @@
 import {Cell, MathCell, PushMathCell, Session, SessionAction} from "./types";
 import {createReducer} from "redux-create-reducer";
+import {v4 as uuid} from "uuid";
 // todo ts declaration file for number-drive or write ts version of numberdrive
 // @ts-ignore
 import numberdrive from "@behrenle/number-drive";
@@ -46,6 +47,7 @@ const sessionReducer = createReducer<Session, SessionAction>(defaultState, {
             const nextState = {...state};
             nextState.document.cells = nextState.document.cells.concat([{
                 type: "MATH",
+                uuid: uuid(),
                 input: action.payload.content,
                 output: evaluateInput(action.payload.content, action.payload.language, action.payload.significantDigits)
             }]);
@@ -55,6 +57,7 @@ const sessionReducer = createReducer<Session, SessionAction>(defaultState, {
             ...state, document: {
                 ...state.document, cells: state.document.cells.concat([{
                     type: "MATH",
+                    uuid: uuid(),
                     input: "",
                     output: "",
                 }])
@@ -66,6 +69,7 @@ const sessionReducer = createReducer<Session, SessionAction>(defaultState, {
         const nextState = {...state};
         nextState.document.cells = nextState.document.cells.concat([{
             type: "TEXT",
+            uuid: uuid(),
             content: action.payload
         }]);
         return nextState;
@@ -76,6 +80,7 @@ const sessionReducer = createReducer<Session, SessionAction>(defaultState, {
         if (selectedCell) {
             const updatedCell: MathCell = {
                 type: "MATH",
+                uuid: state.document.cells[action.payload.index].uuid,
                 input: action.payload.input,
                 output: evaluateInput(
                     action.payload.input,
@@ -108,6 +113,7 @@ const sessionReducer = createReducer<Session, SessionAction>(defaultState, {
         if (action.payload.content.length > 0) {
             nextState.document.cells[action.payload.index] = {
                 type: "TEXT",
+                uuid: state.document.cells[action.payload.index].uuid,
                 content: action.payload.content
             };
         } else {
@@ -121,9 +127,10 @@ const sessionReducer = createReducer<Session, SessionAction>(defaultState, {
         clearScope();
         const updatedCells = state.document.cells.map((cell: Cell): Cell => cell.type === "MATH"
             ? {
-                type: "MATH", input: cell.input, output: evaluateInput(
-                    cell.input, action.payload.language, action.payload.significantDigits
-                )
+                type: "MATH",
+                uuid: cell.uuid,
+                input: cell.input,
+                output: evaluateInput(cell.input, action.payload.language, action.payload.significantDigits)
             } : cell);
         const nextState = {...state};
         nextState.document.cells = updatedCells;

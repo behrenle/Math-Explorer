@@ -3,12 +3,14 @@ import {SignificantDigits, Language} from "../settings/types";
 /* state types */
 export interface MathCell {
     type: "MATH",
+    uuid: string,
     input: string,
     output: string
 }
 
 export interface TextCell {
     type: "TEXT",
+    uuid: string,
     content: string
 }
 

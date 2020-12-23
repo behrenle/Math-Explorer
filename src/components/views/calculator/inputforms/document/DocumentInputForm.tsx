@@ -63,13 +63,13 @@ const DocumentInputForm: React.FC = () => {
                     {
                         cells.map((cell, i) => cell.type === "MATH"
                             ? (<MathCell
-                                key={i}
+                                key={cell.uuid}
                                 input={cell.input}
                                 output={cell.output}
                                 index={i}
                             />)
                             : (<TextCell
-                                key={i}
+                                key={cell.uuid}
                                 index={i}
                                 content={cell.content}
                             />))

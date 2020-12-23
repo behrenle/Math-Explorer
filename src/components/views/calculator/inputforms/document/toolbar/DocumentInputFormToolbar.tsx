@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import {v4 as uuid} from "uuid";
 import TextIcon from "../../../../../icons/Text.svg";
 import MathIcon from "../../../../../icons/Math.svg";
 import PenIcon from "../../../../../icons/Pen.svg";
@@ -113,7 +114,13 @@ const DocumentInputFormToolbar: React.FC = () => {
                                 return;
                             throw "file data validation failed";
                         });
-                        loadDocument(data);
+                        loadDocument({
+                            title: data.title,
+                            cells: data.cells.map((cell: any) => cell.type === "MATH"
+                                ? {type: "MATH", uuid: uuid(), input: cell.input, output: cell.output}
+                                : {type: "TEXT", uuid: uuid(), content: cell.content}
+                            )
+                        });
                         return;
                     }
                 }

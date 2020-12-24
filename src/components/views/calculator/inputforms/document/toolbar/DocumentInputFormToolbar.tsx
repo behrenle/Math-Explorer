@@ -133,7 +133,11 @@ const DocumentInputFormToolbar: React.FC = () => {
     return (
         <Wrapper>
             <Container>
-                <IconButton src={PenIcon} onClick={toggleEditCell}/>
+                <IconButton
+                    src={PenIcon}
+                    onClick={toggleEditCell}
+                    active={session.editCell}
+                />
                 <IconButton src={TextIcon} onClick={addTextCell}/>
                 <IconButton src={MathIcon} onClick={addMathCell}/>
                 <IconButton

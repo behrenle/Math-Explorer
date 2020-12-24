@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-const Button = styled.button`
-  opacity: 0.5;
+const Button = styled.button<{active: boolean}>`
+  opacity: ${props => props.active ? "1" : "0.5"};
   width: 100%;
   padding: 10px;
-  background-color: inherit;
+  background-color: ${props => props.active ? props.theme.sidebarItem.hoverBackgroundColor : "inherit"};
   border: none;
   outline: none;
   display: flex;
@@ -39,12 +39,13 @@ const Img = styled.img`
 interface IconProps {
     src: string,
     onClick?: () => void,
-    disabled?: boolean
+    disabled?: boolean,
+    active?: boolean
 }
 
-const IconButton: React.FC<IconProps> = ({src, onClick, disabled}) => {
+const IconButton: React.FC<IconProps> = ({src, onClick, disabled, active}) => {
     return (
-        <Button disabled={!onClick || disabled}>
+        <Button disabled={!onClick || disabled} active={!!active}>
             <Img src={src} onClick={onClick}/>
         </Button>
     );

@@ -28,7 +28,16 @@ export const loadSettings = (): Settings => {
         ? JSON.parse(settingsData)
         : {};
 
-    return {...defaultSettings, ...settings};
+    const state = {
+        interfaceSettings: {...defaultSettings.interfaceSettings, ...settings.interfaceSettings},
+        mathSettings: {...defaultSettings.mathSettings, ...settings.mathSettings},
+        id: defaultSettings.id
+    };
+
+    if (settings.id != defaultSettings.id)
+        saveSettings(state);
+
+    return state;
 };
 
 export const saveSettings = (settings: Settings) => {

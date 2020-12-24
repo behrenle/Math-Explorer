@@ -12,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
     background-size: cover;
     background-repeat: repeat;
     ${
-            props => props.theme.app.backgroundImage.length > 0
+            props => props.theme.app.backgroundImage.length > 0 && props.theme.showBackgroundImage
                     ? `background-image: url(${process.env.PUBLIC_URL + props.theme.app.backgroundImage});` : null
     }
   }

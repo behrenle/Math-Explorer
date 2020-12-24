@@ -45,6 +45,7 @@ declare module "styled-components" {
             borderSelectedColor: string,
             borderColor: string,
         },
-        navbarHeight: string
+        navbarHeight: string,
+        showBackgroundImage: boolean,
     }
 }

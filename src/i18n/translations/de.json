@@ -19,8 +19,11 @@
     "calculator.clear_memory": "Speicher löschen",
     "calculator.clear_all": "Alles löschen",
 
-    "settings.interface": "Oberfläche",
-    "settings.calculator": "Rechner",
+    "settings.categories.interface": "Benutzeroberfläche",
+    "settings.categories.calculator": "Rechner",
+    "settings.categories.advanced_input_form": "Verlaufseingabemaske",
+    "settings.categories.appearance": "Erscheinungsbild",
+
     "settings.language": "Sprache",
     "settings.show_cell_numbers": "Zeige Zellennummern",
     "settings.copy_cell_content_on_click": "Zellinhalt durch klicken kopieren",
@@ -34,6 +37,7 @@
     "settings.input_form.simple": "Einfach",
     "settings.input_form.advanced": "Verlauf",
     "settings.input_form.document": "Dokument",
+    "settings.show_background_image": "Zeige Hintergrundbild",
 
     "manual.search": "Suche",
     "manual.constants": "Konstanten",

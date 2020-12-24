@@ -17,6 +17,7 @@ export interface InterfaceSettings {
     cellLanguageTag: LanguageOrInherit,
     inputForm: InputForm,
     showLineNumbers: boolean,
+    showBackgroundImage: boolean,
     copyCellContentOnClick: boolean,
     copyManualContentOnClick: boolean,
     theme: ThemeName,

@@ -11,6 +11,7 @@ const defaultSettings: Settings = {
         cellLanguageTag: "inherit",
         language: "de",
         inputForm: "simple",
+        showBackgroundImage: true,
         copyManualContentOnClick: true,
         copyCellContentOnClick: true,
         showLineNumbers: true,

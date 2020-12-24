@@ -1,6 +1,8 @@
 import {Settings} from "./types";
+import {storeId} from "./storeId.json";
 
 const defaultSettings: Settings = {
+    id: storeId,
     mathSettings: {
         numberFormat: "inherit",
         significantDigits: 6

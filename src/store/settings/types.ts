@@ -24,6 +24,7 @@ export interface InterfaceSettings {
 }
 
 export interface Settings {
+    id: string,
     mathSettings: MathSettings,
     interfaceSettings: InterfaceSettings
 }

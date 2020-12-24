@@ -49,8 +49,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build && npm run build-sw",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "build-sw": "node ./src/sw-build.js"
+    "build-sw": "node ./src/sw-build.js",
+    "update-settings-id": "node tools/updateSettingsStoreId.js"
   },
   "eslintConfig": {
     "extends": [

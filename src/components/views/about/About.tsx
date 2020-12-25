@@ -5,6 +5,7 @@ import CenteredDefinitionList from "./CenteredDefinitionList";
 import {author, dependencies, license, version, contributors} from "../../../../package.json";
 import {useTranslation} from "react-i18next";
 import usePageView from "../../../hooks/usePageView";
+import {Link} from "react-router-dom";
 
 const Container = styled.div`
     padding: 20px 15%;
@@ -31,6 +32,9 @@ const About: React.FC = () => {
                         [t("about.license"), license],
                     ]}
                 />
+                <p style={{padding: "20px"}}>
+                    {t("about.find_privacy_policy")} <Link to="/privacy-policy">{t("about.privacy_policy_here")}</Link>.
+                </p>
             </Card>
             <Card style={{marginTop: "20px"}}>
                 <h1>{t("about.dependencies")}</h1>

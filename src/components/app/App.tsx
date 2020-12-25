@@ -6,6 +6,7 @@ import Navbar from "./navbar/Navbar";
 import useTheme from "../../hooks/useTheme";
 import GlobalStyle from "./GlobalStyle";
 import {routes, navbarProps} from "./appConfig";
+import PrivacyPolicy from "../views/privacyPolicy/PrivacyPolicy";
 
 const Content = styled.main`
   z-index: 0;
@@ -29,6 +30,7 @@ const App: React.FC = () => {
                                 render={route.render}
                             />
                         ))}
+                        <Route exact path="/privacy-policy" component={PrivacyPolicy}/>
                     </Switch>
                 </Content>
             </>

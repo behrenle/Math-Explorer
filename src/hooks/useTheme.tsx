@@ -65,8 +65,6 @@ const useTheme = (): DefaultTheme => {
     const fontSize = interfaceSettings.fontSize;
     const showBackgroundImage = interfaceSettings.showBackgroundImage;
 
-    console.log(showBackgroundImage, typeof showBackgroundImage);
-
     return {
         ...getTheme(theme),
         fontSize: getFontSize(fontSize),

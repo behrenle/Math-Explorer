@@ -3,6 +3,7 @@ import {storeId} from "./storeId.json";
 
 const defaultSettings: Settings = {
     id: storeId,
+    useAnalytics: true,
     mathSettings: {
         numberFormat: "inherit",
         significantDigits: 6
@@ -29,6 +30,8 @@ export const loadSettings = (): Settings => {
         : {};
 
     const state = {
+        ...defaultSettings,
+        ...settings,
         interfaceSettings: {...defaultSettings.interfaceSettings, ...settings.interfaceSettings},
         mathSettings: {...defaultSettings.mathSettings, ...settings.mathSettings},
         id: defaultSettings.id

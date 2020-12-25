@@ -4,6 +4,7 @@ import Card from "../../common/Card";
 import CenteredDefinitionList from "./CenteredDefinitionList";
 import {author, dependencies, license, version, contributors} from "../../../../package.json";
 import {useTranslation} from "react-i18next";
+import usePageView from "../../../hooks/usePageView";
 
 const Container = styled.div`
     padding: 20px 15%;
@@ -15,6 +16,7 @@ const Content = styled.div`
 
 
 const About: React.FC = () => {
+    usePageView("/about");
     const [t] = useTranslation();
 
     return (

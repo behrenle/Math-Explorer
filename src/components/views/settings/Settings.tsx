@@ -6,6 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../../store";
 import {useTranslation} from "react-i18next";
 import {themes} from "../../../hooks/useTheme";
+import usePageView from "../../../hooks/usePageView";
 
 const Container = styled.div`
     display: flex;
@@ -26,6 +27,7 @@ const SettingsCard = styled(Card)`
 
 
 const Settings: React.FC = () => {
+    usePageView("/settings");
     const settings = useSelector((state: RootState) => state.settings);
     const dispatch = useDispatch();
     const [t] = useTranslation();
@@ -44,10 +46,11 @@ const Settings: React.FC = () => {
         {label: t("settings.input_form.document"), value: "document"},
     ]
 
-    const updateSettings = (updatedSettings: {interfaceSettings?: {}, mathSettings?: {}}) => {
+    const updateSettings = (updatedSettings: {interfaceSettings?: {}, mathSettings?: {}, useAnalytics?: boolean}) => {
         dispatch({
             type: "SET_SETTINGS",
             payload: {
+                ...settings, ...updatedSettings,
                 interfaceSettings: {...settings.interfaceSettings, ...updatedSettings.interfaceSettings},
                 mathSettings: {...settings.mathSettings, ...updatedSettings.mathSettings}
             }
@@ -140,6 +143,17 @@ const Settings: React.FC = () => {
                         options={languageWithInheritOptions}
                         value={settings.mathSettings.numberFormat}
                         setter={value => updateSettings({mathSettings: {numberFormat: value}})}
+                    />
+                </ul>
+            </SettingsCard>
+            <SettingsCard>
+                <h1>{t("settings.categories.misc")}</h1>
+                <ul>
+                    <SettingsItem
+                        label="settings.use_analytics"
+                        options={enableOptions}
+                        value={settings.useAnalytics}
+                        setter={value => updateSettings({useAnalytics: value === "true"})}
                     />
                 </ul>
             </SettingsCard>

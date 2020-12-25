@@ -21,6 +21,7 @@
 
     "settings.categories.interface": "Benutzeroberfläche",
     "settings.categories.calculator": "Rechner",
+    "settings.categories.misc": "Verschiedenes",
     "settings.categories.advanced_input_form": "Verlaufseingabemaske",
     "settings.categories.appearance": "Erscheinungsbild",
 
@@ -38,6 +39,7 @@
     "settings.input_form.advanced": "Verlauf",
     "settings.input_form.document": "Dokument",
     "settings.show_background_image": "Zeige Hintergrundbild",
+    "settings.use_analytics": "Nutze Google Analytics",
 
     "manual.search": "Suche",
     "manual.constants": "Konstanten",

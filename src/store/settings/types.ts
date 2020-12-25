@@ -26,6 +26,7 @@ export interface InterfaceSettings {
 
 export interface Settings {
     id: string,
+    useAnalytics: boolean,
     mathSettings: MathSettings,
     interfaceSettings: InterfaceSettings
 }

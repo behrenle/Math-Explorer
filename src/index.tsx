@@ -7,7 +7,7 @@ import {initialize} from "react-ga";
 import {id as analyticsId} from "./analytics.json";
 
 initialize(analyticsId, {
-    debug: true,
+    //debug: true,
     gaOptions: {
         siteSpeedSampleRate: 100
     }

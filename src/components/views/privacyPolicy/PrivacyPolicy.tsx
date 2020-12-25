@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "../../common/Card";
 import styled from "styled-components";
+import usePageView from "../../../hooks/usePageView";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -18,6 +19,8 @@ const Container = styled(Card)`
 `;
 
 const PrivacyPolicy: React.FC = () => {
+    usePageView("/privacy-policy");
+
     return (
         <Wrapper>
             <Container>

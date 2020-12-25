@@ -11,6 +11,7 @@ import {useHotkeys} from "react-hotkeys-hook";
 import {useTranslation} from "react-i18next";
 import {InputForm} from "../../../store/settings/types";
 import usePageView from "../../../hooks/usePageView";
+import useAnalyticsEvent from "../../../hooks/useAnalyticsEvent";
 
 const getOutput = (state: RootState) => {
     const lastCell = state.session.document.cells.slice(-1)[0];
@@ -33,6 +34,7 @@ const selectInputForm = (inputForm: InputForm) => {
 
 const Calculator: React.FC = () => {
     usePageView("/calculator");
+    const analyticsEvent = useAnalyticsEvent();
     const inputForm = useSelector((state: RootState) => state.settings.interfaceSettings.inputForm);
     const [t] = useTranslation();
     const [currentInput, currentOutput] = useSelector((state: RootState) => [state.session.currentInput, getOutput(state)]);
@@ -43,6 +45,7 @@ const Calculator: React.FC = () => {
     useHotkeys(copyInputAndOutput, () => {
         navigator.clipboard.writeText(`${t("common.input")}: ${currentInput}\n${t("common.output")}: ${currentOutput}`).catch(console.error);
     }, hotkeyOptions, [currentInput, currentOutput]);
+    analyticsEvent("InputForm", inputForm);
 
     return (
         <>

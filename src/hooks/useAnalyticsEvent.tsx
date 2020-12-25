@@ -15,4 +15,4 @@ const useAnalyticsEvent = () => {
     };
 };
 
-export default useAnalyticsEvent();
+export default useAnalyticsEvent;

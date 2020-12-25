@@ -32,9 +32,9 @@ const About: React.FC = () => {
                         [t("about.license"), license],
                     ]}
                 />
-                <p style={{padding: "20px"}}>
+                <Content>
                     {t("about.find_privacy_policy")} <Link to="/privacy-policy">{t("about.privacy_policy_here")}</Link>.
-                </p>
+                </Content>
             </Card>
             <Card style={{marginTop: "20px"}}>
                 <h1>{t("about.dependencies")}</h1>

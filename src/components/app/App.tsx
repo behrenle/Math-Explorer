@@ -9,6 +9,7 @@ import {routes, navbarProps} from "./appConfig";
 import PrivacyPolicy from "../views/privacyPolicy/PrivacyPolicy";
 import CookiePolicy from "../views/cookiePolicy/CookiePolicy";
 import CookieBanner from "./cookieBanner/CookieBanner";
+import TermsOfService from "../views/termsOfService/TermsOfService";
 
 
 const Content = styled.main`
@@ -35,6 +36,7 @@ const App: React.FC = () => {
                         ))}
                         <Route exact path="/privacy-policy" component={PrivacyPolicy}/>
                         <Route exact path="/cookie-policy" component={CookiePolicy}/>
+                        <Route exact path="/terms-of-service" component={TermsOfService}/>
                     </Switch>
                 </Content>
                 <CookieBanner/>

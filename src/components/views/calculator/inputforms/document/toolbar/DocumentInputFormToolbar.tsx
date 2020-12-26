@@ -137,21 +137,41 @@ const DocumentInputFormToolbar: React.FC = () => {
                     src={PenIcon}
                     onClick={toggleEditCell}
                     active={session.editCell}
+                    label="calculator.document.toolbar.toggle_edit_cell"
+
                 />
-                <IconButton src={TextIcon} onClick={addTextCell}/>
-                <IconButton src={MathIcon} onClick={addMathCell}/>
+                <IconButton
+                    src={TextIcon}
+                    onClick={addTextCell}
+                    label="calculator.document.toolbar.add_text_cell"
+                />
+                <IconButton
+                    src={MathIcon}
+                    onClick={addMathCell}
+                    label="calculator.document.toolbar.add_math_cell"
+                />
                 <IconButton
                     src={ReloadIcon}
                     onClick={refresh}
                     disabled={!documentHasMathCells()}
+                    label="calculator.document.toolbar.refresh_math_cells"
                 />
                 <IconButton
                     src={TrashIcon}
                     onClick={deleteCell}
                     disabled={!isCellSelected()}
+                    label="calculator.document.toolbar.delete_cell"
                 />
-                <IconButton src={ImportIcon} onClick={importDocument}/>
-                <IconButton src={ExportIcon} onClick={exportDocument}/>
+                <IconButton
+                    src={ImportIcon}
+                    onClick={importDocument}
+                    label="calculator.document.toolbar.import_document"
+                />
+                <IconButton
+                    src={ExportIcon}
+                    onClick={exportDocument}
+                    label="calculator.document.toolbar.export_document"
+                />
             </Container>
         </Wrapper>
     )

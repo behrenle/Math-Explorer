@@ -11,12 +11,14 @@ import nd from "@behrenle/number-drive"
 import {useTranslation} from "react-i18next";
 import useRefEffect from "../../../hooks/useRefEffect";
 import {camelToSnakeCase} from "../../../utils";
+import usePageView from "../../../hooks/usePageView";
 
 const Container = styled.div`
     padding: 20px 15%;
 `;
 
 const Manual: React.FC = () => {
+    usePageView("/manual");
     const [filter, setFilter] = useState("");
     const language = useSelector((state: RootState) => state.settings.interfaceSettings.language);
     const searchRef = useRef<HTMLInputElement>(null);

@@ -21,6 +21,7 @@
 
     "settings.categories.interface": "Interface",
     "settings.categories.calculator": "Calculator",
+    "settings.categories.misc": "Miscellaneous",
     "settings.categories.advanced_input_form": "Advanced input form",
     "settings.categories.appearance": "Appearance",
 
@@ -38,6 +39,7 @@
     "settings.input_form.advanced": "Advanced",
     "settings.input_form.document": "Document",
     "settings.show_background_image": "Show background image",
+    "settings.use_analytics": "Use Google Analytics",
 
     "manual.search": "Search",
     "manual.constants": "Constants",
@@ -58,5 +60,7 @@
     "about.author": "Author",
     "about.contributors": "Contributors",
     "about.license": "License",
-    "about.more_info": "Visit <a href=\"{{url}}\">{{label}}</a> for more information."
+    "about.more_info": "Visit <a href=\"{{url}}\">{{label}}</a> for more information.",
+    "about.find_privacy_policy": "You can find our privacy policy",
+    "about.privacy_policy_here": "here"
 }

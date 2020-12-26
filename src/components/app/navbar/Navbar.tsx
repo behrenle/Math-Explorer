@@ -57,8 +57,8 @@ const Navbar: React.FC<Props> = ({title, items}) => {
                 <UL>
                     {
                         items.map((item, index) => (
-                            <li>
-                                <NavbarItem key={index} name={item.name} path={item.path}/>
+                            <li key={index}>
+                                <NavbarItem name={item.name} path={item.path}/>
                             </li>
                         ))
                     }

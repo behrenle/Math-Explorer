@@ -60,6 +60,5 @@
     "about.contributors": "Mitwirkende",
     "about.license": "Lizenz",
     "about.more_info": "Siehe <a href=\"{{url}}\">{{label}}</a> für mehr Informationen.",
-    "about.find_privacy_policy": "Unsere Datenschutzerklärung finden Sie",
-    "about.privacy_policy_here": "hier"
+    "about.further_information": "Weitere Informationen"
 }

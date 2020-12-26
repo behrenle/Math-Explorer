@@ -33,7 +33,18 @@ const About: React.FC = () => {
                     ]}
                 />
                 <Content>
-                    {t("about.find_privacy_policy")} <Link to="/privacy-policy">{t("about.privacy_policy_here")}</Link>.
+                    {t("about.further_information")}
+                    <ul>
+                        <li>
+                            <Link to="/privacy-policy">Privacy Policy</Link>
+                        </li>
+                        <li>
+                            <Link to="/cookie-policy">Cookie Policy</Link>
+                        </li>
+                        <li>
+                            <Link to="/terms-of-service">Terms of Service</Link>
+                        </li>
+                    </ul>
                 </Content>
             </Card>
             <Card style={{marginTop: "20px"}}>

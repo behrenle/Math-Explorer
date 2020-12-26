@@ -27,6 +27,7 @@ export interface InterfaceSettings {
 export interface Settings {
     id: string,
     useAnalytics: boolean,
+    cookieBannerHasBeenAccepted: boolean,
     mathSettings: MathSettings,
     interfaceSettings: InterfaceSettings
 }

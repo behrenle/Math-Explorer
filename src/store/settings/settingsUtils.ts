@@ -4,6 +4,7 @@ import {storeId} from "./storeId.json";
 const defaultSettings: Settings = {
     id: storeId,
     useAnalytics: false,
+    cookieBannerHasBeenAccepted: false,
     mathSettings: {
         numberFormat: "inherit",
         significantDigits: 6

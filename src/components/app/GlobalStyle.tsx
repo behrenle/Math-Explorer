@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
   
   #root {
     display: grid;
-    grid-template-rows: ${props => props.theme.navbarHeight} 1fr;
+    grid-template-rows: ${props => props.theme.navbarHeight} 1fr auto;
     position: absolute;
     width: 100%;
     height: 100%;

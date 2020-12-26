@@ -7,6 +7,7 @@ import useTheme from "../../hooks/useTheme";
 import GlobalStyle from "./GlobalStyle";
 import {routes, navbarProps} from "./appConfig";
 import PrivacyPolicy from "../views/privacyPolicy/PrivacyPolicy";
+import CookieBanner from "./cookieBanner/CookieBanner";
 
 const Content = styled.main`
   z-index: 0;
@@ -33,6 +34,7 @@ const App: React.FC = () => {
                         <Route exact path="/privacy-policy" component={PrivacyPolicy}/>
                     </Switch>
                 </Content>
+                <CookieBanner/>
             </>
         </ThemeProvider>
     );

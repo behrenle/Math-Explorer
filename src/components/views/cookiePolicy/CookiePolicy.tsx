@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Card from "../../common/Card";
+import usePageView from "../../../hooks/usePageView";
 
 const Wrapper = styled.div`
   padding: 20px 15%;
@@ -15,6 +16,8 @@ const Container = styled(Card)`
 `;
 
 const CookiePolicy: React.FC = () => {
+    usePageView("/cookie-policy");
+
     return (
         <Wrapper>
             <Container>

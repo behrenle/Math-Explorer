@@ -37,7 +37,7 @@ const CookieBanner: React.FC = () => {
         <Container>
             <Text>{"Cookies ".repeat(20)}</Text>
             <ButtonContainer>
-                <Button accept={false}>decline</Button>
+                <Button accept={false}>reject</Button>
                 <Button accept={true}>accept</Button>
             </ButtonContainer>
         </Container>

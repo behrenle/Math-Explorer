@@ -17,31 +17,31 @@ const Container = styled(Cell)`
     list-style-type: disc;
   }
   
-  & > h1 {
+  & h1 {
     font-size: 1.5em;
   }
 
-  & > h2 {
+  & h2 {
     font-size: 1.4em;
   }
 
-  & > h3 {
+  & h3 {
     font-size: 1.3em;
   }
 
-  & > h4 {
+  & h4 {
     font-size: 1.2em;
   }
 
-  & > h5 {
+  & h5 {
     font-size: 1.1em;
   }
 
-  & > h6 {
+  & h6 {
     font-size: 1em;
   }
   
-  & > h1, h2, h3, h4, h5, h6 {
+  & h1, h2, h3, h4, h5, h6 {
     margin: 0 0 0.2em 0;
     padding: 0;
     font-weight: bolder;

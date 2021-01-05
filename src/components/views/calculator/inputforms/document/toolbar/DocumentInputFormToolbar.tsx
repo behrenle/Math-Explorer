@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import {v4 as uuid} from "uuid";
 import TextIcon from "../../../../../icons/Text.svg";
 import MathIcon from "../../../../../icons/Math.svg";
 import PenIcon from "../../../../../icons/Pen.svg";
@@ -22,7 +21,8 @@ import useNumberFormat from "../../../../../../hooks/useNumberFormat";
 import useSettings from "../../../../../../hooks/useSettings";
 import IconButton from "./IconButton";
 import {getMathCells} from "../../../common/utils";
-import useLoadDocument from "../../../../../../hooks/useLoadDocument";
+import useImportDocument from "../../../../../../hooks/useImportDocument";
+import useExportDocument from "../../../../../../hooks/useExportDocument";
 
 const Wrapper = styled.div`
   display: flex;
@@ -43,7 +43,8 @@ const DocumentInputFormToolbar: React.FC = () => {
     const session = useSession();
     const settings = useSettings();
     const numberFormat = useNumberFormat();
-    const loadDocument = useLoadDocument();
+    const importDocument = useImportDocument();
+    const exportDocument = useExportDocument();
 
     const addMathCell = () => {
         dispatch(selectCell(session.document.cells.length));
@@ -77,58 +78,6 @@ const DocumentInputFormToolbar: React.FC = () => {
         return !!session.document.cells[session.selectedCell];
     };
 
-    const exportDocument = () => {
-        const documentData = JSON.stringify(session.document, null, 4);
-        const saveData = async () => {
-            const options = {
-                types: [{
-                    description: 'JSON Files',
-                    accept: {
-                        'application/json': ['.json'],
-                    }
-                }]
-            };
-            // @ts-ignore
-            const fileHandle = await window.showSaveFilePicker(options);
-            const writable = await fileHandle.createWritable();
-            writable.write(documentData);
-            writable.close();
-        }
-        saveData().catch(console.error);
-    };
-
-    const importDocument = () => {
-        const loadData = async () => {
-            // @ts-ignore
-            const [fileHandle] = await window.showOpenFilePicker();
-            const file = await fileHandle.getFile();
-            const content = await file.text();
-            const data = JSON.parse(content);
-            if (typeof data === "object") {
-                if (typeof data.title === "string") {
-                    if (data.cells instanceof Array) {
-                        data.cells.forEach((cell: any) => {
-                            if (cell.type === "MATH" && typeof cell.input === "string" && typeof cell.output === "string")
-                                return;
-                            if (cell.type === "TEXT" && typeof cell.content === "string")
-                                return;
-                            throw "file data validation failed";
-                        });
-                        loadDocument({
-                            title: data.title,
-                            cells: data.cells.map((cell: any) => cell.type === "MATH"
-                                ? {type: "MATH", uuid: uuid(), input: cell.input, output: cell.output}
-                                : {type: "TEXT", uuid: uuid(), content: cell.content}
-                            )
-                        });
-                        return;
-                    }
-                }
-            }
-            throw "file data validation failed";
-        }
-        loadData().catch(console.error);
-    };
 
     return (
         <Wrapper>

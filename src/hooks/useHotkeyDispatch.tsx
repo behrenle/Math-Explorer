@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {useDispatch} from "react-redux";
-import {useHotkeys} from "react-hotkeys-hook";
+import useHotkey from "./useHotkey";
 
 const hotkeyFilter = () => true;
 export const hotkeyOptions = {filter: hotkeyFilter};
@@ -12,12 +12,12 @@ interface Action {
 const useHotkeyDispatch = (hotkey: string, action: Action | Action[], condition: boolean = true) => {
     const dispatch = useDispatch();
     const [dispatchAction, setDispatchAction] = useState(false);
-    useHotkeys(hotkey, (e) => {
+    useHotkey(hotkey, (e) => {
         if (condition) {
             e.preventDefault();
             setDispatchAction(true);
         }
-    }, hotkeyOptions, [condition]);
+    }, [condition]);
     useEffect(() => {
         if (dispatchAction) {
             setDispatchAction(false);

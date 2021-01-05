@@ -106,6 +106,14 @@ export interface LoadDocument {
     payload: Document
 }
 
+export interface MoveCellSelectionUp {
+    type: "MOVE_CELL_SELECTION_UP"
+}
+
+export interface MoveCellSelectionDown {
+    type: "MOVE_CELL_SELECTION_DOWN"
+}
+
 export type SessionAction = ChangeCurrentInput
     | ClearCurrentInput
     | ClearDocumentCells
@@ -118,4 +126,6 @@ export type SessionAction = ChangeCurrentInput
     | UpdateTextCell
     | RefreshMathCells
     | DeleteCell
-    | LoadDocument;
+    | LoadDocument
+    | MoveCellSelectionUp
+    | MoveCellSelectionDown;

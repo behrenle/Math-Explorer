@@ -5,6 +5,8 @@ import ReactMarkdown from "react-markdown";
 import useSession from "../../../../../../hooks/useSession";
 import {selectCell, setEditCell, updateTextCell} from "../../../../../../store/session/actions";
 import {useDispatch} from "react-redux";
+import {useHotkeys} from "react-hotkeys-hook";
+import {document as documentHotkeys} from "../../../../../../hotkeys.json";
 
 const Container = styled(Cell)`
   & * {
@@ -88,6 +90,7 @@ const TextCell: React.FC<TextCellProps> = ({index, content}) => {
     const dispatch = useDispatch();
     const session = useSession();
     const [value, setValue] = useState(content);
+    const [saved, setSaved] = useState(true);
     const textAreaRef = useRef<HTMLTextAreaElement>(null);
     useEffect(() => {
         if (textAreaRef.current && session.selectedCell === index && session.editCell)
@@ -99,6 +102,15 @@ const TextCell: React.FC<TextCellProps> = ({index, content}) => {
             textAreaRef.current.style.height = textAreaRef.current?.scrollHeight + "px";
         }
     },[value, session.editCell])
+    useEffect(() => {
+        if (!session.editCell && !saved) {
+            dispatch(updateTextCell(index, value));
+            setSaved(true);
+        }
+    }, [session.editCell, saved, dispatch, index, value, setSaved]);
+    useHotkeys(documentHotkeys.newLine, () => {
+        setValue(`${value}\n`);
+    }, [value]);
 
     const selectThisCell = () => {
         if (index !== session.selectedCell) {
@@ -113,11 +125,13 @@ const TextCell: React.FC<TextCellProps> = ({index, content}) => {
 
     const changeValue = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setValue(event.target.value);
+        setSaved(false);
     };
 
-    const saveValue = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    const onKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
         if (event.key === "Escape") {
-            dispatch(updateTextCell(index, value));
+            setValue(content);
+            setSaved(true);
             dispatch(setEditCell(false));
         }
     };
@@ -134,7 +148,7 @@ const TextCell: React.FC<TextCellProps> = ({index, content}) => {
                         ref={textAreaRef}
                         value={value}
                         onChange={changeValue}
-                        onKeyDown={saveValue}
+                        onKeyDown={onKeyDown}
                     />)
                     : (<ReactMarkdown children={content}/>)
             }

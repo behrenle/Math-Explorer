@@ -1,12 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import MathCell from "./cells/MathCell";
-import useHotkeyDispatch from "../../../../../hooks/useHotkeyDispatch";
-import {toggleEditCell} from "../../../../../hotkeys.json";
 import useSession from "../../../../../hooks/useSession";
-import {setEditCell} from "../../../../../store/session/actions";
 import TextCell from "./cells/TextCell";
 import DocumentInputFormToolbar from "./toolbar/DocumentInputFormToolbar";
+import useDocumentHotkeys from "./useDocumentHotkeys";
 
 const Container = styled.div`
   display: grid;
@@ -51,9 +49,8 @@ const CellList = styled.ul`
 
 // todo: render and edit document title
 const DocumentInputForm: React.FC = () => {
-    const session = useSession();
-    const cells = session.document.cells;
-    useHotkeyDispatch(toggleEditCell, setEditCell(!session.editCell));
+    const cells = useSession().document.cells;
+    useDocumentHotkeys();
 
     return (
         <Container>

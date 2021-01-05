@@ -37,7 +37,7 @@ const Manual: React.FC = () => {
                 ref={searchRef}
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => setFilter(event.target.value)}
             />
-            <ManualCategory
+            {/*<ManualCategory
                 title="manual.hotkeys"
                 language={language}
                 items={
@@ -51,7 +51,7 @@ const Manual: React.FC = () => {
                     })
                 }
                 filter={filter}
-            />
+            />*/}
             <ManualCategory
                 title="manual.constants"
                 language={language}

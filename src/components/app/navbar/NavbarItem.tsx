@@ -32,10 +32,10 @@ interface Props {
 const NavbarItem: React.FC<Props> = ({name, path}) => {
     const location = useLocation();
     const [active, setActive] = useState(false);
+    const [t] = useTranslation();
     useEffect(() => {
         setActive(location.pathname === path)
     }, [location, path]);
-    const [t] = useTranslation();
 
     return (
         <StyledLink

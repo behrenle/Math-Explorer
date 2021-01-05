@@ -22,7 +22,7 @@ interface HotkeysManualObject {
 }
 
 const getHotkeysManual = (items: HotkeysManualObject = hotkeys, t: (s: string) => string, baseStr = "") => {
-    let entries: {synopsis: {de: string, en: string}[], description: {de: string, en: string}}[] = [];
+    let entries: {synopsis: {de: string, en: string}, description: {de: string, en: string}}[] = [];
     Object.entries(items).forEach(([key, value]) => {
         if (typeof value === "string") {
             const synopsis = value.replaceAll("+", " + ").toUpperCase();

@@ -9,7 +9,7 @@ import {
     SetEditCell,
     UpdateMathCell,
     UpdateTextCell,
-    Document as DocumentType,
+    Document as DocumentType, MoveCellSelectionUp, MoveCellSelectionDown,
 } from "./types";
 import {Language, SignificantDigits} from "../settings/types";
 
@@ -109,5 +109,18 @@ export const loadDocument = (document: DocumentType): LoadDocument => {
     return {
         type: "LOAD_DOCUMENT",
         payload: document
+    };
+};
+
+export const moveCellSelectionUp = (): MoveCellSelectionUp => {
+    return {
+        type: "MOVE_CELL_SELECTION_UP"
+    };
+};
+
+
+export const moveCellSelectionDown = (): MoveCellSelectionDown => {
+    return {
+        type: "MOVE_CELL_SELECTION_DOWN"
     };
 };

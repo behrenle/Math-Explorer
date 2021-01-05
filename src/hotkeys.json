@@ -6,5 +6,16 @@
   "clearMemory": "ctrl+alt+m",
   "clearAll": "ctrl+alt+a",
   "copyInputAndOutput": "alt+p",
-  "toggleEditCell": "ctrl+e"
+  "document": {
+    "toggleEditCell": "enter",
+    "exitEditCellWithoutSaving": "escape",
+    "moveCellSelectionUp": "up",
+    "moveCellSelectionDown": "down",
+    "moveToStartOfDocument": "ctrl+up",
+    "moveToEndOfDocument": "ctrl+down",
+    "deleteSelectedCell": "delete",
+    "newLine": "alt+enter",
+    "saveDocument": "ctrl+s",
+    "openDocument": "ctrl+o"
+  }
 }

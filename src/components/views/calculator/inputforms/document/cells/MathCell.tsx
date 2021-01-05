@@ -33,40 +33,28 @@ const Label = styled.label`
   align-items: center;
 `;
 
-const Value = styled.span``;
-
-interface MathCellProps {
-    input: string,
-    output: string,
-    index: number
-}
-
 const MathCell: React.FC<MathCellProps> = ({input, output, index}) => {
     const settings = useSettings();
     const session = useSession();
     const dispatch = useDispatch();
     const numberFormat = useNumberFormat();
     const [inputValue, setInputValue] = useState(input);
+    const [saved, setSaved] = useState(true);
     const inputRef = useRef<HTMLInputElement>(null);
     const [t] = useTranslation();
 
     useEffect(() => {
-        if (inputRef.current)
-            inputRef.current.focus();
-    }, []);
+        if (session.editCell && session.selectedCell === index)
+            if (inputRef.current)
+                inputRef.current.focus();
+    }, [inputRef, session.editCell, session.selectedCell, index]);
 
-    const submitChange = (event: React.KeyboardEvent<HTMLInputElement>) => {
-        if (event.key === "Enter") {
+    useEffect(() => {
+        if(!saved && !session.editCell) {
             dispatch(updateMathCell(inputValue, index, numberFormat, settings.mathSettings.significantDigits));
-            dispatch(setEditCell(false));
+            setSaved(true);
         }
-    }
-
-    const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-        if (event.key === "Escape") {
-            dispatch(setEditCell(false));
-        }
-    }
+    }, [saved, session.editCell, dispatch, index, inputValue, numberFormat, settings.mathSettings.significantDigits]);
 
     const setSelection = () => {
         if (session.selectedCell !== index) {
@@ -80,21 +68,33 @@ const MathCell: React.FC<MathCellProps> = ({input, output, index}) => {
         dispatch(setEditCell(true));
     }
 
+    const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setInputValue(event.target.value);
+        setSaved(false);
+    }
+
+    const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === "Escape") {
+            setInputValue(input);
+            setSaved(true);
+            dispatch(setEditCell(false));
+        }
+    };
+
     return (
         <Container
             onClick={setSelection}
             selected={index === session.selectedCell}
             onDoubleClick={enterEditMode}
-            edit={session.editCell && index == session.selectedCell}
+            edit={session.editCell && index === session.selectedCell}
         >
             {
-                session.editCell && index == session.selectedCell ? (
+                session.editCell && index === session.selectedCell ? (
                     <div>
                         <Input
                             ref={inputRef}
                             value={inputValue}
-                            onChange={event => setInputValue(event.target.value)}
-                            onKeyPress={submitChange}
+                            onChange={onChange}
                             onKeyDown={onKeyDown}
                         />
                     </div>
@@ -114,5 +114,13 @@ const MathCell: React.FC<MathCellProps> = ({input, output, index}) => {
         </Container>
     );
 };
+
+const Value = styled.span``;
+
+interface MathCellProps {
+    input: string,
+    output: string,
+    index: number
+}
 
 export default MathCell;

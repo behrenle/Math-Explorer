@@ -145,6 +145,20 @@ const sessionReducer = createReducer<Session, SessionAction>(defaultState, {
 
     LOAD_DOCUMENT: (state, action) => {
         return {...state, document: action.payload};
+    },
+
+    MOVE_CELL_SELECTION_UP: (state) => {
+        return {
+            ...state,
+            selectedCell: Math.max(state.selectedCell - 1, 0)
+        };
+    },
+
+    MOVE_CELL_SELECTION_DOWN: (state) => {
+        return {
+            ...state,
+            selectedCell: Math.min(state.selectedCell + 1, state.document.cells.length - 1)
+        };
     }
 });
 

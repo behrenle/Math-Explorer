@@ -17,12 +17,38 @@ const Container = styled.div`
     padding: 20px 15%;
 `;
 
+interface HotkeysManualObject {
+    [key: string]: string | HotkeysManualObject
+}
+
+const getHotkeysManual = (items: HotkeysManualObject = hotkeys, t: (s: string) => string, baseStr = "") => {
+    let entries: {synopsis: {de: string, en: string}[], description: {de: string, en: string}}[] = [];
+    Object.entries(items).forEach(([key, value]) => {
+        if (typeof value === "string") {
+            const synopsis = value.replaceAll("+", " + ").toUpperCase();
+            const description = t(`manual.${baseStr ? baseStr + "." : ""}hotkey_${camelToSnakeCase(key)}`);
+            entries.push({
+                synopsis: {de: synopsis, en: synopsis},
+                description: {de: description, en: description}
+            });
+        } else if (typeof value === "object") {
+            entries = entries.concat(getHotkeysManual(value, t, key));
+        } else {
+            console.error("invalid hotkeys file format");
+            return;
+        }
+
+    });
+    return entries;
+}
+
 const Manual: React.FC = () => {
     usePageView("/manual");
     const [filter, setFilter] = useState("");
     const language = useSelector((state: RootState) => state.settings.interfaceSettings.language);
     const searchRef = useRef<HTMLInputElement>(null);
     const [t] = useTranslation();
+    const hotkeysManualItems = getHotkeysManual(undefined, t)
     useRefEffect(searchRef, r => r.current.focus());
 
     return (
@@ -37,21 +63,12 @@ const Manual: React.FC = () => {
                 ref={searchRef}
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => setFilter(event.target.value)}
             />
-            {/*<ManualCategory
+            <ManualCategory
                 title="manual.hotkeys"
                 language={language}
-                items={
-                    Object.entries(hotkeys).map(hotkey => {
-                        const synopsis = hotkey[1].replaceAll("+", " + ").toUpperCase();
-                        const description = t("manual.hotkey_" + camelToSnakeCase(hotkey[0]));
-                        return {
-                            synopsis: {de: synopsis, en: synopsis},
-                            description: {de: description, en: description}
-                        };
-                    })
-                }
+                items={hotkeysManualItems}
                 filter={filter}
-            />*/}
+            />
             <ManualCategory
                 title="manual.constants"
                 language={language}

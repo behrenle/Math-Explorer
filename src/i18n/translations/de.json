@@ -8,6 +8,13 @@
     "common.medium": "Mittel",
     "common.small": "Klein",
 
+    "upload.copy": "Link kopieren",
+    "upload.back": "Zurück",
+
+    "download.download-error": "Etwas ist schief gelaufen :(",
+    "download.loading-document": "Herunterladen",
+    "download.successful": "Download abgeschlossen",
+
     "navbar.calculator": "Rechner",
     "navbar.settings": "Einstellungen",
     "navbar.manual": "Hilfe",
@@ -18,6 +25,15 @@
     "calculator.clear_input": "Eingabe löschen",
     "calculator.clear_memory": "Speicher löschen",
     "calculator.clear_all": "Alles löschen",
+
+    "calculator.document.toolbar.upload_to_cloud": "Dokument hochladen",
+    "calculator.document.toolbar.export_document": "Export",
+    "calculator.document.toolbar.import_document": "Import",
+    "calculator.document.toolbar.delete_cell": "Zelle löschen",
+    "calculator.document.toolbar.refresh_math_cells": "Zellen neu laden",
+    "calculator.document.toolbar.add_math_cell": "Mathematikzelle hinzufügen",
+    "calculator.document.toolbar.add_text_cell": "Textzelle hinzufügen",
+    "calculator.document.toolbar.toggle_edit_cell": "Zelle editieren umschalten",
 
     "settings.categories.interface": "Benutzeroberfläche",
     "settings.categories.calculator": "Rechner",

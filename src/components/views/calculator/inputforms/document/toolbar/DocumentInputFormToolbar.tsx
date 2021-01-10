@@ -7,6 +7,7 @@ import ReloadIcon from "../../../../../icons/Reload.svg";
 import TrashIcon from "../../../../../icons/Trash.svg";
 import ImportIcon from "../../../../../icons/Import.svg";
 import ExportIcon from "../../../../../icons/Export.svg";
+import CloudIcon from "../../../../../icons/Cloud.svg";
 import {useDispatch} from "react-redux";
 import {
     deleteCell as deleteCellAction,
@@ -23,6 +24,7 @@ import IconButton from "./IconButton";
 import {getMathCells} from "../../../common/utils";
 import useImportDocument from "../../../../../../hooks/useImportDocument";
 import useExportDocument from "../../../../../../hooks/useExportDocument";
+import useCloudUpload from "../../../../../../hooks/useCloudUpload";
 
 const Wrapper = styled.div`
   display: flex;
@@ -45,6 +47,7 @@ const DocumentInputFormToolbar: React.FC = () => {
     const numberFormat = useNumberFormat();
     const importDocument = useImportDocument();
     const exportDocument = useExportDocument();
+    const cloudUpload = useCloudUpload();
 
     const addMathCell = () => {
         dispatch(selectCell(session.document.cells.length));
@@ -120,6 +123,11 @@ const DocumentInputFormToolbar: React.FC = () => {
                     src={ExportIcon}
                     onClick={exportDocument}
                     label="calculator.document.toolbar.export_document"
+                />
+                <IconButton
+                    src={CloudIcon}
+                    onClick={cloudUpload}
+                    label="calculator.document.toolbar.upload_to_cloud"
                 />
             </Container>
         </Wrapper>

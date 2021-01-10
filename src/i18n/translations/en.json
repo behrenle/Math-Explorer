@@ -8,6 +8,13 @@
     "common.medium": "Medium",
     "common.small": "Small",
 
+    "upload.copy": "Copy link",
+    "upload.back": "Back",
+
+    "download.download-error": "Something went wrong :(",
+    "download.loading-document": "Loading document",
+    "download.successful": "Download completed",
+
     "navbar.calculator": "Calculator",
     "navbar.settings": "Settings",
     "navbar.manual": "Manual",
@@ -18,6 +25,15 @@
     "calculator.clear_input": "Clear Input",
     "calculator.clear_memory": "Clear Memory",
     "calculator.clear_all": "Clear All",
+
+    "calculator.document.toolbar.upload_to_cloud": "Upload",
+    "calculator.document.toolbar.export_document": "Export",
+    "calculator.document.toolbar.import_document": "Import",
+    "calculator.document.toolbar.delete_cell": "Delete cell",
+    "calculator.document.toolbar.refresh_math_cells": "Refresh cells",
+    "calculator.document.toolbar.add_math_cell": "Add math cell",
+    "calculator.document.toolbar.add_text_cell": "Add text cell",
+    "calculator.document.toolbar.toggle_edit_cell": "Toggle edit cell",
 
     "settings.categories.interface": "Interface",
     "settings.categories.calculator": "Calculator",

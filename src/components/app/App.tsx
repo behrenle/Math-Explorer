@@ -10,6 +10,8 @@ import PrivacyPolicy from "../views/privacyPolicy/PrivacyPolicy";
 import CookiePolicy from "../views/cookiePolicy/CookiePolicy";
 import CookieBanner from "./cookieBanner/CookieBanner";
 import TermsOfService from "../views/termsOfService/TermsOfService";
+import DownloadDocument from "../views/loadDocument/DownloadDocument";
+import UploadDocument from "../views/uploadDocument/UploadDocument";
 
 
 const Content = styled.main`
@@ -37,6 +39,8 @@ const App: React.FC = () => {
                         <Route exact path="/privacy-policy" component={PrivacyPolicy}/>
                         <Route exact path="/cookie-policy" component={CookiePolicy}/>
                         <Route exact path="/terms-of-service" component={TermsOfService}/>
+                        <Route exact path="/download-document/:id" component={DownloadDocument}/>
+                        <Route exact path="/upload-document/:id" component={UploadDocument}/>
                     </Switch>
                 </Content>
                 <CookieBanner/>

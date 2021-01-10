@@ -36,6 +36,8 @@ const Button = styled.button<{ active: boolean }>`
 
 const Img = styled.img`
   filter: ${props => props.theme.icon.filter};
+  width: 50px;
+  height: 50px;
 `;
 
 interface IconProps {

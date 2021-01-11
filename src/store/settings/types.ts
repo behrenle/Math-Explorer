@@ -12,6 +12,7 @@ export interface MathSettings {
     numberFormat: LanguageOrInherit
 }
 
+// todo remove advanced input mode settings
 export interface InterfaceSettings {
     language: Language,
     cellLanguageTag: LanguageOrInherit,

@@ -18,7 +18,7 @@ const Button = styled.button<{ active: boolean }>`
     opacity: 0.1;
   }
 
-  &:enabled:hover {
+  &:enabled:hover, &:enabled:focus {
     opacity: 1;
     border: 1px solid ${props => props.theme.icon.borderColor};
     background-color: ${props => props.theme.sidebarItem.hoverBackgroundColor};

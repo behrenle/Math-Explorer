@@ -14,11 +14,11 @@ const Container = styled(Cell)`
     color: inherit;
     border: none;
   }
-  
+
   & ul {
     list-style-type: disc;
   }
-  
+
   & h1 {
     font-size: 1.5em;
   }
@@ -42,17 +42,17 @@ const Container = styled(Cell)`
   & h6 {
     font-size: 1em;
   }
-  
+
   & h1, h2, h3, h4, h5, h6 {
     margin: 0 0 0.2em 0;
     padding: 0;
     font-weight: bolder;
   }
-  
+
   & > p {
     margin: 5px 0;
   }
-  
+
   & > pre {
     display: inline-block;
     margin: 10px 0;
@@ -60,6 +60,7 @@ const Container = styled(Cell)`
     border-radius: 8px;
     background-color: rgba(0, 0, 0, 0.2);
   }
+
   & > pre code {
     background-color: transparent;
   }
@@ -69,7 +70,7 @@ const Container = styled(Cell)`
     border-radius: 8px;
     background-color: rgba(0, 0, 0, 0.2);
   }
-  
+
   & strong {
     font-weight: bold;
   }
@@ -91,7 +92,16 @@ const TextCell: React.FC<TextCellProps> = ({index, content}) => {
     const session = useSession();
     const [value, setValue] = useState(content);
     const [saved, setSaved] = useState(true);
+    const containerRef = useRef<HTMLLIElement>(null);
     const textAreaRef = useRef<HTMLTextAreaElement>(null);
+    useEffect(() => {
+        if (session.selectedCell === index && containerRef.current) {
+            console.log("focus math cell");
+            containerRef.current.focus();
+        }
+
+    }, [session.selectedCell, index, containerRef, session.editCell])
+
     useEffect(() => {
         if (textAreaRef.current && session.selectedCell === index && session.editCell)
             textAreaRef.current.focus();
@@ -101,7 +111,7 @@ const TextCell: React.FC<TextCellProps> = ({index, content}) => {
             // @ts-ignore
             textAreaRef.current.style.height = textAreaRef.current?.scrollHeight + "px";
         }
-    },[value, session.editCell])
+    }, [value, session.editCell])
     useEffect(() => {
         if (!session.editCell && !saved) {
             dispatch(updateTextCell(index, value));
@@ -138,7 +148,8 @@ const TextCell: React.FC<TextCellProps> = ({index, content}) => {
 
     return (
         <Container
-            selected={index === session.selectedCell}
+            tabIndex={-1}
+            ref={containerRef}
             onClick={selectThisCell}
             onDoubleClick={enterEditMode}
         >

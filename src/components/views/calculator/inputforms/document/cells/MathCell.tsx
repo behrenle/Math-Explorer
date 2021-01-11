@@ -41,7 +41,16 @@ const MathCell: React.FC<MathCellProps> = ({input, output, index}) => {
     const [inputValue, setInputValue] = useState(input);
     const [saved, setSaved] = useState(true);
     const inputRef = useRef<HTMLInputElement>(null);
+    const containerRef = useRef<HTMLLIElement>(null);
     const [t] = useTranslation();
+
+    useEffect(() => {
+        if (session.selectedCell === index && containerRef.current) {
+            console.log("focus math cell");
+            containerRef.current.focus();
+        }
+
+    }, [session.selectedCell, index, containerRef, session.editCell])
 
     useEffect(() => {
         if (session.editCell && session.selectedCell === index)
@@ -83,8 +92,9 @@ const MathCell: React.FC<MathCellProps> = ({input, output, index}) => {
 
     return (
         <Container
+            tabIndex={-1}
+            ref={containerRef}
             onClick={setSelection}
-            selected={index === session.selectedCell}
             onDoubleClick={enterEditMode}
             edit={session.editCell && index === session.selectedCell}
         >

@@ -42,7 +42,6 @@ const Settings: React.FC = () => {
     ];
     const inputFormOptions = [
         {label: t("settings.input_form.simple"), value: "simple"},
-        {label: t("settings.input_form.advanced"), value: "advanced"},
         {label: t("settings.input_form.document"), value: "document"},
     ]
 
@@ -83,26 +82,6 @@ const Settings: React.FC = () => {
                         options={enableOptions}
                         value={settings.interfaceSettings.copyManualContentOnClick}
                         setter={value => updateInterfaceSettings({copyManualContentOnClick: value === "true"})}
-                    />
-
-                    <h2>{t("settings.categories.advanced_input_form")}</h2>
-                    <SettingsItem
-                        label="settings.show_cell_numbers"
-                        options={enableOptions}
-                        value={settings.interfaceSettings.showLineNumbers}
-                        setter={value => updateInterfaceSettings({showLineNumbers: value === "true"})}
-                    />
-                    <SettingsItem
-                        label="settings.copy_cell_content_on_click"
-                        options={enableOptions}
-                        value={settings.interfaceSettings.copyCellContentOnClick}
-                        setter={value => updateInterfaceSettings({copyCellContentOnClick: value === "true"})}
-                    />
-                    <SettingsItem
-                        label="settings.cell_language_tag"
-                        options={languageWithInheritOptions}
-                        value={settings.interfaceSettings.cellLanguageTag}
-                        setter={value => updateInterfaceSettings({cellLanguageTag: value})}
                     />
 
                     <h2>{t("settings.categories.appearance")}</h2>

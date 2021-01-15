@@ -2,7 +2,7 @@ import React from "react";
 import Sidebar from "../../../common/Sidebar";
 import {useTranslation} from "react-i18next";
 import {useDispatch, useSelector} from "react-redux";
-import {clearCurrentInput, clearMathHistory, clearMathUserScope} from "../../../../store/session/actions";
+import {clearCurrentInput, clearDocument, clearMathUserScope} from "../../../../store/session/actions";
 import {RootState} from "../../../../store";
 import useAnalyticsEvent from "../../../../hooks/useAnalyticsEvent";
 
@@ -13,14 +13,15 @@ const CalculatorSidebar: React.FC = () => {
     const analyticsEvent = useAnalyticsEvent();
 
     const clearAll = () => {
-        dispatch(clearMathHistory());
+        dispatch(clearDocument());
         dispatch(clearCurrentInput());
         dispatch(clearMathUserScope());
         analyticsEvent("calculator.common.sidebar", "clear_all");
     };
 
     const clearHistory = () => {
-        dispatch(clearMathHistory());
+        console.log("triggered clear history");
+        dispatch(clearDocument());
         analyticsEvent("calculator.common.sidebar", "clear_history");
     }
 

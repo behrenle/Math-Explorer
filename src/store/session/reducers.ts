@@ -35,7 +35,7 @@ const sessionReducer = createReducer<Session, SessionAction>(defaultState, {
 
     CLEAR_CURRENT_INPUT: (state) => ({...state, currentInput: ""}),
 
-    CLEAR_DOCUMENT_CELLS: (state) => ({...state, document: defaultState.document}),
+    CLEAR_DOCUMENT_CELLS: (state) => ({...state, document: {...state.document, cells: []}}),
 
     CLEAR_MATH_USER_SCOPE: (state) => {
         clearScope();

@@ -37,7 +37,7 @@ export const pushMathCell = (content: string, language: Language, significantDig
     };
 };
 
-export const clearMathHistory = (): ClearDocumentCells => {
+export const clearDocument = (): ClearDocumentCells => {
     return {
         type: "CLEAR_DOCUMENT_CELLS"
     };

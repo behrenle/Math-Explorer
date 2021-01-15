@@ -5,7 +5,7 @@ import DocumentInputForm from "./inputforms/document/DocumentInputForm";
 import {useSelector} from "react-redux";
 import {RootState} from "../../../store";
 import {clearAll, clearInput, clearMemory, clearOutput, copyInputAndOutput} from "../../../hotkeys.json";
-import {clearCurrentInput, clearMathHistory, clearMathUserScope} from "../../../store/session/actions";
+import {clearCurrentInput, clearDocument, clearMathUserScope} from "../../../store/session/actions";
 import useHotkeyDispatch, {hotkeyOptions} from "../../../hooks/useHotkeyDispatch";
 import {useHotkeys} from "react-hotkeys-hook";
 import {useTranslation} from "react-i18next";
@@ -39,9 +39,9 @@ const Calculator: React.FC = () => {
     const [t] = useTranslation();
     const [currentInput, currentOutput] = useSelector((state: RootState) => [state.session.currentInput, getOutput(state)]);
     useHotkeyDispatch(clearInput, clearCurrentInput());
-    useHotkeyDispatch(clearOutput, clearMathHistory());
+    useHotkeyDispatch(clearOutput, clearDocument());
     useHotkeyDispatch(clearMemory, clearMathUserScope());
-    useHotkeyDispatch(clearAll, [clearCurrentInput(), clearMathHistory(), clearMathUserScope()]);
+    useHotkeyDispatch(clearAll, [clearCurrentInput(), clearDocument(), clearMathUserScope()]);
     useHotkeys(copyInputAndOutput, () => {
         navigator.clipboard.writeText(`${t("common.input")}: ${currentInput}\n${t("common.output")}: ${currentOutput}`).catch(console.error);
     }, hotkeyOptions, [currentInput, currentOutput]);

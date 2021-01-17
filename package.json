@@ -15,7 +15,7 @@
   "private": true,
   "homepage": "./",
   "dependencies": {
-    "@behrenle/number-drive": "^2.26.1",
+    "@behrenle/number-drive": "^2.27.0",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.5.0",

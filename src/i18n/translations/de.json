@@ -3,7 +3,7 @@
     "common.output": "Ausgabe",
     "common.enable": "An",
     "common.disable": "Aus",
-    "common.inherit": "Erben",
+    "common.inherit": "Standard",
     "common.large": "Groß",
     "common.medium": "Mittel",
     "common.small": "Klein",
@@ -52,8 +52,7 @@
     "settings.font_size": "Schriftgröße",
     "settings.input_form": "Eingabemaskentyp",
     "settings.input_form.simple": "Einfach",
-    "settings.input_form.advanced": "Verlauf",
-    "settings.input_form.document": "Dokument",
+    "settings.input_form.document": "Erweitert",
     "settings.show_background_image": "Zeige Hintergrundbild",
     "settings.use_analytics": "Nutze Google Analytics",
 

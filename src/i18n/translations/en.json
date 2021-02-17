@@ -3,7 +3,7 @@
     "common.output": "Output",
     "common.enable": "On",
     "common.disable": "Off",
-    "common.inherit": "Inherit",
+    "common.inherit": "Default",
     "common.large": "Large",
     "common.medium": "Medium",
     "common.small": "Small",
@@ -52,8 +52,7 @@
     "settings.font_size": "Font size",
     "settings.input_form": "Input form type",
     "settings.input_form.simple": "Simple",
-    "settings.input_form.advanced": "Advanced",
-    "settings.input_form.document": "Document",
+    "settings.input_form.document": "Advanced",
     "settings.show_background_image": "Show background image",
     "settings.use_analytics": "Use Google Analytics",
 

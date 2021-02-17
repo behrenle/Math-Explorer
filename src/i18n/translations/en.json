@@ -3,7 +3,7 @@
     "common.output": "Output",
     "common.enable": "On",
     "common.disable": "Off",
-    "common.inherit": "Inherit",
+    "common.inherit": "Default",
     "common.large": "Large",
     "common.medium": "Medium",
     "common.small": "Small",

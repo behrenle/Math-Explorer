@@ -7,7 +7,7 @@ MathExplorer is a platform for mathematical work. The core features of the MathE
 
 # Installation
 The latest version of MathExplorer can be used 
-[online](https://behrenle.github.io/mathexplorer/index.html)
+[online](https://math-explorer.behrenle.io)
 or alternatively downloaded 
 [here](https://github.com/behrenle/Math-Explorer/releases).
 

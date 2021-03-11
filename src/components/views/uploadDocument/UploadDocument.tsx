@@ -41,8 +41,8 @@ interface RouteProps extends RouteComponentProps<Props> {}
 
 const UploadDocument: React.FC<RouteProps> = ({match}) => {
     const history = useHistory();
-    const path = "https://behrenle.github.io/mathexplorer";
-    const uploadUrl = `${path}/#/download-document/${match.params.id}`;
+    const path = window.location.href.split("#")[0];
+    const uploadUrl = `${path}#/download-document/${match.params.id}`;
     const [t] = useTranslation();
 
     const copyUrl = () => {

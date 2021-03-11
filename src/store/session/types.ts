@@ -25,7 +25,8 @@ export interface Session {
     currentInput: string,
     selectedCell: number,
     editCell: boolean,
-    document: Document
+    document: Document,
+    temporaryEnableDocumentMode: boolean
 }
 
 /* action types */
@@ -114,6 +115,11 @@ export interface MoveCellSelectionDown {
     type: "MOVE_CELL_SELECTION_DOWN"
 }
 
+export interface TemporaryEnableDocumentMode {
+    type: "TEMPORARY_ENABLE_DOCUMENT_MODE",
+    payload: boolean
+}
+
 export type SessionAction = ChangeCurrentInput
     | ClearCurrentInput
     | ClearDocumentCells
@@ -128,4 +134,5 @@ export type SessionAction = ChangeCurrentInput
     | DeleteCell
     | LoadDocument
     | MoveCellSelectionUp
-    | MoveCellSelectionDown;
+    | MoveCellSelectionDown
+    | TemporaryEnableDocumentMode;

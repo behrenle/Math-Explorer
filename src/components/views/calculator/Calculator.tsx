@@ -12,6 +12,7 @@ import {useTranslation} from "react-i18next";
 import {InputForm} from "../../../store/settings/types";
 import usePageView from "../../../hooks/usePageView";
 import useAnalyticsEvent from "../../../hooks/useAnalyticsEvent";
+import useSession from "../../../hooks/useSession";
 
 const getOutput = (state: RootState) => {
     const lastCell = state.session.document.cells.slice(-1)[0];
@@ -21,7 +22,10 @@ const getOutput = (state: RootState) => {
     return "";
 }
 
-const selectInputForm = (inputForm: InputForm) => {
+const selectInputForm = (inputForm: InputForm, overwriteDocumentInputMode: boolean) => {
+    if (overwriteDocumentInputMode)
+        return <DocumentInputForm/>;
+
     switch (inputForm) {
         case "advanced":
             return <AdvancedInputForm/>;
@@ -37,6 +41,7 @@ const Calculator: React.FC = () => {
     const analyticsEvent = useAnalyticsEvent();
     const inputForm = useSelector((state: RootState) => state.settings.interfaceSettings.inputForm);
     const [t] = useTranslation();
+    const session = useSession();
     const [currentInput, currentOutput] = useSelector((state: RootState) => [state.session.currentInput, getOutput(state)]);
     useHotkeyDispatch(clearInput, clearCurrentInput());
     useHotkeyDispatch(clearOutput, clearDocument());
@@ -49,7 +54,7 @@ const Calculator: React.FC = () => {
 
     return (
         <>
-            {selectInputForm(inputForm)}
+            {selectInputForm(inputForm, session.temporaryEnableDocumentMode)}
         </>
     );
 };

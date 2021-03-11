@@ -14,7 +14,8 @@ const defaultState: Session = {
     document: {
         title: "",
         cells: []
-    }
+    },
+    temporaryEnableDocumentMode: false
 };
 
 const evaluateInput = (input: string, lang: Language, sigDigits: SignificantDigits): string => {
@@ -158,6 +159,13 @@ const sessionReducer = createReducer<Session, SessionAction>(defaultState, {
         return {
             ...state,
             selectedCell: Math.min(state.selectedCell + 1, state.document.cells.length - 1)
+        };
+    },
+
+    TEMPORARY_ENABLE_DOCUMENT_MODE: (state, action) => {
+        return {
+            ...state,
+            temporaryEnableDocumentMode: action.payload
         };
     }
 });

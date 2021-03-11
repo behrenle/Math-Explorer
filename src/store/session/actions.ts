@@ -9,7 +9,7 @@ import {
     SetEditCell,
     UpdateMathCell,
     UpdateTextCell,
-    Document as DocumentType, MoveCellSelectionUp, MoveCellSelectionDown,
+    Document as DocumentType, MoveCellSelectionUp, MoveCellSelectionDown, TemporaryEnableDocumentMode,
 } from "./types";
 import {Language, SignificantDigits} from "../settings/types";
 
@@ -36,6 +36,11 @@ export const pushMathCell = (content: string, language: Language, significantDig
         }
     };
 };
+
+export const temporaryEnableDocumentMode = (enable: boolean): TemporaryEnableDocumentMode => ({
+    type: "TEMPORARY_ENABLE_DOCUMENT_MODE",
+    payload: enable
+});
 
 export const clearDocument = (): ClearDocumentCells => {
     return {

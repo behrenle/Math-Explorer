@@ -8,6 +8,8 @@ import {fetchBin} from "../../../apis/jsonBin";
 import {Document} from "../../../store/session/types";
 import validateDocument from "../../../validate/validateDocument";
 import {useTranslation} from "react-i18next";
+import {useDispatch} from "react-redux";
+import {temporaryEnableDocumentMode} from "../../../store/session/actions";
 
 const Container = styled.div`
   display: flex;
@@ -38,6 +40,10 @@ const DownloadDocument: React.FC<RouteProps> = ({match}) => {
     const [t] = useTranslation();
     const history = useHistory();
     const loadDocument = useLoadDocument();
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(temporaryEnableDocumentMode(true));
+    }, []);
     useEffect(() => {
         if (!loading && !failed)
             history.push("/");

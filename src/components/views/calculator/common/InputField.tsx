@@ -29,7 +29,6 @@ const InputField = React.forwardRef((props, forwardedRef) => {
     // @ts-ignore
     return (<InputText ref={forwardedRef}
         type="text"
-        role="input math"
         placeholder={t("common.input")}
         aria-label={t("common.input")}
         onChange={changeInput}

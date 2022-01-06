@@ -15,7 +15,7 @@
   "private": true,
   "homepage": "./",
   "dependencies": {
-    "@behrenle/number-drive": "^2.29.1",
+    "@behrenle/number-drive": "^2.29.2",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.0",
@@ -74,6 +74,6 @@
     ]
   },
   "devDependencies": {
-    "workbox-build": "^6.0.2"
+    "workbox-build": "^6.4.2"
   }
 }

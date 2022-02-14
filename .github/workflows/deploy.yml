@@ -6,9 +6,31 @@ on:
     branches: [master]
 
 jobs:
-  deploy:
+  run:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          run: |
-            curl -XPOST -u "${{ secrets.PAT_USERNAME}}:${{secrets.PERSONAL_ACCESS_TOKEN}}" -H "Accept: application/vnd.github.everest-preview+json" -H "Content-Type: application/json" https://api.github.com/repos/behrenle/behrenle.github.io/dispatches --data '{"event_type": "update-math-explorer"}'
+    - uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build
+      run: npm run build
+
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: eu-central-1
+
+    - name: Deploy static site to S3 bucket
+      with: 
+        BUCKET_ID: ${{ secrets.BUCKET_ID }}
+      run: aws s3 sync ./build/ s3://$BUCKET_ID --delete
+
+    - name: Invalidate Cloundfront distrubution
+      with:
+        DISTRIBUTION_ID: ${{ secrets.DISTRIBUTION_ID }}
+      run: aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths '/*'
+

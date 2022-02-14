@@ -160,19 +160,6 @@ const Settings: React.FC = () => {
           />
         </ul>
       </SettingsCard>
-      <SettingsCard>
-        <h1>{t("settings.categories.misc")}</h1>
-        <ul>
-          <SettingsItem
-            label="settings.use_analytics"
-            options={enableOptions}
-            value={settings.useAnalytics}
-            setter={(value) =>
-              updateSettings({ useAnalytics: value === "true" })
-            }
-          />
-        </ul>
-      </SettingsCard>
     </Container>
   );
 };

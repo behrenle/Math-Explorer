@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import useAnalyticsEvent from "../../../../../../hooks/useAnalyticsEvent";
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
 
 const Button = styled.button<{ active: boolean }>`
-  opacity: ${props => props.active ? "1" : "0.5"};
+  opacity: ${(props) => (props.active ? "1" : "0.5")};
   width: 100%;
   padding: 10px;
-  background-color: ${props => props.active ? props.theme.sidebarItem.hoverBackgroundColor : "inherit"};
+  background-color: ${(props) =>
+    props.active ? props.theme.sidebarItem.hoverBackgroundColor : "inherit"};
   border: none;
   outline: none;
   display: flex;
@@ -20,8 +20,9 @@ const Button = styled.button<{ active: boolean }>`
 
   &:enabled:hover {
     opacity: 1;
-    border: 1px solid ${props => props.theme.icon.borderColor};
-    background-color: ${props => props.theme.sidebarItem.hoverBackgroundColor};
+    border: 1px solid ${(props) => props.theme.icon.borderColor};
+    background-color: ${(props) =>
+      props.theme.sidebarItem.hoverBackgroundColor};
     padding: 9px;
   }
 
@@ -35,50 +36,44 @@ const Button = styled.button<{ active: boolean }>`
 `;
 
 const Img = styled.img`
-  filter: ${props => props.theme.icon.filter};
+  filter: ${(props) => props.theme.icon.filter};
   width: 50px;
   height: 50px;
 `;
 
 interface IconProps {
-    src: string,
-    onClick?: () => void,
-    disabled?: boolean,
-    active?: boolean,
-    label: string
+  src: string;
+  onClick?: () => void;
+  disabled?: boolean;
+  active?: boolean;
+  label: string;
 }
 
 const IconButton: React.FC<IconProps> = ({
-     src,
-     onClick,
-     disabled,
-     active,
-     label,
- }) => {
-    const analyticsEvent = useAnalyticsEvent();
-    const [t] = useTranslation();
+  src,
+  onClick,
+  disabled,
+  active,
+  label,
+}) => {
+  const [t] = useTranslation();
 
-    const clickWrapper = () => {
-        if (!(!onClick || disabled)) {
-            const labelParts = label.split(".");
-            const analyticsCategory = labelParts.slice(0, labelParts.length - 1).join(".");
-            const analyticsAction = labelParts[labelParts.length - 1];
-
-            analyticsEvent(analyticsCategory, analyticsAction);
-            onClick();
-        }
+  const clickWrapper = () => {
+    if (!(!onClick || disabled)) {
+      onClick();
     }
+  };
 
-    return (
-        <Button
-            disabled={!onClick || disabled}
-            active={!!active}
-            onClick={clickWrapper}
-            aria-label={t(label)}
-        >
-            <Img src={src}/>
-        </Button>
-    );
+  return (
+    <Button
+      disabled={!onClick || disabled}
+      active={!!active}
+      onClick={clickWrapper}
+      aria-label={t(label)}
+    >
+      <Img src={src} />
+    </Button>
+  );
 };
 
 export default IconButton;

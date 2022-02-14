@@ -14,11 +14,11 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   padding: 20px;
-  color: ${props => props.theme.card.color};
+  color: ${(props) => props.theme.card.color};
 `;
 
 const Document = styled.main`
-  background-color: ${props => props.theme.card.backgroundColor};
+  background-color: ${(props) => props.theme.card.backgroundColor};
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
   padding: 10px;
   overflow: auto;
@@ -49,32 +49,30 @@ const CellList = styled.ul`
 
 // todo: render and edit document title
 const DocumentInputForm: React.FC = () => {
-    const cells = useSession().document.cells;
-    useDocumentHotkeys();
+  const cells = useSession().document.cells;
+  useDocumentHotkeys();
 
-    return (
-        <Container>
-            <DocumentInputFormToolbar/>
-            <Document>
-                <CellList>
-                    {
-                        cells.map((cell, i) => cell.type === "MATH"
-                            ? (<MathCell
-                                key={cell.uuid}
-                                input={cell.input}
-                                output={cell.output}
-                                index={i}
-                            />)
-                            : (<TextCell
-                                key={cell.uuid}
-                                index={i}
-                                content={cell.content}
-                            />))
-                    }
-                </CellList>
-            </Document>
-        </Container>
-    );
+  return (
+    <Container>
+      <DocumentInputFormToolbar />
+      <Document>
+        <CellList>
+          {cells.map((cell, i) =>
+            cell.type === "MATH" ? (
+              <MathCell
+                key={cell.uuid}
+                input={cell.input}
+                output={cell.output}
+                index={i}
+              />
+            ) : (
+              <TextCell key={cell.uuid} index={i} content={cell.content} />
+            )
+          )}
+        </CellList>
+      </Document>
+    </Container>
+  );
 };
 
 export default DocumentInputForm;

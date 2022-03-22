@@ -15,7 +15,7 @@
   "private": true,
   "homepage": "./",
   "dependencies": {
-    "@behrenle/number-drive": "^2.29.2",
+    "@behrenle/number-drive": "^2.29.3",
     "@fontsource/jetbrains-mono": "^4.5.3",
     "@fontsource/roboto": "^4.5.3",
     "@testing-library/jest-dom": "^5.11.9",

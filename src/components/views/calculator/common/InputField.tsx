@@ -46,6 +46,7 @@ const InputField = React.forwardRef<HTMLInputElement>((props, forwardedRef) => {
       onChange={changeInput}
       onKeyPress={keypressInput}
       value={value}
+      autoCapitalize="off"
     />
   );
 });
